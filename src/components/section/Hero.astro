@@ -1,0 +1,73 @@
+---
+---
+<section class="relative w-full min-h-screen bg-slate-900 overflow-hidden">
+  <div class="absolute inset-0 hero-bg" aria-hidden="true"></div>
+
+  <h1 class="absolute left-3 top-[80px] font-playfair font-black text-white pointer-events-none select-none flex flex-col leading-[0.88] tracking-tight hero-headline" aria-label="Commercial Electrical">
+    <span>COMMER</span>
+    <span>CIAL</span>
+    <span class="text-emerald-500">ELEC</span>
+    <span>TRICAL</span>
+  </h1>
+
+  <div class="absolute right-[6%] top-1/2 -translate-y-1/2 w-[300px] flex flex-col gap-7 z-10 max-md:hidden">
+    <p class="text-[13px] text-white/80 leading-[1.75]">
+      We don't just wire buildings — we build the backbone of your operation.
+      From ground up construction to full panel fit-outs, every job is
+      permitted, on-time, and built to last decades.
+    </p>
+
+    <a href="/services" class="flex items-center gap-[18px] no-underline" aria-label="Our services">
+      <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-[72px] h-[72px] flex-shrink-0">
+        <path d="M40 6 C52 2,68 10,74 22 C80 34,78 52,68 62 C58 72,40 76,26 70 C12 64,4 50,6 36 C8 22,28 10,40 6Z"
+          stroke="rgba(255,255,255,0.35)" stroke-width="1" fill="rgba(255,255,255,0.05)"/>
+        <line x1="28" y1="40" x2="52" y2="40" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M44 32L52 40L44 48" stroke="#fff" stroke-width="1.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="text-[11px] font-medium tracking-[0.14em] text-white uppercase">Our services</span>
+    </a>
+
+    <ul class="list-none p-0 flex flex-col gap-2.5">
+      <li class="flex items-center gap-2.5 text-xs text-white/60 before:content-[''] before:w-1.5 before:h-1.5 before:rounded-full before:flex-shrink-0 before:bg-emerald-500">
+        Ground up electrical construction
+      </li>
+      <li class="flex items-center gap-2.5 text-xs text-white/60 before:content-[''] before:w-1.5 before:h-1.5 before:rounded-full before:flex-shrink-0 before:bg-blue-500">
+        Tenant improvements &amp; panel upgrades
+      </li>
+      <li class="flex items-center gap-2.5 text-xs text-white/60 before:content-[''] before:w-1.5 before:h-1.5 before:rounded-full before:flex-shrink-0 before:bg-white/30">
+        Lighting &amp; energy systems
+      </li>
+    </ul>
+  </div>
+
+  <footer class="absolute bottom-7 left-4 flex items-center gap-6">
+    <span class="text-[10px] tracking-[0.14em] text-white/30 uppercase">350+ projects</span>
+    <span class="text-[10px] tracking-[0.14em] text-white/30 uppercase relative before:content-[''] before:absolute before:-left-6 before:top-1/2 before:-translate-y-1/2 before:w-px before:h-3 before:bg-white/15">18 years experience</span>
+    <span class="text-[10px] tracking-[0.14em] text-white/30 uppercase relative before:content-[''] before:absolute before:-left-6 before:top-1/2 before:-translate-y-1/2 before:w-px before:h-3 before:bg-white/15">100% code compliant</span>
+  </footer>
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap');
+
+  .font-playfair {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .hero-bg {
+    background:
+      radial-gradient(ellipse 60% 80% at 20% 50%, rgba(15,110,86,0.45), transparent),
+      radial-gradient(ellipse 50% 60% at 85% 60%, rgba(24,95,165,0.2), transparent);
+  }
+
+  .hero-headline {
+    font-size: clamp(72px, 13vw, 172px);
+  }
+
+  @media (max-width: 680px) {
+    .hero-headline {
+      font-size: clamp(56px, 18vw, 100px);
+    }
+  }
+</style>

@@ -9,84 +9,325 @@ const navLinks = [
 const currentPath = Astro.url.pathname;
 ---
 
-<nav class="border-b border-gray-200">
-  <!-- Top layer -->
-  <div class="px-8 py-4 flex items-center justify-between">
-    <a href="/" class="text-lg font-medium text-gray-900 no-underline">ElectroPro</a>
-    <div class="flex items-center gap-8">
+<nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" id="navbar">
+  <!-- Desktop navbar (1024px+) -->
+  <div class="hidden lg:block px-6 py-4 relative">
+    <div class="flex items-center justify-between max-w-7xl mx-auto">
+      <!-- Logo - will move to center when scrolled -->
+      <a href="/" class="text-xl font-bold text-white no-underline transition-all duration-500 ease-out relative z-20" id="navbar-logo">
+        ElectroPro
+      </a>
+
+      <!-- Center container - positioned absolutely in center, expands when scrolled -->
+      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center bg-white/80 backdrop-blur-md rounded-full px-6 py-2 shadow-lg border border-white/20 transition-all duration-500 ease-out" id="nav-container">
+        <!-- Nav links -->
+        <div class="flex items-center">
+          {navLinks.map((link) => (
+            <a
+              href={link.href}
+              class:list={[
+                "px-4 py-2 text-sm font-medium no-underline transition-colors rounded-full",
+                { 
+                  "text-blue-600 bg-blue-50": currentPath === link.href,
+                  "text-gray-700 hover:text-gray-900 hover:bg-gray-50": currentPath !== link.href
+                }
+              ]}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- CTA Button - will move to center when scrolled -->
+      <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-medium transition-all duration-500 ease-out relative z-20" id="navbar-cta">
+        Get Quote
+      </button>
+    </div>
+  </div>
+
+  <!-- Tablet navbar (768px-1024px) - simplified layout -->
+  <div class="hidden md:block lg:hidden px-4 py-4">
+    <div class="flex items-center justify-between max-w-5xl mx-auto">
+      <!-- Logo -->
+      <a href="/" class="text-lg font-bold text-white no-underline">
+        ElectroPro
+      </a>
+
+      <!-- Center nav links with glass background -->
+      <div class="flex items-center bg-white/80 backdrop-blur-md rounded-full px-4 py-2 shadow-lg border border-white/20">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              "px-3 py-1.5 text-sm font-medium no-underline transition-colors rounded-full",
+              { 
+                "text-blue-600 bg-blue-50": currentPath === link.href,
+                "text-gray-700 hover:text-gray-900 hover:bg-gray-50": currentPath !== link.href
+              }
+            ]}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- CTA Button -->
+      <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full font-medium text-sm">
+        Get Quote
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile navbar (below 768px) - burger menu -->
+  <div class="md:hidden px-4 py-4">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="text-lg font-bold text-white no-underline">
+        ElectroPro
+      </a>
+
+      <!-- Burger menu button -->
+      <button class="p-2 text-white hover:text-gray-300 transition-colors" id="mobile-menu-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" id="burger-icon">
+          <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="hidden" id="close-icon">
+          <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Desktop Services dropdown (1024px+) -->
+  <div class="hidden lg:block px-6 pb-4 transition-all duration-300" id="services-layer">
+    <div class="max-w-7xl mx-auto flex justify-center">
+      <div class="relative inline-block">
+        <button 
+          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30" 
+          aria-expanded="false" 
+          aria-haspopup="true"
+          id="service-btn"
+        >
+          Commercial electrical services
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="transition-transform duration-200">
+            <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div 
+          class="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white/95 backdrop-blur-md border border-white/20 rounded-xl shadow-xl py-2 min-w-64 opacity-0 invisible transition-all duration-200" 
+          role="menu"
+          id="dropdown-menu"
+        >
+          <a 
+            href="/services/ground-up-electrical-construction" 
+            class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg mx-2" 
+            role="menuitem"
+          >
+            Ground up electrical construction
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="md:hidden bg-white/95 backdrop-blur-md border-t border-white/20 opacity-0 invisible transition-all duration-300 absolute top-full left-0 right-0" id="mobile-menu">
+    <div class="px-6 py-4 space-y-2">
       {navLinks.map((link) => (
         <a
           href={link.href}
           class:list={[
-            "text-gray-600 no-underline hover:text-gray-900 transition-colors",
-            { "text-gray-900 font-medium": currentPath === link.href }
+            "block px-4 py-3 text-base font-medium no-underline transition-colors rounded-lg",
+            { 
+              "text-blue-600 bg-blue-50": currentPath === link.href,
+              "text-gray-700 hover:text-gray-900 hover:bg-gray-50": currentPath !== link.href
+            }
           ]}
         >
           {link.label}
         </a>
       ))}
-    </div>
-  </div>
-
-  <!-- Bottom layer -->
-  <div class="px-8 py-3 bg-gray-50">
-    <div class="relative">
-      <button 
-        class="flex items-center gap-2 text-sm text-gray-700 hover:text-gray-900 transition-colors" 
-        aria-expanded="false" 
-        aria-haspopup="true"
-        id="service-btn"
-      >
-        Commercial electrical services
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="transition-transform duration-200">
-          <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5"
-            stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-      <div 
-        class="absolute top-full left-0 mt-2 bg-white border border-gray-200 rounded-md shadow-lg py-2 min-w-64 opacity-0 invisible transition-all duration-200" 
-        role="menu"
-        id="dropdown-menu"
-      >
-        <a 
-          href="/services/ground-up-electrical-construction" 
-          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline" 
-          role="menuitem"
+      
+      <!-- Services in mobile menu -->
+      <div class="pt-2 border-t border-gray-200">
+        <button 
+          class="flex items-center justify-between w-full px-4 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors" 
+          id="mobile-service-btn"
         >
-          Ground up electrical construction
-        </a>
+          Commercial electrical services
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="transition-transform duration-200">
+            <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="pl-4 opacity-0 invisible transition-all duration-200" id="mobile-services-dropdown">
+          <a 
+            href="/services/ground-up-electrical-construction" 
+            class="block px-4 py-2 text-sm text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50"
+          >
+            Ground up electrical construction
+          </a>
+        </div>
       </div>
+      
+      <button class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg font-medium transition-colors mt-4">
+        Get Quote
+      </button>
     </div>
   </div>
 </nav>
 
-<script>
-  const btn = document.getElementById("service-btn") as HTMLButtonElement;
-  const menu = document.getElementById("dropdown-menu") as HTMLElement;
-  const svg = btn.querySelector("svg") as SVGElement;
 
-  btn.addEventListener("click", () => {
-    const isOpen = menu.classList.contains("opacity-100");
+<script>
+  // Dropdown functionality for desktop
+  const serviceBtn = document.getElementById("service-btn") as HTMLButtonElement;
+  const dropdownMenu = document.getElementById("dropdown-menu") as HTMLElement;
+  const svg = serviceBtn?.querySelector("svg") as SVGElement;
+
+  serviceBtn?.addEventListener("click", () => {
+    const isOpen = dropdownMenu.classList.contains("opacity-100");
     
     if (isOpen) {
-      menu.classList.remove("opacity-100", "visible");
-      menu.classList.add("opacity-0", "invisible");
+      dropdownMenu.classList.remove("opacity-100", "visible");
+      dropdownMenu.classList.add("opacity-0", "invisible");
       svg.classList.remove("rotate-180");
-      btn.setAttribute("aria-expanded", "false");
+      serviceBtn.setAttribute("aria-expanded", "false");
     } else {
-      menu.classList.remove("opacity-0", "invisible");
-      menu.classList.add("opacity-100", "visible");
+      dropdownMenu.classList.remove("opacity-0", "invisible");
+      dropdownMenu.classList.add("opacity-100", "visible");
       svg.classList.add("rotate-180");
-      btn.setAttribute("aria-expanded", "true");
+      serviceBtn.setAttribute("aria-expanded", "true");
     }
   });
 
   document.addEventListener("click", (e) => {
-    if (!btn.contains(e.target as Node) && !menu.contains(e.target as Node)) {
-      menu.classList.remove("opacity-100", "visible");
-      menu.classList.add("opacity-0", "invisible");
-      svg.classList.remove("rotate-180");
-      btn.setAttribute("aria-expanded", "false");
+    if (!serviceBtn?.contains(e.target as Node) && !dropdownMenu?.contains(e.target as Node)) {
+      dropdownMenu?.classList.remove("opacity-100", "visible");
+      dropdownMenu?.classList.add("opacity-0", "invisible");
+      svg?.classList.remove("rotate-180");
+      serviceBtn?.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  // Mobile menu functionality
+  const mobileMenuBtn = document.getElementById("mobile-menu-btn") as HTMLButtonElement;
+  const mobileMenu = document.getElementById("mobile-menu") as HTMLElement;
+  const burgerIcon = document.getElementById("burger-icon") as unknown as SVGElement;
+  const closeIcon = document.getElementById("close-icon") as unknown as SVGElement;
+
+  mobileMenuBtn?.addEventListener("click", () => {
+    const isOpen = mobileMenu.classList.contains("opacity-100");
+    
+    if (isOpen) {
+      mobileMenu.classList.remove("opacity-100", "visible");
+      mobileMenu.classList.add("opacity-0", "invisible");
+      burgerIcon.classList.remove("hidden");
+      closeIcon.classList.add("hidden");
+    } else {
+      mobileMenu.classList.remove("opacity-0", "invisible");
+      mobileMenu.classList.add("opacity-100", "visible");
+      burgerIcon.classList.add("hidden");
+      closeIcon.classList.remove("hidden");
+    }
+  });
+
+  // Mobile services dropdown
+  const mobileServiceBtn = document.getElementById("mobile-service-btn") as HTMLButtonElement;
+  const mobileServicesDropdown = document.getElementById("mobile-services-dropdown") as HTMLElement;
+  const mobileServiceSvg = mobileServiceBtn?.querySelector("svg") as SVGElement;
+
+  mobileServiceBtn?.addEventListener("click", () => {
+    const isOpen = mobileServicesDropdown.classList.contains("opacity-100");
+    
+    if (isOpen) {
+      mobileServicesDropdown.classList.remove("opacity-100", "visible");
+      mobileServicesDropdown.classList.add("opacity-0", "invisible");
+      mobileServiceSvg.classList.remove("rotate-180");
+    } else {
+      mobileServicesDropdown.classList.remove("opacity-0", "invisible");
+      mobileServicesDropdown.classList.add("opacity-100", "visible");
+      mobileServiceSvg.classList.add("rotate-180");
+    }
+  });
+
+  // Desktop scroll behavior - only for screens 1024px and above
+  function updateNavbar() {
+    // Only apply scroll animation on desktop (1024px+)
+    if (window.innerWidth < 1024) return;
+    
+    const scrollY = window.scrollY;
+    const servicesLayer = document.getElementById("services-layer") as HTMLElement;
+    const navbarLogo = document.getElementById("navbar-logo") as HTMLElement;
+    const navbarCta = document.getElementById("navbar-cta") as HTMLElement;
+    const navContainer = document.getElementById("nav-container") as HTMLElement;
+    
+    if (scrollY > 50) {
+      // Scrolled state - expand pill and move elements inside
+      servicesLayer.classList.add("opacity-0", "invisible", "h-0", "pb-0");
+      
+      // Expand the pill significantly to accommodate logo and CTA
+      navContainer.style.paddingLeft = "10rem";
+      navContainer.style.paddingRight = "10rem";
+      
+      // Different translate values based on screen size
+      if (window.innerWidth >= 1440) {
+        // Large screens (1440px+) - use current values that work well
+        navbarLogo.style.transform = "translateX(340px)";
+        navbarCta.style.transform = "translateX(-340px)";
+      } else {
+        // Medium screens (1024px-1439px) - use smaller values
+        navbarLogo.style.transform = "translateX(220px)";
+        navbarCta.style.transform = "translateX(-220px)";
+      }
+      
+      navbarLogo.style.color = "#1f2937";
+      navbarLogo.style.fontSize = "1rem";
+      
+    } else {
+      // Top state - reset to compact pill
+      servicesLayer.classList.remove("opacity-0", "invisible", "h-0", "pb-0");
+      
+      // Reset pill to original size
+      navContainer.style.paddingLeft = "1.5rem";
+      navContainer.style.paddingRight = "1.5rem";
+      
+      // Reset logo and CTA positions
+      navbarLogo.style.transform = "translateX(0)";
+      navbarLogo.style.color = "#ffffff";
+      navbarLogo.style.fontSize = "1.25rem";
+      
+      navbarCta.style.transform = "translateX(0)";
+    }
+  }
+
+  // Initial call and scroll listener
+  updateNavbar();
+  window.addEventListener("scroll", updateNavbar, { passive: true });
+  
+  // Update on resize to handle breakpoint changes
+  window.addEventListener("resize", () => {
+    // Reset transforms when switching breakpoints
+    const navbarLogo = document.getElementById("navbar-logo") as HTMLElement;
+    const navbarCta = document.getElementById("navbar-cta") as HTMLElement;
+    const navContainer = document.getElementById("nav-container") as HTMLElement;
+    
+    if (window.innerWidth < 1024) {
+      // Reset desktop transforms on smaller screens
+      if (navbarLogo) {
+        navbarLogo.style.transform = "translateX(0)";
+        navbarLogo.style.color = "#ffffff";
+        navbarLogo.style.fontSize = "1.25rem";
+      }
+      if (navbarCta) {
+        navbarCta.style.transform = "translateX(0)";
+      }
+      if (navContainer) {
+        navContainer.style.paddingLeft = "1.5rem";
+        navContainer.style.paddingRight = "1.5rem";
+      }
+    } else {
+      updateNavbar();
     }
   });
 </script>
