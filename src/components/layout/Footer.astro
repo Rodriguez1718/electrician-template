@@ -1,0 +1,85 @@
+---
+const currentYear = new Date().getFullYear();
+
+const companyLinks = [
+  { label: "Home", href: "/" },
+  { label: "About us", href: "/about" },
+  { label: "Service area", href: "/service-area" },
+  { label: "Contact", href: "/contact" },
+];
+
+const serviceLinks = [
+  { label: "Ground up electrical construction", href: "/services/ground-up-electrical-construction" },
+  { label: "Tenant improvements", href: "/services/tenant-improvements" },
+  { label: "Panel upgrades", href: "/services/panel-upgrades" },
+  { label: "Lighting installation", href: "/services/lighting-installation" },
+];
+
+const workLinks = [
+  { label: "Request a quote", href: "/quote" },
+  { label: "Careers", href: "/careers" },
+  { label: "Licensing & insurance", href: "/licensing" },
+];
+---
+
+<footer class="border-t border-gray-200 text-sm">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.8fr_1fr_1fr_1fr] gap-8 p-8 pb-6">
+    <div class="md:col-span-2 lg:col-span-1">
+      <a href="/" class="text-base font-medium text-gray-900 no-underline">ElectroPro</a>
+      <p class="mt-2.5 text-gray-600 leading-relaxed max-w-[220px]">
+        Licensed commercial electricians serving the greater metro area. Built on quality, safety, and reliability.
+      </p>
+      <div class="mt-5 flex flex-col gap-2">
+        <a href="tel:5551234567" class="flex items-center gap-2 text-gray-600 no-underline hover:text-gray-900 transition-colors">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 3.5C2 2.67 2.67 2 3.5 2h1.2c.33 0 .62.21.73.52l.7 1.95a.8.8 0 0 1-.18.84L5.3 6.06a6.5 6.5 0 0 0 2.64 2.64l.75-.65a.8.8 0 0 1 .84-.18l1.95.7c.31.11.52.4.52.73V10.5c0 .83-.67 1.5-1.5 1.5A8.5 8.5 0 0 1 2 3.5Z"
+              stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+          </svg>
+          (555) 123-4567
+        </a>
+        <a href="mailto:hello@electropro.com" class="flex items-center gap-2 text-gray-600 no-underline hover:text-gray-900 transition-colors">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <rect x="1.5" y="3" width="11" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M1.5 4.5l5.5 3.5 5.5-3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          hello@electropro.com
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <h4 class="text-xs font-medium uppercase tracking-wider mb-3 text-gray-900">Company</h4>
+      <ul class="list-none p-0 flex flex-col gap-2">
+        {companyLinks.map((link) => (
+          <li><a href={link.href} class="text-gray-600 no-underline hover:text-gray-900 transition-colors">{link.label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="text-xs font-medium uppercase tracking-wider mb-3 text-gray-900">Services</h4>
+      <ul class="list-none p-0 flex flex-col gap-2">
+        {serviceLinks.map((link) => (
+          <li><a href={link.href} class="text-gray-600 no-underline hover:text-gray-900 transition-colors">{link.label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="text-xs font-medium uppercase tracking-wider mb-3 text-gray-900">Work with us</h4>
+      <ul class="list-none p-0 flex flex-col gap-2">
+        {workLinks.map((link) => (
+          <li><a href={link.href} class="text-gray-600 no-underline hover:text-gray-900 transition-colors">{link.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="flex flex-col sm:flex-row items-center justify-between px-8 py-4 border-t border-gray-200 text-xs text-gray-600 gap-2 sm:gap-0">
+    <p>&copy; {currentYear} ElectroPro. All rights reserved.</p>
+    <div class="flex gap-4">
+      <a href="/privacy" class="text-gray-600 no-underline hover:text-gray-900 transition-colors">Privacy policy</a>
+      <a href="/terms" class="text-gray-600 no-underline hover:text-gray-900 transition-colors">Terms of service</a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,92 @@
+---
+const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Service area", href: "/service-area" },
+  { label: "Contact", href: "/contact" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="border-b border-gray-200">
+  <!-- Top layer -->
+  <div class="px-8 py-4 flex items-center justify-between">
+    <a href="/" class="text-lg font-medium text-gray-900 no-underline">ElectroPro</a>
+    <div class="flex items-center gap-8">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            "text-gray-600 no-underline hover:text-gray-900 transition-colors",
+            { "text-gray-900 font-medium": currentPath === link.href }
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <!-- Bottom layer -->
+  <div class="px-8 py-3 bg-gray-50">
+    <div class="relative">
+      <button 
+        class="flex items-center gap-2 text-sm text-gray-700 hover:text-gray-900 transition-colors" 
+        aria-expanded="false" 
+        aria-haspopup="true"
+        id="service-btn"
+      >
+        Commercial electrical services
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="transition-transform duration-200">
+          <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div 
+        class="absolute top-full left-0 mt-2 bg-white border border-gray-200 rounded-md shadow-lg py-2 min-w-64 opacity-0 invisible transition-all duration-200" 
+        role="menu"
+        id="dropdown-menu"
+      >
+        <a 
+          href="/services/ground-up-electrical-construction" 
+          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline" 
+          role="menuitem"
+        >
+          Ground up electrical construction
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById("service-btn") as HTMLButtonElement;
+  const menu = document.getElementById("dropdown-menu") as HTMLElement;
+  const svg = btn.querySelector("svg") as SVGElement;
+
+  btn.addEventListener("click", () => {
+    const isOpen = menu.classList.contains("opacity-100");
+    
+    if (isOpen) {
+      menu.classList.remove("opacity-100", "visible");
+      menu.classList.add("opacity-0", "invisible");
+      svg.classList.remove("rotate-180");
+      btn.setAttribute("aria-expanded", "false");
+    } else {
+      menu.classList.remove("opacity-0", "invisible");
+      menu.classList.add("opacity-100", "visible");
+      svg.classList.add("rotate-180");
+      btn.setAttribute("aria-expanded", "true");
+    }
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!btn.contains(e.target as Node) && !menu.contains(e.target as Node)) {
+      menu.classList.remove("opacity-100", "visible");
+      menu.classList.add("opacity-0", "invisible");
+      svg.classList.remove("rotate-180");
+      btn.setAttribute("aria-expanded", "false");
+    }
+  });
+</script>
