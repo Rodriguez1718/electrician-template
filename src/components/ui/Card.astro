@@ -26,10 +26,10 @@ const sizeClasses = {
 };
 
 const variantClasses = {
-  default: 'border border-opacity-20 text-white clipped-element',
-  hover: 'border border-opacity-20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-white clipped-element',
-  bordered: 'border-2 border-opacity-30 text-white clipped-element',
-  service: 'border border-opacity-20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 relative overflow-hidden text-white clipped-element'
+  default: 'border-2 border-opacity-20 text-gray-900 clipped-element',
+  hover: 'border-2 border-opacity-20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-gray-900 clipped-element',
+  bordered: 'border-4 border-opacity-30 text-gray-900 clipped-element',
+  service: 'border-2 border-opacity-20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 relative overflow-hidden text-gray-900 clipped-element'
 };
 
 const CardTag = href ? 'a' : 'div';
@@ -38,10 +38,8 @@ const CardTag = href ? 'a' : 'div';
 <CardTag 
   href={href}
   class={`${variantClasses[variant]} ${sizeClasses[size]} group block`}
-  style="background-color: #09180c; border-color: rgba(45, 124, 111, 0.2);"
+  style="background-color: #f8f9fa; border-color: rgba(45, 124, 111, 0.4);"
 >
-  <!-- Background gradient decoration for all cards -->
-  <div class="absolute top-0 right-0 w-20 h-20 rounded-full transform translate-x-8 -translate-y-8 group-hover:scale-110 transition-transform duration-300" style="background-color: rgba(97, 196, 197, 0.1);"></div>
   
   <!-- Service icon -->
   <div class={`w-16 h-16 bg-brand-accent/20 border border-brand-accent/30 rounded-full flex items-center justify-center mb-4 text-2xl transition-colors duration-300 relative z-10 ${variant === 'service' ? 'group-hover:scale-110' : ''}`} style="background-color: rgba(97, 196, 197, 0.2); border: 1px solid rgba(97, 196, 197, 0.3);">
@@ -49,7 +47,7 @@ const CardTag = href ? 'a' : 'div';
   </div>
   
   <!-- Service name -->
-  <h3 class="text-lg font-cervo font-bold mb-2 relative z-10 transition-colors duration-300 text-white group-hover:text-brand-accent">
+  <h3 class="text-lg font-cervo font-bold mb-2 relative z-10 transition-colors duration-300 text-black group-hover:text-brand-accent">
     {title}
   </h3>
   
@@ -61,7 +59,7 @@ const CardTag = href ? 'a' : 'div';
   )}
   
   <!-- Service description -->
-  <p class="font-helvetica text-sm leading-relaxed relative z-10 text-gray-300">
+  <p class="font-helvetica text-sm leading-relaxed relative z-10 text-gray-600">
     {description}
   </p>
   
@@ -82,7 +80,7 @@ const CardTag = href ? 'a' : 'div';
 <svg width="0" height="0" style="position: absolute;">
   <defs>
     <clipPath id="customClip" clipPathUnits="objectBoundingBox">
-      <path d="M 0.000, 0.060 L 0.000, 0.060 Q 0.000, 0.000 0.060, 0.000 L 0.940, 0.000 Q 1.000, 0.000 0.993, 0.060 L 0.957, 0.340 Q 0.950, 0.400 0.957, 0.460 L 0.993, 0.790 Q 1.000, 0.850 0.981, 0.907 L 0.969, 0.943 Q 0.950, 1.000 0.890, 1.000 L 0.060, 1.000 Q 0.000, 1.000 0.000, 0.940 Z" />
+      <path d="M 0.000, 0.060 L 0.000, 0.060 Q 0.000, 0.000 0.060, 0.000 L 0.943, 0.000 Q 1.000, 0.000 0.960, 0.040 L 0.940, 0.060 Q 0.900, 0.100 0.940, 0.140 L 0.960, 0.160 Q 1.000, 0.200 1.000, 0.257 L 1.000, 0.940 Q 1.000, 1.000 0.940, 1.000 L 0.060, 1.000 Q 0.000, 1.000 0.000, 0.940 Z" />
     </clipPath>
   </defs>
 </svg>
@@ -90,5 +88,7 @@ const CardTag = href ? 'a' : 'div';
 <style>
   .clipped-element {
     clip-path: url(#customClip);
+    position: relative;
   }
+  
 </style>
