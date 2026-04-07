@@ -1,4 +1,6 @@
 ---
+import Button from "../ui/Button.astro";
+
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
@@ -14,8 +16,9 @@ const currentPath = Astro.url.pathname;
   <div class="hidden lg:block px-6 py-4 relative">
     <div class="flex items-center justify-between max-w-7xl mx-auto">
       <!-- Logo - will move to center when scrolled -->
-      <a href="/" class="text-xl font-bold text-white no-underline transition-all duration-500 ease-out relative z-20" id="navbar-logo">
-        ElectroPro
+      <a href="/" class="flex items-center gap-2 text-xl font-bold text-white no-underline transition-all duration-500 ease-out relative z-20" id="navbar-logo">
+        <img src="/pitbull.png" alt="VoltBully Logo" class="w-8 h-8 object-contain" />
+        VoltBully
       </a>
 
       <!-- Center container - positioned absolutely in center, expands when scrolled -->
@@ -28,7 +31,7 @@ const currentPath = Astro.url.pathname;
               class:list={[
                 "px-4 py-2 text-sm font-medium no-underline transition-colors rounded-full",
                 { 
-                  "text-blue-600 bg-blue-50": currentPath === link.href,
+                  "text-[var(--color-accent)] bg-blue-50": currentPath === link.href,
                   "text-gray-700 hover:text-gray-900 hover:bg-gray-50": currentPath !== link.href
                 }
               ]}
@@ -40,9 +43,9 @@ const currentPath = Astro.url.pathname;
       </div>
 
       <!-- CTA Button - will move to center when scrolled -->
-      <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-medium transition-all duration-500 ease-out relative z-20" id="navbar-cta">
+      <Button variant="primary" id="navbar-cta" class="transition-all duration-500 ease-out relative z-20">
         Get Quote
-      </button>
+      </Button>
     </div>
   </div>
 
@@ -50,8 +53,9 @@ const currentPath = Astro.url.pathname;
   <div class="hidden md:block lg:hidden px-4 py-4">
     <div class="flex items-center justify-between max-w-5xl mx-auto">
       <!-- Logo -->
-      <a href="/" class="text-lg font-bold text-white no-underline">
-        ElectroPro
+      <a href="/" class="flex items-center gap-2 text-lg font-bold text-white no-underline">
+        <img src="/pitbull.png" alt="VoltBully Logo" class="w-7 h-7 object-contain" />
+        VoltBully
       </a>
 
       <!-- Center nav links with glass background -->
@@ -62,7 +66,7 @@ const currentPath = Astro.url.pathname;
             class:list={[
               "px-3 py-1.5 text-sm font-medium no-underline transition-colors rounded-full",
               { 
-                "text-blue-600 bg-blue-50": currentPath === link.href,
+                "text-[var(--color-accent)] bg-blue-50": currentPath === link.href,
                 "text-gray-700 hover:text-gray-900 hover:bg-gray-50": currentPath !== link.href
               }
             ]}
@@ -73,9 +77,94 @@ const currentPath = Astro.url.pathname;
       </div>
 
       <!-- CTA Button -->
-      <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full font-medium text-sm">
+      <Button variant="primary" size="sm">
         Get Quote
-      </button>
+      </Button>
+    </div>
+  </div>
+
+  <!-- Tablet Services dropdown (768px-1024px) -->
+  <div class="hidden md:block lg:hidden px-4 pb-4 transition-all duration-300" id="tablet-services-layer">
+    <div class="max-w-5xl mx-auto flex justify-center">
+      <div class="relative inline-block">
+        <button 
+          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30" 
+          aria-expanded="false" 
+          aria-haspopup="true"
+          id="tablet-service-btn"
+        >
+          Services
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="transition-transform duration-200">
+            <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div 
+          class="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white/95 backdrop-blur-md border border-white/20 rounded-xl shadow-xl py-2 min-w-[600px] opacity-0 invisible transition-all duration-200" 
+          role="menu"
+          id="tablet-dropdown-menu"
+        >
+          <div class="grid grid-cols-2 gap-4 p-4">
+            <!-- Commercial & Residential -->
+            <div>
+              <h3 class="text-sm font-semibold text-orange-600 mb-2 px-2">Commercial Services</h3>
+              <div class="space-y-1 mb-4">
+                <a href="/services/ground-up-electrical-construction" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  Ground-up Construction
+                </a>
+                <a href="/services/emergency-standby-power" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  Emergency & Standby Power
+                </a>
+                <a href="/services/commercial-hvac-electrical" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  Commercial HVAC
+                </a>
+              </div>
+              
+              <h3 class="text-sm font-semibold text-green-600 mb-2 px-2">Residential Services</h3>
+              <div class="space-y-1">
+                <a href="/services/car-charging-stations" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  EV Charging Stations
+                </a>
+                <a href="/services/ceiling-fan" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  Ceiling Fan Installation
+                </a>
+                <a href="/services/gfci-outlets" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  GFCI Outlets
+                </a>
+              </div>
+            </div>
+
+            <!-- Specialty & Emergency -->
+            <div>
+              <h3 class="text-sm font-semibold text-yellow-600 mb-2 px-2">Specialty Services</h3>
+              <div class="space-y-1 mb-4">
+                <a href="/services/holiday-lighting" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  Holiday Lighting
+                </a>
+                <a href="/services/landscape-lighting" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  Landscape Lighting
+                </a>
+                <a href="/services/pool-spa-electrical" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  Pool & Spa Electrical
+                </a>
+              </div>
+              
+              <h3 class="text-sm font-semibold text-blue-600 mb-2 px-2">Emergency Services</h3>
+              <div class="space-y-1">
+                <a href="/services/24-hour-emergency" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  24-hour Emergency
+                </a>
+                <a href="/services/hvac-emergency" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  HVAC Emergency
+                </a>
+                <a href="/services/water-heater-emergency" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  Water Heater Emergency
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -83,8 +172,9 @@ const currentPath = Astro.url.pathname;
   <div class="md:hidden px-4 py-4">
     <div class="flex items-center justify-between">
       <!-- Logo -->
-      <a href="/" class="text-lg font-bold text-white no-underline">
-        ElectroPro
+      <a href="/" class="flex items-center gap-2 text-lg font-bold text-white no-underline">
+        <img src="/pitbull.png" alt="VoltBully Logo" class="w-7 h-7 object-contain" />
+        VoltBully
       </a>
 
       <!-- Burger menu button -->
@@ -109,24 +199,94 @@ const currentPath = Astro.url.pathname;
           aria-haspopup="true"
           id="service-btn"
         >
-          Commercial electrical services
+          Services
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="transition-transform duration-200">
             <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5"
               stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
         <div 
-          class="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white/95 backdrop-blur-md border border-white/20 rounded-xl shadow-xl py-2 min-w-64 opacity-0 invisible transition-all duration-200" 
+          class="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white/95 backdrop-blur-md border border-white/20 rounded-xl shadow-xl py-2 min-w-[800px] opacity-0 invisible transition-all duration-200" 
           role="menu"
           id="dropdown-menu"
         >
-          <a 
-            href="/services/ground-up-electrical-construction" 
-            class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg mx-2" 
-            role="menuitem"
-          >
-            Ground up electrical construction
-          </a>
+          <div class="grid grid-cols-4 gap-4 p-4">
+            <!-- Commercial Electrical Services -->
+            <div>
+              <h3 class="text-sm font-semibold text-orange-600 mb-2 px-2">Commercial Electrical Services</h3>
+              <div class="space-y-1">
+                <a href="/services/ground-up-electrical-construction" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  Ground-up Electrical Construction
+                </a>
+                <a href="/services/emergency-standby-power" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  Emergency & Standby Power Generating Systems
+                </a>
+                <a href="/services/commercial-hvac-electrical" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  Commercial HVAC Electrical
+                </a>
+                <a href="/services/commercial-electrical-panels" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  Commercial Electrical Panels
+                </a>
+              </div>
+            </div>
+
+            <!-- Residential Electrical Services -->
+            <div>
+              <h3 class="text-sm font-semibold text-green-600 mb-2 px-2">Residential Electrical Services</h3>
+              <div class="space-y-1">
+                <a href="/services/car-charging-stations" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  Car Charging Stations/ EV
+                </a>
+                <a href="/services/ceiling-fan" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  Ceiling Fan
+                </a>
+                <a href="/services/gfci-outlets" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  GFCI Outlets
+                </a>
+                <a href="/services/backup-generators" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  Backup Generators
+                </a>
+              </div>
+            </div>
+
+            <!-- Specialty Services -->
+            <div>
+              <h3 class="text-sm font-semibold text-yellow-600 mb-2 px-2">Specialty Services</h3>
+              <div class="space-y-1">
+                <a href="/services/holiday-lighting" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  Holiday Lighting Installation Services
+                </a>
+                <a href="/services/landscape-lighting" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  Landscape Lighting
+                </a>
+                <a href="/services/pool-spa-electrical" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  Pool & Spa Electrical
+                </a>
+                <a href="/services/property-management" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  Property Management
+                </a>
+              </div>
+            </div>
+
+            <!-- Emergency -->
+            <div>
+              <h3 class="text-sm font-semibold text-blue-600 mb-2 px-2">Emergency</h3>
+              <div class="space-y-1">
+                <a href="/services/24-hour-emergency" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  24-hour Emergency Service
+                </a>
+                <a href="/services/hvac-emergency" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  HVAC
+                </a>
+                <a href="/services/heating-emergency" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  Heating
+                </a>
+                <a href="/services/water-heater-emergency" class="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 no-underline rounded" role="menuitem">
+                  Water Heater
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -156,58 +316,151 @@ const currentPath = Astro.url.pathname;
           class="flex items-center justify-between w-full px-4 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors" 
           id="mobile-service-btn"
         >
-          Commercial electrical services
+          Services
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="transition-transform duration-200">
             <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
         <div class="pl-4 opacity-0 invisible transition-all duration-200" id="mobile-services-dropdown">
-          <a 
-            href="/services/ground-up-electrical-construction" 
-            class="block px-4 py-2 text-sm text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50"
-          >
-            Ground up electrical construction
-          </a>
+          <!-- Commercial Electrical Services -->
+          <div class="mb-4">
+            <h4 class="text-sm font-semibold text-orange-600 mb-2">Commercial Electrical Services</h4>
+            <div class="space-y-1">
+              <a href="/services/ground-up-electrical-construction" class="block px-2 py-1.5 text-sm text-gray-600 hover:text-gray-900 no-underline rounded hover:bg-gray-50">
+                Ground-up Electrical Construction
+              </a>
+              <a href="/services/emergency-standby-power" class="block px-2 py-1.5 text-sm text-gray-600 hover:text-gray-900 no-underline rounded hover:bg-gray-50">
+                Emergency & Standby Power Systems
+              </a>
+              <a href="/services/commercial-hvac-electrical" class="block px-2 py-1.5 text-sm text-gray-600 hover:text-gray-900 no-underline rounded hover:bg-gray-50">
+                Commercial HVAC Electrical
+              </a>
+              <a href="/services/commercial-electrical-panels" class="block px-2 py-1.5 text-sm text-gray-600 hover:text-gray-900 no-underline rounded hover:bg-gray-50">
+                Commercial Electrical Panels
+              </a>
+            </div>
+          </div>
+
+          <!-- Residential Electrical Services -->
+          <div class="mb-4">
+            <h4 class="text-sm font-semibold text-green-600 mb-2">Residential Electrical Services</h4>
+            <div class="space-y-1">
+              <a href="/services/car-charging-stations" class="block px-2 py-1.5 text-sm text-gray-600 hover:text-gray-900 no-underline rounded hover:bg-gray-50">
+                Car Charging Stations/ EV
+              </a>
+              <a href="/services/ceiling-fan" class="block px-2 py-1.5 text-sm text-gray-600 hover:text-gray-900 no-underline rounded hover:bg-gray-50">
+                Ceiling Fan
+              </a>
+              <a href="/services/gfci-outlets" class="block px-2 py-1.5 text-sm text-gray-600 hover:text-gray-900 no-underline rounded hover:bg-gray-50">
+                GFCI Outlets
+              </a>
+              <a href="/services/backup-generators" class="block px-2 py-1.5 text-sm text-gray-600 hover:text-gray-900 no-underline rounded hover:bg-gray-50">
+                Backup Generators
+              </a>
+            </div>
+          </div>
+
+          <!-- Specialty Services -->
+          <div class="mb-4">
+            <h4 class="text-sm font-semibold text-yellow-600 mb-2">Specialty Services</h4>
+            <div class="space-y-1">
+              <a href="/services/holiday-lighting" class="block px-2 py-1.5 text-sm text-gray-600 hover:text-gray-900 no-underline rounded hover:bg-gray-50">
+                Holiday Lighting Installation
+              </a>
+              <a href="/services/landscape-lighting" class="block px-2 py-1.5 text-sm text-gray-600 hover:text-gray-900 no-underline rounded hover:bg-gray-50">
+                Landscape Lighting
+              </a>
+              <a href="/services/pool-spa-electrical" class="block px-2 py-1.5 text-sm text-gray-600 hover:text-gray-900 no-underline rounded hover:bg-gray-50">
+                Pool & Spa Electrical
+              </a>
+              <a href="/services/property-management" class="block px-2 py-1.5 text-sm text-gray-600 hover:text-gray-900 no-underline rounded hover:bg-gray-50">
+                Property Management
+              </a>
+            </div>
+          </div>
+
+          <!-- Emergency -->
+          <div>
+            <h4 class="text-sm font-semibold text-blue-600 mb-2">Emergency</h4>
+            <div class="space-y-1">
+              <a href="/services/24-hour-emergency" class="block px-2 py-1.5 text-sm text-gray-600 hover:text-gray-900 no-underline rounded hover:bg-gray-50">
+                24-hour Emergency Service
+              </a>
+              <a href="/services/hvac-emergency" class="block px-2 py-1.5 text-sm text-gray-600 hover:text-gray-900 no-underline rounded hover:bg-gray-50">
+                HVAC
+              </a>
+              <a href="/services/heating-emergency" class="block px-2 py-1.5 text-sm text-gray-600 hover:text-gray-900 no-underline rounded hover:bg-gray-50">
+                Heating
+              </a>
+              <a href="/services/water-heater-emergency" class="block px-2 py-1.5 text-sm text-gray-600 hover:text-gray-900 no-underline rounded hover:bg-gray-50">
+                Water Heater
+              </a>
+            </div>
+          </div>
         </div>
       </div>
       
-      <button class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg font-medium transition-colors mt-4">
+      <Button variant="primary" id="navbar-cta" class="transition-all duration-500 ease-out relative z-20">
         Get Quote
-      </button>
+      </Button>
     </div>
   </div>
 </nav>
 
 
 <script>
-  // Dropdown functionality for desktop
+  // Dropdown functionality for desktop - hover instead of click
   const serviceBtn = document.getElementById("service-btn") as HTMLButtonElement;
   const dropdownMenu = document.getElementById("dropdown-menu") as HTMLElement;
   const svg = serviceBtn?.querySelector("svg") as SVGElement;
+  const servicesContainer = serviceBtn?.parentElement as HTMLElement;
 
-  serviceBtn?.addEventListener("click", () => {
-    const isOpen = dropdownMenu.classList.contains("opacity-100");
-    
-    if (isOpen) {
+  let hoverTimeout: number;
+
+  // Show dropdown on hover
+  servicesContainer?.addEventListener("mouseenter", () => {
+    clearTimeout(hoverTimeout);
+    dropdownMenu.classList.remove("opacity-0", "invisible");
+    dropdownMenu.classList.add("opacity-100", "visible");
+    svg.classList.add("rotate-180");
+    serviceBtn.setAttribute("aria-expanded", "true");
+  });
+
+  // Hide dropdown when leaving the entire container
+  servicesContainer?.addEventListener("mouseleave", () => {
+    hoverTimeout = setTimeout(() => {
       dropdownMenu.classList.remove("opacity-100", "visible");
       dropdownMenu.classList.add("opacity-0", "invisible");
       svg.classList.remove("rotate-180");
       serviceBtn.setAttribute("aria-expanded", "false");
-    } else {
-      dropdownMenu.classList.remove("opacity-0", "invisible");
-      dropdownMenu.classList.add("opacity-100", "visible");
-      svg.classList.add("rotate-180");
-      serviceBtn.setAttribute("aria-expanded", "true");
-    }
+    }, 150); // Small delay to prevent flickering
   });
 
-  document.addEventListener("click", (e) => {
-    if (!serviceBtn?.contains(e.target as Node) && !dropdownMenu?.contains(e.target as Node)) {
-      dropdownMenu?.classList.remove("opacity-100", "visible");
-      dropdownMenu?.classList.add("opacity-0", "invisible");
-      svg?.classList.remove("rotate-180");
-      serviceBtn?.setAttribute("aria-expanded", "false");
-    }
+  // Tablet dropdown functionality - hover instead of click
+  const tabletServiceBtn = document.getElementById("tablet-service-btn") as HTMLButtonElement;
+  const tabletDropdownMenu = document.getElementById("tablet-dropdown-menu") as HTMLElement;
+  const tabletSvg = tabletServiceBtn?.querySelector("svg") as SVGElement;
+  const tabletServicesContainer = tabletServiceBtn?.parentElement as HTMLElement;
+
+  let tabletHoverTimeout: number;
+
+  // Show tablet dropdown on hover
+  tabletServicesContainer?.addEventListener("mouseenter", () => {
+    clearTimeout(tabletHoverTimeout);
+    tabletDropdownMenu.classList.remove("opacity-0", "invisible");
+    tabletDropdownMenu.classList.add("opacity-100", "visible");
+    tabletSvg.classList.add("rotate-180");
+    tabletServiceBtn.setAttribute("aria-expanded", "true");
+  });
+
+  // Hide tablet dropdown when leaving the entire container
+  tabletServicesContainer?.addEventListener("mouseleave", () => {
+    tabletHoverTimeout = setTimeout(() => {
+      tabletDropdownMenu.classList.remove("opacity-100", "visible");
+      tabletDropdownMenu.classList.add("opacity-0", "invisible");
+      tabletSvg.classList.remove("rotate-180");
+      tabletServiceBtn.setAttribute("aria-expanded", "false");
+    }, 150); // Small delay to prevent flickering
   });
 
   // Mobile menu functionality

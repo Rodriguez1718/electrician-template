@@ -1,0 +1,277 @@
+---
+import Button from "../ui/Button.astro";
+import Card from "../ui/Card.astro";
+
+interface Service {
+  name: string;
+  icon: string;
+  description: string;
+  slug: string;
+}
+
+interface ServiceCategory {
+  id: string;
+  title: string;
+  icon: string;
+  color: string;
+  bgColor: string;
+  borderColor: string;
+  tabColor: string;
+  services: Service[];
+}
+
+// Define tab constants with brand colors
+const TAB_CONSTANTS = [
+  { id: 'commercial', title: 'Commercial Electrical Services', icon: '<svg fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.239 295.239" width="20" height="20"><g><g><g><path d="M161.904,33.333H28.571V100h133.333V33.333z M152.381,90.476L152.381,90.476H38.095V42.857h114.286V90.476z"></path><path d="M95.238,133.333c-28.881,0-52.381,23.5-52.381,52.381s23.5,52.381,52.381,52.381c28.881,0,52.381-23.5,52.381-52.381 S124.119,133.333,95.238,133.333z M56.338,203.595c-2.514-5.452-3.957-11.495-3.957-17.881c0-23.633,19.224-42.857,42.857-42.857 c6.386,0,12.429,1.443,17.881,3.957L56.338,203.595z M61.433,211.967l60.052-60.052c2.824,2.195,5.357,4.729,7.552,7.552 l-60.052,60.052C66.167,217.324,63.629,214.786,61.433,211.967z M138.095,185.714c0,23.634-19.224,42.857-42.857,42.857 c-6.386,0-12.429-1.443-17.881-3.957l56.781-56.781C136.652,173.285,138.095,179.328,138.095,185.714z"></path></g></g></g></svg>', color: 'text-brand-secondary', bgColor: 'bg-gray-50', borderColor: 'border-brand-secondary', tabColor: 'bg-brand-secondary' },
+  { id: 'residential', title: 'Residential Electrical Services', icon: '🏡', color: 'text-brand-primary', bgColor: 'bg-gray-50', borderColor: 'border-brand-primary', tabColor: 'bg-brand-primary' },
+  { id: 'specialty', title: 'Specialty Services', icon: '⚡', color: 'text-brand-accent', bgColor: 'bg-gray-50', borderColor: 'border-brand-accent', tabColor: 'bg-brand-accent' },
+  { id: 'emergency', title: 'Emergency Services', icon: '🚨', color: 'text-red-600', bgColor: 'bg-red-50', borderColor: 'border-red-200', tabColor: 'bg-red-500' }
+];
+
+// Load services from markdown files using Vite's import.meta.glob
+async function loadServicesFromMarkdownFiles(): Promise<ServiceCategory[]> {
+  const serviceCategories: ServiceCategory[] = [];
+  
+  // Import all markdown files from content directories
+  const allMarkdownFiles = import.meta.glob('/src/content/**/*.md', { eager: true });
+  
+  for (const tabConstant of TAB_CONSTANTS) {
+    try {
+      // Filter files for this category
+      const categoryFiles = Object.entries(allMarkdownFiles).filter(([path]) => 
+        path.includes(`/src/content/${tabConstant.id}/`)
+      );
+      
+      // Find index file for category metadata
+      let categoryData = tabConstant;
+      const indexEntry = categoryFiles.find(([path]) => path.endsWith('/index.md'));
+      if (indexEntry) {
+        const indexModule = indexEntry[1] as any;
+        const frontmatter = indexModule.frontmatter || {};
+        
+        categoryData = {
+          id: tabConstant.id,
+          title: frontmatter.title || tabConstant.title,
+          icon: frontmatter.icon || tabConstant.icon,
+          color: frontmatter.color || tabConstant.color,
+          bgColor: frontmatter.bgColor || tabConstant.bgColor,
+          borderColor: frontmatter.borderColor || tabConstant.borderColor,
+          tabColor: frontmatter.tabColor || tabConstant.tabColor,
+        };
+      }
+      
+      // Get service files (exclude only index files)
+      const serviceFiles = categoryFiles.filter(([path]) => 
+        !path.endsWith('/index.md')
+      );
+      
+      const services: Service[] = [];
+      
+      for (const [path, module] of serviceFiles) {
+        const frontmatter = (module as any).frontmatter || {};
+        const fileName = path.split('/').pop()?.replace('.md', '') || '';
+        
+        services.push({
+          name: frontmatter.title || fileName,
+          icon: frontmatter.icon || '⚡',
+          description: frontmatter.description || '',
+          slug: `${tabConstant.id}/${fileName}`
+        });
+      }
+      
+      serviceCategories.push({
+        ...categoryData,
+        services
+      });
+      
+    } catch (error: any) {
+      console.error(`Error loading category ${tabConstant.id}:`, error?.message || 'Unknown error');
+      // Fallback to empty services for this category
+      serviceCategories.push({
+        ...tabConstant,
+        services: []
+      });
+    }
+  }
+  
+  return serviceCategories;
+}
+
+const serviceCategories = await loadServicesFromMarkdownFiles();
+---
+
+<section class="py-20 bg-white relative overflow-hidden">
+  <!-- Background decorative elements -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute top-20 left-10 w-32 h-32 border border-gray-300 rounded-full"></div>
+    <div class="absolute top-40 right-20 w-24 h-24 border border-gray-300 rounded-full"></div>
+    <div class="absolute bottom-20 left-1/4 w-16 h-16 border border-gray-300 rounded-full"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <p class="text-brand-accent font-helvetica text-sm uppercase tracking-wider mb-4">
+        Our Services
+      </p>
+      <h2 class="text-4xl lg:text-5xl font-cervo font-bold text-gray-900 mb-6 leading-tight">
+        Our Professional <span class="text-brand-primary">Electrical Services</span>
+      </h2>
+      <p class="text-lg text-gray-600 font-helvetica leading-relaxed max-w-3xl mx-auto">
+        We specialize in providing top-notch electrical solutions tailored to meet your needs. Whether you're dealing with an urgent repair or planning an electrical upgrade, our team is here to deliver reliable, efficient, and affordable services.
+      </p>
+    </div>
+
+    <!-- Services tabs and content -->
+    <div class="mb-16">
+      <!-- Tab navigation -->
+      <div class="flex flex-wrap justify-center mb-12 bg-black rounded-2xl p-2 max-w-4xl mx-auto">
+        {serviceCategories.map((category, index) => (
+          <button 
+            class={`service-tab flex-1 min-w-0 px-4 py-4 rounded-xl font-helvetica font-semibold text-sm transition-all duration-300 ${index === 0 ? 'active' : ''}`}
+            data-category={category.id}
+            data-color={category.tabColor}
+          >
+            <div class="flex items-center justify-center gap-2">
+              <span class="text-lg" set:html={category.icon}></span>
+              <span class="hidden sm:inline">{category.title}</span>
+              <span class="sm:hidden">{category.title.split(' ')[0]}</span>
+            </div>
+          </button>
+        ))}
+      </div>
+
+      <!-- Services content -->
+      <div class="service-content-container">
+        {serviceCategories.map((category, categoryIndex) => (
+          <div 
+            class={`service-content ${categoryIndex === 0 ? 'active' : ''}`}
+            data-category={category.id}
+          >
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {category.services.map((service: Service) => (
+                <Card
+                  title={service.name}
+                  description={service.description}
+                  icon={service.icon}
+                  href={`/services/${service.slug}`}
+                  variant="service"
+                  size="md"
+                  category={category.title.split(' ')[0]}
+                />
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Tab styling */
+  .service-tab {
+    color: #6b7280;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .service-tab.active {
+    color: white;
+    background: var(--active-color, #f97316);
+  }
+  
+  .service-tab:hover:not(.active) {
+    color: #374151;
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  /* Content styling */
+  .service-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+  }
+  
+  .service-content.active {
+    opacity: 1;
+    transform: translateY(0);
+    position: relative;
+    pointer-events: auto;
+  }
+  
+  .service-content-container {
+    position: relative;
+    min-height: 400px;
+  }
+</style>
+
+<script>
+  // Tab functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const tabs = document.querySelectorAll('.service-tab');
+    const contents = document.querySelectorAll('.service-content');
+    
+    // Initialize - ensure only first content is active
+    contents.forEach((content, index) => {
+      if (index === 0) {
+        content.classList.add('active');
+      } else {
+        content.classList.remove('active');
+      }
+    });
+    
+    tabs.forEach(tab => {
+      tab.addEventListener('click', (event) => {
+        const target = event.currentTarget as HTMLButtonElement;
+        const categoryId = target.dataset.category;
+        
+        // Don't do anything if this tab is already active
+        if (target.classList.contains('active')) {
+          return;
+        }
+        
+        // Remove active class from all tabs
+        tabs.forEach(t => t.classList.remove('active'));
+        
+        // Add active class to clicked tab
+        target.classList.add('active');
+        
+        // Handle content switching with smooth transition
+        const currentActive = document.querySelector('.service-content.active');
+        const targetContent = document.querySelector(`[data-category="${categoryId}"].service-content`);
+        
+        if (currentActive && targetContent && currentActive !== targetContent) {
+          // Remove active from current
+          currentActive.classList.remove('active');
+          
+          // Add active to target after a small delay for smooth transition
+          setTimeout(() => {
+            targetContent.classList.add('active');
+          }, 100);
+        }
+        
+        // Update tab color based on category using custom colors
+        const colorMap: { [key: string]: string } = {
+          'commercial': '#10b981', // orange
+          'residential': '#10b981', // emerald
+          'specialty': '#10b981',   // violet
+          'emergency': '#10b981'    // red
+        };
+        
+        const color = colorMap[categoryId || ''] || '#10b981';
+        document.documentElement.style.setProperty('--active-color', color);
+      });
+    });
+    
+    // Set initial active color for commercial tab
+    document.documentElement.style.setProperty('--active-color', '#10b981'); // orange to match commercial
+  });
+</script>

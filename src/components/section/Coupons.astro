@@ -1,0 +1,158 @@
+---
+const coupons = [
+  {
+    title: "New Customer Special",
+    discount: "$50 OFF",
+    service: "Electrical Panel Inspection",
+    description: "Complete electrical panel safety inspection and diagnostic report for new customers.",
+    terms: "Valid for first-time customers only. Cannot be combined with other offers.",
+    expires: "December 2024",
+    bgColor: "bg-white",
+    textColor: "text-gray-800",
+    accentColor: "bg-brand-primary",
+    accentText: "text-black"
+  },
+  {
+    title: "Emergency Service",
+    discount: "FREE",
+    service: "After-Hours Consultation",
+    description: "Free phone consultation for electrical emergencies outside normal business hours.",
+    terms: "Valid for emergency situations only. Service call fees may apply for on-site visits.",
+    expires: "December 2024",
+    bgColor: "bg-brand-accent",
+    textColor: "text-white",
+    accentColor: "bg-white",
+    accentText: "text-brand-accent"
+  },
+  {
+    title: "Commercial Upgrade",
+    discount: "15% OFF",
+    service: "Electrical System Upgrade",
+    description: "Professional electrical system upgrade for commercial properties over $2000.",
+    terms: "Minimum project value $2000. Valid for commercial properties only.",
+    expires: "December 2024",
+    bgColor: "bg-white",
+    textColor: "text-gray-800",
+    accentColor: "bg-brand-secondary",
+    accentText: "text-white"
+  }
+];
+---
+
+<section class="py-16 bg-black">
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Section header -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-cervo font-bold text-white mb-4">
+        Exclusive Electrical Service Coupons
+      </h2>
+      <p class="text-lg text-white/70 font-helvetica max-w-2xl mx-auto">
+        Save on professional electrical services with our limited-time offers. Quality work, certified electricians, guaranteed results.
+      </p>
+    </div>
+
+    <!-- Coupons grid -->
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {coupons.map((coupon) => (
+        <div class="coupon-card group">
+          <div class={`${coupon.bgColor} ${coupon.textColor} p-8 h-full flex flex-col relative overflow-hidden`}>
+            <!-- Decorative corner cuts -->
+            <div class="absolute top-0 left-0 w-4 h-4 bg-gray-900 rounded-br-full"></div>
+            <div class="absolute top-0 right-0 w-4 h-4 bg-gray-900 rounded-bl-full"></div>
+            <div class="absolute bottom-0 left-0 w-4 h-4 bg-gray-900 rounded-tr-full"></div>
+            <div class="absolute bottom-0 right-0 w-4 h-4 bg-gray-900 rounded-tl-full"></div>
+            
+            <!-- Coupon header -->
+            <div class="text-center mb-6">
+              <p class="text-sm font-helvetica font-medium opacity-80 mb-2">
+                {coupon.title}
+              </p>
+              <h3 class="text-2xl font-cervo font-bold text-brand-accent mb-2">
+                Coupon
+              </h3>
+              <p class="text-xs font-helvetica opacity-70">
+                Redeem & Save Today
+              </p>
+            </div>
+
+            <!-- Discount badge -->
+            <div class="flex justify-center mb-6">
+              <div class={`${coupon.accentColor} ${coupon.accentText} px-6 py-3 font-bold text-xl font-helvetica transform -rotate-2 shadow-lg`}>
+                {coupon.discount}
+              </div>
+            </div>
+
+            <!-- Service details -->
+            <div class="flex-1 text-center mb-6">
+              <h4 class="font-helvetica font-semibold text-lg mb-3">
+                {coupon.service}
+              </h4>
+              <p class="text-sm opacity-80 leading-relaxed mb-4">
+                {coupon.description}
+              </p>
+            </div>
+
+            <!-- Terms and expiration -->
+            <div class="pt-4 mt-auto">
+              <p class="text-xs opacity-70 mb-2 leading-relaxed">
+                {coupon.terms}
+              </p>
+              <p class="text-xs font-medium opacity-80">
+                * Offer Expires: {coupon.expires}
+              </p>
+            </div>
+
+            <!-- Perforated edge effect -->
+            <div class="absolute left-0 top-1/2 -translate-y-1/2 w-6 h-6 bg-gray-900 rounded-full -ml-3"></div>
+            <div class="absolute right-0 top-1/2 -translate-y-1/2 w-6 h-6 bg-gray-900 rounded-full -mr-3"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .coupon-card {
+    /* Dashed border effect */
+    background: 
+      linear-gradient(90deg, currentColor 50%, transparent 50%),
+      linear-gradient(90deg, currentColor 50%, transparent 50%),
+      linear-gradient(0deg, currentColor 50%, transparent 50%),
+      linear-gradient(0deg, currentColor 50%, transparent 50%);
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+    background-size: 15px 2px, 15px 2px, 2px 15px, 2px 15px;
+    background-position: 0 0, 0 100%, 0 0, 100% 0;
+    color: rgba(255, 255, 255, 0.3);
+    padding: 3px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .coupon-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Perforated dots along the sides */
+  .coupon-card::before,
+  .coupon-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: 
+      radial-gradient(circle, transparent 40%, currentColor 40%, currentColor 60%, transparent 60%);
+    background-size: 2px 20px;
+    background-repeat: repeat-y;
+    opacity: 0.3;
+  }
+
+  .coupon-card::before {
+    left: -1px;
+  }
+
+  .coupon-card::after {
+    right: -1px;
+  }
+</style>

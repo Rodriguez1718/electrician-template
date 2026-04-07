@@ -1,0 +1,187 @@
+---
+import Button from "../ui/Button.astro";
+const features = [
+  {
+    icon: "⚡",
+    title: "Licensed & Certified Electricians",
+    description: "All our electricians are fully licensed, bonded, and insured with ongoing training in the latest electrical codes and safety standards."
+  },
+  {
+    icon: "🔧",
+    title: "Transparent Pricing with No Surprises",
+    description: "Upfront pricing with detailed estimates. No hidden fees, no surprise charges - just honest, competitive rates for quality work."
+  },
+  {
+    icon: "🛡️",
+    title: "Safety-First Approach Guaranteed",
+    description: "We prioritize safety in every project with comprehensive inspections, code compliance, and industry-leading safety protocols."
+  },
+  {
+    icon: "⏰",
+    title: "24/7 Emergency Response",
+    description: "Electrical emergencies don't wait. Our emergency response team is available around the clock for urgent electrical issues."
+  }
+];
+---
+
+<section class="py-20 bg-black relative overflow-hidden rounded-bottom">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute top-10 left-10 w-32 h-32 border border-brand-primary rounded-full"></div>
+    <div class="absolute top-40 right-20 w-24 h-24 border border-brand-accent rounded-full"></div>
+    <div class="absolute bottom-20 left-1/4 w-16 h-16 border border-brand-secondary rounded-full"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      
+      <!-- Left side - Content -->
+      <div>
+        <!-- Section header -->
+        <div class="mb-12">
+          <p class="text-brand-accent font-helvetica text-sm uppercase tracking-wider mb-4">
+            Welcome to VoltBully Electrical
+          </p>
+          <h2 class="text-4xl lg:text-5xl font-cervo font-bold text-white mb-6 leading-tight">
+            Expert <span class="text-brand-primary">Electrical Services</span> You Can Trust
+          </h2>
+          <p class="text-lg text-white/80 font-helvetica leading-relaxed">
+            With over 18 years of experience, VoltBully has been the trusted choice for electrical services 
+            throughout the region. Our licensed and insured electricians provide quality solutions for residential 
+            and commercial properties, ensuring every job is done right the first time.
+          </p>
+        </div>
+
+        <!-- Features list -->
+        <div class="space-y-6">
+          {features.map((feature) => (
+            <div class="flex items-start gap-4 group">
+              <div class="flex-shrink-0 w-12 h-12 bg-brand-primary/20 rounded-full flex items-center justify-center text-2xl group-hover:bg-brand-primary/30 transition-colors duration-300">
+                {feature.icon}
+              </div>
+              <div>
+                <h3 class="text-xl font-helvetica font-semibold text-white mb-2 group-hover:text-brand-primary transition-colors duration-300">
+                  {feature.title}
+                </h3>
+                <p class="text-white/70 font-helvetica leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- CTA Button -->
+        <div class="mt-10">
+          <Button variant="primary" size="lg" href="/about">
+            Learn More About Us
+          </Button>
+        </div>
+      </div>
+
+      <!-- Right side - Visual element -->
+      <div class="relative">
+        <!-- Main card -->
+        <div class="bg-gradient-to-br from-brand-primary/10 to-brand-secondary/10 backdrop-blur-sm border border-white/10 rounded-2xl p-8 relative overflow-hidden">
+          <!-- Decorative elements -->
+          <div class="absolute top-0 right-0 w-32 h-32 bg-brand-accent/20 rounded-full -translate-y-16 translate-x-16"></div>
+          <div class="absolute bottom-0 left-0 w-24 h-24 bg-brand-primary/20 rounded-full translate-y-12 -translate-x-12"></div>
+          
+          <!-- Content -->
+          <div class="relative z-10">
+            <div class="text-center mb-8">
+              <div class="w-20 h-20 bg-brand-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" class="text-black">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-cervo font-bold text-white mb-2">
+                Powering Your Success
+              </h3>
+              <p class="text-white/70 font-helvetica">
+                From residential upgrades to commercial installations
+              </p>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-6 text-center">
+              <div>
+                <div class="text-3xl font-bold text-brand-primary font-helvetica">350+</div>
+                <div class="text-sm text-white/60 font-helvetica">Projects Completed</div>
+              </div>
+              <div>
+                <div class="text-3xl font-bold text-brand-accent font-helvetica">18</div>
+                <div class="text-sm text-white/60 font-helvetica">Years Experience</div>
+              </div>
+              <div>
+                <div class="text-3xl font-bold text-brand-secondary font-helvetica">100%</div>
+                <div class="text-sm text-white/60 font-helvetica">Code Compliant</div>
+              </div>
+            </div>
+
+            <!-- Service highlights -->
+            <div class="mt-8 pt-6 border-t border-white/10">
+              <div class="flex flex-wrap gap-3">
+                <span class="px-3 py-1 bg-brand-primary/20 text-brand-primary text-sm font-helvetica rounded-full">
+                  Residential
+                </span>
+                <span class="px-3 py-1 bg-brand-secondary/20 text-brand-secondary text-sm font-helvetica rounded-full">
+                  Commercial
+                </span>
+                <span class="px-3 py-1 bg-brand-accent/20 text-brand-accent text-sm font-helvetica rounded-full">
+                  Emergency
+                </span>
+                <span class="px-3 py-1 bg-white/10 text-white text-sm font-helvetica rounded-full">
+                  24/7 Service
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating elements -->
+        <div class="absolute -top-6 -left-6 w-12 h-12 bg-brand-primary rounded-lg rotate-12 opacity-80"></div>
+        <div class="absolute -bottom-4 -right-4 w-8 h-8 bg-brand-accent rounded-lg -rotate-12 opacity-60"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Rounded bottom section */
+  .rounded-bottom {
+    border-bottom-left-radius: 500px;
+    border-bottom-right-radius: 500px;
+  }
+
+  /* Alternative curved bottom using clip-path for more dramatic curve */
+  .rounded-bottom::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: inherit;
+    clip-path: ellipse(100% 100% at 50% 0%);
+  }
+
+  /* Subtle animation for floating elements */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(12deg); }
+    50% { transform: translateY(-10px) rotate(12deg); }
+  }
+  
+  @keyframes floatReverse {
+    0%, 100% { transform: translateY(0px) rotate(-12deg); }
+    50% { transform: translateY(10px) rotate(-12deg); }
+  }
+
+  .absolute:nth-last-child(2) {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .absolute:last-child {
+    animation: floatReverse 8s ease-in-out infinite;
+  }
+</style>

@@ -2,9 +2,46 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/section/Hero.astro";
 import "../styles/global.css"
+import CompanyLogo from "../components/section/CompanyLogo.astro";
+import Coupons from "../components/section/Coupons.astro";
+import WhyChooseUs from "../components/section/WhyChooseUs.astro";
+import Services from "../components/section/Services.astro";
 
 ---
 
 <BaseLayout>
-	<Hero>
+	<div class="hero-company-wrapper">
+		<Hero />
+		<CompanyLogo />
+	</div>
+	<Coupons />
+	<WhyChooseUs />
+	<Services />
 </BaseLayout>
+
+<style>
+	.hero-company-wrapper {
+		background:
+			radial-gradient(
+				ellipse 50% 60% at 35% 30%,
+				rgba(24, 95, 165, 0.2),
+				transparent
+			),
+			radial-gradient(
+				ellipse 50% 60% at 85% 40%,
+				rgba(24, 95, 165, 0.2),
+				transparent
+			),
+			/* Aggressive gradient to pure black earlier */
+			linear-gradient(
+				to bottom,
+				#0f172a 0%,
+				#0f172a 30%,
+				rgba(15, 23, 42, 0.9) 45%,
+				rgba(0, 0, 0, 0.95) 60%,
+				rgba(0, 0, 0, 0.99) 70%,
+				#000000 75%,
+				#000000 100%
+			);
+	}
+</style>
