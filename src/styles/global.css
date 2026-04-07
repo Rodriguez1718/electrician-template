@@ -1,1 +1,49 @@
 @import "tailwindcss";
+
+:root {
+  --color-background: #09180c;
+  --color-primary: #98d9a1;
+  --color-secondary: #2d7c6f;
+  --color-accent: #61c4c5;
+  --hero-spacing: 1rem;
+}
+
+/* Custom utility classes for your color palette */
+.bg-brand-background { background-color: var(--color-background); }
+.bg-brand-primary { background-color: var(--color-primary); }
+.bg-brand-secondary { background-color: var(--color-secondary); }
+.bg-brand-accent { background-color: var(--color-accent); }
+
+.text-brand-background { color: var(--color-background); }
+.text-brand-primary { color: var(--color-primary); }
+.text-brand-secondary { color: var(--color-secondary); }
+.text-brand-accent { color: var(--color-accent); }
+
+.border-brand-background { border-color: var(--color-background); }
+.border-brand-primary { border-color: var(--color-primary); }
+.border-brand-secondary { border-color: var(--color-secondary); }
+.border-brand-accent { border-color: var(--color-accent); }
+
+/* Custom left positioning utilities with unique class names */
+.offset-left-0 { left: 0; }
+.offset-left-1 { left: calc(var(--hero-spacing) * 1); }
+.offset-left-2 { left: calc(var(--hero-spacing) * 2); }
+.offset-left-3 { left: calc(var(--hero-spacing) * 3); }
+.offset-left-4 { left: calc(var(--hero-spacing) * 4); }
+.offset-left-5 { left: calc(var(--hero-spacing) * 5); }
+.offset-left-6 { left: calc(var(--hero-spacing) * 6); }
+.offset-left-7 { left: calc(var(--hero-spacing) * 7); }
+.offset-left-8 { left: calc(var(--hero-spacing) * 8); }
+.offset-left-9 { left: calc(var(--hero-spacing) * 9); }
+.offset-left-10 { left: calc(var(--hero-spacing) * 10); }
+.offset-left-12 { left: calc(var(--hero-spacing) * 12); }
+.offset-left-16 { left: calc(var(--hero-spacing) * 16); }
+.offset-left-18 { left: calc(var(--hero-spacing) * 18); }
+.offset-left-19 { left: calc(var(--hero-spacing) * 19); }
+.offset-left-20 { left: calc(var(--hero-spacing) * 20); }
+.offset-left-24 { left: calc(var(--hero-spacing) * 24); }
+
+/* Font family utilities */
+.font-helvetica { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+.font-cervo { font-family: 'Cervo Neue', Georgia, serif; }
+.font-barlow { font-family: 'Barlow Condensed', sans-serif;}

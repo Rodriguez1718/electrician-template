@@ -1,0 +1,79 @@
+---
+// Company logos data - electrical industry partners and suppliers
+const companies = [
+  { name: "Tesla", logo: "/logos/tesla.svg", alt: "Tesla Logo" },
+  { name: "General Electric", logo: "/logos/ge.svg", alt: "General Electric Logo" },
+  { name: "Schneider Electric", logo: "/logos/schneider.svg", alt: "Schneider Electric Logo" },
+  { name: "Siemens", logo: "/logos/siemens.svg", alt: "Siemens Logo" },
+  { name: "Eaton", logo: "/logos/eaton.svg", alt: "Eaton Logo" },
+  { name: "ABB", logo: "/logos/abb.svg", alt: "ABB Logo" },
+];
+---
+
+<section class="py-12">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Logo grid -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center">
+      {companies.map((company) => (
+        <div class="group flex items-center justify-center p-6 rounded-lg transition-all duration-300 hover:bg-white/10">
+          <img
+            src={company.logo}
+            alt={company.alt}
+            class="h-20 w-auto max-w-[180px] object-contain text-white opacity-80 group-hover:opacity-100 transition-all duration-300"
+            loading="lazy"
+          />
+        </div>
+      ))}
+    </div>
+
+    <!-- Alternative: Scrolling marquee version (uncomment to use) -->
+    <!-- 
+    <div class="overflow-hidden">
+      <div class="flex animate-scroll">
+        {companies.concat(companies).map((company, index) => (
+          <div class="flex-shrink-0 mx-8 flex items-center justify-center" key={index}>
+            <img
+              src={company.logo}
+              alt={company.alt}
+              class="h-20 w-auto max-w-[180px] object-contain text-white opacity-80 hover:opacity-100 transition-all duration-300"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+    -->
+  </div>
+</section>
+
+<style>
+  /* Scrolling animation for marquee version */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 30s linear infinite;
+  }
+
+  /* Pause animation on hover */
+  .animate-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  /* Force SVG logos to be white */
+  img[src*="/logos/"] {
+    filter: brightness(0) invert(1);
+  }
+
+  /* Remove filter on hover for better visibility */
+  .group:hover img[src*="/logos/"] {
+    filter: brightness(0) invert(1);
+  }
+</style>

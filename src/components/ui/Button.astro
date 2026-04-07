@@ -1,0 +1,227 @@
+---
+export interface Props {
+  variant?: "primary" | "secondary" | "ghost" | "danger" | "sketchy";
+  size?: "sm" | "md" | "lg";
+  href?: string;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
+  fullWidth?: boolean;
+  class?: string;
+  id?: string;
+  textColor?: string;
+}
+
+const {
+  variant = "primary",
+  size = "md",
+  href,
+  type = "button",
+  disabled = false,
+  fullWidth = false,
+  class: className = "",
+  id,
+  textColor,
+} = Astro.props;
+
+const tag = href ? "a" : "button";
+---
+
+{tag === "a" ? (
+  <a
+    href={disabled ? undefined : href}
+    class:list={["btn", `btn--${variant}`, `btn--${size}`, { "btn--full": fullWidth, "btn--disabled": disabled }, className]}
+    aria-disabled={disabled ? "true" : undefined}
+    role="button"
+    id={id}
+    style={textColor ? `color: ${textColor};` : undefined}
+  >
+    {variant === "sketchy" ? (
+      <svg class="arrow-icon" viewBox="0 0 24 24" fill="none">
+        <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor"/>
+      </svg>
+    ) : (
+      <slot />
+    )}
+  </a>
+) : (
+  <button
+    type={type}
+    disabled={disabled}
+    class:list={["btn", `btn--${variant}`, `btn--${size}`, { "btn--full": fullWidth }, className]}
+    id={id}
+    style={textColor ? `color: ${textColor};` : undefined}
+  >
+    {variant === "sketchy" ? (
+      <svg class="arrow-icon" viewBox="0 0 24 24" fill="none">
+        <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor"/>
+      </svg>
+    ) : (
+      <slot />
+    )}
+  </button>
+)}
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: inherit;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    border-radius: 99px;
+    border: 0.5px solid transparent;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s, opacity 0.15s, transform 0.5s ease-out;
+  }
+
+  /* ── Sizes ── */
+  .btn--sm { font-size: 0.75rem;    padding: 6px 14px; }
+  .btn--md { font-size: 0.8125rem;  padding: 9px 20px; }
+  .btn--lg { font-size: 0.9375rem;  padding: 12px 28px; }
+
+  /* ── Variants ── */
+  .btn--primary {
+    background: #98d9a1;
+    color: #000000;
+    border-color: transparent;
+  }
+  .btn--primary:hover  { background: var(--color-secondary); color: white; }
+  .btn--primary:active { background: #1e40af; }
+
+  .btn--secondary {
+    background: transparent;
+    color: #374151;
+    border-color: rgba(0, 0, 0, 0.18);
+  }
+  .btn--secondary:hover  { background: #f3f4f6; color: #111; }
+  .btn--secondary:active { background: #e5e7eb; }
+
+  .btn--ghost {
+    background: transparent;
+    color: #374151;
+    border-color: transparent;
+  }
+  .btn--ghost:hover  { background: rgba(0, 0, 0, 0.05); color: #111; }
+  .btn--ghost:active { background: rgba(0, 0, 0, 0.08); }
+
+  .btn--danger {
+    background: #dc2626;
+    color: #fff;
+    border-color: transparent;
+  }
+  .btn--danger:hover  { background: #b91c1c; }
+  .btn--danger:active { background: #991b1b; }
+
+  .btn--sketchy {
+    background: transparent;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    position: relative;
+    padding: 0;
+    overflow: visible;
+  }
+
+  /* Sketchy button sizes */
+  .btn--sketchy.btn--sm {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .btn--sketchy.btn--md {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .btn--sketchy.btn--lg {
+    width: 160px;
+    height: 160px;
+  }
+  
+  .btn--sketchy::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 50%;
+    background: transparent;
+    border: 3px solid currentColor;
+    /* Hand-drawn sketchy effect using SVG path */
+    clip-path: polygon(
+      2% 8%, 8% 3%, 15% 1%, 25% 2%, 35% 1%, 45% 3%, 55% 2%, 65% 4%, 
+      75% 2%, 85% 5%, 92% 8%, 98% 15%, 99% 25%, 97% 35%, 99% 45%, 
+      96% 55%, 98% 65%, 95% 75%, 92% 85%, 88% 92%, 82% 97%, 75% 99%, 
+      65% 98%, 55% 99%, 45% 97%, 35% 98%, 25% 96%, 15% 98%, 8% 95%, 
+      3% 88%, 1% 82%, 2% 75%, 1% 65%, 3% 55%, 1% 45%, 4% 35%, 2% 25%, 
+      5% 15%
+    );
+    transition: all 0.3s ease;
+  }
+  
+  .btn--sketchy:hover::before {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  
+  .btn--sketchy:active::before {
+    transform: scale(0.95);
+  }
+
+  /* Arrow icon for sketchy button - size based on button size */
+  .btn--sketchy.btn--sm .arrow-icon {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
+  }
+  
+  .btn--sketchy.btn--md .arrow-icon {
+    width: 32px;
+    height: 32px;
+    stroke-width: 2.5;
+  }
+  
+  .btn--sketchy.btn--lg .arrow-icon {
+    width: 40px;
+    height: 40px;
+    stroke-width: 3;
+  }
+  
+  .btn--sketchy .arrow-icon {
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.3s ease;
+  }
+  
+  .btn--sketchy:hover .arrow-icon {
+    transform: translateX(3px);
+  }
+
+  /* Border thickness based on size */
+  .btn--sketchy.btn--sm::before {
+    border-width: 2px;
+  }
+  
+  .btn--sketchy.btn--md::before {
+    border-width: 3px;
+  }
+  
+  .btn--sketchy.btn--lg::before {
+    border-width: 4px;
+  }
+
+  /* ── Modifiers ── */
+  .btn--full { width: 100%; }
+
+  .btn--disabled,
+  .btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+</style>
