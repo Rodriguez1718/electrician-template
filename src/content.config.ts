@@ -12,6 +12,7 @@ const commercialCollection = defineCollection({
     bgColor: z.string().optional(),
     borderColor: z.string().optional(),
     tabColor: z.string().optional(),
+    tabBackground: z.string().optional(),
   }),
 });
 
@@ -27,6 +28,7 @@ const residentialCollection = defineCollection({
     bgColor: z.string().optional(),
     borderColor: z.string().optional(),
     tabColor: z.string().optional(),
+    tabBackground: z.string().optional(),
   }),
 });
 
@@ -42,6 +44,7 @@ const specialtyCollection = defineCollection({
     bgColor: z.string().optional(),
     borderColor: z.string().optional(),
     tabColor: z.string().optional(),
+    tabBackground: z.string().optional(),
   }),
 });
 
@@ -57,6 +60,7 @@ const emergencyCollection = defineCollection({
     bgColor: z.string().optional(),
     borderColor: z.string().optional(),
     tabColor: z.string().optional(),
+    tabBackground: z.string().optional(),
   }),
 });
 
