@@ -1,43 +1,142 @@
 ---
 import Button from "../ui/Button.astro";
+
+export interface Props {
+  variant?: "dark" | "light";
+  sectionLabel?: string;
+  title?: string;
+  titleHighlight?: string;
+  buttonText?: string;
+  buttonHref?: string;
+  phoneNumber?: string;
+  phoneLabel?: string;
+  emergencyText?: string;
+}
+
+const {
+  variant = "dark",
+  sectionLabel = "Ready to Get Started?",
+  title = "Get Your",
+  titleHighlight = "Free Estimate",
+  buttonText = "SCHEDULE NOW",
+  buttonHref = "/contact",
+  phoneNumber = "123-456-7890",
+  phoneLabel = "Call or Text for Great Service",
+  emergencyText = "Available 24/7 for Emergencies"
+} = Astro.props;
+
+// Theme configurations
+const themes = {
+  dark: {
+    sectionBg: "bg-black text-white",
+    cardBg: "bg-white/5 backdrop-blur-sm border-white/10",
+    gradientOverlay: "bg-gradient-to-r from-black/50 via-transparent to-black/50",
+    decorativeOpacity: "opacity-5",
+    labelColor: "text-brand-accent",
+    titleColor: "text-white",
+    phoneColor: "text-brand-primary hover:text-brand-accent",
+    emergencyColor: "text-white/70",
+    featureTextColor: "text-white group-hover:text-brand-primary",
+    phoneDescColor: "text-white/90",
+    topGradient: null,
+    showTopTransition: false
+  },
+  light: {
+    sectionBg: "bg-white text-gray-900",
+    cardBg: "bg-gray-50/80 backdrop-blur-sm border-gray-200",
+    gradientOverlay: "bg-gradient-to-r from-white/50 via-transparent to-white/50",
+    decorativeOpacity: "opacity-10",
+    labelColor: "text-brand-accent",
+    titleColor: "text-gray-900",
+    phoneColor: "text-brand-primary hover:text-brand-secondary",
+    emergencyColor: "text-gray-600",
+    featureTextColor: "text-gray-700 group-hover:text-brand-primary",
+    phoneDescColor: "text-gray-600",
+    topGradient: "absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-gray-50 to-transparent z-10",
+    showTopTransition: true
+  }
+};
+
+const theme = themes[variant];
 ---
 
-<section class="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-6">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
-      
-      <!-- Left Side - CTA Button -->
-      <div class="flex-shrink-0">
-        <Button variant="primary" size="lg" href="/contact" class="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-4 text-lg">
-          SCHEDULE NOW
-        </Button>
-      </div>
+<section class={`${theme.sectionBg} py-12 relative overflow-hidden`}>
+  <!-- Background pattern -->
+  <div class={`absolute inset-0 ${theme.decorativeOpacity}`}>
+    <div class="absolute top-4 left-10 w-20 h-20 border border-brand-primary rounded-full"></div>
+    <div class="absolute top-8 right-20 w-16 h-16 border border-brand-accent rounded-full"></div>
+    <div class="absolute bottom-4 left-1/4 w-12 h-12 border border-brand-secondary rounded-full"></div>
+    <div class="absolute bottom-6 right-1/3 w-14 h-14 border border-brand-primary rounded-full"></div>
+  </div>
 
-      <!-- Center - Phone Number -->
-      <div class="text-center lg:text-left">
-        <p class="text-white/90 font-helvetica text-sm mb-1">Call or Text for Great Service</p>
-        <a href="tel:123-456-7890" class="text-3xl lg:text-4xl font-cervo font-bold text-brand-primary hover:text-brand-accent transition-colors">
-          123-456-7890
-        </a>
-      </div>
+  <!-- Gradient overlay at top for seamless transition from Services (light variant only) -->
+  {theme.showTopTransition && (
+    <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-gray-50 to-transparent z-10"></div>
+  )}
 
-      <!-- Right Side - Service Features -->
-      <div class="flex flex-col sm:flex-row gap-4 lg:gap-6 text-sm">
-        <div class="flex items-center gap-2">
-          <div class="w-5 h-5 bg-brand-primary rounded-full flex items-center justify-center flex-shrink-0">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="text-white">
-              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <span class="font-helvetica">24/7 Emergency Service</span>
+  <!-- Gradient overlay for depth -->
+  <div class={`absolute inset-0 ${theme.gradientOverlay}`}></div>
+
+  <!-- Top gradient overlay for seamless transition (light variant only) -->
+  {theme.topGradient && (
+    <div class={theme.topGradient}></div>
+  )}
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class={`${theme.cardBg} border rounded-2xl p-8 shadow-2xl`}>
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+        
+        <!-- Left Side - CTA Content -->
+        <div class="flex-shrink-0 text-center lg:text-left">
+          <p class={`${theme.labelColor} font-helvetica text-sm uppercase tracking-wider mb-2`}>
+            {sectionLabel}
+          </p>
+          <h3 class={`text-2xl lg:text-3xl font-asap-condensed uppercase font-bold ${theme.titleColor} mb-4 tracking-wide`}>
+            {title} <span class="text-brand-primary">{titleHighlight}</span> Today
+          </h3>
+          <Button variant="primary" size="lg" href={buttonHref} class="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            {buttonText}
+          </Button>
         </div>
-        <div class="flex items-center gap-2">
-          <div class="w-5 h-5 bg-brand-primary rounded-full flex items-center justify-center flex-shrink-0">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="text-white">
-              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+
+        <!-- Center - Phone Number -->
+        <div class="text-center">
+          <p class={`${theme.phoneDescColor} font-helvetica text-sm mb-2`}>{phoneLabel}</p>
+          <a href={`tel:${phoneNumber}`} class={`block text-4xl lg:text-5xl font-asap-condensed font-bold ${theme.phoneColor} transition-colors duration-300 mb-2`}>
+            {phoneNumber}
+          </a>
+          <p class={`${theme.emergencyColor} font-helvetica text-xs`}>{emergencyText}</p>
+        </div>
+
+        <!-- Right Side - Service Features -->
+        <div class="flex flex-col gap-4 text-sm">
+          <div class="flex items-center gap-3 group">
+            <div class="w-8 h-8 bg-brand-primary/20 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-brand-primary/30 transition-colors duration-300">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-brand-primary">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class={`font-helvetica ${theme.featureTextColor} transition-colors duration-300`}>24/7 Emergency Service</span>
           </div>
-          <span class="font-helvetica">Licensed and Certified Technician</span>
+          <div class="flex items-center gap-3 group">
+            <div class="w-8 h-8 bg-brand-primary/20 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-brand-primary/30 transition-colors duration-300">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-brand-primary">
+                <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </div>
+            <span class={`font-helvetica ${theme.featureTextColor} transition-colors duration-300`}>Licensed & Certified</span>
+          </div>
+          <div class="flex items-center gap-3 group">
+            <div class="w-8 h-8 bg-brand-primary/20 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-brand-primary/30 transition-colors duration-300">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-brand-primary">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 17l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class={`font-helvetica ${theme.featureTextColor} transition-colors duration-300`}>Free Estimates</span>
+          </div>
         </div>
       </div>
     </div>

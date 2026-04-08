@@ -1,0 +1,120 @@
+---
+import Card from "../ui/Card.astro";
+
+export interface Props {
+  sectionLabel?: string;
+  title?: string;
+  titleHighlight?: string;
+  description?: string;
+  category?: string;
+}
+
+const {
+  sectionLabel = "Commercial Services",
+  title = "Our",
+  titleHighlight = "Commercial Electrical",
+  description = "Comprehensive electrical solutions designed specifically for commercial properties. From office buildings to industrial facilities, we provide reliable, code-compliant electrical services that keep your business running smoothly.",
+  category = "commercial"
+} = Astro.props;
+
+interface Service {
+  name: string;
+  icon: string;
+  description: string;
+  slug: string;
+}
+
+// Load services from markdown files based on category
+async function loadServices(categoryName: string): Promise<Service[]> {
+  const services: Service[] = [];
+  
+  try {
+    // Import all markdown files from the specified category
+    const categoryFiles = import.meta.glob('/src/content/**/*.md', { eager: true });
+    
+    // Filter files for this category
+    const serviceFiles = Object.entries(categoryFiles).filter(([path]) => 
+      path.includes(`/src/content/${categoryName}/`) && !path.endsWith('/index.md')
+    );
+    
+    for (const [path, module] of serviceFiles) {
+      const frontmatter = (module as any).frontmatter || {};
+      const fileName = path.split('/').pop()?.replace('.md', '') || '';
+      
+      services.push({
+        name: frontmatter.title || fileName,
+        icon: frontmatter.icon || '⚡',
+        description: frontmatter.description || '',
+        slug: `${categoryName}/${fileName}`
+      });
+    }
+    
+  } catch (error: any) {
+    console.error(`Error loading ${categoryName} services:`, error?.message || 'Unknown error');
+  }
+  
+  return services;
+}
+
+const services = await loadServices(category);
+---
+
+<section class="py-20 bg-black text-white relative overflow-hidden rounded-bottom">
+  <!-- Background decorative elements -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute top-20 left-10 w-32 h-32 border border-brand-primary rounded-full"></div>
+    <div class="absolute top-40 right-20 w-24 h-24 border border-brand-secondary rounded-full"></div>
+    <div class="absolute bottom-20 left-1/4 w-16 h-16 border border-brand-accent rounded-full"></div>
+  </div>
+
+
+  <div class="max-w-7xl mx-auto px-6 relative z-20">
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <p class="text-brand-accent font-helvetica text-sm uppercase tracking-wider mb-4">
+        {sectionLabel}
+      </p>
+      <h2 class="text-4xl lg:text-5xl font-asap-condensed font-bold text-white mb-6 leading-tight tracking-wide uppercase">
+        {title} <span class="text-brand-secondary">{titleHighlight}</span> Services
+      </h2>
+      <p class="text-lg text-white/80 font-helvetica leading-relaxed max-w-3xl mx-auto">
+        {description}
+      </p>
+    </div>
+
+    <!-- Services grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {services.map((service: Service) => (
+        <Card
+          title={service.name}
+          description={service.description}
+          icon={service.icon}
+          href={`/services/${service.slug}`}
+          variant="service"
+          size="md"
+          category={category.charAt(0).toUpperCase() + category.slice(1)}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Rounded bottom section */
+  .rounded-bottom {
+    border-bottom-left-radius: 300px;
+    border-bottom-right-radius: 300px;
+  }
+
+  /* Alternative curved bottom using clip-path for more dramatic curve */
+  .rounded-bottom::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: inherit;
+    clip-path: ellipse(100% 100% at 50% 0%);
+  }
+</style>

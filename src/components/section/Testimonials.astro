@@ -1,8 +1,15 @@
 ---
 ---
 
-<section class="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white overflow-hidden">
-  <div class="max-w-7xl mx-auto px-6">
+<section class="py-20 bg-black text-white overflow-hidden rounded-top relative">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute top-10 left-10 w-32 h-32 border border-brand-primary rounded-full"></div>
+    <div class="absolute top-40 right-20 w-24 h-24 border border-brand-accent rounded-full"></div>
+    <div class="absolute bottom-20 left-1/4 w-16 h-16 border border-brand-secondary rounded-full"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
     
     <!-- Section Header -->
     <div class="text-center mb-16">
@@ -21,8 +28,8 @@
     <!-- Carousel Container -->
     <div class="relative">
       <!-- Blur Gradients - More natural blending -->
-      <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-blue-900 via-blue-900/80 to-transparent z-10 pointer-events-none"></div>
-      <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-blue-900 via-blue-900/80 to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-black via-black/80 to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-black via-black/80 to-transparent z-10 pointer-events-none"></div>
       
       <!-- First Row - Moving Right -->
       <div class="carousel-row mb-8" data-direction="right">
@@ -300,6 +307,24 @@
 </section>
 
 <style>
+  /* Rounded top section */
+  .rounded-top {
+    border-top-left-radius: 500px;
+    border-top-right-radius: 500px;
+  }
+
+  /* Alternative curved top using clip-path for more dramatic curve */
+  .rounded-top::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: inherit;
+    clip-path: ellipse(100% 100% at 50% 100%);
+  }
+
   .carousel-row {
     overflow: hidden;
     white-space: nowrap;

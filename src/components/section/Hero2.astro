@@ -1,0 +1,95 @@
+---
+import Button from "../ui/Button.astro"
+
+export interface Props {
+  line1?: string;
+  line2?: string;
+  line3?: string;
+  description?: string;
+  buttonText?: string;
+  buttonHref?: string;
+  phoneText?: string;
+}
+
+const { 
+  line1 = "WIRING",
+  line2 = "YOUR", 
+  line3 = "SUCCESS",
+  description = "We don't just wire buildings — we build the backbone of your operation. From ground up construction to full panel fit-outs, every job is permitted, on-time, and built to last decades.",
+  buttonText = "Get Quote",
+  buttonHref = "/contact",
+} = Astro.props;
+---
+
+<section class="relative w-full h-[50vh] min-h-[400px] overflow-hidden">
+    <!-- Bottom blur gradient to blend image into black -->
+    <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black via-black/60 to-transparent z-20"></div>
+
+    <div class="flex flex-col min-[1180px]:block h-full relative z-30">
+        <h1
+            class="relative min-[1180px]:absolute left-3 font-playfair font-black text-white pointer-events-none select-none flex flex-col leading-[0.88] tracking-tight hero-headline"
+            aria-label="Hero Headline"
+            style="top: clamp(60px, 8vh, 100px);"
+        >
+            <span class="relative offset-left-0">{line1}</span>
+            <span class="relative" style="left: clamp(0rem, 15vw, 18rem);">{line2}</span>
+            <span class="relative text-brand-primary" style="left: clamp(0rem, 16vw, 19rem);">{line3}</span>
+        </h1>
+
+        <div
+            class="content-container absolute right-8 max-w-[590px] flex flex-col gap-4 z-10"
+        >
+            <p class="text-lg text-white/90 leading-[1.6] font-helvetica">
+                {description}
+            </p>
+
+            <div class="flex flex-row items-center gap-8 mt-2">
+                <Button variant="primary" size="md" href={buttonHref}>
+                    {buttonText}
+                </Button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap");
+
+    .font-playfair {
+        font-family: "Playfair Display", Georgia, serif;
+    }
+
+    .hero-headline {
+        font-size: clamp(20px, 10vw, 100px);
+    }
+
+    .content-container {
+        top: clamp(80px, 12vh, 120px);
+        right: clamp(2rem, 5vw, 4rem);
+    }
+
+    @media (max-width: 768px) {
+        .hero-headline {
+            font-size: clamp(45px, 10vw, 80px);
+        }
+        
+        .content-container {
+            position: relative;
+            right: auto;
+            top: clamp(20px, 4vh, 40px);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero-headline {
+            font-size: clamp(32px, 12vw, 60px);
+        }
+        
+        .content-container {
+            top: clamp(10px, 2vh, 20px);
+            padding: 0 1rem;
+        }
+    }
+</style>

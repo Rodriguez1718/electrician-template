@@ -1,34 +1,73 @@
 ---
+import Hero2 from "../components/section/Hero2.astro";
+import CommercialServices from "../components/section/CommercialServices.astro";
+import ServicesList from "../components/section/ServicesList.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Hero from "../components/section/Hero.astro";
-import CompanyLogo from "../components/section/CompanyLogo.astro";
-import Coupons from "../components/section/Coupons.astro";
-import WhyChooseUs from "../components/section/WhyChooseUs.astro";
-import Services from "../components/section/Services.astro";
-import MaintenancePlans from "../components/section/MaintenancePlans.astro";
-import Financing from "../components/section/Financing.astro";
-import FeaturedWorks from "../components/section/FeaturedWorks.astro";
-import Testimonials from "../components/section/Testimonials.astro";
-import ServiceAreas from "../components/section/ServiceAreas.astro";
+import CommercialOffers from "../components/section/CommercialOffers.astro";
+import FAQ from "../components/section/FAQ.astro";
 import CallToAction from "../components/section/CallToAction.astro";
+import ServiceCoverage from "../components/section/ServiceCoverage.astro";
 
 ---
 
 <BaseLayout>
-	<div class="hero-company-wrapper">
-		<Hero />
-		<CompanyLogo />
-	</div>
-	<Coupons />
-	<WhyChooseUs />
-	<Services />
-	<MaintenancePlans />
-	<Financing />
-	<FeaturedWorks />
-	<Testimonials />
-	<CallToAction />
-	<ServiceAreas />
-	<!-- Back to Top Button -->
+    <div class="relative">
+        <!-- Background image for Hero2 -->
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('/images/wiring.png');"></div>
+        <!-- Dark overlay for better text readability -->
+        <div class="absolute inset-0 bg-black/40"></div>
+        
+        <Hero2 
+            line1="GROUND-UP"
+            line2="ELECTRICAL"
+            line3="CONSTRUCTION"
+            description="Professional commercial electrical services for businesses of all sizes. From office buildings to industrial facilities, we deliver reliable electrical solutions that keep your operations running smoothly and safely."
+            buttonText="Get Commercial Quote"
+            buttonHref="/contact"
+            phoneText="CALL FOR EMERGENCY"
+        />
+    </div>
+    <CommercialServices />
+    <ServicesList 
+    category="commercial"
+    sectionLabel="Commercial Services"
+    title="Our"
+    titleHighlight="Commercial Electrical"
+    description="Comprehensive electrical solutions designed specifically for commercial properties. From office buildings to industrial facilities, we provide reliable, code-compliant electrical services that keep your business running smoothly."
+    />
+
+    <!-- Residential services -->
+    <!-- <ServicesList 
+    category="residential"
+    sectionLabel="Residential Services"
+    title="Expert"
+    titleHighlight="Home Electrical"
+    description="Professional electrical services for your home and family's safety."
+    /> -->
+
+    <!-- Emergency services -->
+    <!-- <ServicesList 
+    category="emergency"
+    sectionLabel="Emergency Services"
+    title="24/7"
+    titleHighlight="Emergency Response"
+    description="Round-the-clock electrical emergency services when you need them most."
+    /> -->
+
+    <!-- Specialty services -->
+    <!-- <ServicesList 
+    category="specialty"
+    sectionLabel="Specialty Services"
+    title="Premium"
+    titleHighlight="Specialty Solutions"
+    description="Specialized electrical services for unique projects and installations."
+    /> -->
+    <CommercialOffers />
+    <FAQ />
+    <CallToAction variant="light" />
+    <ServiceCoverage />
+    
+    <!-- Back to Top Button -->
     <button 
         id="backToTop" 
         class="fixed bottom-8 right-8 w-12 h-12 bg-brand-primary text-black rounded-full shadow-lg hover:shadow-xl transition-all duration-300 opacity-0 invisible cursor-pointer overflow-hidden"
@@ -43,32 +82,7 @@ import CallToAction from "../components/section/CallToAction.astro";
 </BaseLayout>
 
 <style>
-	.hero-company-wrapper {
-		background:
-			radial-gradient(
-				ellipse 50% 60% at 35% 30%,
-				rgba(24, 95, 165, 0.2),
-				transparent
-			),
-			radial-gradient(
-				ellipse 50% 60% at 85% 40%,
-				rgba(24, 95, 165, 0.2),
-				transparent
-			),
-			/* Aggressive gradient to pure black earlier */
-			linear-gradient(
-				to bottom,
-				#0f172a 0%,
-				#0f172a 30%,
-				rgba(15, 23, 42, 0.9) 45%,
-				rgba(0, 0, 0, 0.95) 60%,
-				rgba(0, 0, 0, 0.99) 70%,
-				#000000 75%,
-				#000000 100%
-			);
-	}
-
-	#backToTop::before {
+    #backToTop::before {
         content: '';
         position: absolute;
         width: 0;
