@@ -2,8 +2,11 @@
 import Card from "../ui/Card.astro";
 ---
 
-<section class="py-20 bg-white">
-  <div class="max-w-7xl mx-auto px-6">
+<section class="py-20 bg-white relative overflow-hidden">
+  <!-- Gradient overlay at top for seamless transition from Financing -->
+  <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-gray-50 to-transparent z-10"></div>
+  
+  <div class="max-w-7xl mx-auto px-6 relative z-20">
     
     <!-- Section Header -->
     <div class="text-center mb-16">

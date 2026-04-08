@@ -6,6 +6,7 @@ color: "text-brand-secondary"
 bgColor: "bg-black"
 borderColor: "border-brand-secondary"
 tabColor: "bg-brand-primary"
+tabBackground: "/images/electrical.png"
 ---
 
 # Commercial Electrical Services
