@@ -1,0 +1,45 @@
+---
+import Button from "../ui/Button.astro";
+---
+
+<section class="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-6">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
+      
+      <!-- Left Side - CTA Button -->
+      <div class="flex-shrink-0">
+        <Button variant="primary" size="lg" href="/contact" class="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-4 text-lg">
+          SCHEDULE NOW
+        </Button>
+      </div>
+
+      <!-- Center - Phone Number -->
+      <div class="text-center lg:text-left">
+        <p class="text-white/90 font-helvetica text-sm mb-1">Call or Text for Great Service</p>
+        <a href="tel:123-456-7890" class="text-3xl lg:text-4xl font-cervo font-bold text-brand-primary hover:text-brand-accent transition-colors">
+          123-456-7890
+        </a>
+      </div>
+
+      <!-- Right Side - Service Features -->
+      <div class="flex flex-col sm:flex-row gap-4 lg:gap-6 text-sm">
+        <div class="flex items-center gap-2">
+          <div class="w-5 h-5 bg-brand-primary rounded-full flex items-center justify-center flex-shrink-0">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="text-white">
+              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="font-helvetica">24/7 Emergency Service</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-5 h-5 bg-brand-primary rounded-full flex items-center justify-center flex-shrink-0">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="text-white">
+              <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="font-helvetica">Licensed and Certified Technician</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

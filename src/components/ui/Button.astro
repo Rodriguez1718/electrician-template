@@ -87,17 +87,97 @@ const tag = href ? "a" : "button";
     background: #98d9a1;
     color: #000000;
     border-color: transparent;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
   }
-  .btn--primary:hover  { background: var(--color-secondary); color: white; }
+  
+  .btn--primary::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    background: var(--color-secondary);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: -1;
+    pointer-events: none;
+    left: var(--mouse-x, 50%);
+    top: var(--mouse-y, 50%);
+  }
+  
+  .btn--primary:hover::before {
+    width: 300%;
+    height: 300%;
+  }
+  
+  .btn--primary:hover { 
+    background: #98d9a1; 
+    color: white; 
+  }
+  
+  .btn--primary.btn--shrinking::before {
+    width: 0;
+    height: 0;
+  }
+  
+  .btn--primary.btn--shrinking {
+    color: #000000;
+  }
+  
   .btn--primary:active { background: #1e40af; }
 
   .btn--secondary {
     background: transparent;
-    color: #374151;
-    border-color: rgba(0, 0, 0, 0.18);
+    color: #98d9a1;
+    border-color: #98d9a1;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
   }
-  .btn--secondary:hover  { background: #f3f4f6; color: #111; }
-  .btn--secondary:active { background: #e5e7eb; }
+  
+  .btn--secondary::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    background: #98d9a1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: -1;
+    pointer-events: none;
+    left: var(--mouse-x, 50%);
+    top: var(--mouse-y, 50%);
+  }
+  
+  .btn--secondary:hover::before {
+    width: 300%;
+    height: 300%;
+  }
+  
+  .btn--secondary:hover {
+    color: #000000;
+    border-color: #98d9a1;
+  }
+  
+  .btn--secondary.btn--shrinking::before {
+    width: 0;
+    height: 0;
+  }
+  
+  .btn--secondary.btn--shrinking {
+    color: #98d9a1;
+  }
+  
+  .btn--secondary:active { 
+    background: transparent;
+  }
+  
+  .btn--secondary:active::before {
+    background: #7bc47f;
+  }
 
   .btn--ghost {
     background: transparent;
@@ -225,3 +305,46 @@ const tag = href ? "a" : "button";
     pointer-events: none;
   }
 </style>
+
+<script>
+  // Mouse tracking for button hover effects
+  document.addEventListener('DOMContentLoaded', () => {
+    const trackableButtons = document.querySelectorAll('.btn--secondary, .btn--primary');
+    
+    trackableButtons.forEach(button => {
+      button.addEventListener('mouseenter', (e) => {
+        const mouseEvent = e as MouseEvent;
+        const htmlButton = button as HTMLElement;
+        const rect = htmlButton.getBoundingClientRect();
+        const x = mouseEvent.clientX - rect.left;
+        const y = mouseEvent.clientY - rect.top;
+        
+        // Set CSS custom properties for the circle position
+        htmlButton.style.setProperty('--mouse-x', `${x}px`);
+        htmlButton.style.setProperty('--mouse-y', `${y}px`);
+      });
+      
+      button.addEventListener('mouseleave', (e) => {
+        const mouseEvent = e as MouseEvent;
+        const htmlButton = button as HTMLElement;
+        const rect = htmlButton.getBoundingClientRect();
+        const x = mouseEvent.clientX - rect.left;
+        const y = mouseEvent.clientY - rect.top;
+        
+        // Set the exit position for the circle to shrink from
+        htmlButton.style.setProperty('--mouse-x', `${x}px`);
+        htmlButton.style.setProperty('--mouse-y', `${y}px`);
+        
+        // Add a class to trigger the shrink animation
+        htmlButton.classList.add('btn--shrinking');
+        
+        // Remove the class and reset after animation completes
+        setTimeout(() => {
+          htmlButton.classList.remove('btn--shrinking');
+          htmlButton.style.removeProperty('--mouse-x');
+          htmlButton.style.removeProperty('--mouse-y');
+        }, 400); // Match the transition duration
+      });
+    });
+  });
+</script>
