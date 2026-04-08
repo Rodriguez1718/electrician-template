@@ -26,10 +26,10 @@ const sizeClasses = {
 };
 
 const variantClasses = {
-  default: 'border-2 border-opacity-20 text-gray-900 clipped-element',
-  hover: 'border-2 border-opacity-20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-gray-900 clipped-element',
-  bordered: 'border-4 border-opacity-30 text-gray-900 clipped-element',
-  service: 'border-2 border-opacity-20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 relative overflow-hidden text-gray-900 clipped-element'
+  default: ' text-gray-900 clipped-element',
+  hover: ' hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-gray-900 clipped-element',
+  bordered: ' text-gray-900 clipped-element',
+  service: ' hover:shadow-xl transition-all duration-300 hover:-translate-y-2 relative overflow-hidden text-gray-900 clipped-element'
 };
 
 const CardTag = href ? 'a' : 'div';
@@ -42,12 +42,12 @@ const CardTag = href ? 'a' : 'div';
 >
   
   <!-- Service icon -->
-  <div class={`w-16 h-16 bg-brand-accent/20 border border-brand-accent/30 rounded-full flex items-center justify-center mb-4 text-2xl transition-colors duration-300 relative z-10 ${variant === 'service' ? 'group-hover:scale-110' : ''}`} style="background-color: rgba(97, 196, 197, 0.2); border: 1px solid rgba(97, 196, 197, 0.3);">
+  <div>
     <span set:html={icon}></span>
   </div>
   
   <!-- Service name -->
-  <h3 class="text-lg font-cervo font-bold mb-2 relative z-10 transition-colors duration-300 text-black group-hover:text-brand-accent">
+  <h3 class="text-lg font-asap-condensed uppercase tracking-wide font-bold mb-2 relative z-10 transition-colors duration-300 text-black group-hover:text-brand-accent">
     {title}
   </h3>
   
@@ -79,15 +79,15 @@ const CardTag = href ? 'a' : 'div';
 <!-- SVG Clip Path Definition -->
 <svg width="0" height="0" style="position: absolute;">
   <defs>
-    <clipPath id="customClip" clipPathUnits="objectBoundingBox">
-      <path d="M 0.000, 0.060 L 0.000, 0.060 Q 0.000, 0.000 0.060, 0.000 L 0.943, 0.000 Q 1.000, 0.000 0.960, 0.040 L 0.940, 0.060 Q 0.900, 0.100 0.940, 0.140 L 0.960, 0.160 Q 1.000, 0.200 1.000, 0.257 L 1.000, 0.940 Q 1.000, 1.000 0.940, 1.000 L 0.060, 1.000 Q 0.000, 1.000 0.000, 0.940 Z" />
+    <clipPath id="cardClip" clipPathUnits="objectBoundingBox">
+      <path d="M 0.000, 0.050 L 0.000, 0.050 Q 0.000, 0.000 0.050, 0.000 L 0.780, 0.000 Q 0.800, 0.000 0.806, 0.019 L 0.850, 0.150 L 0.972, 0.191 Q 1.000, 0.200 1.000, 0.230 L 1.000, 0.955 Q 1.000, 1.000 0.955, 1.000 L 0.045, 1.000 Q 0.000, 1.000 0.000, 0.955 Z" />
     </clipPath>
   </defs>
 </svg>
 
 <style>
   .clipped-element {
-    clip-path: url(#customClip);
+    clip-path: url(#cardClip);
     position: relative;
   }
   
