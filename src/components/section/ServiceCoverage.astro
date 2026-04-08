@@ -1,0 +1,228 @@
+---
+export interface Props {
+  sectionLabel?: string;
+  title?: string;
+  titleHighlight?: string;
+  description?: string;
+  buttonText?: string;
+  buttonHref?: string;
+  serviceAreas?: string[];
+  mainCity?: string;
+  mapEmbedUrl?: string;
+}
+
+const {
+  sectionLabel = "Service Coverage",
+  title = "Proudly Serving",
+  titleHighlight = "Your Local Area",
+  description = "We provide reliable electrical services throughout the metropolitan area and surrounding communities. Our licensed electricians are ready to help with residential, commercial, and emergency electrical needs.",
+  buttonText = "VIEW ALL AREAS",
+  buttonHref = "/service-areas",
+  serviceAreas = [
+    "Downtown District",
+    "Residential Heights", 
+    "Business Park",
+    "Industrial Zone",
+    "Suburban Communities",
+    "Historic District"
+  ],
+  mainCity = "Metropolitan Area",
+  mapEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423286.27405770525!2d-118.69192113701158!3d34.02016130653294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos%20Angeles%2C%20CA!5e0!3m2!1sen!2sus!4v1703123456789!5m2!1sen!2sus"
+} = Astro.props;
+---
+
+<section class="py-20 bg-black text-white relative overflow-hidden rounded-top">
+  <!-- Background decorative elements -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute top-20 left-10 w-32 h-32 border border-brand-primary rounded-full"></div>
+    <div class="absolute top-40 right-20 w-24 h-24 border border-brand-secondary rounded-full"></div>
+    <div class="absolute bottom-20 left-1/4 w-16 h-16 border border-brand-accent rounded-full"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      
+      <!-- Left side - Google Maps -->
+      <div class="relative">
+        <!-- Google Maps Container -->
+        <div class="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl shadow-xl overflow-hidden">
+          <!-- Map iframe -->
+          <div class="relative h-96 w-full">
+            <iframe
+              src={mapEmbedUrl}
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="VoltBully Electrical Service Coverage Map"
+              class="rounded-t-2xl"
+            ></iframe>
+          </div>
+          
+          <!-- Service areas overlay -->
+          <div class="p-6 bg-white/10 backdrop-blur-sm">
+            <h4 class="text-lg font-asap-condensed font-bold text-white mb-4 uppercase">
+              Service Areas Include:
+            </h4>
+            <div class="grid grid-cols-2 gap-3">
+              {serviceAreas.map((area) => (
+                <div class="flex items-center gap-2 text-sm">
+                  <div class="w-2 h-2 bg-brand-primary rounded-full flex-shrink-0"></div>
+                  <span class="font-helvetica text-white/90">{area}</span>
+                </div>
+              ))}
+            </div>
+            
+            <!-- Coverage radius indicator -->
+            <div class="mt-4 pt-4 border-t border-white/20">
+              <div class="flex items-center justify-center gap-2 text-sm">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-accent">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                  <path d="M8 12h8" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <span class="font-helvetica font-medium text-brand-accent">50+ Mile Service Radius</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating service badges -->
+        <div class="absolute -top-4 -right-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg shadow-lg p-3 z-10">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="text-white">
+                <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="text-xs font-helvetica font-medium text-white">24/7 Available</span>
+          </div>
+        </div>
+
+        <div class="absolute -bottom-4 -left-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg shadow-lg p-3 z-10">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 bg-brand-primary rounded-full flex items-center justify-center">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="text-black">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </div>
+            <span class="text-xs font-helvetica font-medium text-white">Licensed & Insured</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side - Content -->
+      <div>
+        <!-- Section header -->
+        <div class="mb-8">
+          <p class="text-brand-accent font-helvetica text-sm uppercase tracking-wider mb-4">
+            {sectionLabel}
+          </p>
+          <h2 class="text-4xl lg:text-5xl font-asap-condensed font-bold text-white mb-6 leading-tight tracking-wide uppercase">
+            {title} <span class="text-brand-primary">{titleHighlight}</span>
+          </h2>
+          <p class="text-lg text-white/80 font-helvetica leading-relaxed mb-8">
+            {description}
+          </p>
+        </div>
+
+        <!-- Service highlights -->
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start gap-4 group">
+            <div class="w-12 h-12 bg-brand-secondary/20 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-brand-secondary/30 transition-colors duration-300">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-brand-secondary">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 17l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-helvetica font-semibold text-white mb-2 group-hover:text-brand-secondary transition-colors duration-300">
+                Comprehensive Coverage
+              </h3>
+              <p class="text-white/70 font-helvetica text-sm leading-relaxed">
+                From residential neighborhoods to commercial districts, we serve all areas within our coverage zone with the same high-quality electrical services.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4 group">
+            <div class="w-12 h-12 bg-brand-primary/20 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-brand-primary/30 transition-colors duration-300">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-brand-primary">
+                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-helvetica font-semibold text-white mb-2 group-hover:text-brand-primary transition-colors duration-300">
+                Fast Response Times
+              </h3>
+              <p class="text-white/70 font-helvetica text-sm leading-relaxed">
+                Our strategically located service teams ensure quick response times throughout our entire service area, especially for emergency calls.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4 group">
+            <div class="w-12 h-12 bg-brand-accent/20 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-brand-accent/30 transition-colors duration-300">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-brand-accent">
+                <path d="M9 11H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h4l3 3V8l-3 3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-helvetica font-semibold text-white mb-2 group-hover:text-brand-accent transition-colors duration-300">
+                Local Expertise
+              </h3>
+              <p class="text-white/70 font-helvetica text-sm leading-relaxed">
+                We understand local electrical codes, building requirements, and community needs, ensuring compliant and effective electrical solutions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes ping {
+    75%, 100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes pulse {
+    50% {
+      opacity: .5;
+    }
+  }
+  
+  .animate-ping {
+    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Rounded top section */
+  .rounded-top {
+    border-top-left-radius: 500px;
+    border-top-right-radius: 500px;
+  }
+
+  /* Alternative curved top using clip-path for more dramatic curve */
+  .rounded-top::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: inherit;
+    clip-path: ellipse(100% 100% at 50% 100%);
+  }
+</style>

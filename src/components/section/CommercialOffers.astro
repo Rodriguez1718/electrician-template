@@ -1,0 +1,171 @@
+---
+const offers = [
+  {
+    title: "Business Partnership",
+    discount: "20% OFF",
+    service: "Annual Maintenance Contract",
+    description: "Comprehensive electrical maintenance plan for commercial properties with priority service and quarterly inspections.",
+    terms: "Valid for new commercial contracts only. Minimum 12-month commitment required.",
+    expires: "March 2025",
+    bgColor: "bg-gray-900",
+    textColor: "text-white",
+    accentColor: "bg-brand-secondary",
+    accentText: "text-white"
+  },
+  {
+    title: "Facility Upgrade",
+    discount: "FREE",
+    service: "Energy Efficiency Audit",
+    description: "Complete electrical system analysis with recommendations for energy savings and code compliance improvements.",
+    terms: "Valid for commercial facilities over 5,000 sq ft. Audit report included with upgrade quote.",
+    expires: "March 2025",
+    bgColor: "bg-white",
+    textColor: "text-gray-800",
+    accentColor: "bg-brand-primary",
+    accentText: "text-black"
+  },
+  {
+    title: "Construction Special",
+    discount: "10% OFF",
+    service: "Ground-Up Electrical Installation",
+    description: "Complete electrical installation for new construction projects including permits, inspections, and warranty.",
+    terms: "Minimum project value $10,000. Valid for new construction only. Permit fees not included.",
+    expires: "March 2025",
+    bgColor: "bg-brand-accent",
+    textColor: "text-white",
+    accentColor: "bg-white",
+    accentText: "text-brand-accent"
+  }
+];
+---
+
+<section class="py-16 bg-white relative overflow-hidden">
+  <!-- Background decorative elements -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute top-10 left-10 w-32 h-32 border border-gray-300 rounded-full"></div>
+    <div class="absolute top-40 right-20 w-24 h-24 border border-gray-300 rounded-full"></div>
+    <div class="absolute bottom-20 left-1/4 w-16 h-16 border border-gray-300 rounded-full"></div>
+  </div>
+
+  <!-- Gradient overlay at bottom for seamless transition -->
+  <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-gray-50 z-10"></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <!-- Section header -->
+    <div class="text-center mb-12">
+      <p class="text-brand-secondary font-helvetica text-sm uppercase tracking-wider mb-4">
+        Commercial Offers
+      </p>
+      <h2 class="text-4xl lg:text-5xl font-asap-condensed font-bold text-gray-900 mb-4 uppercase">
+        Exclusive <span class="text-brand-secondary">Commercial Electrical</span> Offers
+      </h2>
+      <p class="text-lg text-gray-600 font-helvetica max-w-2xl mx-auto">
+        Take advantage of our special offers designed specifically for commercial clients. Professional service, competitive pricing, guaranteed satisfaction.
+      </p>
+    </div>
+
+    <!-- Offers grid -->
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {offers.map((offer) => (
+        <div class="offer-card group">
+          <div class={`${offer.bgColor} ${offer.textColor} p-8 h-full flex flex-col relative overflow-hidden`}>
+            <!-- Decorative corner cuts -->
+            <div class="absolute top-0 left-0 w-4 h-4 bg-white rounded-br-full"></div>
+            <div class="absolute top-0 right-0 w-4 h-4 bg-white rounded-bl-full"></div>
+            <div class="absolute bottom-0 left-0 w-4 h-4 bg-white rounded-tr-full"></div>
+            <div class="absolute bottom-0 right-0 w-4 h-4 bg-white rounded-tl-full"></div>
+            
+            <!-- Offer header -->
+            <div class="text-center mb-6">
+              <p class="text-sm font-helvetica font-medium opacity-80 mb-2">
+                {offer.title}
+              </p>
+              <h3 class="text-2xl font-asap-condensed font-bold text-brand-primary mb-2">
+                Special Offer
+              </h3>
+              <p class="text-xs font-helvetica opacity-70">
+                Limited Time Only
+              </p>
+            </div>
+
+            <!-- Discount badge -->
+            <div class="flex justify-center mb-6">
+              <div class={`${offer.accentColor} ${offer.accentText} px-6 py-3 font-bold text-xl font-helvetica transform -rotate-2 shadow-lg rounded-lg`}>
+                {offer.discount}
+              </div>
+            </div>
+
+            <!-- Service details -->
+            <div class="flex-1 text-center mb-6">
+              <h4 class="font-helvetica font-semibold text-lg mb-3">
+                {offer.service}
+              </h4>
+              <p class="text-sm opacity-80 leading-relaxed mb-4">
+                {offer.description}
+              </p>
+            </div>
+
+            <!-- Terms and expiration -->
+            <div class="pt-4 mt-auto">
+              <p class="text-xs opacity-70 mb-2 leading-relaxed">
+                {offer.terms}
+              </p>
+              <p class="text-xs font-medium opacity-80">
+                * Offer Expires: {offer.expires}
+              </p>
+            </div>
+
+            <!-- Perforated edge effect -->
+            <div class="absolute left-0 top-1/2 -translate-y-1/2 w-6 h-6 bg-white rounded-full -ml-3"></div>
+            <div class="absolute right-0 top-1/2 -translate-y-1/2 w-6 h-6 bg-white rounded-full -mr-3"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .offer-card {
+    /* Dashed border effect */
+    background: 
+      linear-gradient(90deg, currentColor 50%, transparent 50%),
+      linear-gradient(90deg, currentColor 50%, transparent 50%),
+      linear-gradient(0deg, currentColor 50%, transparent 50%),
+      linear-gradient(0deg, currentColor 50%, transparent 50%);
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+    background-size: 15px 2px, 15px 2px, 2px 15px, 2px 15px;
+    background-position: 0 0, 0 100%, 0 0, 100% 0;
+    color: rgba(0, 0, 0, 0.2);
+    padding: 3px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .offer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Perforated dots along the sides */
+  .offer-card::before,
+  .offer-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: 
+      radial-gradient(circle, transparent 40%, currentColor 40%, currentColor 60%, transparent 60%);
+    background-size: 2px 20px;
+    background-repeat: repeat-y;
+    opacity: 0.2;
+  }
+
+  .offer-card::before {
+    left: -1px;
+  }
+
+  .offer-card::after {
+    right: -1px;
+  }
+</style>

@@ -1,0 +1,154 @@
+---
+export interface Props {
+  sectionLabel?: string;
+  title?: string;
+  titleHighlight?: string;
+  description?: string;
+  faqs?: Array<{
+    question: string;
+    answer: string;
+  }>;
+}
+
+const {
+  sectionLabel = "Frequently Asked Questions",
+  title = "Common",
+  titleHighlight = "Electrical Questions",
+  description = "Get answers to the most frequently asked questions about our electrical services. Can't find what you're looking for? Contact us directly for personalized assistance.",
+  faqs = [
+    {
+      question: "How quickly can you respond to electrical emergencies?",
+      answer: "We offer 24/7 emergency electrical services and typically respond within 1-2 hours for urgent situations. Our emergency team is always on standby to handle power outages, electrical fires, and other critical electrical issues that can't wait until regular business hours."
+    },
+    {
+      question: "Are your electricians licensed and insured?",
+      answer: "Yes, all of our electricians are fully licensed, bonded, and insured. We maintain comprehensive liability insurance and workers' compensation coverage. Our team regularly updates their certifications and stays current with the latest electrical codes and safety standards."
+    },
+    {
+      question: "Do you provide free estimates for electrical work?",
+      answer: "We provide free estimates for most electrical projects. For complex commercial installations or major residential upgrades, we may charge a small consultation fee that is credited toward the final project cost if you choose to proceed with our services."
+    },
+    {
+      question: "What areas do you serve?",
+      answer: "We proudly serve the greater metropolitan area and surrounding communities within a 50-mile radius. This includes residential, commercial, and industrial properties. Contact us to confirm service availability in your specific location."
+    },
+    {
+      question: "How long does a typical electrical panel upgrade take?",
+      answer: "A standard residential electrical panel upgrade typically takes 4-8 hours to complete, depending on the complexity of the installation and local permit requirements. Commercial panel upgrades may take 1-3 days depending on the size and scope of the project."
+    },
+    {
+      question: "Do you offer warranties on your electrical work?",
+      answer: "Yes, we stand behind our work with comprehensive warranties. Labor is typically warranted for 1-2 years, while electrical components and materials carry manufacturer warranties. We also offer extended warranty options for major installations and commercial projects."
+    }
+  ]
+} = Astro.props;
+---
+
+<section class="py-20 bg-gray-50 relative overflow-hidden" style="background: linear-gradient(135deg, rgba(249, 250, 251, 0.95) 0%, rgba(249, 250, 251, 0.85) 100%), url('/images/abstract-organic-lines-background.png'); background-size: cover; background-position: center; background-attachment: fixed;">
+  <!-- Background decorative elements -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute top-20 left-10 w-32 h-32 border border-brand-primary rounded-full"></div>
+    <div class="absolute top-40 right-20 w-24 h-24 border border-brand-secondary rounded-full"></div>
+    <div class="absolute bottom-20 left-1/4 w-16 h-16 border border-brand-accent rounded-full"></div>
+  </div>
+
+  <!-- Gradient overlay at top for seamless transition from Services -->
+  <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-gray-50 to-transparent z-10"></div>
+  <!-- Gradient overlay at bottom for blur effect -->
+  <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-50 to-transparent z-10"></div>
+
+  <div class="max-w-4xl mx-auto px-6 relative z-10">
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <p class="text-brand-accent font-helvetica text-sm uppercase tracking-wider mb-4">
+        {sectionLabel}
+      </p>
+      <h2 class="text-4xl lg:text-5xl font-asap-condensed font-bold text-gray-900 mb-6 leading-tight tracking-wide uppercase">
+        {title} <span class="text-brand-primary">{titleHighlight}</span>
+      </h2>
+      <p class="text-lg text-gray-600 font-helvetica leading-relaxed max-w-3xl mx-auto">
+        {description}
+      </p>
+    </div>
+
+    <!-- FAQ Items -->
+    <div class="space-y-4">
+      {faqs.map((faq, index) => (
+        <div class="faq-item bg-white rounded-2xl shadow-lg overflow-hidden">
+          <button 
+            class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
+            data-faq-index={index}
+          >
+            <h3 class="text-lg font-helvetica font-semibold text-gray-900 pr-4">
+              {faq.question}
+            </h3>
+            <div class="faq-icon flex-shrink-0 w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center transition-transform duration-300">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-black">
+                <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+            <div class="p-6 pt-0 text-gray-600 font-helvetica leading-relaxed">
+              {faq.answer}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const faqButtons = document.querySelectorAll('.faq-question');
+    
+    faqButtons.forEach(button => {
+      button.addEventListener('click', (event) => {
+        const target = event.currentTarget as HTMLElement;
+        const faqItem = target.closest('.faq-item');
+        const answer = faqItem?.querySelector('.faq-answer') as HTMLElement;
+        const icon = target.querySelector('.faq-icon') as HTMLElement;
+        const isOpen = faqItem?.classList.contains('active');
+        
+        // Close all other FAQ items
+        document.querySelectorAll('.faq-item').forEach(item => {
+          if (item !== faqItem) {
+            item.classList.remove('active');
+            const otherAnswer = item.querySelector('.faq-answer') as HTMLElement;
+            const otherIcon = item.querySelector('.faq-icon') as HTMLElement;
+            if (otherAnswer) otherAnswer.style.maxHeight = '0px';
+            if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+          }
+        });
+        
+        // Toggle current FAQ item
+        if (isOpen) {
+          faqItem?.classList.remove('active');
+          if (answer) answer.style.maxHeight = '0px';
+          if (icon) icon.style.transform = 'rotate(0deg)';
+        } else {
+          faqItem?.classList.add('active');
+          if (answer) {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+          if (icon) icon.style.transform = 'rotate(45deg)';
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .faq-item.active .faq-question {
+    background-color: #f9fafb;
+  }
+  
+  .faq-answer {
+    transition: max-height 0.3s ease-in-out;
+  }
+  
+  .faq-icon {
+    transition: transform 0.3s ease-in-out;
+  }
+</style>
