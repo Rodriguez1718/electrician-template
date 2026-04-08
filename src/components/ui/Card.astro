@@ -35,46 +35,57 @@ const variantClasses = {
 const CardTag = href ? 'a' : 'div';
 ---
 
-<CardTag 
-  href={href}
-  class={`${variantClasses[variant]} ${sizeClasses[size]} group block`}
-  style="background-color: #f8f9fa; border-color: rgba(45, 124, 111, 0.4);"
->
-  
-  <!-- Service icon -->
-  <div>
-    <span set:html={icon}></span>
+<!-- Card Container with Background -->
+<div class="relative group">
+  <!-- Background overlay (visual only) -->
+  <div class="absolute top-2 right-2 w-39 h-16 bg-emerald-500 rounded -z-10 transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1 group-hover:scale-105 hover:-translate-y-3">
+    <!-- Arrow SVG positioned in top right corner of overlay -->
+    <div class="absolute top-0 right-0 w-8 h-8 flex items-center justify-center z-20">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform rotate-1">
+        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
   </div>
   
-  <!-- Service name -->
-  <h3 class="text-lg font-asap-condensed uppercase tracking-wide font-bold mb-2 relative z-10 transition-colors duration-300 text-black group-hover:text-brand-accent">
-    {title}
-  </h3>
-  
-  <!-- Category badge (for service variant) -->
-  {variant === 'service' && category && (
-    <div class="inline-block px-2 py-1 bg-brand-accent/20 text-brand-accent border border-brand-accent/30 text-xs font-helvetica font-medium rounded-full mb-2 relative z-10">
-      {category}
-    </div>
-  )}
-  
-  <!-- Service description -->
-  <p class="font-helvetica text-sm leading-relaxed relative z-10 text-gray-600">
-    {description}
-  </p>
-  
-  <!-- Learn more link (only if href is provided) -->
+  <!-- Clickable area that matches just the corner of the overlay -->
   {href && (
-    <div class="mt-4 relative z-10">
-      <span class={`font-helvetica text-sm font-medium inline-flex items-center gap-1 transition-colors duration-300 text-brand-accent hover:text-brand-primary ${variant === 'service' ? 'group-hover:gap-2' : ''}`}>
-        Learn More
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class={variant === 'service' ? 'group-hover:translate-x-1 transition-transform duration-300' : ''}>
-          <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
-    </div>
+    <a 
+      href={href}
+      class="absolute top-2 right-2 w-16 h-8 z-20 cursor-pointer overlay-hover-trigger group"
+      aria-label={`Learn more about ${title}`}
+    ></a>
   )}
-</CardTag>
+  
+  <div 
+    class={`${variantClasses[variant]} ${sizeClasses[size]} block relative z-0 h-full flex flex-col`}
+    style="background-color: #f8f9fa; border-color: rgba(45, 124, 111, 0.4);"
+  >
+    
+    <!-- Service icon -->
+    <div class="relative z-10">
+      <span set:html={icon}></span>
+    </div>
+    
+    <!-- Service name -->
+    <h3 class="text-lg font-asap-condensed uppercase tracking-wide font-bold mb-2 relative z-10 transition-colors duration-300 text-black group-hover:text-brand-accent">
+      {title}
+    </h3>
+    
+    <!-- Category badge (for service variant) -->
+    {variant === 'service' && category && (
+      <div class="flex">
+        <div class="px-2 py-1 bg-brand-accent text-brand-background text-xs font-asap-condensed font-medium rounded-full mb-2 relative z-10 w-fit">
+          {category}
+        </div>
+      </div>
+    )}
+    
+    <!-- Service description -->
+    <p class="font-helvetica text-sm leading-relaxed relative z-10 text-gray-600 flex-grow">
+      {description}
+    </p>
+  </div>
+</div>
 
 <!-- SVG Clip Path Definition -->
 <svg width="0" height="0" style="position: absolute;">
