@@ -60,14 +60,7 @@ const themes = {
 const theme = themes[variant];
 ---
 
-<section class={`${theme.sectionBg} py-12 relative overflow-hidden`}>
-  <!-- Background pattern -->
-  <div class={`absolute inset-0 ${theme.decorativeOpacity}`}>
-    <div class="absolute top-4 left-10 w-20 h-20 border border-brand-primary rounded-full"></div>
-    <div class="absolute top-8 right-20 w-16 h-16 border border-brand-accent rounded-full"></div>
-    <div class="absolute bottom-4 left-1/4 w-12 h-12 border border-brand-secondary rounded-full"></div>
-    <div class="absolute bottom-6 right-1/3 w-14 h-14 border border-brand-primary rounded-full"></div>
-  </div>
+<section class={`${theme.sectionBg} py-12 relative overflow-hidden -mb-px`}>
 
   <!-- Gradient overlay at top for seamless transition from Services (light variant only) -->
   {theme.showTopTransition && (
@@ -83,7 +76,7 @@ const theme = themes[variant];
   )}
 
   <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <div class={`${theme.cardBg} border rounded-2xl p-8 shadow-2xl`}>
+    <div class={`${theme.cardBg} border rounded-2xl p-8 shadow-xl`}>
       <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
         
         <!-- Left Side - CTA Content -->

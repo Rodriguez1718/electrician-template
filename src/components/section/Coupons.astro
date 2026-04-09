@@ -39,7 +39,7 @@ const coupons = [
 ];
 ---
 
-<section class="py-16 bg-black">
+<section class="py-16 bg-black -mb-px">
   <div class="max-w-7xl mx-auto px-6">
     <!-- Section header -->
     <div class="text-center mb-12">
@@ -133,26 +133,4 @@ const coupons = [
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   }
 
-  /* Perforated dots along the sides */
-  .coupon-card::before,
-  .coupon-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: 
-      radial-gradient(circle, transparent 40%, currentColor 40%, currentColor 60%, transparent 60%);
-    background-size: 2px 20px;
-    background-repeat: repeat-y;
-    opacity: 0.3;
-  }
-
-  .coupon-card::before {
-    left: -1px;
-  }
-
-  .coupon-card::after {
-    right: -1px;
-  }
 </style>

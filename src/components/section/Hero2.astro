@@ -15,36 +15,36 @@ const {
   line1 = "WIRING",
   line2 = "YOUR", 
   line3 = "SUCCESS",
-  description = "We don't just wire buildings — we build the backbone of your operation. From ground up construction to full panel fit-outs, every job is permitted, on-time, and built to last decades.",
+  description = "We don't just wire buildings — we build the backbone of your operation.",
   buttonText = "Get Quote",
   buttonHref = "/contact",
 } = Astro.props;
 ---
 
 <section class="relative w-full h-[50vh] min-h-[400px] overflow-hidden">
-    <!-- Bottom blur gradient to blend image into black -->
     <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black via-black/60 to-transparent z-20"></div>
 
     <div class="flex flex-col min-[1180px]:block h-full relative z-30">
         <h1
+            id="hero-headline"
             class="relative min-[1180px]:absolute left-3 font-playfair font-black text-white pointer-events-none select-none flex flex-col leading-[0.88] tracking-tight hero-headline"
             aria-label="Hero Headline"
             style="top: clamp(60px, 8vh, 100px);"
         >
-            <span class="relative offset-left-0">{line1}</span>
-            <span class="relative" style="left: clamp(0rem, 15vw, 18rem);">{line2}</span>
-            <span class="relative text-brand-primary" style="left: clamp(0rem, 16vw, 19rem);">{line3}</span>
+            <span class="relative">{line1}</span>
+            <span class="relative hero-line2">{line2}</span>
+            <span class="relative text-brand-primary hero-line3">{line3}</span>
         </h1>
 
         <div
-            class="content-container absolute right-8 max-w-[590px] flex flex-col gap-4 z-10"
+            class="content-container absolute right-8 max-w-[590px] flex flex-col gap-4 z-10 "
         >
             <p class="text-lg text-white/90 leading-[1.6] font-helvetica">
                 {description}
             </p>
 
             <div class="flex flex-row items-center gap-8 mt-2">
-                <Button variant="primary" size="md" href={buttonHref}>
+                <Button variant="primary" size="lg" href={buttonHref}>
                     {buttonText}
                 </Button>
             </div>
@@ -55,12 +55,20 @@ const {
 <style>
     @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap");
 
+    .hero-line2 { left: clamp(0rem, 15vw, 18rem); }
+    .hero-line3 { left: clamp(0rem, 16vw, 19rem); }
+
+    @media (max-width: 440px) {
+        .hero-line2 { left: 0; }
+        .hero-line3 { left: 0; }
+    }
+
     .font-playfair {
         font-family: "Playfair Display", Georgia, serif;
     }
 
     .hero-headline {
-        font-size: clamp(20px, 10vw, 100px);
+        font-size: clamp(60px, 10vw, 100px);
     }
 
     .content-container {
@@ -68,28 +76,63 @@ const {
         right: clamp(2rem, 5vw, 4rem);
     }
 
-    @media (max-width: 768px) {
-        .hero-headline {
-            font-size: clamp(45px, 10vw, 80px);
-        }
-        
+    @media (max-width: 1475px) {
         .content-container {
-            position: relative;
+            position: absolute;
             right: auto;
-            top: clamp(20px, 4vh, 40px);
-            margin: 0 auto;
-            padding: 0 2rem;
+            left: 1rem;
+            /* 
+              Push content below the h1:
+              h1 starts at ~8vh from top, headline is ~3 lines at 10vw each (0.88 line-height).
+              At 1475px: font-size = 10vw = 147.5px, 3 lines × 147.5 × 0.88 ≈ 389px, plus the 8vh top offset.
+              Using a calc that mirrors the h1 positioning.
+            */
+            top: calc(clamp(60px, 8vh, 100px) + 3 * clamp(60px, 10vw, 100px) * 0.88 + 1.5rem);
+            max-width: calc(100% - 2rem);
+            padding: 0 1rem 0 0;
         }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 768px) {
         .hero-headline {
-            font-size: clamp(32px, 12vw, 60px);
-        }
-        
-        .content-container {
-            top: clamp(10px, 2vh, 20px);
-            padding: 0 1rem;
+            font-size: clamp(60px, 10vw, 60px);
         }
     }
+    @media (max-width: 1475px) {
+        .hero-headline {
+            font-size: clamp(60px, 10vw, 60px);
+        }
+    }
+
+    @media (max-width: 635px) {
+        .hero-headline {
+            font-size: clamp(40px, 12vw, 20px);
+        }
+        
+    }
 </style>
+
+<script>
+    function alignContentBelowHeadline() {
+        const content = document.querySelector('.content-container') as HTMLElement;
+        if (!content) return;
+
+        if (window.innerWidth > 1475 || window.innerWidth <= 768) {
+            content.style.top = ''; // clear any inline style, let CSS take over
+            return;
+        }
+
+        const headline = document.getElementById('hero-headline');
+        const section = headline?.closest('section');
+        if (!headline || !section) return;
+
+        const headlineRect = headline.getBoundingClientRect();
+        const sectionRect = section.getBoundingClientRect();
+
+        const topOffset = (headlineRect.top - sectionRect.top) + headlineRect.height + 24;
+        content.style.top = `${topOffset}px`;
+    }
+
+    alignContentBelowHeadline();
+    window.addEventListener('resize', alignContentBelowHeadline);
+</script>
