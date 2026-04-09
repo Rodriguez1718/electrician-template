@@ -1,0 +1,191 @@
+---
+export interface Props {
+  sectionTag?: string;
+  title?: string;
+  highlightedText?: string;
+  description?: string;
+  steps?: Array<{
+    number: string;
+    title: string;
+    description: string;
+    icon: string;
+    color: 'primary' | 'secondary' | 'accent' | 'red';
+  }>;
+}
+
+const {
+  sectionTag = "OUR PROCESS",
+  title = "Ground-Up Construction Process",
+  highlightedText = "Construction Process",
+  description = "From initial consultation to final inspection, we follow a proven process to ensure your electrical construction project is completed on time, within budget, and to the highest standards.",
+  steps = [
+    {
+      number: "01",
+      title: "Design & Planning",
+      description: "We work with architects and engineers to create comprehensive electrical plans that meet all code requirements and project specifications.",
+      icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2"/><polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2"/><line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="2"/><line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="2"/><polyline points="10,9 9,9 8,9" stroke="currentColor" stroke-width="2"/></svg>',
+      color: 'primary'
+    },
+    {
+      number: "02",
+      title: "Permits & Approvals",
+      description: "We handle all permit applications and work with local authorities to ensure full compliance with electrical codes and regulations.",
+      icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"/><polyline points="9,12 10,13 15,8" stroke="currentColor" stroke-width="2"/></svg>',
+      color: 'secondary'
+    },
+    {
+      number: "03",
+      title: "Installation & Wiring",
+      description: "Our skilled electricians install all electrical systems, from main panels to outlets, following the approved plans and timeline.",
+      icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2"/></svg>',
+      color: 'accent'
+    },
+    {
+      number: "04",
+      title: "Testing & Inspection",
+      description: "Comprehensive testing and final inspections ensure everything meets safety standards and is ready for occupancy.",
+      icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="9,12 10,13 15,8" stroke="currentColor" stroke-width="2"/></svg>',
+      color: 'red'
+    }
+  ]
+} = Astro.props;
+
+const getColorClasses = (color: 'primary' | 'secondary' | 'accent' | 'red') => {
+  const colors = {
+    primary: {
+      bg: 'bg-brand-primary/20',
+      text: 'text-brand-primary',
+      border: 'border-brand-primary'
+    },
+    secondary: {
+      bg: 'bg-brand-secondary/20',
+      text: 'text-brand-secondary',
+      border: 'border-brand-secondary'
+    },
+    accent: {
+      bg: 'bg-brand-accent/20',
+      text: 'text-brand-accent',
+      border: 'border-brand-accent'
+    },
+    red: {
+      bg: 'bg-red-500/20',
+      text: 'text-red-600',
+      border: 'border-red-500'
+    }
+  };
+  return colors[color] || colors.primary;
+};
+---
+
+<section class="py-20 bg-black text-white relative overflow-hidden rounded-bottom">
+  <div class="max-w-7xl mx-auto px-6 relative">
+    
+    <!-- Decorative Image Behind Content -->
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0">
+      <img 
+        src="/images/bitepower.png" 
+        alt="Decorative electrical element" 
+        class="w-[500px] h-[500px] object-cover opacity-30 blur-sm scale-150"
+      />
+    </div>
+    
+    <!-- Section Header -->
+    <div class="text-center mb-16 relative z-10">
+      <p class="text-brand-accent font-helvetica text-sm uppercase tracking-wider mb-4">
+        {sectionTag}
+      </p>
+      <h2 class="text-4xl lg:text-5xl font-asap-condensed uppercase tracking-wide font-bold text-white mb-6">
+        {highlightedText ? (
+          <Fragment>
+            {title.split(highlightedText)[0]}
+            <span class="text-brand-secondary">{highlightedText}</span>
+            {title.split(highlightedText)[1]}
+          </Fragment>
+        ) : title}
+      </h2>
+      <p class="text-lg text-white/80 font-helvetica leading-relaxed max-w-3xl mx-auto">
+        {description}
+      </p>
+    </div>
+
+    <!-- Process Steps -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+      {steps.map((step, index) => {
+        const colorClasses = getColorClasses(step.color);
+        return (
+          <div class="relative group">
+            <!-- Connecting Line (hidden on last item) -->
+            {index < steps.length - 1 && (
+              <div class="hidden lg:block absolute top-16 left-full w-full h-0.5 bg-white/20 z-0" style="transform: translateX(-50%);"></div>
+            )}
+            
+            <!-- Step Card -->
+            <div class="relative z-10 text-center">
+              <!-- Step Number -->
+              <div class={`inline-flex items-center justify-center w-16 h-16 rounded-full ${colorClasses.bg} ${colorClasses.border} border-2 mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                <span class={`text-xl font-bold font-asap-condensed ${colorClasses.text}`}>
+                  {step.number}
+                </span>
+              </div>
+              
+              <!-- Icon -->
+              <div class={`inline-flex items-center justify-center w-12 h-12 rounded-full ${colorClasses.bg} mb-4 ${colorClasses.text}`}>
+                <div set:html={step.icon}></div>
+              </div>
+              
+              <!-- Content -->
+              <h3 class="text-xl font-asap-condensed uppercase tracking-wide font-bold text-white mb-3">
+                {step.title}
+              </h3>
+              <p class="text-white/70 font-helvetica text-sm leading-relaxed">
+                {step.description}
+              </p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Rounded bottom section */
+  .rounded-bottom {
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
+
+  /* Responsive border radius */
+  @media (min-width: 640px) {
+    .rounded-bottom {
+      border-bottom-left-radius: 100px;
+      border-bottom-right-radius: 100px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .rounded-bottom {
+      border-bottom-left-radius: 150px;
+      border-bottom-right-radius: 150px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .rounded-bottom {
+      border-bottom-left-radius: 200px;
+      border-bottom-right-radius: 200px;
+    }
+  }
+
+  /* Alternative curved bottom using clip-path for more dramatic curve */
+  .rounded-bottom::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: inherit;
+    clip-path: ellipse(100% 100% at 50% 0%);
+  }
+</style>
