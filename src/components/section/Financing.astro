@@ -73,7 +73,7 @@ import Button from "../ui/Button.astro";
         
         <div class="space-y-6">
           <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-6 h-6 bg-brand-accent rounded-full flex items-center justify-center mt-1">
+            <div class="flex-shrink-0 w-6 h-6 bg-brand-primary rounded-full flex items-center justify-center mt-1">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
                 <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -82,7 +82,7 @@ import Button from "../ui/Button.astro";
           </div>
 
           <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-6 h-6 bg-brand-accent rounded-full flex items-center justify-center mt-1">
+            <div class="flex-shrink-0 w-6 h-6 bg-brand-primary rounded-full flex items-center justify-center mt-1">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
                 <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -91,7 +91,7 @@ import Button from "../ui/Button.astro";
           </div>
 
           <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-6 h-6 bg-brand-accent rounded-full flex items-center justify-center mt-1">
+            <div class="flex-shrink-0 w-6 h-6 bg-brand-primary rounded-full flex items-center justify-center mt-1">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
                 <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -100,7 +100,7 @@ import Button from "../ui/Button.astro";
           </div>
 
           <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-6 h-6 bg-brand-accent rounded-full flex items-center justify-center mt-1">
+            <div class="flex-shrink-0 w-6 h-6 bg-brand-primary rounded-full flex items-center justify-center mt-1">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
                 <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -112,73 +112,91 @@ import Button from "../ui/Button.astro";
     </div>
 
     <!-- How to Apply Section -->
-    <div class="bg-white rounded-2xl p-8 shadow-lg mb-8">
-      <h3 class="text-2xl font-asap-condensed uppercase tracking-wide font-bold text-center mb-12 text-gray-900">
-        How to Apply
-      </h3>
+    <div class="relative mb-8">
+      <div class="text-center mb-12">
+        <h3 class="text-2xl font-asap-condensed uppercase tracking-wide font-bold text-gray-900 mb-4">
+          How to Apply
+        </h3>
+        <p class="text-gray-600 font-helvetica max-w-2xl mx-auto">
+          Getting started with financing is simple. Follow these three easy steps to make your electrical project affordable.
+        </p>
+      </div>
       
-      <div class="grid md:grid-cols-3 gap-8">
-        <!-- Step 1 -->
-        <div class="text-center relative">
-          <div class="w-16 h-16 bg-brand-primary rounded-full flex items-center justify-center mx-auto mb-6">
-            <span class="text-white font-helvetica font-bold text-xl">1</span>
-          </div>
-          <div class="w-12 h-12 bg-brand-accent rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-white">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h4 class="font-helvetica font-semibold text-gray-900 mb-2">
-            Contact Our Team
-          </h4>
-          <p class="text-gray-600 text-sm font-helvetica">
-            Discuss your electrical needs and project requirements with our experts.
-          </p>
+      <!-- Process Flow -->
+      <div class="relative max-w-4xl mx-auto">
+        <!-- Connection Line -->
+        <div class="hidden md:block absolute top-16 left-1/2 transform -translate-x-1/2 w-full max-w-2xl">
+          <div class="h-0.5 bg-gradient-to-r from-brand-primary via-brand-accent to-brand-secondary"></div>
         </div>
+        
+        <div class="grid md:grid-cols-3 gap-8 relative">
+          <!-- Step 1 -->
+          <div class="text-center group">
+            <div class="relative mb-6">
+              <div class="w-20 h-20 bg-black rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-white">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="absolute -top-2 -right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md border-2 border-brand-primary">
+                <span class="text-brand-primary font-helvetica font-bold text-sm">1</span>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <h4 class="font-helvetica font-bold text-gray-900 mb-3 text-lg">
+                Contact Our Team
+              </h4>
+              <p class="text-gray-600 text-sm font-helvetica leading-relaxed">
+                Call us or fill out our online form to discuss your electrical project and financing needs.
+              </p>
+            </div>
+          </div>
 
-        <!-- Step 2 -->
-        <div class="text-center relative">
-          <div class="w-16 h-16 bg-brand-primary rounded-full flex items-center justify-center mx-auto mb-6">
-            <span class="text-white font-helvetica font-bold text-xl">2</span>
+          <!-- Step 2 -->
+          <div class="text-center group">
+            <div class="relative mb-6">
+              <div class="w-20 h-20 bg-black rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-white">
+                  <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="absolute -top-2 -right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md border-2 border-brand-accent">
+                <span class="text-brand-accent font-helvetica font-bold text-sm">2</span>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <h4 class="font-helvetica font-bold text-gray-900 mb-3 text-lg">
+                Quick Application
+              </h4>
+              <p class="text-gray-600 text-sm font-helvetica leading-relaxed">
+                Complete a simple application process and get approved for financing in minutes.
+              </p>
+            </div>
           </div>
-          <div class="w-12 h-12 bg-brand-accent rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-white">
-              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h4 class="font-helvetica font-semibold text-gray-900 mb-2">
-            Choose Your Plan
-          </h4>
-          <p class="text-gray-600 text-sm font-helvetica">
-            Select a financing plan that works best for your budget and timeline.
-          </p>
-        </div>
 
-        <!-- Step 3 -->
-        <div class="text-center relative">
-          <div class="w-16 h-16 bg-brand-primary rounded-full flex items-center justify-center mx-auto mb-6">
-            <span class="text-white font-helvetica font-bold text-xl">3</span>
+          <!-- Step 3 -->
+          <div class="text-center group">
+            <div class="relative mb-6">
+              <div class="w-20 h-20 bg-black rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-white">
+                  <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="absolute -top-2 -right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md border-2 border-brand-secondary">
+                <span class="text-brand-secondary font-helvetica font-bold text-sm">3</span>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <h4 class="font-helvetica font-bold text-gray-900 mb-3 text-lg">
+                Start Your Project
+              </h4>
+              <p class="text-gray-600 text-sm font-helvetica leading-relaxed">
+                Once approved, we'll schedule your electrical work and you can pay over time.
+              </p>
+            </div>
           </div>
-          <div class="w-12 h-12 bg-brand-accent rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-white">
-              <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h4 class="font-helvetica font-semibold text-gray-900 mb-2">
-            Enjoy Quality Service
-          </h4>
-          <p class="text-gray-600 text-sm font-helvetica">
-            Get high-quality electrical services without the financial strain.
-          </p>
         </div>
       </div>
-    </div>
-
-    <!-- CTA -->
-    <div class="text-center">
-      <Button variant="primary" size="lg" href="/contact">
-        Get Started Today
-      </Button>
     </div>
   </div>
 </section>

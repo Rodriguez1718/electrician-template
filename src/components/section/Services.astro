@@ -1,6 +1,12 @@
 ---
 import Card from "../ui/Card.astro";
 
+export interface Props {
+  showGradientOverlay?: boolean;
+}
+
+const { showGradientOverlay = true } = Astro.props;
+
 interface Service {
   name: string;
   icon: string;
@@ -68,15 +74,23 @@ async function loadServicesFromMarkdownFiles(): Promise<ServiceCategory[]> {
       
       const services: Service[] = [];
       
+      // Custom slug mappings for specific services
+      const slugMappings: Record<string, string> = {
+        'ground-up-electrical-construction': 'ground-up-construction'
+      };
+      
       for (const [path, module] of serviceFiles) {
         const frontmatter = (module as any).frontmatter || {};
         const fileName = path.split('/').pop()?.replace('.md', '') || '';
+        
+        // Use custom slug mapping if available, otherwise use filename
+        const slug = slugMappings[fileName] || fileName;
         
         services.push({
           name: frontmatter.title || fileName,
           icon: frontmatter.icon || '⚡',
           description: frontmatter.description || '',
-          slug: `${tabConstant.id}/${fileName}`
+          slug: slug
         });
       }
       
@@ -104,7 +118,9 @@ const serviceCategories = await loadServicesFromMarkdownFiles();
 <section class="py-20 bg-white relative overflow-hidden">
 
   <!-- Gradient overlay at bottom for seamless transition -->
-  <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-gray-50 z-10"></div>
+  {showGradientOverlay && (
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-gray-50 z-10"></div>
+  )}
 
   <div class="max-w-7xl mx-auto px-6 relative z-20">
     <!-- Section header -->
@@ -123,17 +139,17 @@ const serviceCategories = await loadServicesFromMarkdownFiles();
     <!-- Services tabs and content -->
     <div class="mb-16">
       <!-- Tab navigation -->
-      <div class="flex flex-wrap justify-center mb-12 bg-black rounded-2xl p-2 max-w-4xl mx-auto">
+      <div class="grid grid-cols-2 sm:flex sm:flex-wrap justify-center mb-12 bg-black rounded-2xl p-2 max-w-4xl mx-auto gap-1 sm:gap-0">
         {serviceCategories.map((category, index) => (
           <button 
-            class={`service-tab flex-1 min-w-0 px-4 py-4 rounded-xl font-helvetica font-semibold text-sm transition-all duration-300 ${index === 0 ? 'active' : ''}`}
+            class={`service-tab sm:flex-1 min-w-0 px-2 sm:px-4 py-3 sm:py-4 rounded-xl font-helvetica font-semibold text-xs sm:text-sm transition-all duration-300 ${index === 0 ? 'active' : ''}`}
             data-category={category.id}
             data-color={category.tabColor}
           >
-            <div class="flex items-center justify-center gap-2">
-              <span class="text-lg" set:html={category.icon}></span>
-              <span class="hidden sm:inline">{category.title}</span>
-              <span class="sm:hidden">{category.title.split(' ')[0]}</span>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2">
+              <span class="text-lg sm:text-lg" set:html={category.icon}></span>
+              <span class="hidden md:inline">{category.title}</span>
+              <span class="md:hidden text-center text-xs leading-tight">{category.title.split(' ')[0]}</span>
             </div>
           </button>
         ))}

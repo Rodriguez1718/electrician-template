@@ -1,4 +1,10 @@
 ---
+export interface Props {
+  roundedBottom?: boolean;
+}
+
+const { roundedBottom = false } = Astro.props;
+
 const coupons = [
   {
     title: "New Customer Special",
@@ -39,7 +45,7 @@ const coupons = [
 ];
 ---
 
-<section class="py-16 bg-black">
+<section class={`py-16 bg-black relative ${roundedBottom ? 'rounded-bottom' : ''}`}>
   <div class="max-w-7xl mx-auto px-6">
     <!-- Section header -->
     <div class="text-center mb-12">
@@ -133,5 +139,32 @@ const coupons = [
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   }
 
-  
+  /* Rounded bottom section */
+  .rounded-bottom {
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
+
+  /* Responsive border radius */
+  @media (min-width: 640px) {
+    .rounded-bottom {
+      border-bottom-left-radius: 100px;
+      border-bottom-right-radius: 100px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .rounded-bottom {
+      border-bottom-left-radius: 150px;
+      border-bottom-right-radius: 150px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .rounded-bottom {
+      border-bottom-left-radius: 200px;
+      border-bottom-right-radius: 200px;
+    }
+  }
+
 </style>

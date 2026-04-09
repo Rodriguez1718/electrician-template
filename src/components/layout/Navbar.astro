@@ -4,7 +4,6 @@ import Button from "../ui/Button.astro";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Service area", href: "/service-area" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -39,6 +38,21 @@ const currentPath = Astro.url.pathname;
               {link.label}
             </a>
           ))}
+          
+          <!-- Service Areas Dropdown -->
+          <div class="relative inline-block" id="desktop-service-areas-wrapper">
+            <button 
+              class="flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-full transition-colors" 
+              aria-expanded="false" 
+              aria-haspopup="true"
+              id="desktop-service-areas-btn"
+            >
+              Service Areas
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="transition-transform duration-200">
+                <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -47,6 +61,17 @@ const currentPath = Astro.url.pathname;
         Get Quote
       </Button>
     </div>
+
+    <!-- Service areas dropdown - outside nav-container to escape stacking context -->
+    <div 
+      class="fixed bg-white rounded-lg shadow-xl py-2 min-w-[160px] opacity-0 invisible transition-all duration-200 z-[999]" 
+      role="menu"
+      id="desktop-service-areas-menu"
+    >
+      <a href="/serviceAreas/denver" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline transition-colors" role="menuitem">
+        Denver
+      </a>
+    </div>
   </div>
 
   <!-- Tablet navbar (768px-1024px) - simplified layout -->
@@ -54,8 +79,8 @@ const currentPath = Astro.url.pathname;
     <div class="flex items-center justify-between max-w-5xl mx-auto">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-2 text-lg font-bold text-white no-underline">
-        <img src="/pitbull.png" alt="VoltBully Logo" class="w-7 h-7 object-contain" />
-        VoltBully
+        <img src="/voltbully1.png" alt="VoltBully Logo" class="w-7 h-7 object-contain" />
+        VOLTBULLY
       </a>
 
       <!-- Center nav links with glass background -->
@@ -74,6 +99,21 @@ const currentPath = Astro.url.pathname;
             {link.label}
           </a>
         ))}
+        
+        <!-- Service Areas Dropdown -->
+        <div class="relative inline-block" id="tablet-service-areas-wrapper">
+          <button 
+            class="flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-full transition-colors" 
+            aria-expanded="false" 
+            aria-haspopup="true"
+            id="tablet-service-areas-btn"
+          >
+            Service Areas
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="transition-transform duration-200">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
       </div>
 
       <!-- CTA Button -->
@@ -81,10 +121,21 @@ const currentPath = Astro.url.pathname;
         Get Quote
       </Button>
     </div>
+
+    <!-- Service areas dropdown - outside nav-container to escape stacking context -->
+    <div 
+      class="fixed bg-white rounded-lg shadow-xl py-2 min-w-[160px] opacity-0 invisible transition-all duration-200 z-[999]" 
+      role="menu"
+      id="tablet-service-areas-menu"
+    >
+      <a href="/serviceAreas/denver" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline transition-colors" role="menuitem">
+        Denver
+      </a>
+    </div>
   </div>
 
   <!-- Tablet Services dropdown (768px-1024px) -->
-  <div class="hidden md:block lg:hidden px-4 pb-4 transition-all duration-300" id="tablet-services-layer">
+  <div class="hidden md:block lg:hidden px-4 pb-4 transition-all duration-300 z-10" id="tablet-services-layer">
     <div class="max-w-5xl mx-auto flex justify-center">
       <div class="relative inline-block">
         <button 
@@ -100,7 +151,7 @@ const currentPath = Astro.url.pathname;
           </svg>
         </button>
         <div 
-          class="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white rounded-2xl shadow-xl py-4 min-w-[600px] opacity-0 invisible transition-all duration-200" 
+          class="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white rounded-2xl shadow-xl py-4 min-w-[600px] opacity-0 invisible transition-all duration-200 z-50" 
           role="menu"
           id="tablet-dropdown-menu"
         >
@@ -109,7 +160,7 @@ const currentPath = Astro.url.pathname;
             <div>
               <a href="/commercial" class="flex items-center gap-2 mb-3 no-underline group">
                 <div class="w-6 h-6 bg-brand-secondary/20 rounded-full flex items-center justify-center group-hover:bg-brand-secondary/30 transition-colors duration-300">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="text-brand-secondary">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="text-brand-secondary group-hover:text-brand-secondary transition-colors duration-300">
                     <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
                     <circle cx="9" cy="9" r="2" stroke="currentColor" stroke-width="2"/>
                   </svg>
@@ -130,7 +181,7 @@ const currentPath = Astro.url.pathname;
               
               <a href="/services/residential" class="flex items-center gap-2 mb-3 no-underline group">
                 <div class="w-6 h-6 bg-brand-primary/20 rounded-full flex items-center justify-center group-hover:bg-brand-primary/30 transition-colors duration-300">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="text-brand-primary">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="text-brand-primary group-hover:text-brand-primary transition-colors duration-300">
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/>
                     <polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="2"/>
                   </svg>
@@ -154,7 +205,7 @@ const currentPath = Astro.url.pathname;
             <div>
               <a href="/services/specialty" class="flex items-center gap-2 mb-3 no-underline group">
                 <div class="w-6 h-6 bg-brand-accent/20 rounded-full flex items-center justify-center group-hover:bg-brand-accent/30 transition-colors duration-300">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="text-brand-accent">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="text-brand-accent group-hover:text-brand-accent transition-colors duration-300">
                     <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </div>
@@ -199,16 +250,16 @@ const currentPath = Astro.url.pathname;
   </div>
 
   <!-- Mobile navbar (below 768px) - burger menu -->
-  <div class="md:hidden px-4 py-4">
+  <div class="md:hidden px-4 py-4 transition-all duration-300" id="mobile-navbar">
     <div class="flex items-center justify-between">
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-2 text-lg font-bold text-white no-underline">
-        <img src="/pitbull.png" alt="VoltBully Logo" class="w-7 h-7 object-contain" />
-        VoltBully
+      <a href="/" class="flex items-center gap-2 text-lg font-bold text-white no-underline transition-colors duration-300" id="mobile-logo">
+        <img src="/voltbully1.png" alt="VoltBully Logo" class="w-7 h-7 object-contain" />
+        VOLTBULLY
       </a>
 
       <!-- Burger menu button -->
-      <button class="p-2 text-white hover:text-gray-300 transition-colors" id="mobile-menu-btn">
+      <button class="p-2 text-white hover:text-gray-300 transition-colors duration-300" id="mobile-menu-btn">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" id="burger-icon">
           <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
@@ -220,7 +271,7 @@ const currentPath = Astro.url.pathname;
   </div>
 
   <!-- Desktop Services dropdown (1024px+) -->
-  <div class="hidden lg:block px-6 pb-4 transition-all duration-300" id="services-layer">
+  <div class="hidden lg:block px-6 pb-4 transition-all duration-300 z-10" id="services-layer">
     <div class="max-w-7xl mx-auto flex justify-center">
       <div class="relative inline-block">
         <button 
@@ -236,7 +287,7 @@ const currentPath = Astro.url.pathname;
           </svg>
         </button>
         <div 
-          class="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white rounded-2xl shadow-xl py-6 min-w-[800px] opacity-0 invisible transition-all duration-200" 
+          class="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white rounded-2xl shadow-xl py-6 min-w-[800px] opacity-0 invisible transition-all duration-200 z-50" 
           role="menu"
           id="dropdown-menu"
         >
@@ -245,12 +296,12 @@ const currentPath = Astro.url.pathname;
             <div>
               <a href="/commercial" class="flex items-center gap-2 mb-4 no-underline group">
                 <div class="w-8 h-8 bg-brand-secondary/20 rounded-full flex items-center justify-center group-hover:bg-brand-secondary/30 transition-colors duration-300">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-secondary">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-secondary group-hover:text-brand-secondary transition-colors duration-300">
                     <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
                     <circle cx="9" cy="9" r="2" stroke="currentColor" stroke-width="2"/>
                   </svg>
                 </div>
-                <h3 class="text-sm font-asap-condensed uppercase tracking-wide font-bold text-gray-900 group-hover:text-brand-secondary transition-colors duration-300">Commercial</h3>
+                <h3 class="text-sm font-asap-condensed uppercase tracking-wide font-bold text-gray-900 group-hover:text-[#2d7c6f] transition-colors duration-300">Commercial</h3>
               </a>
               <div class="space-y-2">
                 <a href="/services/ground-up-construction" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
@@ -272,12 +323,12 @@ const currentPath = Astro.url.pathname;
             <div>
               <a href="/services/residential" class="flex items-center gap-2 mb-4 no-underline group">
                 <div class="w-8 h-8 bg-brand-primary/20 rounded-full flex items-center justify-center group-hover:bg-brand-primary/30 transition-colors duration-300">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-primary">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-primary group-hover:text-brand-primary transition-colors duration-300">
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/>
                     <polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="2"/>
                   </svg>
                 </div>
-                <h3 class="text-sm font-asap-condensed uppercase tracking-wide font-bold text-gray-900 group-hover:text-brand-primary transition-colors duration-300">Residential</h3>
+                <h3 class="text-sm font-asap-condensed uppercase tracking-wide font-bold text-gray-900 group-hover:text-[#98d9a1] transition-colors duration-300">Residential</h3>
               </a>
               <div class="space-y-2">
                 <a href="/services/car-charging-stations" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
@@ -299,11 +350,11 @@ const currentPath = Astro.url.pathname;
             <div>
               <a href="/services/specialty" class="flex items-center gap-2 mb-4 no-underline group">
                 <div class="w-8 h-8 bg-brand-accent/20 rounded-full flex items-center justify-center group-hover:bg-brand-accent/30 transition-colors duration-300">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-accent">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-accent group-hover:text-brand-accent transition-colors duration-300">
                     <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </div>
-                <h3 class="text-sm font-asap-condensed uppercase tracking-wide font-bold text-gray-900 group-hover:text-brand-accent transition-colors duration-300">Specialty</h3>
+                <h3 class="text-sm font-asap-condensed uppercase tracking-wide font-bold text-gray-900 group-hover:text-[#61c4c5] transition-colors duration-300">Specialty</h3>
               </a>
               <div class="space-y-2">
                 <a href="/services/holiday-lighting" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
@@ -353,7 +404,7 @@ const currentPath = Astro.url.pathname;
   </div>
 
   <!-- Mobile menu -->
-  <div class="md:hidden bg-white/95 backdrop-blur-md border-t border-white/20 opacity-0 invisible transition-all duration-300 absolute top-full left-0 right-0" id="mobile-menu">
+  <div class="md:hidden bg-white/95 backdrop-blur-md border-t border-white/20 opacity-0 invisible transition-all duration-300 absolute top-full left-0 right-0 max-h-[calc(100vh-80px)] overflow-y-auto" id="mobile-menu">
     <div class="px-6 py-4 space-y-2">
       {navLinks.map((link) => (
         <a
@@ -369,6 +420,24 @@ const currentPath = Astro.url.pathname;
           {link.label}
         </a>
       ))}
+      
+      <!-- Service Areas in mobile menu -->
+      <div class="pt-2 border-t border-gray-200">
+        <button 
+          class="flex items-center justify-between w-full px-4 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors" 
+          id="mobile-service-areas-btn"
+        >
+          Service Areas
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="transition-transform duration-200">
+            <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="pl-4 opacity-0 invisible transition-all duration-200" id="mobile-service-areas-dropdown">
+          <a href="/serviceAreas/denver" class="block px-4 py-2 text-sm text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors">
+            Denver
+          </a>
+        </div>
+      </div>
       
       <!-- Services in mobile menu -->
       <div class="pt-2 border-t border-gray-200">
@@ -386,7 +455,7 @@ const currentPath = Astro.url.pathname;
           <div class="mb-4">
             <a href="/commercial" class="flex items-center gap-2 mb-2 no-underline group">
               <div class="w-5 h-5 bg-brand-secondary/20 rounded-full flex items-center justify-center group-hover:bg-brand-secondary/30 transition-colors duration-300">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" class="text-brand-secondary">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" class="text-brand-secondary group-hover:text-brand-secondary transition-colors duration-300">
                   <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
                   <circle cx="9" cy="9" r="2" stroke="currentColor" stroke-width="2"/>
                 </svg>
@@ -413,7 +482,7 @@ const currentPath = Astro.url.pathname;
           <div class="mb-4">
             <a href="/services/residential" class="flex items-center gap-2 mb-2 no-underline group">
               <div class="w-5 h-5 bg-brand-primary/20 rounded-full flex items-center justify-center group-hover:bg-brand-primary/30 transition-colors duration-300">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" class="text-brand-primary">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" class="text-brand-primary group-hover:text-brand-primary transition-colors duration-300">
                   <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/>
                   <polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="2"/>
                 </svg>
@@ -440,7 +509,7 @@ const currentPath = Astro.url.pathname;
           <div class="mb-4">
             <a href="/services/specialty" class="flex items-center gap-2 mb-2 no-underline group">
               <div class="w-5 h-5 bg-brand-accent/20 rounded-full flex items-center justify-center group-hover:bg-brand-accent/30 transition-colors duration-300">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" class="text-brand-accent">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" class="text-brand-accent group-hover:text-brand-accent transition-colors duration-300">
                   <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
@@ -594,53 +663,244 @@ const currentPath = Astro.url.pathname;
     }
   });
 
-  // Desktop scroll behavior - only for screens 1024px and above
-  function updateNavbar() {
-    // Only apply scroll animation on desktop (1024px+)
-    if (window.innerWidth < 1024) return;
+  // Mobile service areas dropdown
+  const mobileServiceAreasBtn = document.getElementById("mobile-service-areas-btn") as HTMLButtonElement;
+  const mobileServiceAreasDropdown = document.getElementById("mobile-service-areas-dropdown") as HTMLElement;
+  const mobileServiceAreasSvg = mobileServiceAreasBtn?.querySelector("svg") as SVGElement;
+
+  mobileServiceAreasBtn?.addEventListener("click", () => {
+    const isOpen = mobileServiceAreasDropdown.classList.contains("opacity-100");
     
-    const scrollY = window.scrollY;
-    const servicesLayer = document.getElementById("services-layer") as HTMLElement;
-    const navbarLogo = document.getElementById("navbar-logo") as HTMLElement;
-    const navbarCta = document.getElementById("navbar-cta") as HTMLElement;
-    const navContainer = document.getElementById("nav-container") as HTMLElement;
-    
-    if (scrollY > 50) {
-      // Scrolled state - expand pill and move elements inside
-      servicesLayer.classList.add("opacity-0", "invisible", "h-0", "pb-0");
-      
-      // Expand the pill significantly to accommodate logo and CTA
-      navContainer.style.paddingLeft = "10rem";
-      navContainer.style.paddingRight = "10rem";
-      
-      // Different translate values based on screen size
-      if (window.innerWidth >= 1440) {
-        // Large screens (1440px+) - use current values that work well
-        navbarLogo.style.transform = "translateX(340px)";
-        navbarCta.style.transform = "translateX(-340px)";
-      } else {
-        // Medium screens (1024px-1439px) - use smaller values
-        navbarLogo.style.transform = "translateX(220px)";
-        navbarCta.style.transform = "translateX(-220px)";
-      }
-      
-      navbarLogo.style.color = "#1f2937";
-      navbarLogo.style.fontSize = "1rem";
-      
+    if (isOpen) {
+      mobileServiceAreasDropdown.classList.remove("opacity-100", "visible");
+      mobileServiceAreasDropdown.classList.add("opacity-0", "invisible");
+      mobileServiceAreasSvg.classList.remove("rotate-180");
     } else {
-      // Top state - reset to compact pill
-      servicesLayer.classList.remove("opacity-0", "invisible", "h-0", "pb-0");
+      mobileServiceAreasDropdown.classList.remove("opacity-0", "invisible");
+      mobileServiceAreasDropdown.classList.add("opacity-100", "visible");
+      mobileServiceAreasSvg.classList.add("rotate-180");
+    }
+  });
+
+  // Desktop Service Areas dropdown functionality - hover
+  const desktopServiceAreasBtn = document.getElementById("desktop-service-areas-btn") as HTMLButtonElement;
+  const desktopServiceAreasMenu = document.getElementById("desktop-service-areas-menu") as HTMLElement;
+  const desktopServiceAreasSvg = desktopServiceAreasBtn?.querySelector("svg") as SVGElement;
+  const desktopServiceAreasContainer = desktopServiceAreasBtn?.parentElement as HTMLElement;
+
+  let desktopServiceAreasTimeout: number;
+
+  // Function to position the dropdown below the button
+  function positionDesktopServiceAreasDropdown() {
+    if (desktopServiceAreasBtn && desktopServiceAreasMenu) {
+      const buttonRect = desktopServiceAreasBtn.getBoundingClientRect();
+      const left = buttonRect.left + (buttonRect.width / 2);
+      const top = buttonRect.bottom + 8; // 8px gap
       
-      // Reset pill to original size
-      navContainer.style.paddingLeft = "1.5rem";
-      navContainer.style.paddingRight = "1.5rem";
+      desktopServiceAreasMenu.style.left = `${left}px`;
+      desktopServiceAreasMenu.style.top = `${top}px`;
+      desktopServiceAreasMenu.style.transform = 'translateX(-50%)';
+    }
+  }
+
+  // Function to show dropdown
+  function showDesktopServiceAreasDropdown() {
+    clearTimeout(desktopServiceAreasTimeout);
+    positionDesktopServiceAreasDropdown();
+    desktopServiceAreasMenu.classList.remove("opacity-0", "invisible");
+    desktopServiceAreasMenu.classList.add("opacity-100", "visible");
+    desktopServiceAreasSvg.classList.add("rotate-180");
+    desktopServiceAreasBtn.setAttribute("aria-expanded", "true");
+  }
+
+  // Function to hide dropdown
+  function hideDesktopServiceAreasDropdown() {
+    desktopServiceAreasTimeout = setTimeout(() => {
+      desktopServiceAreasMenu.classList.remove("opacity-100", "visible");
+      desktopServiceAreasMenu.classList.add("opacity-0", "invisible");
+      desktopServiceAreasSvg.classList.remove("rotate-180");
+      desktopServiceAreasBtn.setAttribute("aria-expanded", "false");
+    }, 150);
+  }
+
+  // Show desktop service areas dropdown on hover
+  desktopServiceAreasContainer?.addEventListener("mouseenter", showDesktopServiceAreasDropdown);
+
+  // Hide desktop service areas dropdown when leaving the container
+  desktopServiceAreasContainer?.addEventListener("mouseleave", hideDesktopServiceAreasDropdown);
+
+  // Keep dropdown open when hovering over it
+  desktopServiceAreasMenu?.addEventListener("mouseenter", () => {
+    clearTimeout(desktopServiceAreasTimeout);
+  });
+
+  // Hide dropdown when leaving the dropdown itself
+  desktopServiceAreasMenu?.addEventListener("mouseleave", hideDesktopServiceAreasDropdown);
+
+  // Tablet Service Areas dropdown functionality - hover
+  const tabletServiceAreasBtn = document.getElementById("tablet-service-areas-btn") as HTMLButtonElement;
+  const tabletServiceAreasMenu = document.getElementById("tablet-service-areas-menu") as HTMLElement;
+  const tabletServiceAreasSvg = tabletServiceAreasBtn?.querySelector("svg") as SVGElement;
+  const tabletServiceAreasContainer = tabletServiceAreasBtn?.parentElement as HTMLElement;
+
+  let tabletServiceAreasTimeout: number;
+
+  // Function to position the dropdown below the button
+  function positionTabletServiceAreasDropdown() {
+    if (tabletServiceAreasBtn && tabletServiceAreasMenu) {
+      const buttonRect = tabletServiceAreasBtn.getBoundingClientRect();
+      const left = buttonRect.left + (buttonRect.width / 2);
+      const top = buttonRect.bottom + 8; // 8px gap
       
-      // Reset logo and CTA positions
-      navbarLogo.style.transform = "translateX(0)";
-      navbarLogo.style.color = "#ffffff";
-      navbarLogo.style.fontSize = "1.25rem";
+      tabletServiceAreasMenu.style.left = `${left}px`;
+      tabletServiceAreasMenu.style.top = `${top}px`;
+      tabletServiceAreasMenu.style.transform = 'translateX(-50%)';
+    }
+  }
+
+  // Function to show dropdown
+  function showTabletServiceAreasDropdown() {
+    clearTimeout(tabletServiceAreasTimeout);
+    positionTabletServiceAreasDropdown();
+    tabletServiceAreasMenu.classList.remove("opacity-0", "invisible");
+    tabletServiceAreasMenu.classList.add("opacity-100", "visible");
+    tabletServiceAreasSvg.classList.add("rotate-180");
+    tabletServiceAreasBtn.setAttribute("aria-expanded", "true");
+  }
+
+  // Function to hide dropdown
+  function hideTabletServiceAreasDropdown() {
+    tabletServiceAreasTimeout = setTimeout(() => {
+      tabletServiceAreasMenu.classList.remove("opacity-100", "visible");
+      tabletServiceAreasMenu.classList.add("opacity-0", "invisible");
+      tabletServiceAreasSvg.classList.remove("rotate-180");
+      tabletServiceAreasBtn.setAttribute("aria-expanded", "false");
+    }, 150);
+  }
+
+  // Show tablet service areas dropdown on hover
+  tabletServiceAreasContainer?.addEventListener("mouseenter", showTabletServiceAreasDropdown);
+
+  // Hide tablet service areas dropdown when leaving the container
+  tabletServiceAreasContainer?.addEventListener("mouseleave", hideTabletServiceAreasDropdown);
+
+  // Keep dropdown open when hovering over it
+  tabletServiceAreasMenu?.addEventListener("mouseenter", () => {
+    clearTimeout(tabletServiceAreasTimeout);
+  });
+
+  // Hide tablet dropdown when leaving the dropdown itself
+  tabletServiceAreasMenu?.addEventListener("mouseleave", hideTabletServiceAreasDropdown);
+
+  // Keep tablet services dropdown open when hovering over it
+  tabletDropdownMenu?.addEventListener("mouseenter", () => {
+    clearTimeout(tabletHoverTimeout);
+  });
+
+  // Hide tablet services dropdown when leaving the dropdown itself
+  tabletDropdownMenu?.addEventListener("mouseleave", () => {
+    tabletHoverTimeout = setTimeout(() => {
+      tabletDropdownMenu.classList.remove("opacity-100", "visible");
+      tabletDropdownMenu.classList.add("opacity-0", "invisible");
+      tabletSvg.classList.remove("rotate-180");
+      tabletServiceBtn.setAttribute("aria-expanded", "false");
+    }, 150);
+  });
+
+  // Keep desktop services dropdown open when hovering over it
+  dropdownMenu?.addEventListener("mouseenter", () => {
+    clearTimeout(hoverTimeout);
+  });
+
+  // Hide desktop services dropdown when leaving the dropdown itself
+  dropdownMenu?.addEventListener("mouseleave", () => {
+    hoverTimeout = setTimeout(() => {
+      dropdownMenu.classList.remove("opacity-100", "visible");
+      dropdownMenu.classList.add("opacity-0", "invisible");
+      svg.classList.remove("rotate-180");
+      serviceBtn.setAttribute("aria-expanded", "false");
+    }, 150);
+  });
+
+  // Navbar scroll behavior for all screen sizes
+  function updateNavbar() {
+    const scrollY = window.scrollY;
+    
+    if (window.innerWidth >= 1024) {
+      // Desktop scroll behavior (1024px+)
+      const servicesLayer = document.getElementById("services-layer") as HTMLElement;
+      const navbarLogo = document.getElementById("navbar-logo") as HTMLElement;
+      const navbarCta = document.getElementById("navbar-cta") as HTMLElement;
+      const navContainer = document.getElementById("nav-container") as HTMLElement;
       
-      navbarCta.style.transform = "translateX(0)";
+      if (scrollY > 50) {
+        // Scrolled state - expand pill and move elements inside
+        servicesLayer.classList.add("opacity-0", "invisible", "h-0", "pb-0");
+        
+        // Expand the pill significantly to accommodate logo and CTA
+        navContainer.style.paddingLeft = "10rem";
+        navContainer.style.paddingRight = "10rem";
+        
+        // Different translate values based on screen size
+        if (window.innerWidth >= 1440) {
+          // Large screens (1440px+) - use current values that work well
+          navbarLogo.style.transform = "translateX(340px)";
+          navbarCta.style.transform = "translateX(-340px)";
+        } else {
+          // Medium screens (1024px-1439px) - use smaller values
+          navbarLogo.style.transform = "translateX(220px)";
+          navbarCta.style.transform = "translateX(-220px)";
+        }
+        
+        navbarLogo.style.color = "#1f2937";
+        navbarLogo.style.fontSize = "1rem";
+        
+      } else {
+        // Top state - reset to compact pill
+        servicesLayer.classList.remove("opacity-0", "invisible", "h-0", "pb-0");
+        
+        // Reset pill to original size
+        navContainer.style.paddingLeft = "1.5rem";
+        navContainer.style.paddingRight = "1.5rem";
+        
+        // Reset logo and CTA positions
+        navbarLogo.style.transform = "translateX(0)";
+        navbarLogo.style.color = "#ffffff";
+        navbarLogo.style.fontSize = "1.25rem";
+        
+        navbarCta.style.transform = "translateX(0)";
+      }
+    } else {
+      // Mobile scroll behavior (below 1024px)
+      const mobileNavbar = document.getElementById("mobile-navbar") as HTMLElement;
+      const mobileLogo = document.getElementById("mobile-logo") as HTMLElement;
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn") as HTMLElement;
+      
+      if (scrollY > 50) {
+        // Scrolled state - white background, black text
+        mobileNavbar.style.backgroundColor = "rgba(255, 255, 255, 0.95)";
+        mobileNavbar.style.backdropFilter = "blur(12px)";
+        mobileNavbar.style.borderBottom = "1px solid rgba(0, 0, 0, 0.1)";
+        
+        if (mobileLogo) {
+          mobileLogo.style.color = "#000000";
+        }
+        if (mobileMenuBtn) {
+          mobileMenuBtn.style.color = "#000000";
+        }
+      } else {
+        // Top state - transparent background, white text
+        mobileNavbar.style.backgroundColor = "transparent";
+        mobileNavbar.style.backdropFilter = "none";
+        mobileNavbar.style.borderBottom = "none";
+        
+        if (mobileLogo) {
+          mobileLogo.style.color = "#ffffff";
+        }
+        if (mobileMenuBtn) {
+          mobileMenuBtn.style.color = "#ffffff";
+        }
+      }
     }
   }
 
@@ -654,6 +914,9 @@ const currentPath = Astro.url.pathname;
     const navbarLogo = document.getElementById("navbar-logo") as HTMLElement;
     const navbarCta = document.getElementById("navbar-cta") as HTMLElement;
     const navContainer = document.getElementById("nav-container") as HTMLElement;
+    const mobileNavbar = document.getElementById("mobile-navbar") as HTMLElement;
+    const mobileLogo = document.getElementById("mobile-logo") as HTMLElement;
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn") as HTMLElement;
     
     if (window.innerWidth < 1024) {
       // Reset desktop transforms on smaller screens
@@ -670,7 +933,20 @@ const currentPath = Astro.url.pathname;
         navContainer.style.paddingRight = "1.5rem";
       }
     } else {
-      updateNavbar();
+      // Reset mobile styles on larger screens
+      if (mobileNavbar) {
+        mobileNavbar.style.backgroundColor = "transparent";
+        mobileNavbar.style.backdropFilter = "none";
+        mobileNavbar.style.borderBottom = "none";
+      }
+      if (mobileLogo) {
+        mobileLogo.style.color = "#ffffff";
+      }
+      if (mobileMenuBtn) {
+        mobileMenuBtn.style.color = "#ffffff";
+      }
     }
+    
+    updateNavbar();
   });
 </script>

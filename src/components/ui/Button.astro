@@ -196,13 +196,14 @@ const tag = href ? "a" : "button";
   .btn--danger:active { background: #991b1b; }
 
   .btn--sketchy {
-    background: transparent;
-    color: #ffffff;
+    background: #98d9a1;
+    color: #000000;
     border: none;
     border-radius: 50%;
     position: relative;
     padding: 0;
-    overflow: visible;
+    overflow: hidden;
+    z-index: 1;
   }
 
   /* Sketchy button sizes */
@@ -224,33 +225,38 @@ const tag = href ? "a" : "button";
   .btn--sketchy::before {
     content: '';
     position: absolute;
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
+    width: 0;
+    height: 0;
+    background: var(--color-secondary);
     border-radius: 50%;
-    background: transparent;
-    border: 3px solid currentColor;
-    /* Hand-drawn sketchy effect using SVG path */
-    clip-path: polygon(
-      2% 8%, 8% 3%, 15% 1%, 25% 2%, 35% 1%, 45% 3%, 55% 2%, 65% 4%, 
-      75% 2%, 85% 5%, 92% 8%, 98% 15%, 99% 25%, 97% 35%, 99% 45%, 
-      96% 55%, 98% 65%, 95% 75%, 92% 85%, 88% 92%, 82% 97%, 75% 99%, 
-      65% 98%, 55% 99%, 45% 97%, 35% 98%, 25% 96%, 15% 98%, 8% 95%, 
-      3% 88%, 1% 82%, 2% 75%, 1% 65%, 3% 55%, 1% 45%, 4% 35%, 2% 25%, 
-      5% 15%
-    );
-    transition: all 0.3s ease;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: -1;
+    pointer-events: none;
+    left: var(--mouse-x, 50%);
+    top: var(--mouse-y, 50%);
   }
   
   .btn--sketchy:hover::before {
-    transform: scale(1.05);
-    opacity: 0.8;
+    width: 300%;
+    height: 300%;
   }
   
-  .btn--sketchy:active::before {
-    transform: scale(0.95);
+  .btn--sketchy:hover { 
+    background: #98d9a1; 
+    color: white; 
   }
+  
+  .btn--sketchy.btn--shrinking::before {
+    width: 0;
+    height: 0;
+  }
+  
+  .btn--sketchy.btn--shrinking {
+    color: #000000;
+  }
+  
+  .btn--sketchy:active { background: #1e40af; }
 
   /* Arrow icon for sketchy button - size based on button size */
   .btn--sketchy.btn--sm .arrow-icon {
@@ -283,17 +289,6 @@ const tag = href ? "a" : "button";
   }
 
   /* Border thickness based on size */
-  .btn--sketchy.btn--sm::before {
-    border-width: 2px;
-  }
-  
-  .btn--sketchy.btn--md::before {
-    border-width: 3px;
-  }
-  
-  .btn--sketchy.btn--lg::before {
-    border-width: 4px;
-  }
 
   /* ── Modifiers ── */
   .btn--full { width: 100%; }
@@ -309,7 +304,7 @@ const tag = href ? "a" : "button";
 <script>
   // Mouse tracking for button hover effects
   document.addEventListener('DOMContentLoaded', () => {
-    const trackableButtons = document.querySelectorAll('.btn--secondary, .btn--primary');
+    const trackableButtons = document.querySelectorAll('.btn--secondary, .btn--primary, .btn--sketchy');
     
     trackableButtons.forEach(button => {
       button.addEventListener('mouseenter', (e) => {
