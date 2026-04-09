@@ -21,153 +21,154 @@ import Button from "../ui/Button.astro";
       </p>
     </div>
 
-    <!-- Two Column Layout -->
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+    <!-- Main Content Layout -->
+    <div class="grid lg:grid-cols-3 gap-8 lg:gap-12">
       
-      <!-- Left Column - What's Included -->
-      <div class="bg-white rounded-2xl p-8 shadow-lg">
-        <h3 class="text-2xl font-asap-condensed uppercase tracking-wide font-bold text-gray-900 mb-8">
-          What's Included in Our Maintenance Plans?
-        </h3>
-        
-        <div class="space-y-6">
-          <!-- Annual Inspections -->
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-6 h-6 bg-brand-primary rounded-full flex items-center justify-center mt-1">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
-                <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <h4 class="font-helvetica font-semibold text-gray-900 mb-2">Annual Inspections</h4>
-              <p class="text-gray-600 text-sm font-helvetica">Comprehensive checkups to detect wear, code violations, or potential safety hazards.</p>
-            </div>
-          </div>
-
-          <!-- Panel Maintenance -->
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-6 h-6 bg-brand-primary rounded-full flex items-center justify-center mt-1">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
-                <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <h4 class="font-helvetica font-semibold text-gray-900 mb-2">Electrical Panel Cleaning</h4>
-              <p class="text-gray-600 text-sm font-helvetica">Keep your electrical panels clean and connections tight to maintain optimal performance.</p>
-            </div>
-          </div>
-
-          <!-- Outlet & Switch Testing -->
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-6 h-6 bg-brand-primary rounded-full flex items-center justify-center mt-1">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
-                <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <h4 class="font-helvetica font-semibold text-gray-900 mb-2">Outlet & Switch Testing</h4>
-              <p class="text-gray-600 text-sm font-helvetica">Test GFCI outlets, switches, and circuits to ensure proper operation and safety.</p>
-            </div>
-          </div>
-
-          <!-- Priority Scheduling -->
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-6 h-6 bg-brand-primary rounded-full flex items-center justify-center mt-1">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
-                <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <h4 class="font-helvetica font-semibold text-gray-900 mb-2">Priority Scheduling</h4>
-              <p class="text-gray-600 text-sm font-helvetica">Get fast-track service when you need it most.</p>
+      <!-- Left Column - What's Included (Larger) -->
+      <div class="lg:col-span-2">
+        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+          <h3 class="text-2xl font-asap-condensed uppercase tracking-wide font-bold text-gray-900 mb-8">
+            What's Included in Our Maintenance Plans?
+          </h3>
+          
+          <!-- Hero Image with Overlay Content -->
+          <div class="relative rounded-xl overflow-hidden">
+            <img 
+              src="/images/electrical.png" 
+              alt="Electrical maintenance and inspection" 
+              class="w-full h-80 object-cover"
+            />
+            <!-- Overlay with gradient -->
+            <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
+            
+            <!-- Content overlay -->
+            <div class="absolute inset-0 p-6 flex flex-col justify-center">
+              <div class="max-w-md">
+                <h4 class="text-white font-asap-condensed uppercase tracking-wide font-bold text-xl mb-4">
+                  Professional Electrical Care
+                </h4>
+                <p class="text-white/90 text-sm font-helvetica leading-relaxed mb-6">
+                  Our certified electricians provide comprehensive maintenance services to keep your electrical systems running safely and efficiently year-round.
+                </p>
+                
+                <!-- Key highlights -->
+                <div class="space-y-2">
+                  <div class="flex items-center gap-3">
+                    <div class="w-2 h-2 bg-brand-accent rounded-full"></div>
+                    <span class="text-white text-sm font-helvetica">Annual comprehensive inspections</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="w-2 h-2 bg-brand-accent rounded-full"></div>
+                    <span class="text-white text-sm font-helvetica">Panel cleaning & maintenance</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="w-2 h-2 bg-brand-accent rounded-full"></div>
+                    <span class="text-white text-sm font-helvetica">Outlet & switch testing</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="w-2 h-2 bg-brand-accent rounded-full"></div>
+                    <span class="text-white text-sm font-helvetica">Priority emergency scheduling</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Discounted Repairs -->
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-6 h-6 bg-brand-primary rounded-full flex items-center justify-center mt-1">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
-                <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <h4 class="font-helvetica font-semibold text-gray-900 mb-2">Discounted Repairs</h4>
-              <p class="text-gray-600 text-sm font-helvetica">Enjoy exclusive discounts on parts and labor for any required repairs.</p>
+          <!-- Additional Benefits -->
+          <div class="mt-8 p-6 bg-gradient-to-r from-brand-primary/10 to-brand-accent/10 rounded-xl">
+            <h4 class="font-helvetica font-semibold text-gray-900 mb-4">Plus Additional Benefits:</h4>
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div class="flex items-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-primary">
+                  <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="text-sm font-helvetica text-gray-700">Discounted Repairs</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-primary">
+                  <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="text-sm font-helvetica text-gray-700">24/7 Emergency Support</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-primary">
+                  <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="text-sm font-helvetica text-gray-700">Detailed Reports</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-primary">
+                  <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="text-sm font-helvetica text-gray-700">Warranty Protection</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Right Column - Why Invest -->
-      <div class="bg-white rounded-2xl p-8 shadow-lg">
-        <h3 class="text-2xl font-asap-condensed uppercase tracking-wide font-bold text-gray-900 mb-8">
-          Why Invest in a Maintenance Plan?
-        </h3>
-        
-        <div class="space-y-6 mb-8">
-          <!-- Prevent Issues -->
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-6 h-6 bg-brand-accent rounded-full flex items-center justify-center mt-1">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
+      <!-- Right Column - Pricing & Benefits -->
+      <div class="space-y-6">
+        <!-- Pricing Card -->
+        <div class="bg-black text-white rounded-2xl p-8 shadow-xl">
+          <div class="text-center mb-6">
+            <h3 class="text-xl font-asap-condensed uppercase tracking-wide font-bold mb-4">
+              Maintenance Plan
+            </h3>
+            <div class="text-4xl font-asap-condensed font-bold mb-2">$99<span class="text-xl opacity-80">/year</span></div>
+            <p class="text-sm opacity-90">Comprehensive electrical maintenance</p>
+          </div>
+          
+          <div class="space-y-3 mb-8">
+            <div class="flex items-center gap-3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-accent">
                 <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
+              <span class="text-sm">Annual comprehensive inspection</span>
             </div>
-            <div>
-              <p class="text-gray-600 text-sm font-helvetica">Prevent unexpected electrical failures and safety hazards.</p>
-            </div>
-          </div>
-
-          <!-- Lower Bills -->
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-6 h-6 bg-brand-accent rounded-full flex items-center justify-center mt-1">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
+            <div class="flex items-center gap-3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-accent">
                 <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
+              <span class="text-sm">Priority emergency service</span>
             </div>
-            <div>
-              <p class="text-gray-600 text-sm font-helvetica">Improve efficiency and lower utility bills through optimized performance.</p>
-            </div>
-          </div>
-
-          <!-- Extend Lifespan -->
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-6 h-6 bg-brand-accent rounded-full flex items-center justify-center mt-1">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
+            <div class="flex items-center gap-3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-accent">
                 <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-            </div>
-            <div>
-              <p class="text-gray-600 text-sm font-helvetica">Extend the lifespan of your electrical system and components.</p>
+              <span class="text-sm">15% discount on repairs</span>
             </div>
           </div>
 
-          <!-- Peace of Mind -->
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-6 h-6 bg-brand-accent rounded-full flex items-center justify-center mt-1">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
-                <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <p class="text-gray-600 text-sm font-helvetica">Gain peace of mind knowing your electrical system is in expert hands.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Value Proposition -->
-        <div class="bg-brand-accent/10 rounded-xl p-6 mb-6">
-          <div class="text-center">
-            <h4 class="font-helvetica font-bold text-brand-accent mb-2">Starting at</h4>
-            <div class="text-3xl font-asap-condensed font-bold text-gray-900 mb-2">$99<span class="text-lg text-gray-600">/year</span></div>
-            <p class="text-sm text-gray-600 font-helvetica">Comprehensive electrical maintenance for your peace of mind</p>
-          </div>
-        </div>
-
-        <!-- CTA Button -->
-        <div class="pt-4 flex justify-center">
-          <Button variant="primary" size="lg" href="/contact">
-            Learn More
+          <Button variant="primary" size="lg" href="/contact" class="w-full">
+            Get Started Today
           </Button>
+        </div>
+
+        <!-- Why Choose Card -->
+        <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+          <h4 class="font-asap-condensed uppercase tracking-wide font-bold text-gray-900 mb-4">
+            Why Maintenance Matters
+          </h4>
+          
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-brand-accent rounded-full mt-2"></div>
+              <p class="text-sm text-gray-600 font-helvetica">Prevent unexpected electrical failures and safety hazards</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-brand-accent rounded-full mt-2"></div>
+              <p class="text-sm text-gray-600 font-helvetica">Improve efficiency and lower utility bills</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-brand-accent rounded-full mt-2"></div>
+              <p class="text-sm text-gray-600 font-helvetica">Extend the lifespan of your electrical system</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 bg-brand-accent rounded-full mt-2"></div>
+              <p class="text-sm text-gray-600 font-helvetica">Peace of mind with expert care</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
