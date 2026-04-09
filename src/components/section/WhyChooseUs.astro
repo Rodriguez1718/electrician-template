@@ -1,25 +1,34 @@
 ---
 import Button from "../ui/Button.astro";
-const features = [
+const features: Array<{
+  icon: string;
+  title: string;
+  description: string;
+  color: 'primary' | 'secondary' | 'accent' | 'red';
+}> = [
   {
-    icon: "⚡",
+    icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     title: "Licensed & Certified Electricians",
-    description: "All our electricians are fully licensed, bonded, and insured with ongoing training in the latest electrical codes and safety standards."
+    description: "All our electricians are fully licensed, bonded, and insured with ongoing training in the latest electrical codes and safety standards.",
+    color: "primary"
   },
   {
-    icon: "🔧",
+    icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     title: "Transparent Pricing with No Surprises",
-    description: "Upfront pricing with detailed estimates. No hidden fees, no surprise charges - just honest, competitive rates for quality work."
+    description: "Upfront pricing with detailed estimates. No hidden fees, no surprise charges - just honest, competitive rates for quality work.",
+    color: "accent"
   },
   {
-    icon: "🛡️",
+    icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     title: "Safety-First Approach Guaranteed",
-    description: "We prioritize safety in every project with comprehensive inspections, code compliance, and industry-leading safety protocols."
+    description: "We prioritize safety in every project with comprehensive inspections, code compliance, and industry-leading safety protocols.",
+    color: "secondary"
   },
   {
-    icon: "⏰",
+    icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     title: "24/7 Emergency Response",
-    description: "Electrical emergencies don't wait. Our emergency response team is available around the clock for urgent electrical issues."
+    description: "Electrical emergencies don't wait. Our emergency response team is available around the clock for urgent electrical issues.",
+    color: "red"
   }
 ];
 ---
@@ -48,21 +57,34 @@ const features = [
 
         <!-- Features list -->
         <div class="space-y-6">
-          {features.map((feature) => (
-            <div class="flex items-start gap-4 group">
-              <div class="flex-shrink-0 w-12 h-12 bg-brand-primary/20 rounded-full flex items-center justify-center text-2xl group-hover:bg-brand-primary/30 transition-colors duration-300">
-                {feature.icon}
+          {features.map((feature) => {
+            const getColorClasses = (color: 'primary' | 'secondary' | 'accent' | 'red') => {
+              const colors = {
+                primary: { bg: 'bg-brand-primary/20', hoverBg: 'group-hover:bg-brand-primary/30', text: 'text-brand-primary', hoverText: 'group-hover:text-brand-primary' },
+                secondary: { bg: 'bg-brand-secondary/20', hoverBg: 'group-hover:bg-brand-secondary/30', text: 'text-brand-secondary', hoverText: 'group-hover:text-brand-secondary' },
+                accent: { bg: 'bg-brand-accent/20', hoverBg: 'group-hover:bg-brand-accent/30', text: 'text-brand-accent', hoverText: 'group-hover:text-brand-accent' },
+                red: { bg: 'bg-red-500/20', hoverBg: 'group-hover:bg-red-500/30', text: 'text-red-600', hoverText: 'group-hover:text-red-600' }
+              };
+              return colors[color] || colors.primary;
+            };
+            const colorClasses = getColorClasses(feature.color);
+            
+            return (
+              <div class="flex items-start gap-4 group">
+                <div class={`flex-shrink-0 w-12 h-12 ${colorClasses.bg} rounded-full flex items-center justify-center ${colorClasses.text} ${colorClasses.hoverBg} transition-colors duration-300`}>
+                  <div set:html={feature.icon}></div>
+                </div>
+                <div>
+                  <h3 class={`text-xl font-helvetica font-semibold text-white mb-2 ${colorClasses.hoverText} transition-colors duration-300`}>
+                    {feature.title}
+                  </h3>
+                  <p class="text-white/70 font-helvetica leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 class="text-xl font-helvetica font-semibold text-white mb-2 group-hover:text-brand-primary transition-colors duration-300">
-                  {feature.title}
-                </h3>
-                <p class="text-white/70 font-helvetica leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 

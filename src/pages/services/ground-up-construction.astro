@@ -1,0 +1,191 @@
+---
+import Hero2 from "../../components/section/Hero2.astro";
+import CommercialServices from "../../components/section/CommercialServices.astro";
+import ProcessTimeline from "../../components/section/ProcessTimeline.astro";
+import CommercialOffers from "../../components/section/CommercialOffers.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FAQ from "../../components/section/FAQ.astro";
+import CallToAction from "../../components/section/CallToAction.astro";
+import ServiceCoverage from "../../components/section/ServiceCoverage.astro";
+
+---
+
+<BaseLayout>
+    <div class="relative">
+        <!-- Background image for Hero2 -->
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('/images/wiring.png');"></div>
+        <!-- Dark overlay for better text readability -->
+        <div class="absolute inset-0 bg-black/40"></div>
+        
+        <Hero2 
+            line1="GROUND-UP"
+            line2="ELECTRICAL"
+            line3="CONSTRUCTION"
+            description="Professional commercial electrical services for businesses of all sizes."
+            buttonText="GET STARTED"
+            buttonHref="/contact"
+            phoneText="CALL FOR EMERGENCY"
+            backgroundImage="/images/work2.png"
+        />
+    </div>
+    <CommercialServices 
+        sectionTag="GROUND-UP ELECTRICAL CONSTRUCTION"
+        title="Complete Ground-Up Electrical Solutions"
+        highlightedText="Ground-Up Electrical"
+        description="we specialize in comprehensive electrical construction for new buildings and major renovations. From initial design to final inspection, our experienced team delivers complete electrical systems that meet all codes and exceed expectations."
+        companyName="VoltBully Electrical"
+        image={{
+            src: "/images/ground-elec.png",
+            alt: "Ground-up electrical construction work"
+        }}
+        badge={{
+            number: "100+",
+            text: ["Projects", "Completed"]
+        }}
+        features={[
+            {
+                title: "Complete System Design",
+                description: "Full electrical system planning from blueprints to implementation for new construction projects.",
+                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 3h18v18H3zM9 9h6v6H9z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+                color: 'primary'
+            },
+            {
+                title: "Code Compliance Guaranteed",
+                description: "All installations meet or exceed local electrical codes with proper permits and inspections.",
+                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+                color: 'secondary'
+            },
+            {
+                title: "Project Management",
+                description: "Coordinated scheduling with other trades to keep your construction project on timeline.",
+                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+                color: 'accent'
+            },
+            {
+                title: "Quality Materials",
+                description: "We use only premium electrical components and materials for long-lasting, reliable installations.",
+                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+                color: 'red'
+            }
+        ]}
+    />
+    
+    <ProcessTimeline />
+    <CommercialOffers />
+    <FAQ />
+    <CallToAction variant="light"/>
+    <ServiceCoverage />
+
+    <!-- Back to Top Button -->
+    <button 
+        id="backToTop" 
+        class="fixed bottom-8 right-8 w-12 h-12 bg-brand-primary text-black rounded-full shadow-lg hover:shadow-xl transition-all duration-300 opacity-0 invisible cursor-pointer overflow-hidden"
+        style="z-index: 9999; position: fixed;"
+        aria-label="Back to top"
+        type="button"
+    >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mx-auto">
+            <path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+</BaseLayout>
+
+<style>
+    #backToTop::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        background: var(--color-secondary);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.4s ease, height 0.4s ease;
+        z-index: 1;
+        pointer-events: none;
+        left: var(--mouse-x, 50%);
+        top: var(--mouse-y, 50%);
+    }
+    
+    #backToTop:hover::before {
+        width: 300%;
+        height: 300%;
+    }
+    
+    #backToTop:hover {
+        color: white;
+    }
+    
+    #backToTop.btn--shrinking::before {
+        width: 0;
+        height: 0;
+    }
+    
+    #backToTop.btn--shrinking {
+        color: black;
+    }
+    
+    #backToTop svg {
+        position: relative;
+        z-index: 2;
+        pointer-events: none;
+    }
+</style>
+
+<script>
+    // Back to top button functionality
+    const backToTopButton = document.getElementById('backToTop');
+    
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopButton?.classList.remove('opacity-0', 'invisible');
+            backToTopButton?.classList.add('opacity-100', 'visible');
+        } else {
+            backToTopButton?.classList.add('opacity-0', 'invisible');
+            backToTopButton?.classList.remove('opacity-100', 'visible');
+        }
+    });
+    
+    // Smooth scroll to top when clicked
+    backToTopButton?.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Mouse tracking for hover effect (same as Button component)
+    if (backToTopButton) {
+        backToTopButton.addEventListener('mouseenter', (e) => {
+            const mouseEvent = e as MouseEvent;
+            const rect = backToTopButton.getBoundingClientRect();
+            const x = mouseEvent.clientX - rect.left;
+            const y = mouseEvent.clientY - rect.top;
+            
+            // Set CSS custom properties for the circle position
+            backToTopButton.style.setProperty('--mouse-x', `${x}px`);
+            backToTopButton.style.setProperty('--mouse-y', `${y}px`);
+        });
+        
+        backToTopButton.addEventListener('mouseleave', (e) => {
+            const mouseEvent = e as MouseEvent;
+            const rect = backToTopButton.getBoundingClientRect();
+            const x = mouseEvent.clientX - rect.left;
+            const y = mouseEvent.clientY - rect.top;
+            
+            // Set the exit position for the circle to shrink from
+            backToTopButton.style.setProperty('--mouse-x', `${x}px`);
+            backToTopButton.style.setProperty('--mouse-y', `${y}px`);
+            
+            // Add a class to trigger the shrink animation
+            backToTopButton.classList.add('btn--shrinking');
+            
+            // Remove the class and reset after animation completes
+            setTimeout(() => {
+                backToTopButton.classList.remove('btn--shrinking');
+                backToTopButton.style.removeProperty('--mouse-x');
+                backToTopButton.style.removeProperty('--mouse-y');
+            }, 400); // Match the transition duration
+        });
+    }
+</script>

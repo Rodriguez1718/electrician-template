@@ -1,7 +1,7 @@
 ---
 id: "emergency"
 title: "Emergency Services"
-icon: '<svg fill="currentColor" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 6.5V4.5C15 3.57 14.43 3 13.5 3H10.5C9.57 3 9 3.57 9 4.5V6.5L3 7V9L9 8.5V21C9 21.55 9.45 22 10 22H14C14.55 22 15 21.55 15 21V8.5L21 9Z"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22"/></svg>'
+icon: <svg fill="currentColor" height="32px" width="32px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M503.581,384.894c-0.022-0.044-0.055-0.099-0.076-0.154L329.856,67.019c-31.962-58.479-115.761-58.469-147.717,0 L8.414,384.894c-25.098,47.048,8.96,103.943,62.361,103.943h370.443C494.543,488.837,528.715,432.01,503.581,384.894z M346.603,249.868L259.625,412.6c-8.272,15.449-31.909,9.513-31.909-7.935v-89.671h-75.53c-12.739,0-20.85-13.765-14.806-24.959 l92.589-171.155c8.294-15.372,31.641-9.35,31.641,8.012v98.206h70.143C344.478,225.099,352.569,238.689,346.603,249.868z"></path> </g> </g> </g></svg>
 color: "text-red-600"
 bgColor: "bg-red-50"
 borderColor: "border-red-200"

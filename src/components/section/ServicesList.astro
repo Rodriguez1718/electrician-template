@@ -37,15 +37,23 @@ async function loadServices(categoryName: string): Promise<Service[]> {
       path.includes(`/src/content/${categoryName}/`) && !path.endsWith('/index.md')
     );
     
+    // Custom slug mappings for specific services
+    const slugMappings: Record<string, string> = {
+      'ground-up-electrical-construction': 'ground-up-construction'
+    };
+    
     for (const [path, module] of serviceFiles) {
       const frontmatter = (module as any).frontmatter || {};
       const fileName = path.split('/').pop()?.replace('.md', '') || '';
+      
+      // Use custom slug mapping if available, otherwise use filename
+      const slug = slugMappings[fileName] || fileName;
       
       services.push({
         name: frontmatter.title || fileName,
         icon: frontmatter.icon || '⚡',
         description: frontmatter.description || '',
-        slug: `${categoryName}/${fileName}`
+        slug: slug
       });
     }
     
