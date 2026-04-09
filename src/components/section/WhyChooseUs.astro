@@ -25,12 +25,6 @@ const features = [
 ---
 
 <section class="py-20 bg-black relative overflow-hidden rounded-bottom">
-  <!-- Background pattern -->
-  <div class="absolute inset-0 opacity-5">
-    <div class="absolute top-10 left-10 w-32 h-32 border border-brand-primary rounded-full"></div>
-    <div class="absolute top-40 right-20 w-24 h-24 border border-brand-accent rounded-full"></div>
-    <div class="absolute bottom-20 left-1/4 w-16 h-16 border border-brand-secondary rounded-full"></div>
-  </div>
 
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -91,7 +85,7 @@ const features = [
         />
         
         <!-- Experience Badge -->
-        <div class="absolute top-1 right-3 border-2 border-brand-primary text-brand-primary p-4 rounded-lg shadow-lg">
+        <div class="absolute top-1 right-3 border-2 border-brand-primary text-brand-primary p-3 rounded-lg shadow-lg">
           <div class="text-center">
             <div class="text-3xl font-bold font-asap-condensed">15+</div>
             <div class="text-m font-asap-condensed uppercase tracking-wide">Years of</div>
@@ -115,8 +109,30 @@ const features = [
 <style>
   /* Rounded bottom section */
   .rounded-bottom {
-    border-bottom-left-radius: 500px;
-    border-bottom-right-radius: 500px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
+
+  /* Responsive border radius */
+  @media (min-width: 640px) {
+    .rounded-bottom {
+      border-bottom-left-radius: 100px;
+      border-bottom-right-radius: 100px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .rounded-bottom {
+      border-bottom-left-radius: 150px;
+      border-bottom-right-radius: 150px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .rounded-bottom {
+      border-bottom-left-radius: 200px;
+      border-bottom-right-radius: 200px;
+    }
   }
 
   /* Alternative curved bottom using clip-path for more dramatic curve */
