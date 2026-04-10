@@ -16,7 +16,7 @@ const currentPath = Astro.url.pathname;
     <div class="flex items-center justify-between max-w-7xl mx-auto">
       <!-- Logo - will move to center when scrolled -->
       <a href="/" class="flex items-center gap-2 text-xl font-asap-condensed font-bold text-white no-underline transition-all duration-500 ease-out relative z-20" id="navbar-logo">
-        <img src="/voltbully1.png" alt="VoltBully Logo" class="w-10 h-10 object-contain" />
+        <img src="/voltbully1.webp" alt="VoltBully Logo" class="w-10 h-10 object-contain" />
         VOLTBULLY
       </a>
 
@@ -79,7 +79,7 @@ const currentPath = Astro.url.pathname;
     <div class="flex items-center justify-between max-w-5xl mx-auto">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-2 text-lg font-bold text-white no-underline">
-        <img src="/voltbully1.png" alt="VoltBully Logo" class="w-7 h-7 object-contain" />
+        <img src="/voltbully1.webp" alt="VoltBully Logo" class="w-7 h-7 object-contain" />
         VOLTBULLY
       </a>
 
@@ -254,12 +254,17 @@ const currentPath = Astro.url.pathname;
     <div class="flex items-center justify-between">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-2 text-lg font-bold text-white no-underline transition-colors duration-300" id="mobile-logo">
-        <img src="/voltbully1.png" alt="VoltBully Logo" class="w-7 h-7 object-contain" />
+        <img src="/voltbully1.webp" alt="VoltBully Logo" class="w-7 h-7 object-contain" />
         VOLTBULLY
       </a>
 
       <!-- Burger menu button -->
-      <button class="p-2 text-white hover:text-gray-300 transition-colors duration-300" id="mobile-menu-btn">
+      <button 
+        class="p-2 text-white hover:text-gray-300 transition-colors duration-300" 
+        id="mobile-menu-btn"
+        aria-label="Toggle mobile menu"
+        aria-expanded="false"
+      >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" id="burger-icon">
           <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
@@ -636,11 +641,13 @@ const currentPath = Astro.url.pathname;
       mobileMenu.classList.add("opacity-0", "invisible");
       burgerIcon.classList.remove("hidden");
       closeIcon.classList.add("hidden");
+      mobileMenuBtn.setAttribute("aria-expanded", "false");
     } else {
       mobileMenu.classList.remove("opacity-0", "invisible");
       mobileMenu.classList.add("opacity-100", "visible");
       burgerIcon.classList.add("hidden");
       closeIcon.classList.remove("hidden");
+      mobileMenuBtn.setAttribute("aria-expanded", "true");
     }
   });
 
