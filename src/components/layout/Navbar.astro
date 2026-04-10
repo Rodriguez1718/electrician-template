@@ -14,15 +14,14 @@ const currentPath = Astro.url.pathname;
   <!-- Desktop navbar (1024px+) -->
   <div class="hidden lg:block px-6 py-4 relative">
     <div class="flex items-center justify-between max-w-7xl mx-auto">
-      <!-- Logo - will move to center when scrolled -->
+      <!-- Logo -->
       <a href="/" class="flex items-center gap-2 text-xl font-asap-condensed font-bold text-white no-underline transition-all duration-500 ease-out relative z-20" id="navbar-logo">
-        <img src="/voltbully1.webp" alt="VoltBully Logo" class="w-10 h-10 object-contain" />
+        <img src="/voltbully1.webp" alt="VoltBully Logo" class="w-10 h-10 object-contain" fetchpriority="high" />
         VOLTBULLY
       </a>
 
-      <!-- Center container - positioned absolutely in center, expands when scrolled -->
+      <!-- Center container -->
       <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center bg-white/80 backdrop-blur-md rounded-full px-6 py-2 shadow-lg border border-white/20 transition-all duration-500 ease-out" id="nav-container">
-        <!-- Nav links -->
         <div class="flex items-center">
           {navLinks.map((link) => (
             <a
@@ -56,13 +55,13 @@ const currentPath = Astro.url.pathname;
         </div>
       </div>
 
-      <!-- CTA Button - will move to center when scrolled -->
+      <!-- CTA Button -->
       <Button variant="primary" id="navbar-cta" class="transition-all duration-500 ease-out relative z-20">
         Get Quote
       </Button>
     </div>
 
-    <!-- Service areas dropdown - outside nav-container to escape stacking context -->
+    <!-- Service areas dropdown -->
     <div 
       class="fixed bg-white rounded-lg shadow-xl py-2 min-w-[160px] opacity-0 invisible transition-all duration-200 z-[999]" 
       role="menu"
@@ -74,16 +73,14 @@ const currentPath = Astro.url.pathname;
     </div>
   </div>
 
-  <!-- Tablet navbar (768px-1024px) - simplified layout -->
+  <!-- Tablet navbar (768px-1024px) -->
   <div class="hidden md:block lg:hidden px-4 py-4">
     <div class="flex items-center justify-between max-w-5xl mx-auto">
-      <!-- Logo -->
       <a href="/" class="flex items-center gap-2 text-lg font-bold text-white no-underline">
-        <img src="/voltbully1.webp" alt="VoltBully Logo" class="w-7 h-7 object-contain" />
+        <img src="/voltbully1.webp" alt="VoltBully Logo" class="w-7 h-7 object-contain" fetchpriority="high" />
         VOLTBULLY
       </a>
 
-      <!-- Center nav links with glass background -->
       <div class="flex items-center bg-white/80 backdrop-blur-md rounded-full px-4 py-2 shadow-lg border border-white/20">
         {navLinks.map((link) => (
           <a
@@ -100,7 +97,6 @@ const currentPath = Astro.url.pathname;
           </a>
         ))}
         
-        <!-- Service Areas Dropdown -->
         <div class="relative inline-block" id="tablet-service-areas-wrapper">
           <button 
             class="flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-full transition-colors" 
@@ -116,13 +112,11 @@ const currentPath = Astro.url.pathname;
         </div>
       </div>
 
-      <!-- CTA Button -->
       <Button variant="primary" size="sm">
         Get Quote
       </Button>
     </div>
 
-    <!-- Service areas dropdown - outside nav-container to escape stacking context -->
     <div 
       class="fixed bg-white rounded-lg shadow-xl py-2 min-w-[160px] opacity-0 invisible transition-all duration-200 z-[999]" 
       role="menu"
@@ -146,8 +140,7 @@ const currentPath = Astro.url.pathname;
         >
           Services
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="transition-transform duration-200">
-            <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
         <div 
@@ -156,11 +149,10 @@ const currentPath = Astro.url.pathname;
           id="tablet-dropdown-menu"
         >
           <div class="grid grid-cols-2 gap-4 p-4">
-            <!-- Commercial & Residential -->
             <div>
               <a href="/commercial" class="flex items-center gap-2 mb-3 no-underline group">
                 <div class="w-6 h-6 bg-brand-secondary/20 rounded-full flex items-center justify-center group-hover:bg-brand-secondary/30 transition-colors duration-300">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="text-brand-secondary group-hover:text-brand-secondary transition-colors duration-300">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="text-brand-secondary">
                     <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
                     <circle cx="9" cy="9" r="2" stroke="currentColor" stroke-width="2"/>
                   </svg>
@@ -168,20 +160,14 @@ const currentPath = Astro.url.pathname;
                 <h3 class="text-xs font-asap-condensed uppercase tracking-wide font-bold text-gray-900 group-hover:text-brand-secondary transition-colors duration-300">Commercial</h3>
               </a>
               <div class="space-y-1 mb-4">
-                <a href="/services/ground-up-construction" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  Ground-up Construction
-                </a>
-                <a href="/services/emergency-standby-power" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  Emergency & Standby Power
-                </a>
-                <a href="/services/commercial-hvac-electrical" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  Commercial HVAC
-                </a>
+                <a href="/services/ground-up-construction" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Ground-up Construction</a>
+                <a href="/services/emergency-standby-power" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Emergency & Standby Power</a>
+                <a href="/services/commercial-hvac-electrical" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Commercial HVAC</a>
               </div>
               
               <a href="/services/residential" class="flex items-center gap-2 mb-3 no-underline group">
                 <div class="w-6 h-6 bg-brand-primary/20 rounded-full flex items-center justify-center group-hover:bg-brand-primary/30 transition-colors duration-300">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="text-brand-primary group-hover:text-brand-primary transition-colors duration-300">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="text-brand-primary">
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/>
                     <polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="2"/>
                   </svg>
@@ -189,38 +175,25 @@ const currentPath = Astro.url.pathname;
                 <h3 class="text-xs font-asap-condensed uppercase tracking-wide font-bold text-gray-900 group-hover:text-brand-primary transition-colors duration-300">Residential</h3>
               </a>
               <div class="space-y-1">
-                <a href="/services/car-charging-stations" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  EV Charging Stations
-                </a>
-                <a href="/services/ceiling-fan" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  Ceiling Fan Installation
-                </a>
-                <a href="/services/gfci-outlets" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  GFCI Outlets
-                </a>
+                <a href="/services/car-charging-stations" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">EV Charging Stations</a>
+                <a href="/services/ceiling-fan" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Ceiling Fan Installation</a>
+                <a href="/services/gfci-outlets" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">GFCI Outlets</a>
               </div>
             </div>
 
-            <!-- Specialty & Emergency -->
             <div>
               <a href="/services/specialty" class="flex items-center gap-2 mb-3 no-underline group">
                 <div class="w-6 h-6 bg-brand-accent/20 rounded-full flex items-center justify-center group-hover:bg-brand-accent/30 transition-colors duration-300">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="text-brand-accent group-hover:text-brand-accent transition-colors duration-300">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="text-brand-accent">
                     <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </div>
                 <h3 class="text-xs font-asap-condensed uppercase tracking-wide font-bold text-gray-900 group-hover:text-brand-accent transition-colors duration-300">Specialty</h3>
               </a>
               <div class="space-y-1 mb-4">
-                <a href="/services/holiday-lighting" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  Holiday Lighting
-                </a>
-                <a href="/services/landscape-lighting" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  Landscape Lighting
-                </a>
-                <a href="/services/pool-spa-electrical" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  Pool & Spa Electrical
-                </a>
+                <a href="/services/holiday-lighting" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Holiday Lighting</a>
+                <a href="/services/landscape-lighting" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Landscape Lighting</a>
+                <a href="/services/pool-spa-electrical" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Pool & Spa Electrical</a>
               </div>
               
               <a href="/services/emergency" class="flex items-center gap-2 mb-3 no-underline group">
@@ -232,15 +205,9 @@ const currentPath = Astro.url.pathname;
                 <h3 class="text-xs font-asap-condensed uppercase tracking-wide font-bold text-gray-900 group-hover:text-red-600 transition-colors duration-300">Emergency</h3>
               </a>
               <div class="space-y-1">
-                <a href="/services/24-hour-emergency" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  24-hour Emergency
-                </a>
-                <a href="/services/hvac-emergency" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  HVAC Emergency
-                </a>
-                <a href="/services/water-heater-emergency" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  Water Heater Emergency
-                </a>
+                <a href="/services/24-hour-emergency" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">24-hour Emergency</a>
+                <a href="/services/hvac-emergency" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">HVAC Emergency</a>
+                <a href="/services/water-heater-emergency" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Water Heater Emergency</a>
               </div>
             </div>
           </div>
@@ -249,16 +216,14 @@ const currentPath = Astro.url.pathname;
     </div>
   </div>
 
-  <!-- Mobile navbar (below 768px) - burger menu -->
+  <!-- Mobile navbar (below 768px) -->
   <div class="md:hidden px-4 py-4 transition-all duration-300" id="mobile-navbar">
     <div class="flex items-center justify-between">
-      <!-- Logo -->
       <a href="/" class="flex items-center gap-2 text-lg font-bold text-white no-underline transition-colors duration-300" id="mobile-logo">
-        <img src="/voltbully1.webp" alt="VoltBully Logo" class="w-7 h-7 object-contain" />
+        <img src="/voltbully1.webp" alt="VoltBully Logo" class="w-7 h-7 object-contain" fetchpriority="high" />
         VOLTBULLY
       </a>
 
-      <!-- Burger menu button -->
       <button 
         class="p-2 text-white hover:text-gray-300 transition-colors duration-300" 
         id="mobile-menu-btn"
@@ -287,8 +252,7 @@ const currentPath = Astro.url.pathname;
         >
           Services
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="transition-transform duration-200">
-            <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
         <div 
@@ -297,11 +261,10 @@ const currentPath = Astro.url.pathname;
           id="dropdown-menu"
         >
           <div class="grid grid-cols-4 gap-6 p-6">
-            <!-- Commercial Electrical Services -->
             <div>
               <a href="/commercial" class="flex items-center gap-2 mb-4 no-underline group">
                 <div class="w-8 h-8 bg-brand-secondary/20 rounded-full flex items-center justify-center group-hover:bg-brand-secondary/30 transition-colors duration-300">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-secondary group-hover:text-brand-secondary transition-colors duration-300">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-secondary">
                     <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
                     <circle cx="9" cy="9" r="2" stroke="currentColor" stroke-width="2"/>
                   </svg>
@@ -309,26 +272,17 @@ const currentPath = Astro.url.pathname;
                 <h3 class="text-sm font-asap-condensed uppercase tracking-wide font-bold text-gray-900 group-hover:text-[#2d7c6f] transition-colors duration-300">Commercial</h3>
               </a>
               <div class="space-y-2">
-                <a href="/services/ground-up-construction" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  Ground-up Construction
-                </a>
-                <a href="/services/emergency-standby-power" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  Emergency & Standby Power
-                </a>
-                <a href="/services/commercial-hvac-electrical" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  Commercial HVAC
-                </a>
-                <a href="/services/commercial-electrical-panels" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  Electrical Panels
-                </a>
+                <a href="/services/ground-up-construction" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Ground-up Construction</a>
+                <a href="/services/emergency-standby-power" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Emergency & Standby Power</a>
+                <a href="/services/commercial-hvac-electrical" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Commercial HVAC</a>
+                <a href="/services/commercial-electrical-panels" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Electrical Panels</a>
               </div>
             </div>
 
-            <!-- Residential Electrical Services -->
             <div>
               <a href="/services/residential" class="flex items-center gap-2 mb-4 no-underline group">
                 <div class="w-8 h-8 bg-brand-primary/20 rounded-full flex items-center justify-center group-hover:bg-brand-primary/30 transition-colors duration-300">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-primary group-hover:text-brand-primary transition-colors duration-300">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-primary">
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/>
                     <polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="2"/>
                   </svg>
@@ -336,48 +290,30 @@ const currentPath = Astro.url.pathname;
                 <h3 class="text-sm font-asap-condensed uppercase tracking-wide font-bold text-gray-900 group-hover:text-[#98d9a1] transition-colors duration-300">Residential</h3>
               </a>
               <div class="space-y-2">
-                <a href="/services/car-charging-stations" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  EV Charging Stations
-                </a>
-                <a href="/services/ceiling-fan" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  Ceiling Fan Installation
-                </a>
-                <a href="/services/gfci-outlets" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  GFCI Outlets
-                </a>
-                <a href="/services/backup-generators" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  Backup Generators
-                </a>
+                <a href="/services/car-charging-stations" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">EV Charging Stations</a>
+                <a href="/services/ceiling-fan" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Ceiling Fan Installation</a>
+                <a href="/services/gfci-outlets" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">GFCI Outlets</a>
+                <a href="/services/backup-generators" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Backup Generators</a>
               </div>
             </div>
 
-            <!-- Specialty Services -->
             <div>
               <a href="/services/specialty" class="flex items-center gap-2 mb-4 no-underline group">
                 <div class="w-8 h-8 bg-brand-accent/20 rounded-full flex items-center justify-center group-hover:bg-brand-accent/30 transition-colors duration-300">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-accent group-hover:text-brand-accent transition-colors duration-300">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-accent">
                     <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </div>
                 <h3 class="text-sm font-asap-condensed uppercase tracking-wide font-bold text-gray-900 group-hover:text-[#61c4c5] transition-colors duration-300">Specialty</h3>
               </a>
               <div class="space-y-2">
-                <a href="/services/holiday-lighting" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  Holiday Lighting
-                </a>
-                <a href="/services/landscape-lighting" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  Landscape Lighting
-                </a>
-                <a href="/services/pool-spa-electrical" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  Pool & Spa Electrical
-                </a>
-                <a href="/services/property-management" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  Property Management
-                </a>
+                <a href="/services/holiday-lighting" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Holiday Lighting</a>
+                <a href="/services/landscape-lighting" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Landscape Lighting</a>
+                <a href="/services/pool-spa-electrical" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Pool & Spa Electrical</a>
+                <a href="/services/property-management" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Property Management</a>
               </div>
             </div>
 
-            <!-- Emergency -->
             <div>
               <a href="/services/emergency" class="flex items-center gap-2 mb-4 no-underline group">
                 <div class="w-8 h-8 bg-red-500/20 rounded-full flex items-center justify-center group-hover:bg-red-500/30 transition-colors duration-300">
@@ -388,18 +324,10 @@ const currentPath = Astro.url.pathname;
                 <h3 class="text-sm font-asap-condensed uppercase tracking-wide font-bold text-gray-900 group-hover:text-red-600 transition-colors duration-300">Emergency</h3>
               </a>
               <div class="space-y-2">
-                <a href="/services/24-hour-emergency" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  24-hour Emergency
-                </a>
-                <a href="/services/hvac-emergency" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  HVAC Emergency
-                </a>
-                <a href="/services/heating-emergency" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  Heating Emergency
-                </a>
-                <a href="/services/water-heater-emergency" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">
-                  Water Heater Emergency
-                </a>
+                <a href="/services/24-hour-emergency" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">24-hour Emergency</a>
+                <a href="/services/hvac-emergency" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">HVAC Emergency</a>
+                <a href="/services/heating-emergency" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Heating Emergency</a>
+                <a href="/services/water-heater-emergency" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Water Heater Emergency</a>
               </div>
             </div>
           </div>
@@ -426,7 +354,6 @@ const currentPath = Astro.url.pathname;
         </a>
       ))}
       
-      <!-- Service Areas in mobile menu -->
       <div class="pt-2 border-t border-gray-200">
         <button 
           class="flex items-center justify-between w-full px-4 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors" 
@@ -438,13 +365,10 @@ const currentPath = Astro.url.pathname;
           </svg>
         </button>
         <div class="pl-4 opacity-0 invisible transition-all duration-200" id="mobile-service-areas-dropdown">
-          <a href="/serviceAreas/denver" class="block px-4 py-2 text-sm text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors">
-            Denver
-          </a>
+          <a href="/serviceAreas/denver" class="block px-4 py-2 text-sm text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors">Denver</a>
         </div>
       </div>
       
-      <!-- Services in mobile menu -->
       <div class="pt-2 border-t border-gray-200">
         <button 
           class="flex items-center justify-between w-full px-4 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors" 
@@ -456,109 +380,73 @@ const currentPath = Astro.url.pathname;
           </svg>
         </button>
         <div class="pl-4 opacity-0 invisible transition-all duration-200" id="mobile-services-dropdown">
-          <!-- Commercial Electrical Services -->
           <div class="mb-4">
             <a href="/commercial" class="flex items-center gap-2 mb-2 no-underline group">
-              <div class="w-5 h-5 bg-brand-secondary/20 rounded-full flex items-center justify-center group-hover:bg-brand-secondary/30 transition-colors duration-300">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" class="text-brand-secondary group-hover:text-brand-secondary transition-colors duration-300">
+              <div class="w-5 h-5 bg-brand-secondary/20 rounded-full flex items-center justify-center">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" class="text-brand-secondary">
                   <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
                   <circle cx="9" cy="9" r="2" stroke="currentColor" stroke-width="2"/>
                 </svg>
               </div>
-              <h4 class="text-xs font-asap-condensed uppercase tracking-wide font-bold text-gray-900 group-hover:text-brand-secondary transition-colors duration-300">Commercial</h4>
+              <h4 class="text-xs font-asap-condensed uppercase tracking-wide font-bold text-gray-900">Commercial</h4>
             </a>
             <div class="space-y-1">
-              <a href="/services/ground-up-construction" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">
-                Ground-up Electrical Construction
-              </a>
-              <a href="/services/emergency-standby-power" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">
-                Emergency & Standby Power Systems
-              </a>
-              <a href="/services/commercial-hvac-electrical" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">
-                Commercial HVAC Electrical
-              </a>
-              <a href="/services/commercial-electrical-panels" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">
-                Commercial Electrical Panels
-              </a>
+              <a href="/services/ground-up-construction" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">Ground-up Electrical Construction</a>
+              <a href="/services/emergency-standby-power" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">Emergency & Standby Power Systems</a>
+              <a href="/services/commercial-hvac-electrical" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">Commercial HVAC Electrical</a>
+              <a href="/services/commercial-electrical-panels" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">Commercial Electrical Panels</a>
             </div>
           </div>
 
-          <!-- Residential Electrical Services -->
           <div class="mb-4">
             <a href="/services/residential" class="flex items-center gap-2 mb-2 no-underline group">
-              <div class="w-5 h-5 bg-brand-primary/20 rounded-full flex items-center justify-center group-hover:bg-brand-primary/30 transition-colors duration-300">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" class="text-brand-primary group-hover:text-brand-primary transition-colors duration-300">
+              <div class="w-5 h-5 bg-brand-primary/20 rounded-full flex items-center justify-center">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" class="text-brand-primary">
                   <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/>
                   <polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="2"/>
                 </svg>
               </div>
-              <h4 class="text-xs font-asap-condensed uppercase tracking-wide font-bold text-gray-900 group-hover:text-brand-primary transition-colors duration-300">Residential</h4>
+              <h4 class="text-xs font-asap-condensed uppercase tracking-wide font-bold text-gray-900">Residential</h4>
             </a>
             <div class="space-y-1">
-              <a href="/services/car-charging-stations" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">
-                Car Charging Stations/ EV
-              </a>
-              <a href="/services/ceiling-fan" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">
-                Ceiling Fan
-              </a>
-              <a href="/services/gfci-outlets" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">
-                GFCI Outlets
-              </a>
-              <a href="/services/backup-generators" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">
-                Backup Generators
-              </a>
+              <a href="/services/car-charging-stations" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">Car Charging Stations / EV</a>
+              <a href="/services/ceiling-fan" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">Ceiling Fan</a>
+              <a href="/services/gfci-outlets" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">GFCI Outlets</a>
+              <a href="/services/backup-generators" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">Backup Generators</a>
             </div>
           </div>
 
-          <!-- Specialty Services -->
           <div class="mb-4">
             <a href="/services/specialty" class="flex items-center gap-2 mb-2 no-underline group">
-              <div class="w-5 h-5 bg-brand-accent/20 rounded-full flex items-center justify-center group-hover:bg-brand-accent/30 transition-colors duration-300">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" class="text-brand-accent group-hover:text-brand-accent transition-colors duration-300">
+              <div class="w-5 h-5 bg-brand-accent/20 rounded-full flex items-center justify-center">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" class="text-brand-accent">
                   <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-              <h4 class="text-xs font-asap-condensed uppercase tracking-wide font-bold text-gray-900 group-hover:text-brand-accent transition-colors duration-300">Specialty</h4>
+              <h4 class="text-xs font-asap-condensed uppercase tracking-wide font-bold text-gray-900">Specialty</h4>
             </a>
             <div class="space-y-1">
-              <a href="/services/holiday-lighting" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">
-                Holiday Lighting Installation
-              </a>
-              <a href="/services/landscape-lighting" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">
-                Landscape Lighting
-              </a>
-              <a href="/services/pool-spa-electrical" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">
-                Pool & Spa Electrical
-              </a>
-              <a href="/services/property-management" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">
-                Property Management
-              </a>
+              <a href="/services/holiday-lighting" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">Holiday Lighting Installation</a>
+              <a href="/services/landscape-lighting" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">Landscape Lighting</a>
+              <a href="/services/pool-spa-electrical" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">Pool & Spa Electrical</a>
+              <a href="/services/property-management" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">Property Management</a>
             </div>
           </div>
 
-          <!-- Emergency -->
           <div>
             <a href="/services/emergency" class="flex items-center gap-2 mb-2 no-underline group">
-              <div class="w-5 h-5 bg-red-500/20 rounded-full flex items-center justify-center group-hover:bg-red-500/30 transition-colors duration-300">
+              <div class="w-5 h-5 bg-red-500/20 rounded-full flex items-center justify-center">
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" class="text-red-600">
                   <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-              <h4 class="text-xs font-asap-condensed uppercase tracking-wide font-bold text-gray-900 group-hover:text-red-600 transition-colors duration-300">Emergency</h4>
+              <h4 class="text-xs font-asap-condensed uppercase tracking-wide font-bold text-gray-900">Emergency</h4>
             </a>
             <div class="space-y-1">
-              <a href="/services/24-hour-emergency" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">
-                24-hour Emergency Service
-              </a>
-              <a href="/services/hvac-emergency" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">
-                HVAC
-              </a>
-              <a href="/services/heating-emergency" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">
-                Heating
-              </a>
-              <a href="/services/water-heater-emergency" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">
-                Water Heater
-              </a>
+              <a href="/services/24-hour-emergency" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">24-hour Emergency Service</a>
+              <a href="/services/hvac-emergency" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">HVAC</a>
+              <a href="/services/heating-emergency" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">Heating</a>
+              <a href="/services/water-heater-emergency" class="block px-2 py-1.5 text-xs text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors font-helvetica">Water Heater</a>
             </div>
           </div>
         </div>
@@ -571,146 +459,162 @@ const currentPath = Astro.url.pathname;
   </div>
 </nav>
 
+<script is:inline>
+  // Desktop Services dropdown - hover
+  var serviceBtn = document.getElementById("service-btn");
+  var dropdownMenu = document.getElementById("dropdown-menu");
+  var servicesContainer = serviceBtn && serviceBtn.parentElement;
+  var svg = serviceBtn && serviceBtn.querySelector("svg");
+  var hoverTimeout;
 
-<script>
-  // Dropdown functionality for desktop - hover instead of click
-  const serviceBtn = document.getElementById("service-btn") as HTMLButtonElement;
-  const dropdownMenu = document.getElementById("dropdown-menu") as HTMLElement;
-  const svg = serviceBtn?.querySelector("svg") as SVGElement;
-  const servicesContainer = serviceBtn?.parentElement as HTMLElement;
+  if (servicesContainer) {
+    servicesContainer.addEventListener("mouseenter", function() {
+      clearTimeout(hoverTimeout);
+      dropdownMenu.classList.remove("opacity-0", "invisible");
+      dropdownMenu.classList.add("opacity-100", "visible");
+      svg.classList.add("rotate-180");
+      serviceBtn.setAttribute("aria-expanded", "true");
+    });
+    servicesContainer.addEventListener("mouseleave", function() {
+      hoverTimeout = setTimeout(function() {
+        dropdownMenu.classList.remove("opacity-100", "visible");
+        dropdownMenu.classList.add("opacity-0", "invisible");
+        svg.classList.remove("rotate-180");
+        serviceBtn.setAttribute("aria-expanded", "false");
+      }, 150);
+    });
+  }
 
-  let hoverTimeout: number;
+  if (dropdownMenu) {
+    dropdownMenu.addEventListener("mouseenter", function() { clearTimeout(hoverTimeout); });
+    dropdownMenu.addEventListener("mouseleave", function() {
+      hoverTimeout = setTimeout(function() {
+        dropdownMenu.classList.remove("opacity-100", "visible");
+        dropdownMenu.classList.add("opacity-0", "invisible");
+        svg.classList.remove("rotate-180");
+        serviceBtn.setAttribute("aria-expanded", "false");
+      }, 150);
+    });
+  }
 
-  // Show dropdown on hover
-  servicesContainer?.addEventListener("mouseenter", () => {
-    clearTimeout(hoverTimeout);
-    dropdownMenu.classList.remove("opacity-0", "invisible");
-    dropdownMenu.classList.add("opacity-100", "visible");
-    svg.classList.add("rotate-180");
-    serviceBtn.setAttribute("aria-expanded", "true");
-  });
+  // Tablet Services dropdown - hover
+  var tabletServiceBtn = document.getElementById("tablet-service-btn");
+  var tabletDropdownMenu = document.getElementById("tablet-dropdown-menu");
+  var tabletServicesContainer = tabletServiceBtn && tabletServiceBtn.parentElement;
+  var tabletSvg = tabletServiceBtn && tabletServiceBtn.querySelector("svg");
+  var tabletHoverTimeout;
 
-  // Hide dropdown when leaving the entire container
-  servicesContainer?.addEventListener("mouseleave", () => {
-    hoverTimeout = setTimeout(() => {
-      dropdownMenu.classList.remove("opacity-100", "visible");
-      dropdownMenu.classList.add("opacity-0", "invisible");
-      svg.classList.remove("rotate-180");
-      serviceBtn.setAttribute("aria-expanded", "false");
-    }, 150); // Small delay to prevent flickering
-  });
+  if (tabletServicesContainer) {
+    tabletServicesContainer.addEventListener("mouseenter", function() {
+      clearTimeout(tabletHoverTimeout);
+      tabletDropdownMenu.classList.remove("opacity-0", "invisible");
+      tabletDropdownMenu.classList.add("opacity-100", "visible");
+      tabletSvg.classList.add("rotate-180");
+      tabletServiceBtn.setAttribute("aria-expanded", "true");
+    });
+    tabletServicesContainer.addEventListener("mouseleave", function() {
+      tabletHoverTimeout = setTimeout(function() {
+        tabletDropdownMenu.classList.remove("opacity-100", "visible");
+        tabletDropdownMenu.classList.add("opacity-0", "invisible");
+        tabletSvg.classList.remove("rotate-180");
+        tabletServiceBtn.setAttribute("aria-expanded", "false");
+      }, 150);
+    });
+  }
 
-  // Tablet dropdown functionality - hover instead of click
-  const tabletServiceBtn = document.getElementById("tablet-service-btn") as HTMLButtonElement;
-  const tabletDropdownMenu = document.getElementById("tablet-dropdown-menu") as HTMLElement;
-  const tabletSvg = tabletServiceBtn?.querySelector("svg") as SVGElement;
-  const tabletServicesContainer = tabletServiceBtn?.parentElement as HTMLElement;
+  if (tabletDropdownMenu) {
+    tabletDropdownMenu.addEventListener("mouseenter", function() { clearTimeout(tabletHoverTimeout); });
+    tabletDropdownMenu.addEventListener("mouseleave", function() {
+      tabletHoverTimeout = setTimeout(function() {
+        tabletDropdownMenu.classList.remove("opacity-100", "visible");
+        tabletDropdownMenu.classList.add("opacity-0", "invisible");
+        tabletSvg.classList.remove("rotate-180");
+        tabletServiceBtn.setAttribute("aria-expanded", "false");
+      }, 150);
+    });
+  }
 
-  let tabletHoverTimeout: number;
+  // Mobile menu
+  var mobileMenuBtn = document.getElementById("mobile-menu-btn");
+  var mobileMenu = document.getElementById("mobile-menu");
+  var burgerIcon = document.getElementById("burger-icon");
+  var closeIcon = document.getElementById("close-icon");
 
-  // Show tablet dropdown on hover
-  tabletServicesContainer?.addEventListener("mouseenter", () => {
-    clearTimeout(tabletHoverTimeout);
-    tabletDropdownMenu.classList.remove("opacity-0", "invisible");
-    tabletDropdownMenu.classList.add("opacity-100", "visible");
-    tabletSvg.classList.add("rotate-180");
-    tabletServiceBtn.setAttribute("aria-expanded", "true");
-  });
-
-  // Hide tablet dropdown when leaving the entire container
-  tabletServicesContainer?.addEventListener("mouseleave", () => {
-    tabletHoverTimeout = setTimeout(() => {
-      tabletDropdownMenu.classList.remove("opacity-100", "visible");
-      tabletDropdownMenu.classList.add("opacity-0", "invisible");
-      tabletSvg.classList.remove("rotate-180");
-      tabletServiceBtn.setAttribute("aria-expanded", "false");
-    }, 150); // Small delay to prevent flickering
-  });
-
-  // Mobile menu functionality
-  const mobileMenuBtn = document.getElementById("mobile-menu-btn") as HTMLButtonElement;
-  const mobileMenu = document.getElementById("mobile-menu") as HTMLElement;
-  const burgerIcon = document.getElementById("burger-icon") as unknown as SVGElement;
-  const closeIcon = document.getElementById("close-icon") as unknown as SVGElement;
-
-  mobileMenuBtn?.addEventListener("click", () => {
-    const isOpen = mobileMenu.classList.contains("opacity-100");
-    
-    if (isOpen) {
-      mobileMenu.classList.remove("opacity-100", "visible");
-      mobileMenu.classList.add("opacity-0", "invisible");
-      burgerIcon.classList.remove("hidden");
-      closeIcon.classList.add("hidden");
-      mobileMenuBtn.setAttribute("aria-expanded", "false");
-    } else {
-      mobileMenu.classList.remove("opacity-0", "invisible");
-      mobileMenu.classList.add("opacity-100", "visible");
-      burgerIcon.classList.add("hidden");
-      closeIcon.classList.remove("hidden");
-      mobileMenuBtn.setAttribute("aria-expanded", "true");
-    }
-  });
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener("click", function() {
+      var isOpen = mobileMenu.classList.contains("opacity-100");
+      if (isOpen) {
+        mobileMenu.classList.remove("opacity-100", "visible");
+        mobileMenu.classList.add("opacity-0", "invisible");
+        burgerIcon.classList.remove("hidden");
+        closeIcon.classList.add("hidden");
+        mobileMenuBtn.setAttribute("aria-expanded", "false");
+      } else {
+        mobileMenu.classList.remove("opacity-0", "invisible");
+        mobileMenu.classList.add("opacity-100", "visible");
+        burgerIcon.classList.add("hidden");
+        closeIcon.classList.remove("hidden");
+        mobileMenuBtn.setAttribute("aria-expanded", "true");
+      }
+    });
+  }
 
   // Mobile services dropdown
-  const mobileServiceBtn = document.getElementById("mobile-service-btn") as HTMLButtonElement;
-  const mobileServicesDropdown = document.getElementById("mobile-services-dropdown") as HTMLElement;
-  const mobileServiceSvg = mobileServiceBtn?.querySelector("svg") as SVGElement;
+  var mobileServiceBtn = document.getElementById("mobile-service-btn");
+  var mobileServicesDropdown = document.getElementById("mobile-services-dropdown");
+  var mobileServiceSvg = mobileServiceBtn && mobileServiceBtn.querySelector("svg");
 
-  mobileServiceBtn?.addEventListener("click", () => {
-    const isOpen = mobileServicesDropdown.classList.contains("opacity-100");
-    
-    if (isOpen) {
-      mobileServicesDropdown.classList.remove("opacity-100", "visible");
-      mobileServicesDropdown.classList.add("opacity-0", "invisible");
-      mobileServiceSvg.classList.remove("rotate-180");
-    } else {
-      mobileServicesDropdown.classList.remove("opacity-0", "invisible");
-      mobileServicesDropdown.classList.add("opacity-100", "visible");
-      mobileServiceSvg.classList.add("rotate-180");
-    }
-  });
+  if (mobileServiceBtn) {
+    mobileServiceBtn.addEventListener("click", function() {
+      var isOpen = mobileServicesDropdown.classList.contains("opacity-100");
+      if (isOpen) {
+        mobileServicesDropdown.classList.remove("opacity-100", "visible");
+        mobileServicesDropdown.classList.add("opacity-0", "invisible");
+        mobileServiceSvg.classList.remove("rotate-180");
+      } else {
+        mobileServicesDropdown.classList.remove("opacity-0", "invisible");
+        mobileServicesDropdown.classList.add("opacity-100", "visible");
+        mobileServiceSvg.classList.add("rotate-180");
+      }
+    });
+  }
 
   // Mobile service areas dropdown
-  const mobileServiceAreasBtn = document.getElementById("mobile-service-areas-btn") as HTMLButtonElement;
-  const mobileServiceAreasDropdown = document.getElementById("mobile-service-areas-dropdown") as HTMLElement;
-  const mobileServiceAreasSvg = mobileServiceAreasBtn?.querySelector("svg") as SVGElement;
+  var mobileServiceAreasBtn = document.getElementById("mobile-service-areas-btn");
+  var mobileServiceAreasDropdown = document.getElementById("mobile-service-areas-dropdown");
+  var mobileServiceAreasSvg = mobileServiceAreasBtn && mobileServiceAreasBtn.querySelector("svg");
 
-  mobileServiceAreasBtn?.addEventListener("click", () => {
-    const isOpen = mobileServiceAreasDropdown.classList.contains("opacity-100");
-    
-    if (isOpen) {
-      mobileServiceAreasDropdown.classList.remove("opacity-100", "visible");
-      mobileServiceAreasDropdown.classList.add("opacity-0", "invisible");
-      mobileServiceAreasSvg.classList.remove("rotate-180");
-    } else {
-      mobileServiceAreasDropdown.classList.remove("opacity-0", "invisible");
-      mobileServiceAreasDropdown.classList.add("opacity-100", "visible");
-      mobileServiceAreasSvg.classList.add("rotate-180");
-    }
-  });
+  if (mobileServiceAreasBtn) {
+    mobileServiceAreasBtn.addEventListener("click", function() {
+      var isOpen = mobileServiceAreasDropdown.classList.contains("opacity-100");
+      if (isOpen) {
+        mobileServiceAreasDropdown.classList.remove("opacity-100", "visible");
+        mobileServiceAreasDropdown.classList.add("opacity-0", "invisible");
+        mobileServiceAreasSvg.classList.remove("rotate-180");
+      } else {
+        mobileServiceAreasDropdown.classList.remove("opacity-0", "invisible");
+        mobileServiceAreasDropdown.classList.add("opacity-100", "visible");
+        mobileServiceAreasSvg.classList.add("rotate-180");
+      }
+    });
+  }
 
-  // Desktop Service Areas dropdown functionality - hover
-  const desktopServiceAreasBtn = document.getElementById("desktop-service-areas-btn") as HTMLButtonElement;
-  const desktopServiceAreasMenu = document.getElementById("desktop-service-areas-menu") as HTMLElement;
-  const desktopServiceAreasSvg = desktopServiceAreasBtn?.querySelector("svg") as SVGElement;
-  const desktopServiceAreasContainer = desktopServiceAreasBtn?.parentElement as HTMLElement;
+  // Desktop Service Areas dropdown - hover
+  var desktopServiceAreasBtn = document.getElementById("desktop-service-areas-btn");
+  var desktopServiceAreasMenu = document.getElementById("desktop-service-areas-menu");
+  var desktopServiceAreasSvg = desktopServiceAreasBtn && desktopServiceAreasBtn.querySelector("svg");
+  var desktopServiceAreasContainer = desktopServiceAreasBtn && desktopServiceAreasBtn.parentElement;
+  var desktopServiceAreasTimeout;
 
-  let desktopServiceAreasTimeout: number;
-
-  // Function to position the dropdown below the button
   function positionDesktopServiceAreasDropdown() {
     if (desktopServiceAreasBtn && desktopServiceAreasMenu) {
-      const buttonRect = desktopServiceAreasBtn.getBoundingClientRect();
-      const left = buttonRect.left + (buttonRect.width / 2);
-      const top = buttonRect.bottom + 8; // 8px gap
-      
-      desktopServiceAreasMenu.style.left = `${left}px`;
-      desktopServiceAreasMenu.style.top = `${top}px`;
-      desktopServiceAreasMenu.style.transform = 'translateX(-50%)';
+      var buttonRect = desktopServiceAreasBtn.getBoundingClientRect();
+      desktopServiceAreasMenu.style.left = (buttonRect.left + buttonRect.width / 2) + "px";
+      desktopServiceAreasMenu.style.top = (buttonRect.bottom + 8) + "px";
+      desktopServiceAreasMenu.style.transform = "translateX(-50%)";
     }
   }
 
-  // Function to show dropdown
   function showDesktopServiceAreasDropdown() {
     clearTimeout(desktopServiceAreasTimeout);
     positionDesktopServiceAreasDropdown();
@@ -720,9 +624,8 @@ const currentPath = Astro.url.pathname;
     desktopServiceAreasBtn.setAttribute("aria-expanded", "true");
   }
 
-  // Function to hide dropdown
   function hideDesktopServiceAreasDropdown() {
-    desktopServiceAreasTimeout = setTimeout(() => {
+    desktopServiceAreasTimeout = setTimeout(function() {
       desktopServiceAreasMenu.classList.remove("opacity-100", "visible");
       desktopServiceAreasMenu.classList.add("opacity-0", "invisible");
       desktopServiceAreasSvg.classList.remove("rotate-180");
@@ -730,42 +633,31 @@ const currentPath = Astro.url.pathname;
     }, 150);
   }
 
-  // Show desktop service areas dropdown on hover
-  desktopServiceAreasContainer?.addEventListener("mouseenter", showDesktopServiceAreasDropdown);
+  if (desktopServiceAreasContainer) {
+    desktopServiceAreasContainer.addEventListener("mouseenter", showDesktopServiceAreasDropdown);
+    desktopServiceAreasContainer.addEventListener("mouseleave", hideDesktopServiceAreasDropdown);
+  }
+  if (desktopServiceAreasMenu) {
+    desktopServiceAreasMenu.addEventListener("mouseenter", function() { clearTimeout(desktopServiceAreasTimeout); });
+    desktopServiceAreasMenu.addEventListener("mouseleave", hideDesktopServiceAreasDropdown);
+  }
 
-  // Hide desktop service areas dropdown when leaving the container
-  desktopServiceAreasContainer?.addEventListener("mouseleave", hideDesktopServiceAreasDropdown);
+  // Tablet Service Areas dropdown - hover
+  var tabletServiceAreasBtn = document.getElementById("tablet-service-areas-btn");
+  var tabletServiceAreasMenu = document.getElementById("tablet-service-areas-menu");
+  var tabletServiceAreasSvg = tabletServiceAreasBtn && tabletServiceAreasBtn.querySelector("svg");
+  var tabletServiceAreasContainer = tabletServiceAreasBtn && tabletServiceAreasBtn.parentElement;
+  var tabletServiceAreasTimeout;
 
-  // Keep dropdown open when hovering over it
-  desktopServiceAreasMenu?.addEventListener("mouseenter", () => {
-    clearTimeout(desktopServiceAreasTimeout);
-  });
-
-  // Hide dropdown when leaving the dropdown itself
-  desktopServiceAreasMenu?.addEventListener("mouseleave", hideDesktopServiceAreasDropdown);
-
-  // Tablet Service Areas dropdown functionality - hover
-  const tabletServiceAreasBtn = document.getElementById("tablet-service-areas-btn") as HTMLButtonElement;
-  const tabletServiceAreasMenu = document.getElementById("tablet-service-areas-menu") as HTMLElement;
-  const tabletServiceAreasSvg = tabletServiceAreasBtn?.querySelector("svg") as SVGElement;
-  const tabletServiceAreasContainer = tabletServiceAreasBtn?.parentElement as HTMLElement;
-
-  let tabletServiceAreasTimeout: number;
-
-  // Function to position the dropdown below the button
   function positionTabletServiceAreasDropdown() {
     if (tabletServiceAreasBtn && tabletServiceAreasMenu) {
-      const buttonRect = tabletServiceAreasBtn.getBoundingClientRect();
-      const left = buttonRect.left + (buttonRect.width / 2);
-      const top = buttonRect.bottom + 8; // 8px gap
-      
-      tabletServiceAreasMenu.style.left = `${left}px`;
-      tabletServiceAreasMenu.style.top = `${top}px`;
-      tabletServiceAreasMenu.style.transform = 'translateX(-50%)';
+      var buttonRect = tabletServiceAreasBtn.getBoundingClientRect();
+      tabletServiceAreasMenu.style.left = (buttonRect.left + buttonRect.width / 2) + "px";
+      tabletServiceAreasMenu.style.top = (buttonRect.bottom + 8) + "px";
+      tabletServiceAreasMenu.style.transform = "translateX(-50%)";
     }
   }
 
-  // Function to show dropdown
   function showTabletServiceAreasDropdown() {
     clearTimeout(tabletServiceAreasTimeout);
     positionTabletServiceAreasDropdown();
@@ -775,9 +667,8 @@ const currentPath = Astro.url.pathname;
     tabletServiceAreasBtn.setAttribute("aria-expanded", "true");
   }
 
-  // Function to hide dropdown
   function hideTabletServiceAreasDropdown() {
-    tabletServiceAreasTimeout = setTimeout(() => {
+    tabletServiceAreasTimeout = setTimeout(function() {
       tabletServiceAreasMenu.classList.remove("opacity-100", "visible");
       tabletServiceAreasMenu.classList.add("opacity-0", "invisible");
       tabletServiceAreasSvg.classList.remove("rotate-180");
@@ -785,181 +676,94 @@ const currentPath = Astro.url.pathname;
     }, 150);
   }
 
-  // Show tablet service areas dropdown on hover
-  tabletServiceAreasContainer?.addEventListener("mouseenter", showTabletServiceAreasDropdown);
+  if (tabletServiceAreasContainer) {
+    tabletServiceAreasContainer.addEventListener("mouseenter", showTabletServiceAreasDropdown);
+    tabletServiceAreasContainer.addEventListener("mouseleave", hideTabletServiceAreasDropdown);
+  }
+  if (tabletServiceAreasMenu) {
+    tabletServiceAreasMenu.addEventListener("mouseenter", function() { clearTimeout(tabletServiceAreasTimeout); });
+    tabletServiceAreasMenu.addEventListener("mouseleave", hideTabletServiceAreasDropdown);
+  }
 
-  // Hide tablet service areas dropdown when leaving the container
-  tabletServiceAreasContainer?.addEventListener("mouseleave", hideTabletServiceAreasDropdown);
-
-  // Keep dropdown open when hovering over it
-  tabletServiceAreasMenu?.addEventListener("mouseenter", () => {
-    clearTimeout(tabletServiceAreasTimeout);
-  });
-
-  // Hide tablet dropdown when leaving the dropdown itself
-  tabletServiceAreasMenu?.addEventListener("mouseleave", hideTabletServiceAreasDropdown);
-
-  // Keep tablet services dropdown open when hovering over it
-  tabletDropdownMenu?.addEventListener("mouseenter", () => {
-    clearTimeout(tabletHoverTimeout);
-  });
-
-  // Hide tablet services dropdown when leaving the dropdown itself
-  tabletDropdownMenu?.addEventListener("mouseleave", () => {
-    tabletHoverTimeout = setTimeout(() => {
-      tabletDropdownMenu.classList.remove("opacity-100", "visible");
-      tabletDropdownMenu.classList.add("opacity-0", "invisible");
-      tabletSvg.classList.remove("rotate-180");
-      tabletServiceBtn.setAttribute("aria-expanded", "false");
-    }, 150);
-  });
-
-  // Keep desktop services dropdown open when hovering over it
-  dropdownMenu?.addEventListener("mouseenter", () => {
-    clearTimeout(hoverTimeout);
-  });
-
-  // Hide desktop services dropdown when leaving the dropdown itself
-  dropdownMenu?.addEventListener("mouseleave", () => {
-    hoverTimeout = setTimeout(() => {
-      dropdownMenu.classList.remove("opacity-100", "visible");
-      dropdownMenu.classList.add("opacity-0", "invisible");
-      svg.classList.remove("rotate-180");
-      serviceBtn.setAttribute("aria-expanded", "false");
-    }, 150);
-  });
-
-  // Navbar scroll behavior for all screen sizes
+  // Navbar scroll behavior
   function updateNavbar() {
-    const scrollY = window.scrollY;
-    
+    var scrollY = window.scrollY;
+
     if (window.innerWidth >= 1024) {
-      // Desktop scroll behavior (1024px+)
-      const servicesLayer = document.getElementById("services-layer") as HTMLElement;
-      const navbarLogo = document.getElementById("navbar-logo") as HTMLElement;
-      const navbarCta = document.getElementById("navbar-cta") as HTMLElement;
-      const navContainer = document.getElementById("nav-container") as HTMLElement;
-      
+      var servicesLayer = document.getElementById("services-layer");
+      var navbarLogo = document.getElementById("navbar-logo");
+      var navbarCta = document.getElementById("navbar-cta");
+      var navContainer = document.getElementById("nav-container");
+
       if (scrollY > 50) {
-        // Scrolled state - expand pill and move elements inside
         servicesLayer.classList.add("opacity-0", "invisible", "h-0", "pb-0");
-        
-        // Expand the pill significantly to accommodate logo and CTA
         navContainer.style.paddingLeft = "10rem";
         navContainer.style.paddingRight = "10rem";
-        
-        // Different translate values based on screen size
-        if (window.innerWidth >= 1440) {
-          // Large screens (1440px+) - use current values that work well
-          navbarLogo.style.transform = "translateX(340px)";
-          navbarCta.style.transform = "translateX(-340px)";
-        } else {
-          // Medium screens (1024px-1439px) - use smaller values
-          navbarLogo.style.transform = "translateX(220px)";
-          navbarCta.style.transform = "translateX(-220px)";
-        }
-        
+        navbarLogo.style.transform = window.innerWidth >= 1440 ? "translateX(340px)" : "translateX(220px)";
+        navbarCta.style.transform = window.innerWidth >= 1440 ? "translateX(-340px)" : "translateX(-220px)";
         navbarLogo.style.color = "#1f2937";
         navbarLogo.style.fontSize = "1rem";
-        
       } else {
-        // Top state - reset to compact pill
         servicesLayer.classList.remove("opacity-0", "invisible", "h-0", "pb-0");
-        
-        // Reset pill to original size
         navContainer.style.paddingLeft = "1.5rem";
         navContainer.style.paddingRight = "1.5rem";
-        
-        // Reset logo and CTA positions
         navbarLogo.style.transform = "translateX(0)";
         navbarLogo.style.color = "#ffffff";
         navbarLogo.style.fontSize = "1.25rem";
-        
         navbarCta.style.transform = "translateX(0)";
       }
     } else {
-      // Mobile scroll behavior (below 1024px)
-      const mobileNavbar = document.getElementById("mobile-navbar") as HTMLElement;
-      const mobileLogo = document.getElementById("mobile-logo") as HTMLElement;
-      const mobileMenuBtn = document.getElementById("mobile-menu-btn") as HTMLElement;
-      
+      var mobileNavbar = document.getElementById("mobile-navbar");
+      var mobileLogo = document.getElementById("mobile-logo");
+      var mobileBtn = document.getElementById("mobile-menu-btn");
+
       if (scrollY > 50) {
-        // Scrolled state - white background, black text
         mobileNavbar.style.backgroundColor = "rgba(255, 255, 255, 0.95)";
         mobileNavbar.style.backdropFilter = "blur(12px)";
         mobileNavbar.style.borderBottom = "1px solid rgba(0, 0, 0, 0.1)";
-        
-        if (mobileLogo) {
-          mobileLogo.style.color = "#000000";
-        }
-        if (mobileMenuBtn) {
-          mobileMenuBtn.style.color = "#000000";
-        }
+        if (mobileLogo) mobileLogo.style.color = "#000000";
+        if (mobileBtn) mobileBtn.style.color = "#000000";
       } else {
-        // Top state - transparent background, white text
         mobileNavbar.style.backgroundColor = "transparent";
         mobileNavbar.style.backdropFilter = "none";
         mobileNavbar.style.borderBottom = "none";
-        
-        if (mobileLogo) {
-          mobileLogo.style.color = "#ffffff";
-        }
-        if (mobileMenuBtn) {
-          mobileMenuBtn.style.color = "#ffffff";
-        }
+        if (mobileLogo) mobileLogo.style.color = "#ffffff";
+        if (mobileBtn) mobileBtn.style.color = "#ffffff";
       }
     }
   }
 
-  // Initial call and scroll listener
   updateNavbar();
   window.addEventListener("scroll", updateNavbar, { passive: true });
-  
-  // Update on resize to handle breakpoint changes
-  window.addEventListener("resize", () => {
-    // Reset transforms when switching breakpoints
-    const navbarLogo = document.getElementById("navbar-logo") as HTMLElement;
-    const navbarCta = document.getElementById("navbar-cta") as HTMLElement;
-    const navContainer = document.getElementById("nav-container") as HTMLElement;
-    const mobileNavbar = document.getElementById("mobile-navbar") as HTMLElement;
-    const mobileLogo = document.getElementById("mobile-logo") as HTMLElement;
-    const mobileMenuBtn = document.getElementById("mobile-menu-btn") as HTMLElement;
-    
-    if (window.innerWidth < 1024) {
-      // Reset desktop transforms on smaller screens
-      if (navbarLogo) {
-        navbarLogo.style.transform = "translateX(0)";
-        navbarLogo.style.color = "#ffffff";
-        navbarLogo.style.fontSize = "1.25rem";
+
+  // Debounced resize listener
+  var resizeTimer;
+  window.addEventListener("resize", function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      var navbarLogo = document.getElementById("navbar-logo");
+      var navbarCta = document.getElementById("navbar-cta");
+      var navContainer = document.getElementById("nav-container");
+      var mobileNavbar = document.getElementById("mobile-navbar");
+      var mobileLogo = document.getElementById("mobile-logo");
+      var mobileBtn = document.getElementById("mobile-menu-btn");
+
+      if (window.innerWidth < 1024) {
+        if (navbarLogo) { navbarLogo.style.transform = "translateX(0)"; navbarLogo.style.color = "#ffffff"; navbarLogo.style.fontSize = "1.25rem"; }
+        if (navbarCta) navbarCta.style.transform = "translateX(0)";
+        if (navContainer) { navContainer.style.paddingLeft = "1.5rem"; navContainer.style.paddingRight = "1.5rem"; }
+      } else {
+        if (mobileNavbar) { mobileNavbar.style.backgroundColor = "transparent"; mobileNavbar.style.backdropFilter = "none"; mobileNavbar.style.borderBottom = "none"; }
+        if (mobileLogo) mobileLogo.style.color = "#ffffff";
+        if (mobileBtn) mobileBtn.style.color = "#ffffff";
       }
-      if (navbarCta) {
-        navbarCta.style.transform = "translateX(0)";
-      }
-      if (navContainer) {
-        navContainer.style.paddingLeft = "1.5rem";
-        navContainer.style.paddingRight = "1.5rem";
-      }
-    } else {
-      // Reset mobile styles on larger screens
-      if (mobileNavbar) {
-        mobileNavbar.style.backgroundColor = "transparent";
-        mobileNavbar.style.backdropFilter = "none";
-        mobileNavbar.style.borderBottom = "none";
-      }
-      if (mobileLogo) {
-        mobileLogo.style.color = "#ffffff";
-      }
-      if (mobileMenuBtn) {
-        mobileMenuBtn.style.color = "#ffffff";
-      }
-    }
-    
-    updateNavbar();
+
+      updateNavbar();
+    }, 100);
   });
 </script>
 
 <style>
-  /* Remove cursor pointer for custom cursor consistency */
   nav a,
   nav button {
     cursor: none;
