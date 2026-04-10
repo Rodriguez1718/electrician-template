@@ -8,14 +8,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     build: {
-      cssCodeSplit: true,
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            vendor: ['gsap']
-          }
-        }
-      }
+      cssCodeSplit: true
     }
   },
   build: {
