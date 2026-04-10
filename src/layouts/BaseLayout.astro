@@ -2,6 +2,20 @@
 import Footer from "../components/layout/Footer.astro";
 import Navbar from "../components/layout/Navbar.astro";
 import "../styles/global.css"
+
+export interface Props {
+	title?: string;
+	description?: string;
+	keywords?: string;
+	ogImage?: string;
+}
+
+const {
+	title = "VoltBully - Professional Electrical Services | Licensed Electricians",
+	description = "VoltBully provides professional electrical services including residential, commercial, and emergency electrical work. Licensed electricians serving your area with 24/7 emergency service, free estimates, and quality workmanship.",
+	keywords = "electrician, electrical services, residential electrical, commercial electrical, emergency electrical, licensed electrician, electrical repair, electrical installation, electrical contractor",
+	ogImage = "/voltbully1.png"
+} = Astro.props;
 ---
 
 <html lang="en">
@@ -10,6 +24,29 @@ import "../styles/global.css"
 		<link rel="icon" type="image/svg+xml" href="/voltbully1.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
+		
+		<!-- SEO Meta Tags -->
+		<meta name="description" content={description} />
+		<meta name="keywords" content={keywords} />
+		<meta name="author" content="VoltBully" />
+		<meta name="robots" content="index, follow" />
+		
+		<!-- Open Graph Meta Tags -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:site_name" content="VoltBully" />
+		
+		<!-- Twitter Card Meta Tags -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+		
+		<!-- Additional SEO -->
+		<link rel="canonical" href={Astro.url} />
 		
 		<!-- Resource hints -->
 		<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -30,7 +67,7 @@ import "../styles/global.css"
 		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap"></noscript>
 		
-		<title>VoltBully</title>
+		<title>{title}</title>
 		
 		<style>
 			html, body { 
@@ -343,5 +380,8 @@ import "../styles/global.css"
 				initPageTransitions();
 			});
 		</script>
+
+		<!-- VoltBully Animation System -->
+		<script src="/script.js" is:inline></script>
 	</body>
 </html>
