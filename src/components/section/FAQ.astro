@@ -134,6 +134,11 @@ const {
 </script>
 
 <style>
+  /* Remove cursor pointer for custom cursor consistency */
+  .faq-question, .faq-question *, .faq-item, .faq-item * {
+    cursor: none !important;
+  }
+  
   .faq-item.active .faq-question {
     background-color: #f9fafb;
   }

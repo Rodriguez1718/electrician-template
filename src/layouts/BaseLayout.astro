@@ -190,28 +190,19 @@ import "../styles/global.css"
 						
 						isHoveringClickable = isHovering;
 
+						// Kill all existing animations first to prevent conflicts
+						gsap.killTweensOf(elasticCursor);
+
 						if (isHovering) {
-							// Cool hover effect with multiple animations
+							// Cool hover effect with scaling and smooth shadow
 							gsap.to(elasticCursor, {
 								scale: 2.5,
 								backgroundColor: '#61c4c5',
 								border: '3px solid #000000',
+								boxShadow: '0 0 0 1px rgba(97, 196, 197, 0.3)',
 								duration: 0.4,
 								ease: 'back.out(1.7)',
 								force3D: true,
-							});
-
-							// Add enhanced smoothing for hover state
-							elasticCursor.style.filter = 'blur(0.5px)';
-							elasticCursor.style.transform += ' translateZ(0)';
-
-							// Add a pulsing effect
-							gsap.to(elasticCursor, {
-								scale: 2.8,
-								duration: 0.8,
-								ease: 'power2.inOut',
-								yoyo: true,
-								repeat: -1,
 							});
 
 							// Add rotation animation
@@ -224,15 +215,11 @@ import "../styles/global.css"
 
 						} else {
 							// Reset to normal state
-							gsap.killTweensOf(elasticCursor); // Kill all ongoing animations
-							
-							// Remove enhanced smoothing
-							elasticCursor.style.filter = 'none';
-							
 							gsap.to(elasticCursor, {
 								scale: 1,
 								backgroundColor: '#98d9a1',
 								border: 'none',
+								boxShadow: 'none',
 								rotation: 0,
 								duration: 0.5,
 								ease: 'back.out(1.2)',
@@ -244,8 +231,23 @@ import "../styles/global.css"
 					// Function to add event listeners to clickable elements
 					function addCursorListeners(): void {
 						document.querySelectorAll('a, button, [role="button"], input[type="button"], input[type="submit"]').forEach((element) => {
-							element.addEventListener('mouseenter', () => handleCursorHover(true));
-							element.addEventListener('mouseleave', () => handleCursorHover(false));
+							element.addEventListener('mouseenter', () => {
+								// Small delay to ensure proper state management
+								setTimeout(() => handleCursorHover(true), 10);
+							});
+							element.addEventListener('mouseleave', () => {
+								// Check if we're still over a clickable element
+								setTimeout(() => {
+									const elementUnderCursor = document.elementFromPoint(targetPos.x, targetPos.y);
+									const isStillOverClickable = elementUnderCursor && 
+										(elementUnderCursor.matches('a, button, [role="button"], input[type="button"], input[type="submit"]') ||
+										 elementUnderCursor.closest('a, button, [role="button"], input[type="button"], input[type="submit"]'));
+									
+									if (!isStillOverClickable) {
+										handleCursorHover(false);
+									}
+								}, 10);
+							});
 						});
 					}
 
