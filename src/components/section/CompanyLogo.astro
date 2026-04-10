@@ -10,13 +10,13 @@ const companies = [
 ];
 ---
 
-<section class="py-12 -mb-px overflow-hidden">
+<section id="company-logos" class="py-12 -mb-px overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
     <!-- Logo grid -->
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 lg:gap-8 items-center justify-items-center">
-      {companies.map((company) => (
-        <div class="group flex items-center justify-center p-3 md:p-4 lg:p-6 rounded-lg transition-all duration-300 hover:bg-white/10 w-full">
+    <div id="logos-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 lg:gap-8 items-center justify-items-center" data-animate="fade-only">
+      {companies.map((company, index) => (
+        <div id={`logo-${index + 1}`} class="group flex items-center justify-center p-3 md:p-4 lg:p-6 rounded-lg transition-all duration-300 hover:bg-white/10 w-full" data-animate="scale" data-delay={index + 1}>
           <img
             src={company.logo}
             alt={company.alt}

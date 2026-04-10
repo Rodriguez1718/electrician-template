@@ -48,19 +48,19 @@ const coupons = [
 <section class={`py-16 bg-black relative ${roundedBottom ? 'rounded-bottom' : ''}`}>
   <div class="max-w-7xl mx-auto px-6">
     <!-- Section header -->
-    <div class="text-center mb-12">
-      <h2 class="text-4xl lg:text-5xl font-asap-condensed font-bold text-white mb-4 uppercase">
+    <div id="coupons-header" class="text-center mb-12" data-animate="slide-up">
+      <h2 id="coupons-title" class="text-4xl lg:text-5xl font-asap-condensed font-bold text-white mb-4 uppercase" data-animate="fade-only" data-delay="1">
         Exclusive Electrical Service Coupons
       </h2>
-      <p class="text-lg text-white/70 font-helvetica max-w-2xl mx-auto">
+      <p id="coupons-subtitle" class="text-lg text-white/70 font-helvetica max-w-2xl mx-auto" data-animate="fade-only" data-delay="2">
         Save on professional electrical services with our limited-time offers. Quality work, certified electricians, guaranteed results.
       </p>
     </div>
 
     <!-- Coupons grid -->
-    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      {coupons.map((coupon) => (
-        <div class="coupon-card group">
+    <div id="coupons-grid" class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {coupons.map((coupon, index) => (
+        <div id={`coupon-${index + 1}`} class="coupon-card group" data-animate="scale" data-delay={index + 3}>
           <div class={`${coupon.bgColor} ${coupon.textColor} p-8 h-full flex flex-col relative overflow-hidden`}>
             <!-- Decorative corner cuts -->
             <div class="absolute top-0 left-0 w-4 h-4 bg-gray-900 rounded-br-full"></div>
@@ -73,7 +73,7 @@ const coupons = [
               <p class="text-sm font-helvetica font-medium opacity-80 mb-2">
                 {coupon.title}
               </p>
-              <h3 class="text-2xl font-asap-condensed font-bold text-brand-accent mb-2">
+              <h3 class="text-2xl font-asap-condensed font-bold text-brand-primary mb-2">
                 Coupon
               </h3>
               <p class="text-xs font-helvetica opacity-70">
