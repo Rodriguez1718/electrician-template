@@ -136,15 +136,10 @@ import "../styles/global.css"
 
 		<script is:inline>
 			window.addEventListener('DOMContentLoaded', async () => {
-
-				// Check FIRST — mobile exits here, GSAP never loads
+				// Check if it's a touch device
 				const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-				if (isTouchDevice) {
-					console.log('Touch device detected - cursor & GSAP disabled');
-					return;
-				}
-
-				// Load GSAP from CDN (works with is:inline)
+				
+				// Load GSAP for both desktop and mobile (needed for page transitions)
 				await new Promise((resolve, reject) => {
 					const script = document.createElement('script');
 					script.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js';
@@ -154,151 +149,157 @@ import "../styles/global.css"
 				});
 
 				const gsap = window.gsap;
-				console.log('VoltBully cursor loading...');
 
-				// --- Cursor ---
+				// Only initialize cursor on desktop
+				if (!isTouchDevice) {
+					console.log('VoltBully cursor loading...');
 
-				function getScale(diffX, diffY) {
-					const distance = Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2));
-					return Math.min(distance / 100, 0.25);
-				}
+					// --- Cursor ---
 
-				function getAngle(diffX, diffY) {
-					return (Math.atan2(diffY, diffX) * 180) / Math.PI;
-				}
+					function getScale(diffX, diffY) {
+						const distance = Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2));
+						return Math.min(distance / 100, 0.25);
+					}
 
-				const elasticCursor = document.getElementById("jelly-cursor");
-				if (!elasticCursor) {
-					console.error('Cursor element not found');
+					function getAngle(diffX, diffY) {
+						return (Math.atan2(diffY, diffX) * 180) / Math.PI;
+					}
+
+					const elasticCursor = document.getElementById("jelly-cursor");
+					if (!elasticCursor) {
+						console.error('Cursor element not found');
+					} else {
+						const pos = { x: 0, y: 0 };
+						const vel = { x: 0, y: 0 };
+						let targetPos = { x: 0, y: 0 };
+						let isHoveringClickable = false;
+
+						const setX = gsap.quickSetter(elasticCursor, "x", "px");
+						const setY = gsap.quickSetter(elasticCursor, "y", "px");
+						const setRotation = gsap.quickSetter(elasticCursor, "rotate", "deg");
+						const setScaleX = gsap.quickSetter(elasticCursor, "scaleX");
+						const setScaleY = gsap.quickSetter(elasticCursor, "scaleY");
+
+						function update() {
+							const rotation = getAngle(vel.x, vel.y);
+							const scale = getScale(vel.x, vel.y);
+							setX(pos.x);
+							setY(pos.y);
+							setRotation(rotation);
+							if (!isHoveringClickable) {
+								setScaleX(1 + scale);
+								setScaleY(1 - scale);
+							}
+						}
+
+						function animate() {
+							const speed = 0.35;
+							pos.x += (targetPos.x - pos.x) * speed;
+							pos.y += (targetPos.y - pos.y) * speed;
+							vel.x = targetPos.x - pos.x;
+							vel.y = targetPos.y - pos.y;
+							update();
+							requestAnimationFrame(animate);
+						}
+
+						window.addEventListener("mousemove", (e) => {
+							targetPos.x = e.clientX;
+							targetPos.y = e.clientY;
+						});
+
+						function handleCursorHover(isHovering) {
+							if (!elasticCursor) return;
+							isHoveringClickable = isHovering;
+							gsap.killTweensOf(elasticCursor);
+
+							if (isHovering) {
+								gsap.to(elasticCursor, {
+									scale: 2.5,
+									backgroundColor: '#61c4c5',
+									border: '3px solid #000000',
+									boxShadow: '0 0 0 1px rgba(97, 196, 197, 0.3)',
+									duration: 0.4,
+									ease: 'back.out(1.7)',
+									force3D: true,
+								});
+								gsap.to(elasticCursor, {
+									rotation: 360,
+									duration: 2,
+									ease: 'none',
+									repeat: -1,
+								});
+							} else {
+								gsap.to(elasticCursor, {
+									scale: 1,
+									backgroundColor: '#98d9a1',
+									border: 'none',
+									boxShadow: 'none',
+									rotation: 0,
+									duration: 0.5,
+									ease: 'back.out(1.2)',
+									force3D: true,
+								});
+							}
+						}
+
+						function addCursorListeners() {
+							document.querySelectorAll('a, button, [role="button"], input[type="button"], input[type="submit"]').forEach((element) => {
+								element.addEventListener('mouseenter', () => {
+									setTimeout(() => handleCursorHover(true), 10);
+								});
+								element.addEventListener('mouseleave', () => {
+									setTimeout(() => {
+										const elementUnderCursor = document.elementFromPoint(targetPos.x, targetPos.y);
+										const isStillOverClickable = elementUnderCursor &&
+											(elementUnderCursor.matches('a, button, [role="button"], input[type="button"], input[type="submit"]') ||
+											 elementUnderCursor.closest('a, button, [role="button"], input[type="button"], input[type="submit"]'));
+										if (!isStillOverClickable) {
+											handleCursorHover(false);
+										}
+									}, 10);
+								});
+							});
+						}
+
+						function hideCursor() {
+							gsap.to(elasticCursor, { opacity: 0, duration: 0.3, ease: 'power2.out' });
+						}
+
+						function showCursor() {
+							gsap.to(elasticCursor, { opacity: 1, duration: 0.3, ease: 'power2.out' });
+						}
+
+						document.addEventListener('mouseleave', hideCursor);
+						document.addEventListener('mouseenter', showCursor);
+
+						function handleIframes() {
+							document.querySelectorAll('iframe').forEach((iframe) => {
+								iframe.addEventListener('mouseenter', hideCursor);
+								iframe.addEventListener('mouseleave', showCursor);
+							});
+						}
+
+						function initCursor() {
+							addCursorListeners();
+							handleIframes();
+							animate();
+							console.log('VoltBully jelly cursor initialized successfully!');
+						}
+
+						initCursor();
+
+						const observer = new MutationObserver(() => {
+							addCursorListeners();
+							handleIframes();
+						});
+
+						observer.observe(document.body, { childList: true, subtree: true });
+					}
 				} else {
-					const pos = { x: 0, y: 0 };
-					const vel = { x: 0, y: 0 };
-					let targetPos = { x: 0, y: 0 };
-					let isHoveringClickable = false;
-
-					const setX = gsap.quickSetter(elasticCursor, "x", "px");
-					const setY = gsap.quickSetter(elasticCursor, "y", "px");
-					const setRotation = gsap.quickSetter(elasticCursor, "rotate", "deg");
-					const setScaleX = gsap.quickSetter(elasticCursor, "scaleX");
-					const setScaleY = gsap.quickSetter(elasticCursor, "scaleY");
-
-					function update() {
-						const rotation = getAngle(vel.x, vel.y);
-						const scale = getScale(vel.x, vel.y);
-						setX(pos.x);
-						setY(pos.y);
-						setRotation(rotation);
-						if (!isHoveringClickable) {
-							setScaleX(1 + scale);
-							setScaleY(1 - scale);
-						}
-					}
-
-					function animate() {
-						const speed = 0.35;
-						pos.x += (targetPos.x - pos.x) * speed;
-						pos.y += (targetPos.y - pos.y) * speed;
-						vel.x = targetPos.x - pos.x;
-						vel.y = targetPos.y - pos.y;
-						update();
-						requestAnimationFrame(animate);
-					}
-
-					window.addEventListener("mousemove", (e) => {
-						targetPos.x = e.clientX;
-						targetPos.y = e.clientY;
-					});
-
-					function handleCursorHover(isHovering) {
-						if (!elasticCursor) return;
-						isHoveringClickable = isHovering;
-						gsap.killTweensOf(elasticCursor);
-
-						if (isHovering) {
-							gsap.to(elasticCursor, {
-								scale: 2.5,
-								backgroundColor: '#61c4c5',
-								border: '3px solid #000000',
-								boxShadow: '0 0 0 1px rgba(97, 196, 197, 0.3)',
-								duration: 0.4,
-								ease: 'back.out(1.7)',
-								force3D: true,
-							});
-							gsap.to(elasticCursor, {
-								rotation: 360,
-								duration: 2,
-								ease: 'none',
-								repeat: -1,
-							});
-						} else {
-							gsap.to(elasticCursor, {
-								scale: 1,
-								backgroundColor: '#98d9a1',
-								border: 'none',
-								boxShadow: 'none',
-								rotation: 0,
-								duration: 0.5,
-								ease: 'back.out(1.2)',
-								force3D: true,
-							});
-						}
-					}
-
-					function addCursorListeners() {
-						document.querySelectorAll('a, button, [role="button"], input[type="button"], input[type="submit"]').forEach((element) => {
-							element.addEventListener('mouseenter', () => {
-								setTimeout(() => handleCursorHover(true), 10);
-							});
-							element.addEventListener('mouseleave', () => {
-								setTimeout(() => {
-									const elementUnderCursor = document.elementFromPoint(targetPos.x, targetPos.y);
-									const isStillOverClickable = elementUnderCursor &&
-										(elementUnderCursor.matches('a, button, [role="button"], input[type="button"], input[type="submit"]') ||
-										 elementUnderCursor.closest('a, button, [role="button"], input[type="button"], input[type="submit"]'));
-									if (!isStillOverClickable) {
-										handleCursorHover(false);
-									}
-								}, 10);
-							});
-						});
-					}
-
-					function hideCursor() {
-						gsap.to(elasticCursor, { opacity: 0, duration: 0.3, ease: 'power2.out' });
-					}
-
-					function showCursor() {
-						gsap.to(elasticCursor, { opacity: 1, duration: 0.3, ease: 'power2.out' });
-					}
-
-					document.addEventListener('mouseleave', hideCursor);
-					document.addEventListener('mouseenter', showCursor);
-
-					function handleIframes() {
-						document.querySelectorAll('iframe').forEach((iframe) => {
-							iframe.addEventListener('mouseenter', hideCursor);
-							iframe.addEventListener('mouseleave', showCursor);
-						});
-					}
-
-					function initCursor() {
-						addCursorListeners();
-						handleIframes();
-						animate();
-						console.log('VoltBully jelly cursor initialized successfully!');
-					}
-
-					initCursor();
-
-					const observer = new MutationObserver(() => {
-						addCursorListeners();
-						handleIframes();
-					});
-
-					observer.observe(document.body, { childList: true, subtree: true });
+					console.log('Touch device detected - cursor disabled');
 				}
 
-				// --- Page Transitions ---
+				// --- Page Transitions (for both desktop and mobile) ---
 
 				function initPageTransitions() {
 					const transitionPath = document.querySelector('.transition-path');
