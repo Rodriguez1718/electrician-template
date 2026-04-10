@@ -11,12 +11,73 @@ import "../styles/global.css"
 		<link rel="icon" type="image/svg+xml" href="/voltbully1.png" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		
+		<!-- Resource hints for better performance -->
+		<link rel="dns-prefetch" href="//fonts.googleapis.com">
+		<link rel="dns-prefetch" href="//fonts.gstatic.com">
+		<link rel="modulepreload" href="/node_modules/gsap/index.js">
+		
+		<!-- Optimized font loading - only load fonts actually used -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Asap+Condensed:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Jost:ital@0;1&family=Just+Another+Hand&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Cervo+Neue:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+		
+		<!-- Critical fonts loaded with high priority -->
+		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Asap+Condensed:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Asap+Condensed:wght@400;500;600;700;800&display=swap"></noscript>
+		
+		<!-- Secondary fonts loaded asynchronously -->
+		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&display=swap"></noscript>
+		
 		<title>VoltBully</title>
+		
+		<!-- Critical CSS for above-the-fold content -->
+		<style>
+			/* Critical styles for immediate render */
+			html, body { 
+				overflow-x: hidden; 
+				max-width: 100vw; 
+				margin: 0; 
+				padding: 0;
+			}
+			
+			/* Font loading optimization */
+			.font-helvetica { 
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+			}
+			.font-asap-condensed { 
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+			}
+			
+			/* Hide cursor elements until loaded */
+			#jelly-cursor { opacity: 0; }
+			
+			/* Prevent layout shift */
+			.min-h-screen { min-height: 100vh; }
+			.flex { display: flex; }
+			.flex-col { flex-direction: column; }
+			.flex-1 { flex: 1 1 0%; }
+		</style>
+		
+		<!-- Font loading optimization -->
+		<script>
+			// Preload critical fonts
+			const fontPreloads = [
+				'https://fonts.googleapis.com/css2?family=Asap+Condensed:wght@400;500;600;700;800&display=swap',
+				'https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&display=swap'
+			];
+			
+			fontPreloads.forEach(href => {
+				const link = document.createElement('link');
+				link.rel = 'stylesheet';
+				link.href = href;
+				link.media = 'print';
+				link.onload = () => { 
+					link.media = 'all'; 
+				};
+				document.head.appendChild(link);
+			});
+		</script>
 	</head>
 	<body class="min-h-screen flex flex-col overflow-x-hidden max-w-full">
 		<!-- Custom Jelly Cursor -->
@@ -107,287 +168,292 @@ import "../styles/global.css"
 
 		<!-- Custom Cursor JavaScript -->
 		<script>
-			// Import GSAP from node_modules
-			import { gsap } from 'gsap';
+			// Load GSAP and initialize everything
+			window.addEventListener('DOMContentLoaded', async () => {
+				// Dynamically import GSAP
+				const { gsap } = await import('gsap');
 
-			console.log('VoltBully cursor loading...');
+				console.log('VoltBully cursor loading...');
 
-			// Check if it's a touch device
-			const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+				// Check if it's a touch device
+				const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-			// Only run cursor code on non-touch devices
-			if (!isTouchDevice) {
-				console.log('GSAP loaded, initializing jelly cursor...');
-				
-				// Function for Mouse Move Scale Change (Jelly Effect)
-				function getScale(diffX: number, diffY: number): number {
-					const distance = Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2));
-					return Math.min(distance / 100, 0.25);
-				}
-
-				// Function For Mouse Movement Angle in Degrees (Jelly Effect)
-				function getAngle(diffX: number, diffY: number): number {
-					return (Math.atan2(diffY, diffX) * 180) / Math.PI;
-				}
-
-				// Variables
-				const elasticCursor = document.getElementById("jelly-cursor");
-				if (!elasticCursor) {
-					console.error('Cursor element not found');
-				} else {
-					const pos = { x: 0, y: 0 };
-					const vel = { x: 0, y: 0 };
-					let targetPos = { x: 0, y: 0 };
-					let isHoveringClickable = false;
-
-					const setX = gsap.quickSetter(elasticCursor, "x", "px");
-					const setY = gsap.quickSetter(elasticCursor, "y", "px");
-					const setRotation = gsap.quickSetter(elasticCursor, "rotate", "deg");
-					const setScaleX = gsap.quickSetter(elasticCursor, "scaleX");
-					const setScaleY = gsap.quickSetter(elasticCursor, "scaleY");
-
-					// Update position and rotation (without affecting the scale)
-					function update(): void {
-						const rotation = getAngle(vel.x, vel.y);
-						const scale = getScale(vel.x, vel.y);
-
-						// Apply jelly-like effect (position and rotation), keeping scale separate
-						setX(pos.x);
-						setY(pos.y);
-						setRotation(rotation);
-
-						// If not hovering, apply the jelly scale effect
-						if (!isHoveringClickable) {
-							setScaleX(1 + scale);
-							setScaleY(1 - scale);
-						}
+				// Only run cursor code on non-touch devices
+				if (!isTouchDevice) {
+					console.log('GSAP loaded, initializing jelly cursor...');
+					
+					// Function for Mouse Move Scale Change (Jelly Effect)
+					// @ts-ignore
+					function getScale(diffX, diffY) {
+						const distance = Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2));
+						return Math.min(distance / 100, 0.25);
 					}
 
-					// Animation loop
-					function animate(): void {
-						const speed = 0.35;
-
-						// Update cursor's position based on targetPos
-						pos.x += (targetPos.x - pos.x) * speed;
-						pos.y += (targetPos.y - pos.y) * speed;
-						vel.x = targetPos.x - pos.x;
-						vel.y = targetPos.y - pos.y;
-
-						update();
-						requestAnimationFrame(animate);
+					// Function For Mouse Movement Angle in Degrees (Jelly Effect)
+					// @ts-ignore
+					function getAngle(diffX, diffY) {
+						return (Math.atan2(diffY, diffX) * 180) / Math.PI;
 					}
 
-					// Handle mouse move event
-					window.addEventListener("mousemove", (e) => {
-						const { clientX, clientY } = e;
-						targetPos.x = clientX;
-						targetPos.y = clientY;
-					});
-
-					// Function to handle scaling when hovering over clickable elements
-					function handleCursorHover(isHovering: boolean): void {
-						if (!elasticCursor) return;
-						
-						isHoveringClickable = isHovering;
-
-						// Kill all existing animations first to prevent conflicts
-						gsap.killTweensOf(elasticCursor);
-
-						if (isHovering) {
-							// Cool hover effect with scaling and smooth shadow
-							gsap.to(elasticCursor, {
-								scale: 2.5,
-								backgroundColor: '#61c4c5',
-								border: '3px solid #000000',
-								boxShadow: '0 0 0 1px rgba(97, 196, 197, 0.3)',
-								duration: 0.4,
-								ease: 'back.out(1.7)',
-								force3D: true,
-							});
-
-							// Add rotation animation
-							gsap.to(elasticCursor, {
-								rotation: 360,
-								duration: 2,
-								ease: 'none',
-								repeat: -1,
-							});
-
-						} else {
-							// Reset to normal state
-							gsap.to(elasticCursor, {
-								scale: 1,
-								backgroundColor: '#98d9a1',
-								border: 'none',
-								boxShadow: 'none',
-								rotation: 0,
-								duration: 0.5,
-								ease: 'back.out(1.2)',
-								force3D: true,
-							});
-						}
-					}
-
-					// Function to add event listeners to clickable elements
-					function addCursorListeners(): void {
-						document.querySelectorAll('a, button, [role="button"], input[type="button"], input[type="submit"]').forEach((element) => {
-							element.addEventListener('mouseenter', () => {
-								// Small delay to ensure proper state management
-								setTimeout(() => handleCursorHover(true), 10);
-							});
-							element.addEventListener('mouseleave', () => {
-								// Check if we're still over a clickable element
-								setTimeout(() => {
-									const elementUnderCursor = document.elementFromPoint(targetPos.x, targetPos.y);
-									const isStillOverClickable = elementUnderCursor && 
-										(elementUnderCursor.matches('a, button, [role="button"], input[type="button"], input[type="submit"]') ||
-										 elementUnderCursor.closest('a, button, [role="button"], input[type="button"], input[type="submit"]'));
-									
-									if (!isStillOverClickable) {
-										handleCursorHover(false);
-									}
-								}, 10);
-							});
-						});
-					}
-
-					// Function to hide the cursor
-					function hideCursor(): void {
-						gsap.to(elasticCursor, {
-							opacity: 0,
-							duration: 0.3,
-							ease: 'power2.out',
-						});
-					}
-
-					// Function to show the cursor
-					function showCursor(): void {
-						gsap.to(elasticCursor, {
-							opacity: 1,
-							duration: 0.3,
-							ease: 'power2.out',
-						});
-					}
-
-					// Viewport leave/enter events
-					document.addEventListener('mouseleave', hideCursor);
-					document.addEventListener('mouseenter', showCursor);
-
-					// Handle iframes
-					function handleIframes(): void {
-						const iframes = document.querySelectorAll('iframe');
-						iframes.forEach((iframe) => {
-							iframe.addEventListener('mouseenter', hideCursor);
-							iframe.addEventListener('mouseleave', showCursor);
-						});
-					}
-
-					// Initialize everything
-					function initCursor(): void {
-						addCursorListeners();
-						handleIframes();
-						animate();
-						
-						console.log('VoltBully jelly cursor initialized successfully!');
-					}
-
-					// Start initialization
-					if (document.readyState === 'loading') {
-						document.addEventListener('DOMContentLoaded', initCursor);
+					// Variables
+					const elasticCursor = document.getElementById("jelly-cursor");
+					if (!elasticCursor) {
+						console.error('Cursor element not found');
 					} else {
-						initCursor();
-					}
+						const pos = { x: 0, y: 0 };
+						const vel = { x: 0, y: 0 };
+						let targetPos = { x: 0, y: 0 };
+						let isHoveringClickable = false;
 
-					// Re-initialize listeners for dynamic content
-					const observer = new MutationObserver(() => {
-						addCursorListeners();
-						handleIframes();
-					});
+						const setX = gsap.quickSetter(elasticCursor, "x", "px");
+						const setY = gsap.quickSetter(elasticCursor, "y", "px");
+						const setRotation = gsap.quickSetter(elasticCursor, "rotate", "deg");
+						const setScaleX = gsap.quickSetter(elasticCursor, "scaleX");
+						const setScaleY = gsap.quickSetter(elasticCursor, "scaleY");
 
-					observer.observe(document.body, {
-						childList: true,
-						subtree: true
-					});
-				}
-			} else {
-				console.log('Touch device detected - cursor disabled');
-			}
+						// Update position and rotation (without affecting the scale)
+						function update() {
+							const rotation = getAngle(vel.x, vel.y);
+							const scale = getScale(vel.x, vel.y);
 
-			// Page Transition System
-			function initPageTransitions() {
-				const transitionPath = document.querySelector('.transition-path');
-				
-				if (!transitionPath) return;
+							// Apply jelly-like effect (position and rotation), keeping scale separate
+							setX(pos.x);
+							setY(pos.y);
+							setRotation(rotation);
 
-				// Define the morph states
-				const start = "M 0 100 V 100 Q 50 100 100 100 V 100 z";
-				const middle = "M 0 100 V 50 Q 50 0 100 50 V 100 z";
-				const end = "M 0 100 V 0 Q 50 0 100 0 V 100 z";
-
-				// Function to animate page entrance (morph down from full coverage)
-				function animatePageEntrance() {
-					const entranceTimeline = gsap.timeline();
-					
-					// Start with full coverage, then morph down to reveal content
-					entranceTimeline
-						.to(transitionPath, {
-							attr: { d: middle },
-							duration: 0.3,
-							ease: "power2.in"
-						})
-						.to(transitionPath, {
-							attr: { d: start },
-							duration: 0.3,
-							ease: "power2.out"
-						});
-				}
-
-				// Function to animate page exit (morph up to cover screen)
-				function animatePageTransition(url: string) {
-					const exitTimeline = gsap.timeline();
-					
-					// Morph up to cover screen, then navigate
-					exitTimeline
-						.set(transitionPath, { attr: { d: start } })
-						.to(transitionPath, {
-							attr: { d: middle },
-							duration: 0.3,
-							ease: "power2.in"
-						})
-						.to(transitionPath, {
-							attr: { d: end },
-							duration: 0.3,
-							ease: "power2.out"
-						})
-						.call(() => {
-							// Navigate to new page when fully covered
-							window.location.href = url;
-						});
-				}
-
-				// Intercept all internal link clicks
-				document.addEventListener('click', (e) => {
-					const target = e.target as HTMLElement;
-					const link = target.closest('a');
-					
-					if (link && link.href) {
-						const url = new URL(link.href);
-						const currentUrl = new URL(window.location.href);
-						
-						// Only animate for internal links (same origin) and different pages
-						if (url.origin === currentUrl.origin && url.pathname !== currentUrl.pathname) {
-							e.preventDefault();
-							animatePageTransition(link.href);
+							// If not hovering, apply the jelly scale effect
+							if (!isHoveringClickable) {
+								setScaleX(1 + scale);
+								setScaleY(1 - scale);
+							}
 						}
+
+						// Animation loop
+						function animate() {
+							const speed = 0.35;
+
+							// Update cursor's position based on targetPos
+							pos.x += (targetPos.x - pos.x) * speed;
+							pos.y += (targetPos.y - pos.y) * speed;
+							vel.x = targetPos.x - pos.x;
+							vel.y = targetPos.y - pos.y;
+
+							update();
+							requestAnimationFrame(animate);
+						}
+
+						// Handle mouse move event
+						window.addEventListener("mousemove", (e) => {
+							const { clientX, clientY } = e;
+							targetPos.x = clientX;
+							targetPos.y = clientY;
+						});
+
+						// Function to handle scaling when hovering over clickable elements
+						// @ts-ignore
+						function handleCursorHover(isHovering) {
+							if (!elasticCursor) return;
+							
+							isHoveringClickable = isHovering;
+
+							// Kill all existing animations first to prevent conflicts
+							gsap.killTweensOf(elasticCursor);
+
+							if (isHovering) {
+								// Cool hover effect with scaling and smooth shadow
+								gsap.to(elasticCursor, {
+									scale: 2.5,
+									backgroundColor: '#61c4c5',
+									border: '3px solid #000000',
+									boxShadow: '0 0 0 1px rgba(97, 196, 197, 0.3)',
+									duration: 0.4,
+									ease: 'back.out(1.7)',
+									force3D: true,
+								});
+
+								// Add rotation animation
+								gsap.to(elasticCursor, {
+									rotation: 360,
+									duration: 2,
+									ease: 'none',
+									repeat: -1,
+								});
+
+							} else {
+								// Reset to normal state
+								gsap.to(elasticCursor, {
+									scale: 1,
+									backgroundColor: '#98d9a1',
+									border: 'none',
+									boxShadow: 'none',
+									rotation: 0,
+									duration: 0.5,
+									ease: 'back.out(1.2)',
+									force3D: true,
+								});
+							}
+						}
+
+						// Function to add event listeners to clickable elements
+						function addCursorListeners() {
+							document.querySelectorAll('a, button, [role="button"], input[type="button"], input[type="submit"]').forEach((element) => {
+								element.addEventListener('mouseenter', () => {
+									// Small delay to ensure proper state management
+									setTimeout(() => handleCursorHover(true), 10);
+								});
+								element.addEventListener('mouseleave', () => {
+									// Check if we're still over a clickable element
+									setTimeout(() => {
+										const elementUnderCursor = document.elementFromPoint(targetPos.x, targetPos.y);
+										const isStillOverClickable = elementUnderCursor && 
+											(elementUnderCursor.matches('a, button, [role="button"], input[type="button"], input[type="submit"]') ||
+											 elementUnderCursor.closest('a, button, [role="button"], input[type="button"], input[type="submit"]'));
+										
+										if (!isStillOverClickable) {
+											handleCursorHover(false);
+										}
+									}, 10);
+								});
+							});
+						}
+
+						// Function to hide the cursor
+						function hideCursor() {
+							gsap.to(elasticCursor, {
+								opacity: 0,
+								duration: 0.3,
+								ease: 'power2.out',
+							});
+						}
+
+						// Function to show the cursor
+						function showCursor() {
+							gsap.to(elasticCursor, {
+								opacity: 1,
+								duration: 0.3,
+								ease: 'power2.out',
+							});
+						}
+
+						// Viewport leave/enter events
+						document.addEventListener('mouseleave', hideCursor);
+						document.addEventListener('mouseenter', showCursor);
+
+						// Handle iframes
+						function handleIframes() {
+							const iframes = document.querySelectorAll('iframe');
+							iframes.forEach((iframe) => {
+								iframe.addEventListener('mouseenter', hideCursor);
+								iframe.addEventListener('mouseleave', showCursor);
+							});
+						}
+
+						// Initialize everything
+						function initCursor() {
+							addCursorListeners();
+							handleIframes();
+							animate();
+							
+							console.log('VoltBully jelly cursor initialized successfully!');
+						}
+
+						// Start initialization immediately
+						initCursor();
+
+						// Re-initialize listeners for dynamic content
+						const observer = new MutationObserver(() => {
+							addCursorListeners();
+							handleIframes();
+						});
+
+						observer.observe(document.body, {
+							childList: true,
+							subtree: true
+						});
 					}
-				});
+				} else {
+					console.log('Touch device detected - cursor disabled');
+				}
 
-				// Initialize page entrance animation immediately
-				animatePageEntrance();
-			}
+				// Page Transition System
+				function initPageTransitions() {
+					const transitionPath = document.querySelector('.transition-path');
+					
+					if (!transitionPath) return;
 
-			// Initialize page transitions immediately (no waiting for DOM)
-			initPageTransitions();
+					// Define the morph states
+					const start = "M 0 100 V 100 Q 50 100 100 100 V 100 z";
+					const middle = "M 0 100 V 50 Q 50 0 100 50 V 100 z";
+					const end = "M 0 100 V 0 Q 50 0 100 0 V 100 z";
+
+					// Function to animate page entrance (morph down from full coverage)
+					function animatePageEntrance() {
+						const entranceTimeline = gsap.timeline();
+						
+						// Start with full coverage, then morph down to reveal content
+						entranceTimeline
+							.to(transitionPath, {
+								attr: { d: middle },
+								duration: 0.3,
+								ease: "power2.in"
+							})
+							.to(transitionPath, {
+								attr: { d: start },
+								duration: 0.3,
+								ease: "power2.out"
+							});
+					}
+
+					// Function to animate page exit (morph up to cover screen)
+					// @ts-ignore
+					function animatePageTransition(url) {
+						const exitTimeline = gsap.timeline();
+						
+						// Morph up to cover screen, then navigate
+						exitTimeline
+							.set(transitionPath, { attr: { d: start } })
+							.to(transitionPath, {
+								attr: { d: middle },
+								duration: 0.3,
+								ease: "power2.in"
+							})
+							.to(transitionPath, {
+								attr: { d: end },
+								duration: 0.3,
+								ease: "power2.out"
+							})
+							.call(() => {
+								// Navigate to new page when fully covered
+								window.location.href = url;
+							});
+					}
+
+					// Intercept all internal link clicks
+					document.addEventListener('click', (e) => {
+						const target = e.target;
+						if (!target || !(target instanceof Element)) return; // Guard against null target and ensure it's an Element
+						
+						const link = target.closest('a');
+						
+						if (link && link.href) {
+							const url = new URL(link.href);
+							const currentUrl = new URL(window.location.href);
+							
+							// Only animate for internal links (same origin) and different pages
+							if (url.origin === currentUrl.origin && url.pathname !== currentUrl.pathname) {
+								e.preventDefault();
+								animatePageTransition(link.href);
+							}
+						}
+					});
+
+					// Initialize page entrance animation immediately
+					animatePageEntrance();
+				}
+
+				// Initialize page transitions
+				initPageTransitions();
+			});
 		</script>
 	</body>
 </html>

@@ -6,6 +6,20 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    plugins: [tailwindcss()]
-  }
+    plugins: [tailwindcss()],
+    build: {
+      cssCodeSplit: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vendor: ['gsap']
+          }
+        }
+      }
+    }
+  },
+  build: {
+    inlineStylesheets: 'auto'
+  },
+  compressHTML: true
 });
