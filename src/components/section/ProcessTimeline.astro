@@ -114,11 +114,7 @@ const getColorClasses = (color: 'primary' | 'secondary' | 'accent' | 'red') => {
         const colorClasses = getColorClasses(step.color);
         return (
           <div id={`process-step-${index + 1}`} class="relative group">
-            <!-- Connecting Line (hidden on last item) -->
-            {index < steps.length - 1 && (
-              <div id={`process-line-${index + 1}`} class="hidden lg:block absolute top-16 left-full w-full h-0.5 bg-white/20 z-0" style="transform: translateX(-50%);"></div>
-            )}
-            
+
             <!-- Step Card -->
             <div class="relative z-10 text-center">
               <!-- Step Number -->

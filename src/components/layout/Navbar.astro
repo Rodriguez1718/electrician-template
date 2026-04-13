@@ -5,6 +5,7 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
+  { label: "Service Areas", href: "/service-area" },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -23,41 +24,53 @@ const currentPath = Astro.url.pathname;
       <!-- Center container -->
       <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center bg-white/80 backdrop-blur-md rounded-full px-6 py-2 shadow-lg border border-white/20 transition-all duration-500 ease-out" id="nav-container">
         <div class="flex items-center">
-          {navLinks.map((link) => (
-            <a
-              href={link.href}
-              class:list={[
-                "px-4 py-2 text-sm font-medium no-underline transition-colors rounded-full",
-                { 
-                  "text-[var(--color-accent)] bg-blue-50": currentPath === link.href,
-                  "text-gray-700 hover:text-gray-900 hover:bg-gray-50": currentPath !== link.href
-                }
-              ]}
-            >
-              {link.label}
-            </a>
-          ))}
-          
-          <!-- Service Areas Dropdown -->
-          <div class="relative inline-block" id="desktop-service-areas-wrapper">
-            <button 
-              class="flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-full transition-colors" 
-              aria-expanded="false" 
-              aria-haspopup="true"
-              id="desktop-service-areas-btn"
-            >
-              Service Areas
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="transition-transform duration-200">
-                <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-          </div>
+          {navLinks.map((link) => {
+            if (link.label === "Service Areas") {
+              return (
+                <div class="relative inline-block" id="desktop-service-areas-wrapper">
+                  <a 
+                    href={link.href}
+                    class:list={[
+                      "flex items-center gap-1 px-4 py-2 text-sm font-medium no-underline transition-colors rounded-full",
+                      { 
+                        "text-[var(--color-accent)] bg-blue-50": currentPath === link.href,
+                        "text-gray-700 hover:text-gray-900 hover:bg-gray-50": currentPath !== link.href
+                      }
+                    ]}
+                    aria-expanded="false" 
+                    aria-haspopup="true"
+                    id="desktop-service-areas-btn"
+                  >
+                    {link.label}
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="transition-transform duration-200">
+                      <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </a>
+                </div>
+              );
+            } else {
+              return (
+                <a
+                  href={link.href}
+                  class:list={[
+                    "px-4 py-2 text-sm font-medium no-underline transition-colors rounded-full",
+                    { 
+                      "text-[var(--color-accent)] bg-blue-50": currentPath === link.href,
+                      "text-gray-700 hover:text-gray-900 hover:bg-gray-50": currentPath !== link.href
+                    }
+                  ]}
+                >
+                  {link.label}
+                </a>
+              );
+            }
+          })}
         </div>
       </div>
 
       <!-- CTA Button -->
-      <Button variant="primary" id="navbar-cta" class="transition-all duration-500 ease-out relative z-20">
-        Get Quote
+      <Button href="/contact" variant="primary" id="navbar-cta" class="transition-all duration-500 ease-out relative z-20">
+        Book Now
       </Button>
     </div>
 
@@ -76,44 +89,57 @@ const currentPath = Astro.url.pathname;
   <!-- Tablet navbar (768px-1024px) -->
   <div class="hidden md:block lg:hidden px-4 py-4">
     <div class="flex items-center justify-between max-w-5xl mx-auto">
-      <a href="/" class="flex items-center gap-2 text-lg font-bold text-white no-underline">
+      <a href="/" class="flex items-center gap-2 text-lg font-asap-condensed font-bold text-white no-underline">
         <img src="/voltbully1.webp" alt="VoltBully Logo" class="w-7 h-7 object-contain" fetchpriority="high" />
         VOLTBULLY
       </a>
 
       <div class="flex items-center bg-white/80 backdrop-blur-md rounded-full px-4 py-2 shadow-lg border border-white/20">
-        {navLinks.map((link) => (
-          <a
-            href={link.href}
-            class:list={[
-              "px-3 py-1.5 text-sm font-medium no-underline transition-colors rounded-full",
-              { 
-                "text-[var(--color-accent)] bg-blue-50": currentPath === link.href,
-                "text-gray-700 hover:text-gray-900 hover:bg-gray-50": currentPath !== link.href
-              }
-            ]}
-          >
-            {link.label}
-          </a>
-        ))}
-        
-        <div class="relative inline-block" id="tablet-service-areas-wrapper">
-          <button 
-            class="flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-full transition-colors" 
-            aria-expanded="false" 
-            aria-haspopup="true"
-            id="tablet-service-areas-btn"
-          >
-            Service Areas
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="transition-transform duration-200">
-              <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
+        {navLinks.map((link) => {
+          if (link.label === "Service Areas") {
+            return (
+              <div class="relative inline-block" id="tablet-service-areas-wrapper">
+                <a 
+                  href={link.href}
+                  class:list={[
+                    "flex items-center gap-1 px-3 py-1.5 text-sm font-medium no-underline transition-colors rounded-full",
+                    { 
+                      "text-[var(--color-accent)] bg-blue-50": currentPath === link.href,
+                      "text-gray-700 hover:text-gray-900 hover:bg-gray-50": currentPath !== link.href
+                    }
+                  ]}
+                  aria-expanded="false" 
+                  aria-haspopup="true"
+                  id="tablet-service-areas-btn"
+                >
+                  {link.label}
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="transition-transform duration-200">
+                    <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            );
+          } else {
+            return (
+              <a
+                href={link.href}
+                class:list={[
+                  "px-3 py-1.5 text-sm font-medium no-underline transition-colors rounded-full",
+                  { 
+                    "text-[var(--color-accent)] bg-blue-50": currentPath === link.href,
+                    "text-gray-700 hover:text-gray-900 hover:bg-gray-50": currentPath !== link.href
+                  }
+                ]}
+              >
+                {link.label}
+              </a>
+            );
+          }
+        })}
       </div>
 
-      <Button variant="primary" size="sm">
-        Get Quote
+      <Button href="/contact" variant="primary" size="sm">
+        Book Now
       </Button>
     </div>
 
@@ -130,7 +156,15 @@ const currentPath = Astro.url.pathname;
 
   <!-- Tablet Services dropdown (768px-1024px) -->
   <div class="hidden md:block lg:hidden px-4 pb-4 transition-all duration-300 z-10" id="tablet-services-layer">
-    <div class="max-w-5xl mx-auto flex justify-center">
+    <div class="max-w-5xl mx-auto flex justify-center gap-2">
+      <div class="relative inline-block">
+        <a 
+          href="/maintenance"
+          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30" 
+        >
+          Maintenance
+        </a>
+      </div>
       <div class="relative inline-block">
         <button 
           class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30" 
@@ -213,13 +247,21 @@ const currentPath = Astro.url.pathname;
           </div>
         </div>
       </div>
+      <div class="relative inline-block">
+        <a 
+          href="/financing"
+          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30" 
+        >
+          Financing
+        </a>
+      </div>
     </div>
   </div>
 
   <!-- Mobile navbar (below 768px) -->
   <div class="md:hidden px-4 py-4 transition-all duration-300" id="mobile-navbar">
     <div class="flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2 text-lg font-bold text-white no-underline transition-colors duration-300" id="mobile-logo">
+      <a href="/" class="flex items-center gap-2 text-lg font-asap-condensed font-bold text-white no-underline transition-colors duration-300" id="mobile-logo">
         <img src="/voltbully1.webp" alt="VoltBully Logo" class="w-7 h-7 object-contain" fetchpriority="high" />
         VOLTBULLY
       </a>
@@ -242,7 +284,15 @@ const currentPath = Astro.url.pathname;
 
   <!-- Desktop Services dropdown (1024px+) -->
   <div class="hidden lg:block px-6 pb-4 transition-all duration-300 z-10" id="services-layer">
-    <div class="max-w-7xl mx-auto flex justify-center">
+    <div class="max-w-7xl mx-auto flex justify-center gap-2">
+      <div class="relative inline-block">
+        <a 
+          href="/maintenance"
+          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30" 
+        >
+          Maintenance
+        </a>
+      </div>
       <div class="relative inline-block">
         <button 
           class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30" 
@@ -333,13 +383,21 @@ const currentPath = Astro.url.pathname;
           </div>
         </div>
       </div>
+      <div class="relative inline-block">
+        <a 
+          href="/financing"
+          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30" 
+        >
+          Financing
+        </a>
+      </div>
     </div>
   </div>
 
   <!-- Mobile menu -->
   <div class="md:hidden bg-white/95 backdrop-blur-md border-t border-white/20 opacity-0 invisible transition-all duration-300 absolute top-full left-0 right-0 max-h-[calc(100vh-80px)] overflow-y-auto" id="mobile-menu">
     <div class="px-6 py-4 space-y-2">
-      {navLinks.map((link) => (
+      {navLinks.filter(link => link.label !== "Service Areas").map((link) => (
         <a
           href={link.href}
           class:list={[
@@ -355,16 +413,30 @@ const currentPath = Astro.url.pathname;
       ))}
       
       <div class="pt-2 border-t border-gray-200">
-        <button 
-          class="flex items-center justify-between w-full px-4 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors" 
-          id="mobile-service-areas-btn"
-        >
-          Service Areas
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="transition-transform duration-200">
-            <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <div class="pl-4 opacity-0 invisible transition-all duration-200" id="mobile-service-areas-dropdown">
+        <div class="flex items-center rounded-lg overflow-hidden">
+          <a 
+            href="/service-area"
+            class:list={[
+              "flex-1 px-4 py-3 text-base font-medium no-underline transition-colors",
+              { 
+                "text-blue-600 bg-blue-50": currentPath === "/service-area",
+                "text-gray-700 hover:text-gray-900 hover:bg-gray-50": currentPath !== "/service-area"
+              }
+            ]}
+          >
+            Service Areas
+          </a>
+          <button 
+            class="px-3 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-colors" 
+            id="mobile-service-areas-btn"
+            aria-label="Toggle service areas dropdown"
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="transition-transform duration-200">
+              <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="pl-4 opacity-0 invisible max-h-0 overflow-hidden transition-all duration-200" id="mobile-service-areas-dropdown">
           <a href="/serviceAreas/denver" class="block px-4 py-2 text-sm text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors">Denver</a>
         </div>
       </div>
@@ -379,7 +451,7 @@ const currentPath = Astro.url.pathname;
             <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
-        <div class="pl-4 opacity-0 invisible transition-all duration-200" id="mobile-services-dropdown">
+        <div class="pl-4 opacity-0 invisible max-h-0 overflow-hidden transition-all duration-200" id="mobile-services-dropdown">
           <div class="mb-4">
             <a href="/commercial" class="flex items-center gap-2 mb-2 no-underline group">
               <div class="w-5 h-5 bg-brand-secondary/20 rounded-full flex items-center justify-center">
@@ -452,8 +524,8 @@ const currentPath = Astro.url.pathname;
         </div>
       </div>
       
-      <Button variant="primary" id="navbar-cta" class="transition-all duration-500 ease-out relative z-20">
-        Get Quote
+      <Button href="/contact" variant="primary" id="navbar-cta" class="transition-all duration-500 ease-out relative z-20">
+        Book Now
       </Button>
     </div>
   </div>
@@ -568,12 +640,14 @@ const currentPath = Astro.url.pathname;
     mobileServiceBtn.addEventListener("click", function() {
       var isOpen = mobileServicesDropdown.classList.contains("opacity-100");
       if (isOpen) {
+        mobileServicesDropdown.style.maxHeight = "0px";
         mobileServicesDropdown.classList.remove("opacity-100", "visible");
-        mobileServicesDropdown.classList.add("opacity-0", "invisible");
+        mobileServicesDropdown.classList.add("opacity-0", "invisible", "max-h-0");
         mobileServiceSvg.classList.remove("rotate-180");
       } else {
-        mobileServicesDropdown.classList.remove("opacity-0", "invisible");
+        mobileServicesDropdown.classList.remove("opacity-0", "invisible", "max-h-0");
         mobileServicesDropdown.classList.add("opacity-100", "visible");
+        mobileServicesDropdown.style.maxHeight = mobileServicesDropdown.scrollHeight + "px";
         mobileServiceSvg.classList.add("rotate-180");
       }
     });
@@ -588,12 +662,14 @@ const currentPath = Astro.url.pathname;
     mobileServiceAreasBtn.addEventListener("click", function() {
       var isOpen = mobileServiceAreasDropdown.classList.contains("opacity-100");
       if (isOpen) {
+        mobileServiceAreasDropdown.style.maxHeight = "0px";
         mobileServiceAreasDropdown.classList.remove("opacity-100", "visible");
-        mobileServiceAreasDropdown.classList.add("opacity-0", "invisible");
+        mobileServiceAreasDropdown.classList.add("opacity-0", "invisible", "max-h-0");
         mobileServiceAreasSvg.classList.remove("rotate-180");
       } else {
-        mobileServiceAreasDropdown.classList.remove("opacity-0", "invisible");
+        mobileServiceAreasDropdown.classList.remove("opacity-0", "invisible", "max-h-0");
         mobileServiceAreasDropdown.classList.add("opacity-100", "visible");
+        mobileServiceAreasDropdown.style.maxHeight = mobileServiceAreasDropdown.scrollHeight + "px";
         mobileServiceAreasSvg.classList.add("rotate-180");
       }
     });

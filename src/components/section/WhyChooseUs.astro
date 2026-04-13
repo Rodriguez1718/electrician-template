@@ -1,5 +1,11 @@
 ---
 import Button from "../ui/Button.astro";
+
+export interface Props {
+  roundedBottom?: boolean;
+}
+
+const { roundedBottom = true } = Astro.props;
 const features: Array<{
   icon: string;
   title: string;
@@ -33,7 +39,7 @@ const features: Array<{
 ];
 ---
 
-<section class="py-20 bg-black relative overflow-hidden rounded-bottom">
+<section class={`py-20 bg-black relative overflow-hidden ${roundedBottom ? 'rounded-bottom' : ''}`}>
 
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <div class="grid lg:grid-cols-2 gap-16 items-center">

@@ -4,9 +4,10 @@ export interface Props {
   description: string;
   icon: string;
   href?: string;
-  variant?: 'default' | 'hover' | 'bordered' | 'service';
+  variant?: 'default' | 'hover' | 'bordered' | 'service' | 'image';
   size?: 'sm' | 'md' | 'lg';
   category?: string;
+  backgroundImage?: string;
 }
 
 const { 
@@ -16,7 +17,8 @@ const {
   href, 
   variant = 'default',
   size = 'md',
-  category
+  category,
+  backgroundImage
 } = Astro.props;
 
 const sizeClasses = {
@@ -29,14 +31,15 @@ const variantClasses = {
   default: ' text-gray-900 clipped-element',
   hover: ' text-gray-900 clipped-element',
   bordered: ' text-gray-900 clipped-element',
-  service: ' relative overflow-hidden text-gray-900 clipped-element'
+  service: ' relative overflow-hidden text-gray-900 clipped-element',
+  image: ' relative overflow-hidden text-white clipped-element'
 };
 
 const CardTag = href ? 'a' : 'div';
 ---
 
 <!-- Card Container with Background -->
-<div class="relative group">
+<div class="relative group h-full">
   <!-- Background overlay (visual only) -->
   <div class="absolute top-2 right-2 w-39 h-16 bg-emerald-500 rounded -z-10 transition-transform duration-300 ease-out group-hover:scale-105 group-hover:-translate-y-1">
     <!-- Arrow SVG positioned in top right corner of overlay -->
@@ -58,32 +61,71 @@ const CardTag = href ? 'a' : 'div';
   
   <div 
     class={`${variantClasses[variant]} ${sizeClasses[size]} block relative z-0 h-full flex flex-col`}
-    style="background-color: #f8f9fa; border-color: rgba(45, 124, 111, 0.4);"
+    style={variant === 'image' ? 
+      `background-image: url('${backgroundImage}'); background-size: cover; background-position: center; background-repeat: no-repeat;` : 
+      "background-color: #f8f9fa; border-color: rgba(45, 124, 111, 0.4);"
+    }
   >
     
-    <!-- Service icon -->
-    <div class="relative z-10">
-      <span set:html={icon}></span>
-    </div>
-    
-    <!-- Service name -->
-    <h3 class="text-lg font-asap-condensed uppercase tracking-wide font-bold mb-2 relative z-10 transition-colors duration-300 text-black group-hover:text-brand-accent">
-      {title}
-    </h3>
-    
-    <!-- Category badge (for service variant) -->
-    {variant === 'service' && category && (
-      <div class="flex">
-        <div class="px-2 py-1 bg-brand-accent text-brand-background text-xs font-asap-condensed font-medium rounded-full mb-2 relative z-10 w-fit">
-          {category}
-        </div>
-      </div>
+    {/* Background image blur overlay for image variant */}
+    {variant === 'image' && (
+      <div class="absolute inset-0 bg-black/40 backdrop-blur-0 group-hover:backdrop-blur-sm transition-all duration-500 z-0"></div>
     )}
     
-    <!-- Service description -->
-    <p class="font-helvetica text-sm leading-relaxed relative z-10 text-gray-600 flex-grow">
-      {description}
-    </p>
+    {/* Content container for image variant */}
+    {variant === 'image' ? (
+      <div class="relative z-10 flex flex-col h-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 justify-center items-center text-center">
+        <!-- Service icon -->
+        <div class="mb-4">
+          <span set:html={icon} class="text-white text-4xl"></span>
+        </div>
+        
+        <!-- Service name -->
+        <h3 class="text-xl font-asap-condensed uppercase tracking-wide font-bold mb-3 text-white">
+          {title}
+        </h3>
+        
+        <!-- Category badge -->
+        {category && (
+          <div class="flex mb-3">
+            <div class="px-3 py-1 bg-brand-accent text-brand-background text-xs font-asap-condensed font-medium rounded-full w-fit">
+              {category}
+            </div>
+          </div>
+        )}
+        
+        <!-- Service description -->
+        <p class="font-helvetica text-sm leading-relaxed text-white/90 max-w-xs">
+          {description}
+        </p>
+      </div>
+    ) : (
+      <div class="relative z-10 flex flex-col h-full">
+        <!-- Service icon -->
+        <div class="relative z-10">
+          <span set:html={icon}></span>
+        </div>
+        
+        <!-- Service name -->
+        <h3 class="text-lg font-asap-condensed uppercase tracking-wide font-bold mb-2 relative z-10 transition-colors duration-300 text-black group-hover:text-brand-accent">
+          {title}
+        </h3>
+        
+        <!-- Category badge (for service variant) -->
+        {variant === 'service' && category && (
+          <div class="flex">
+            <div class="px-2 py-1 bg-brand-accent text-brand-background text-xs font-asap-condensed font-medium rounded-full mb-2 relative z-10 w-fit">
+              {category}
+            </div>
+          </div>
+        )}
+        
+        <!-- Service description -->
+        <p class="font-helvetica text-sm leading-relaxed relative z-10 text-gray-600 flex-grow">
+          {description}
+        </p>
+      </div>
+    )}
   </div>
 </div>
 
