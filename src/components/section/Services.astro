@@ -119,29 +119,30 @@ const serviceCategories = await loadServicesFromMarkdownFiles();
 
   <!-- Gradient overlay at bottom for seamless transition -->
   {showGradientOverlay && (
-    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-gray-50 z-10" id="gradient-serv" data-animate="slide-left"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-gray-50 z-10"></div>
   )}
 
   <div class="max-w-7xl mx-auto px-6 relative z-20">
     <!-- Section header -->
-    <div class="text-center mb-16">
-      <p class="text-brand-accent font-helvetica text-sm uppercase tracking-wider mb-4">
+    <div id="services-header" class="text-center mb-16">
+      <p id="services-label" class="text-brand-accent font-helvetica text-sm uppercase tracking-wider mb-4">
         Our Services
       </p>
-      <h2 class="text-4xl lg:text-5xl font-asap-condensed font-bold text-gray-900 mb-6 leading-tight tracking-wide uppercase">
+      <h2 id="services-title" class="text-4xl lg:text-5xl font-asap-condensed font-bold text-gray-900 mb-6 leading-tight tracking-wide uppercase">
         Our Professional <span class="text-brand-primary">Electrical Services</span>
       </h2>
-      <p class="text-lg text-gray-600 font-helvetica leading-relaxed max-w-3xl mx-auto">
+      <p id="services-description" class="text-lg text-gray-600 font-helvetica leading-relaxed max-w-3xl mx-auto">
         We specialize in providing top-notch electrical solutions tailored to meet your needs. Whether you're dealing with an urgent repair or planning an electrical upgrade, our team is here to deliver reliable, efficient, and affordable services.
       </p>
     </div>
 
     <!-- Services tabs and content -->
-    <div class="mb-16">
+    <div id="services-container" class="mb-16">
       <!-- Tab navigation -->
-      <div class="grid grid-cols-2 sm:flex sm:flex-wrap justify-center mb-12 bg-black rounded-2xl p-2 max-w-4xl mx-auto gap-1 sm:gap-0">
+      <div id="services-tabs" class="grid grid-cols-2 sm:flex sm:flex-wrap justify-center mb-12 bg-black rounded-2xl p-2 max-w-4xl mx-auto gap-1 sm:gap-0">
         {serviceCategories.map((category, index) => (
           <button 
+            id={`service-tab-${index + 1}`}
             class={`service-tab sm:flex-1 min-w-0 px-2 sm:px-4 py-3 sm:py-4 rounded-xl font-helvetica font-semibold text-xs sm:text-sm transition-all duration-300 ${index === 0 ? 'active' : ''}`}
             data-category={category.id}
             data-color={category.tabColor}
@@ -156,13 +157,14 @@ const serviceCategories = await loadServicesFromMarkdownFiles();
       </div>
 
       <!-- Services content -->
-      <div class="service-content-container">
+      <div id="services-content" class="service-content-container">
         {serviceCategories.map((category, categoryIndex) => (
           <div 
+            id={`service-content-${categoryIndex + 1}`}
             class={`service-content ${categoryIndex === 0 ? 'active' : ''}`}
             data-category={category.id}
           >
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div id={`service-grid-${categoryIndex + 1}`} class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {category.services.map((service: Service) => (
                 <Card
                   title={service.name}

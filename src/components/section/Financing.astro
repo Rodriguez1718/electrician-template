@@ -6,37 +6,36 @@ import Button from "../ui/Button.astro";
   <!-- Subtle top border with fade effect -->
   <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-transparent via-gray-300 via-transparent to-transparent z-10" style="background: linear-gradient(to right, transparent 0%, transparent 35%, #d1d5db 50%, transparent 65%, transparent 100%);"></div>
 
-
   <!-- Gradient overlay at bottom for blur effect -->
   <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-50 to-transparent z-10"></div>
 
   <div class="max-w-7xl mx-auto px-6 relative z-20">
     
     <!-- Section Header -->
-    <div class="text-center mb-16">
-      <p class="text-brand-accent font-helvetica text-sm uppercase tracking-wider mb-4">
+    <div id="financing-header" class="text-center mb-16">
+      <p id="financing-label" class="text-brand-accent font-helvetica text-sm uppercase tracking-wider mb-4">
         FINANCING
       </p>
-      <h2 class="text-4xl lg:text-5xl font-asap-condensed uppercase tracking-wide font-bold mb-6 text-gray-900">
+      <h2 id="financing-title" class="text-4xl lg:text-5xl font-asap-condensed uppercase tracking-wide font-bold mb-6 text-gray-900">
         Electrical Solutions <span class="text-brand-primary">Made Affordable</span>
       </h2>
-      <p class="text-lg text-gray-600 font-helvetica leading-relaxed max-w-4xl mx-auto">
+      <p id="financing-description" class="text-lg text-gray-600 font-helvetica leading-relaxed max-w-4xl mx-auto">
         At VoltBully Electrical, we believe that every home and business deserves access to reliable electrical services, 
         no matter the budget. That's why we offer flexible financing options to make your electrical projects manageable and stress-free.
       </p>
     </div>
 
     <!-- Two Column Layout -->
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 mb-16">
+    <div id="financing-columns" class="grid lg:grid-cols-2 gap-12 lg:gap-16 mb-16">
       
       <!-- Left Column - Flexible Payment Plans -->
-      <div class="bg-white rounded-2xl p-8 shadow-lg">
-        <h3 class="text-2xl font-asap-condensed uppercase tracking-wide font-bold mb-8 text-gray-900">
+      <div id="financing-left-card" class="bg-white rounded-2xl p-8 shadow-lg">
+        <h3 id="financing-left-title" class="text-2xl font-asap-condensed uppercase tracking-wide font-bold mb-8 text-gray-900">
           Flexible Payment Plans
         </h3>
         
-        <div class="space-y-6">
-          <div class="flex items-start gap-4">
+        <div id="financing-left-features" class="space-y-6">
+          <div id="financing-left-feature-1" class="flex items-start gap-4">
             <div class="flex-shrink-0 w-6 h-6 bg-brand-primary rounded-full flex items-center justify-center mt-1">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
                 <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -45,7 +44,7 @@ import Button from "../ui/Button.astro";
             <p class="text-gray-600 font-helvetica">Spread the cost of major electrical upgrades or installations over time.</p>
           </div>
 
-          <div class="flex items-start gap-4">
+          <div id="financing-left-feature-2" class="flex items-start gap-4">
             <div class="flex-shrink-0 w-6 h-6 bg-brand-primary rounded-full flex items-center justify-center mt-1">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
                 <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -54,7 +53,7 @@ import Button from "../ui/Button.astro";
             <p class="text-gray-600 font-helvetica">Low-interest and no-interest plans available for qualified applicants.</p>
           </div>
 
-          <div class="flex items-start gap-4">
+          <div id="financing-left-feature-3" class="flex items-start gap-4">
             <div class="flex-shrink-0 w-6 h-6 bg-brand-primary rounded-full flex items-center justify-center mt-1">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
                 <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -66,13 +65,13 @@ import Button from "../ui/Button.astro";
       </div>
 
       <!-- Right Column - What Can You Finance -->
-      <div class="bg-white rounded-2xl p-8 shadow-lg">
-        <h3 class="text-2xl font-asap-condensed uppercase tracking-wide font-bold mb-8 text-gray-900">
+      <div id="financing-right-card" class="bg-white rounded-2xl p-8 shadow-lg">
+        <h3 id="financing-right-title" class="text-2xl font-asap-condensed uppercase tracking-wide font-bold mb-8 text-gray-900">
           What Can You Finance?
         </h3>
         
-        <div class="space-y-6">
-          <div class="flex items-start gap-4">
+        <div id="financing-right-features" class="space-y-6">
+          <div id="financing-right-feature-1" class="flex items-start gap-4">
             <div class="flex-shrink-0 w-6 h-6 bg-brand-primary rounded-full flex items-center justify-center mt-1">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
                 <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -81,7 +80,7 @@ import Button from "../ui/Button.astro";
             <p class="text-gray-600 font-helvetica">Electrical panel upgrades and replacements</p>
           </div>
 
-          <div class="flex items-start gap-4">
+          <div id="financing-right-feature-2" class="flex items-start gap-4">
             <div class="flex-shrink-0 w-6 h-6 bg-brand-primary rounded-full flex items-center justify-center mt-1">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
                 <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -90,7 +89,7 @@ import Button from "../ui/Button.astro";
             <p class="text-gray-600 font-helvetica">Whole home rewiring and electrical repairs</p>
           </div>
 
-          <div class="flex items-start gap-4">
+          <div id="financing-right-feature-3" class="flex items-start gap-4">
             <div class="flex-shrink-0 w-6 h-6 bg-brand-primary rounded-full flex items-center justify-center mt-1">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
                 <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -99,7 +98,7 @@ import Button from "../ui/Button.astro";
             <p class="text-gray-600 font-helvetica">Generator installations and smart home upgrades</p>
           </div>
 
-          <div class="flex items-start gap-4">
+          <div id="financing-right-feature-4" class="flex items-start gap-4">
             <div class="flex-shrink-0 w-6 h-6 bg-brand-primary rounded-full flex items-center justify-center mt-1">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-white">
                 <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -112,27 +111,27 @@ import Button from "../ui/Button.astro";
     </div>
 
     <!-- How to Apply Section -->
-    <div class="relative mb-8">
-      <div class="text-center mb-12">
-        <h3 class="text-2xl font-asap-condensed uppercase tracking-wide font-bold text-gray-900 mb-4">
+    <div id="financing-apply-section" class="relative mb-8">
+      <div id="financing-apply-header" class="text-center mb-12">
+        <h3 id="financing-apply-title" class="text-2xl font-asap-condensed uppercase tracking-wide font-bold text-gray-900 mb-4">
           How to Apply
         </h3>
-        <p class="text-gray-600 font-helvetica max-w-2xl mx-auto">
+        <p id="financing-apply-description" class="text-gray-600 font-helvetica max-w-2xl mx-auto">
           Getting started with financing is simple. Follow these three easy steps to make your electrical project affordable.
         </p>
       </div>
       
       <!-- Process Flow -->
-      <div class="relative max-w-4xl mx-auto">
+      <div id="financing-process" class="relative max-w-4xl mx-auto">
         <!-- Connection Line -->
-        <div class="hidden md:block absolute top-16 left-1/2 transform -translate-x-1/2 w-full max-w-2xl">
+        <div id="financing-connection-line" class="hidden md:block absolute top-16 left-1/2 transform -translate-x-1/2 w-full max-w-2xl">
           <div class="h-0.5 bg-gradient-to-r from-brand-primary via-brand-accent to-brand-secondary"></div>
         </div>
         
-        <div class="grid md:grid-cols-3 gap-8 relative">
+        <div id="financing-steps" class="grid md:grid-cols-3 gap-8 relative">
           <!-- Step 1 -->
-          <div class="text-center group">
-            <div class="relative mb-6">
+          <div id="financing-step-1" class="text-center group">
+            <div id="financing-step-1-icon" class="relative mb-6">
               <div class="w-20 h-20 bg-black rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform duration-300">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-white">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -144,19 +143,19 @@ import Button from "../ui/Button.astro";
               </div>
               </div>
             </div>
-            <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
-              <h4 class="font-helvetica font-bold text-gray-900 mb-3 text-lg">
+            <div id="financing-step-1-card" class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <h4 id="financing-step-1-title" class="font-helvetica font-bold text-gray-900 mb-3 text-lg">
                 Contact Our Team
               </h4>
-              <p class="text-gray-600 text-sm font-helvetica leading-relaxed">
+              <p id="financing-step-1-description" class="text-gray-600 text-sm font-helvetica leading-relaxed">
                 Call us or fill out our online form to discuss your electrical project and financing needs.
               </p>
             </div>
           </div>
 
           <!-- Step 2 -->
-          <div class="text-center group">
-            <div class="relative mb-6">
+          <div id="financing-step-2" class="text-center group">
+            <div id="financing-step-2-icon" class="relative mb-6">
               <div class="w-20 h-20 bg-black rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform duration-300">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-white">
                   <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -168,19 +167,19 @@ import Button from "../ui/Button.astro";
               </div>
               </div>
             </div>
-            <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
-              <h4 class="font-helvetica font-bold text-gray-900 mb-3 text-lg">
+            <div id="financing-step-2-card" class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <h4 id="financing-step-2-title" class="font-helvetica font-bold text-gray-900 mb-3 text-lg">
                 Quick Application
               </h4>
-              <p class="text-gray-600 text-sm font-helvetica leading-relaxed">
+              <p id="financing-step-2-description" class="text-gray-600 text-sm font-helvetica leading-relaxed">
                 Complete a simple application process and get approved for financing in minutes.
               </p>
             </div>
           </div>
 
           <!-- Step 3 -->
-          <div class="text-center group">
-            <div class="relative mb-6">
+          <div id="financing-step-3" class="text-center group">
+            <div id="financing-step-3-icon" class="relative mb-6">
               <div class="w-20 h-20 bg-black rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform duration-300">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-white">
                   <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -192,11 +191,11 @@ import Button from "../ui/Button.astro";
               </div>
               </div>
             </div>
-            <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
-              <h4 class="font-helvetica font-bold text-gray-900 mb-3 text-lg">
+            <div id="financing-step-3-card" class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <h4 id="financing-step-3-title" class="font-helvetica font-bold text-gray-900 mb-3 text-lg">
                 Start Your Project
               </h4>
-              <p class="text-gray-600 text-sm font-helvetica leading-relaxed">
+              <p id="financing-step-3-description" class="text-gray-600 text-sm font-helvetica leading-relaxed">
                 Once approved, we'll schedule your electrical work and you can pay over time.
               </p>
             </div>

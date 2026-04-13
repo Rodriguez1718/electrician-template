@@ -672,4 +672,851 @@ ready(() => {
     threshold: 0.15,
     once: true,
   });
+
+  // ═══════════════════════════════════════════════════════════════
+  //  SERVICES SECTION ANIMATIONS
+  // ═══════════════════════════════════════════════════════════════
+  
+  animate("services-section", {
+    from: "fade-up",
+    delay: 0,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("services-header", {
+    from: "fade-up",
+    delay: 100,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("services-label", {
+    from: "fade-in",
+    delay: 200,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("services-title", {
+    from: "fade-up",
+    delay: 300,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("services-description", {
+    from: "fade-in",
+    delay: 400,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("services-container", {
+    from: "fade-up",
+    delay: 500,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("services-tabs", {
+    from: "zoom-in",
+    delay: 600,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Individual service tabs with staggered delays
+  animate("service-tab-1", {
+    from: "fade-left",
+    delay: 700,
+    duration: 500,
+    distance: 30,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-tab-2", {
+    from: "fade-left",
+    delay: 750,
+    duration: 500,
+    distance: 30,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-tab-3", {
+    from: "fade-left",
+    delay: 800,
+    duration: 500,
+    distance: 30,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-tab-4", {
+    from: "fade-left",
+    delay: 850,
+    duration: 500,
+    distance: 30,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("services-content", {
+    from: "fade-up",
+    delay: 900,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Service content grids
+  animate("service-content-1", {
+    from: "fade-in",
+    delay: 1000,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("service-grid-1", {
+    from: "fade-up",
+    delay: 1100,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Gradient overlay
+  animate("services-gradient", {
+    from: "fade-in",
+    delay: 200,
+    duration: 800,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  //  MAINTENANCE PLANS SECTION ANIMATIONS
+  // ═══════════════════════════════════════════════════════════════
+  
+  animate("maintenance-section", {
+    from: "fade-up",
+    delay: 0,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-gradient", {
+    from: "fade-in",
+    delay: 50,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-header", {
+    from: "fade-up",
+    delay: 100,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-label", {
+    from: "fade-in",
+    delay: 150,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-title", {
+    from: "fade-up",
+    delay: 200,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-description", {
+    from: "fade-in",
+    delay: 250,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-content", {
+    from: "fade-up",
+    delay: 300,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Left column animations
+  animate("maintenance-left-column", {
+    from: "fade-left",
+    delay: 350,
+    duration: 700,
+    distance: 60,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-info-card", {
+    from: "zoom-in",
+    delay: 400,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-info-title", {
+    from: "fade-up",
+    delay: 450,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-image-container", {
+    from: "zoom-in",
+    delay: 500,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-image", {
+    from: "zoom-out",
+    delay: 550,
+    duration: 800,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-overlay-content", {
+    from: "fade-left",
+    delay: 600,
+    duration: 600,
+    distance: 40,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-overlay-title", {
+    from: "fade-up",
+    delay: 650,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-overlay-description", {
+    from: "fade-in",
+    delay: 700,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-highlights", {
+    from: "fade-up",
+    delay: 750,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Individual highlights with staggered delays
+  animate("maintenance-highlight-1", {
+    from: "fade-left",
+    delay: 800,
+    duration: 400,
+    distance: 20,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("maintenance-highlight-2", {
+    from: "fade-left",
+    delay: 830,
+    duration: 400,
+    distance: 20,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("maintenance-highlight-3", {
+    from: "fade-left",
+    delay: 860,
+    duration: 400,
+    distance: 20,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("maintenance-highlight-4", {
+    from: "fade-left",
+    delay: 890,
+    duration: 400,
+    distance: 20,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("maintenance-benefits", {
+    from: "fade-up",
+    delay: 920,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-benefits-title", {
+    from: "fade-in",
+    delay: 970,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-benefits-grid", {
+    from: "fade-up",
+    delay: 1000,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Right column animations
+  animate("maintenance-right-column", {
+    from: "fade-right",
+    delay: 350,
+    duration: 700,
+    distance: 60,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-pricing-card", {
+    from: "zoom-in",
+    delay: 400,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-pricing-header", {
+    from: "fade-up",
+    delay: 450,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-pricing-title", {
+    from: "fade-in",
+    delay: 500,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-price", {
+    from: "zoom-in",
+    delay: 550,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-price-description", {
+    from: "fade-in",
+    delay: 600,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-pricing-features", {
+    from: "fade-up",
+    delay: 650,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Individual pricing features
+  animate("maintenance-pricing-feature-1", {
+    from: "fade-left",
+    delay: 700,
+    duration: 400,
+    distance: 20,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("maintenance-pricing-feature-2", {
+    from: "fade-left",
+    delay: 730,
+    duration: 400,
+    distance: 20,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("maintenance-pricing-feature-3", {
+    from: "fade-left",
+    delay: 760,
+    duration: 400,
+    distance: 20,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("maintenance-cta-button", {
+    from: "zoom-in",
+    delay: 800,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-why-card", {
+    from: "zoom-in",
+    delay: 500,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-why-title", {
+    from: "fade-up",
+    delay: 550,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("maintenance-why-list", {
+    from: "fade-up",
+    delay: 600,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Individual why items
+  animate("maintenance-why-item-1", {
+    from: "fade-left",
+    delay: 650,
+    duration: 400,
+    distance: 20,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("maintenance-why-item-2", {
+    from: "fade-left",
+    delay: 680,
+    duration: 400,
+    distance: 20,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("maintenance-why-item-3", {
+    from: "fade-left",
+    delay: 710,
+    duration: 400,
+    distance: 20,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("maintenance-why-item-4", {
+    from: "fade-left",
+    delay: 740,
+    duration: 400,
+    distance: 20,
+    threshold: 0.1,
+    once: true,
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  //  FINANCING SECTION ANIMATIONS
+  // ═══════════════════════════════════════════════════════════════
+  
+  animate("financing-section", {
+    from: "fade-up",
+    delay: 0,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-top-border", {
+    from: "fade-in",
+    delay: 50,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-bottom-gradient", {
+    from: "fade-in",
+    delay: 100,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-header", {
+    from: "fade-up",
+    delay: 150,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-label", {
+    from: "fade-in",
+    delay: 200,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-title", {
+    from: "fade-up",
+    delay: 250,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-description", {
+    from: "fade-in",
+    delay: 300,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-columns", {
+    from: "fade-up",
+    delay: 350,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Left card animations
+  animate("financing-left-card", {
+    from: "fade-left",
+    delay: 400,
+    duration: 600,
+    distance: 60,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-left-title", {
+    from: "fade-up",
+    delay: 450,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-left-features", {
+    from: "fade-up",
+    delay: 500,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Left features with staggered delays
+  animate("financing-left-feature-1", {
+    from: "fade-left",
+    delay: 550,
+    duration: 400,
+    distance: 30,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("financing-left-feature-2", {
+    from: "fade-left",
+    delay: 580,
+    duration: 400,
+    distance: 30,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("financing-left-feature-3", {
+    from: "fade-left",
+    delay: 610,
+    duration: 400,
+    distance: 30,
+    threshold: 0.1,
+    once: true,
+  });
+
+  // Right card animations
+  animate("financing-right-card", {
+    from: "fade-right",
+    delay: 400,
+    duration: 600,
+    distance: 60,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-right-title", {
+    from: "fade-up",
+    delay: 450,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-right-features", {
+    from: "fade-up",
+    delay: 500,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Right features with staggered delays
+  animate("financing-right-feature-1", {
+    from: "fade-right",
+    delay: 550,
+    duration: 400,
+    distance: 30,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("financing-right-feature-2", {
+    from: "fade-right",
+    delay: 580,
+    duration: 400,
+    distance: 30,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("financing-right-feature-3", {
+    from: "fade-right",
+    delay: 610,
+    duration: 400,
+    distance: 30,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("financing-right-feature-4", {
+    from: "fade-right",
+    delay: 640,
+    duration: 400,
+    distance: 30,
+    threshold: 0.1,
+    once: true,
+  });
+
+  // How to Apply section
+  animate("financing-apply-section", {
+    from: "fade-up",
+    delay: 670,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-apply-header", {
+    from: "fade-up",
+    delay: 700,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-apply-title", {
+    from: "fade-in",
+    delay: 730,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-apply-description", {
+    from: "fade-in",
+    delay: 760,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-process", {
+    from: "fade-up",
+    delay: 790,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-connection-line", {
+    from: "fade-in",
+    delay: 820,
+    duration: 800,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-steps", {
+    from: "fade-up",
+    delay: 550,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Step 1 animations
+  animate("financing-step-1", {
+    from: "fade-up",
+    delay: 580,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-step-1-icon", {
+    from: "zoom-in",
+    delay: 510,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-step-1-card", {
+    from: "fade-up",
+    delay: 540,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-step-1-title", {
+    from: "fade-in",
+    delay: 570,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-step-1-description", {
+    from: "fade-in",
+    delay: 500,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Step 2 animations
+  animate("financing-step-2", {
+    from: "fade-up",
+    delay: 510,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-step-2-icon", {
+    from: "zoom-in",
+    delay: 540,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-step-2-card", {
+    from: "fade-up",
+    delay: 570,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-step-2-title", {
+    from: "fade-in",
+    delay: 500,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-step-2-description", {
+    from: "fade-in",
+    delay: 530,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Step 3 animations
+  animate("financing-step-3", {
+    from: "fade-up",
+    delay: 540,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-step-3-icon", {
+    from: "zoom-in",
+    delay: 570,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-step-3-card", {
+    from: "fade-up",
+    delay: 500,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-step-3-title", {
+    from: "fade-in",
+    delay: 530,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("financing-step-3-description", {
+    from: "fade-in",
+    delay: 560,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
 });
