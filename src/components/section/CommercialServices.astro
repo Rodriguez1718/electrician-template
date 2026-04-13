@@ -101,10 +101,10 @@ const getColorClasses = (color: 'primary' | 'secondary' | 'accent' | 'red') => {
   <div class="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent via-black/60 to-black z-20"></div>
 
   <div class="max-w-7xl mx-auto px-6 relative z-30">
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
+    <div id="commercial-services-grid" class="grid lg:grid-cols-2 gap-16 items-center">
       
       <!-- Left side - Image -->
-      <div class="relative">
+      <div id="commercial-services-image-container" class="relative">
         <!-- SVG Clip Path Definition -->
         <svg width="0" height="0">
           <defs>
@@ -116,6 +116,7 @@ const getColorClasses = (color: 'primary' | 'secondary' | 'accent' | 'red') => {
         
         <!-- Clipped Image -->
         <img 
+          id="commercial-services-image"
           src={image.src} 
           alt={image.alt} 
           class="clipped-element w-full h-[500px] object-cover"
@@ -123,7 +124,7 @@ const getColorClasses = (color: 'primary' | 'secondary' | 'accent' | 'red') => {
         
         <!-- Experience Badge -->
         {badge && (
-          <div class="absolute top-1 right-3 border-2 border-brand-primary text-brand-primary p-3 rounded-lg shadow-lg">
+          <div id="commercial-services-badge" class="absolute top-1 right-3 border-2 border-brand-primary text-brand-primary p-3 rounded-lg shadow-lg">
             <div class="text-center">
               <div class="text-3xl font-bold font-asap-condensed">{badge.number}</div>
               {badge.text.map((line) => (
@@ -136,13 +137,13 @@ const getColorClasses = (color: 'primary' | 'secondary' | 'accent' | 'red') => {
       </div>
 
       <!-- Right side - Content -->
-      <div>
+      <div id="commercial-services-content">
         <!-- Section Header -->
-        <div class="mb-12">
-          <p class="text-brand-accent font-helvetica text-sm uppercase tracking-wider mb-4">
+        <div id="commercial-services-header" class="mb-12">
+          <p id="commercial-services-tag" class="text-brand-accent font-helvetica text-sm uppercase tracking-wider mb-4">
             {sectionTag}
           </p>
-          <h2 class="text-4xl lg:text-5xl font-asap-condensed uppercase tracking-wide font-bold text-white mb-6">
+          <h2 id="commercial-services-title" class="text-4xl lg:text-5xl font-asap-condensed uppercase tracking-wide font-bold text-white mb-6">
             {highlightedText ? (
               <Fragment>
                 {title.split(highlightedText)[0]}
@@ -151,17 +152,17 @@ const getColorClasses = (color: 'primary' | 'secondary' | 'accent' | 'red') => {
               </Fragment>
             ) : title}
           </h2>
-          <p class="text-lg text-white/80 font-helvetica leading-relaxed mb-8">
+          <p id="commercial-services-description" class="text-lg text-white/80 font-helvetica leading-relaxed mb-8">
             At <strong class="text-brand-primary">{companyName}</strong>, {description}
           </p>
         </div>
 
         <!-- Features Grid -->
-        <div class="grid md:grid-cols-2 gap-8 mb-10">
-          {features.map((feature) => {
+        <div id="commercial-services-features" class="grid md:grid-cols-2 gap-8 mb-10">
+          {features.map((feature, index) => {
             const colorClasses = getColorClasses(feature.color);
             return (
-              <div class="flex items-start gap-4 group">
+              <div id={`commercial-feature-${index + 1}`} class="flex items-start gap-4 group">
                 <div class={`flex-shrink-0 w-12 h-12 ${colorClasses.bg} rounded-full flex items-center justify-center ${colorClasses.hoverBg} transition-colors duration-300`}>
                   <div class={colorClasses.text} set:html={feature.icon}></div>
                 </div>

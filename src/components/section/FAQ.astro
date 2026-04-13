@@ -53,22 +53,22 @@ const {
 
   <div class="max-w-4xl mx-auto px-6 relative z-10">
     <!-- Section header -->
-    <div class="text-center mb-16">
-      <p class="text-brand-accent font-helvetica text-sm uppercase tracking-wider mb-4">
+    <div id="faq-header" class="text-center mb-16">
+      <p id="faq-label" class="text-brand-accent font-helvetica text-sm uppercase tracking-wider mb-4">
         {sectionLabel}
       </p>
-      <h2 class="text-4xl lg:text-5xl font-asap-condensed font-bold text-gray-900 mb-6 leading-tight tracking-wide uppercase">
+      <h2 id="faq-title" class="text-4xl lg:text-5xl font-asap-condensed font-bold text-gray-900 mb-6 leading-tight tracking-wide uppercase">
         {title} <span class="text-brand-primary">{titleHighlight}</span>
       </h2>
-      <p class="text-lg text-gray-600 font-helvetica leading-relaxed max-w-3xl mx-auto">
+      <p id="faq-description" class="text-lg text-gray-600 font-helvetica leading-relaxed max-w-3xl mx-auto">
         {description}
       </p>
     </div>
 
     <!-- FAQ Items -->
-    <div class="space-y-4">
+    <div id="faq-items" class="space-y-4">
       {faqs.map((faq, index) => (
-        <div class="faq-item bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div id={`faq-item-${index + 1}`} class="faq-item bg-white rounded-2xl shadow-lg overflow-hidden">
           <button 
             class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
             data-faq-index={index}

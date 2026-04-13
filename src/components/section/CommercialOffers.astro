@@ -46,22 +46,22 @@ const offers = [
 
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <!-- Section header -->
-    <div class="text-center mb-12">
-      <p class="text-brand-secondary font-helvetica text-sm uppercase tracking-wider mb-4">
+    <div id="commercial-offers-header" class="text-center mb-12">
+      <p id="commercial-offers-tag" class="text-brand-secondary font-helvetica text-sm uppercase tracking-wider mb-4">
         Special Offers
       </p>
-      <h2 class="text-4xl lg:text-5xl font-asap-condensed font-bold text-gray-900 mb-4 uppercase">
+      <h2 id="commercial-offers-title" class="text-4xl lg:text-5xl font-asap-condensed font-bold text-gray-900 mb-4 uppercase">
         What We Can <span class="text-brand-secondary">Offer You</span>
       </h2>
-      <p class="text-lg text-gray-600 font-helvetica max-w-2xl mx-auto">
+      <p id="commercial-offers-description" class="text-lg text-gray-600 font-helvetica max-w-2xl mx-auto">
         Discover our comprehensive electrical services and special offers designed for both residential and commercial clients. Quality work, competitive pricing, guaranteed satisfaction.
       </p>
     </div>
 
     <!-- Offers grid -->
-    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      {offers.map((offer) => (
-        <div class="offer-card group">
+    <div id="commercial-offers-grid" class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {offers.map((offer, index) => (
+        <div id={`commercial-offer-${index + 1}`} class="offer-card group">
           <div class={`${offer.bgColor} ${offer.textColor} p-8 h-full flex flex-col relative overflow-hidden`}>
             <!-- Decorative corner cuts -->
             <div class="absolute top-0 left-0 w-4 h-4 bg-white rounded-br-full"></div>

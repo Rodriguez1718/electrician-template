@@ -71,30 +71,32 @@ const services = await loadServices(category);
 
   <div class="max-w-7xl mx-auto px-6 relative z-20">
     <!-- Section header -->
-    <div class="text-center mb-16">
-      <p class="text-brand-accent font-helvetica text-sm uppercase tracking-wider mb-4">
+    <div id="services-list-header" class="text-center mb-16">
+      <p id="services-list-label" class="text-brand-accent font-helvetica text-sm uppercase tracking-wider mb-4">
         {sectionLabel}
       </p>
-      <h2 class="text-4xl lg:text-5xl font-asap-condensed font-bold text-white mb-6 leading-tight tracking-wide uppercase">
+      <h2 id="services-list-title" class="text-4xl lg:text-5xl font-asap-condensed font-bold text-white mb-6 leading-tight tracking-wide uppercase">
         {title} <span class="text-brand-secondary">{titleHighlight}</span> Services
       </h2>
-      <p class="text-lg text-white/80 font-helvetica leading-relaxed max-w-3xl mx-auto">
+      <p id="services-list-description" class="text-lg text-white/80 font-helvetica leading-relaxed max-w-3xl mx-auto">
         {description}
       </p>
     </div>
 
     <!-- Services grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {services.map((service: Service) => (
-        <Card
-          title={service.name}
-          description={service.description}
-          icon={service.icon}
-          href={`/services/${service.slug}`}
-          variant="service"
-          size="md"
-          category={category.charAt(0).toUpperCase() + category.slice(1)}
-        />
+    <div id="services-list-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {services.map((service: Service, index) => (
+        <div id={`services-list-card-${index + 1}`}>
+          <Card
+            title={service.name}
+            description={service.description}
+            icon={service.icon}
+            href={`/services/${service.slug}`}
+            variant="service"
+            size="md"
+            category={category.charAt(0).toUpperCase() + category.slice(1)}
+          />
+        </div>
       ))}
     </div>
   </div>

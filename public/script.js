@@ -578,7 +578,7 @@ ready(() => {
 
   animate("why-choose-title", {
     from: "fade-left",
-    delay: 400,
+    delay: 300,
     duration: 700,
     distance: 60,
     threshold: 0.15,
@@ -587,7 +587,7 @@ ready(() => {
 
   animate("why-choose-description", {
     from: "fade-in",
-    delay: 500,
+    delay: 300,
     duration: 600,
     threshold: 0.15,
     once: true,
@@ -595,7 +595,7 @@ ready(() => {
 
   animate("why-choose-features", {
     from: "fade-left",
-    delay: 600,
+    delay: 200,
     duration: 700,
     distance: 60,
     threshold: 0.15,
@@ -605,7 +605,7 @@ ready(() => {
   // Individual features with staggered delays
   animate("feature-1", {
     from: "fade-left",
-    delay: 700,
+    delay: 200,
     duration: 600,
     distance: 40,
     threshold: 0.1,
@@ -614,7 +614,7 @@ ready(() => {
 
   animate("feature-2", {
     from: "fade-left",
-    delay: 800,
+    delay: 300,
     duration: 600,
     distance: 40,
     threshold: 0.1,
@@ -623,7 +623,7 @@ ready(() => {
 
   animate("feature-3", {
     from: "fade-left",
-    delay: 900,
+    delay: 400,
     duration: 600,
     distance: 40,
     threshold: 0.1,
@@ -632,7 +632,7 @@ ready(() => {
 
   animate("feature-4", {
     from: "fade-left",
-    delay: 1000,
+    delay: 500,
     duration: 600,
     distance: 40,
     threshold: 0.1,
@@ -674,70 +674,70 @@ ready(() => {
   });
 
   // ═══════════════════════════════════════════════════════════════
-  //  SERVICES SECTION ANIMATIONS
+  //  SERVICES SECTION ANIMATIONS (FASTER TIMING)
   // ═══════════════════════════════════════════════════════════════
   
   animate("services-section", {
     from: "fade-up",
     delay: 0,
-    duration: 700,
+    duration: 600,
     threshold: 0.15,
     once: true,
   });
 
   animate("services-header", {
     from: "fade-up",
-    delay: 100,
-    duration: 700,
+    delay: 50,
+    duration: 600,
     threshold: 0.15,
     once: true,
   });
 
   animate("services-label", {
     from: "fade-in",
-    delay: 200,
-    duration: 600,
+    delay: 100,
+    duration: 500,
     threshold: 0.15,
     once: true,
   });
 
   animate("services-title", {
     from: "fade-up",
-    delay: 300,
-    duration: 700,
+    delay: 150,
+    duration: 600,
     threshold: 0.15,
     once: true,
   });
 
   animate("services-description", {
     from: "fade-in",
-    delay: 400,
-    duration: 600,
+    delay: 200,
+    duration: 500,
     threshold: 0.15,
     once: true,
   });
 
   animate("services-container", {
     from: "fade-up",
-    delay: 500,
-    duration: 700,
+    delay: 10,
+    duration: 200,
     threshold: 0.15,
     once: true,
   });
 
   animate("services-tabs", {
     from: "zoom-in",
-    delay: 600,
-    duration: 600,
+    delay: 200,
+    duration: 500,
     threshold: 0.15,
     once: true,
   });
 
-  // Individual service tabs with staggered delays
+  // Individual service tabs with faster staggered delays
   animate("service-tab-1", {
     from: "fade-left",
-    delay: 700,
-    duration: 500,
+    delay: 250,
+    duration: 400,
     distance: 30,
     threshold: 0.1,
     once: true,
@@ -745,8 +745,8 @@ ready(() => {
 
   animate("service-tab-2", {
     from: "fade-left",
-    delay: 750,
-    duration: 500,
+    delay: 275,
+    duration: 400,
     distance: 30,
     threshold: 0.1,
     once: true,
@@ -754,8 +754,8 @@ ready(() => {
 
   animate("service-tab-3", {
     from: "fade-left",
-    delay: 800,
-    duration: 500,
+    delay: 300,
+    duration: 400,
     distance: 30,
     threshold: 0.1,
     once: true,
@@ -763,8 +763,8 @@ ready(() => {
 
   animate("service-tab-4", {
     from: "fade-left",
-    delay: 850,
-    duration: 500,
+    delay: 325,
+    duration: 400,
     distance: 30,
     threshold: 0.1,
     once: true,
@@ -772,8 +772,8 @@ ready(() => {
 
   animate("services-content", {
     from: "fade-up",
-    delay: 900,
-    duration: 700,
+    delay: 350,
+    duration: 600,
     threshold: 0.15,
     once: true,
   });
@@ -781,16 +781,16 @@ ready(() => {
   // Service content grids
   animate("service-content-1", {
     from: "fade-in",
-    delay: 1000,
-    duration: 600,
+    delay: 400,
+    duration: 500,
     threshold: 0.15,
     once: true,
   });
 
   animate("service-grid-1", {
     from: "fade-up",
-    delay: 1100,
-    duration: 600,
+    delay: 450,
+    duration: 500,
     threshold: 0.15,
     once: true,
   });
@@ -798,68 +798,68 @@ ready(() => {
   // Gradient overlay
   animate("services-gradient", {
     from: "fade-in",
-    delay: 200,
-    duration: 800,
+    delay: 100,
+    duration: 600,
     threshold: 0.15,
     once: true,
   });
 
   // ═══════════════════════════════════════════════════════════════
-  //  MAINTENANCE PLANS SECTION ANIMATIONS
+  //  MAINTENANCE PLANS SECTION ANIMATIONS (FASTER TIMING)
   // ═══════════════════════════════════════════════════════════════
   
   animate("maintenance-section", {
     from: "fade-up",
     delay: 0,
-    duration: 700,
+    duration: 600,
     threshold: 0.15,
     once: true,
   });
 
   animate("maintenance-gradient", {
     from: "fade-in",
-    delay: 50,
-    duration: 600,
+    delay: 30,
+    duration: 500,
     threshold: 0.15,
     once: true,
   });
 
   animate("maintenance-header", {
     from: "fade-up",
-    delay: 100,
-    duration: 700,
+    delay: 60,
+    duration: 600,
     threshold: 0.15,
     once: true,
   });
 
   animate("maintenance-label", {
     from: "fade-in",
-    delay: 150,
-    duration: 600,
+    delay: 90,
+    duration: 500,
     threshold: 0.15,
     once: true,
   });
 
   animate("maintenance-title", {
     from: "fade-up",
-    delay: 200,
-    duration: 700,
+    delay: 120,
+    duration: 600,
     threshold: 0.15,
     once: true,
   });
 
   animate("maintenance-description", {
     from: "fade-in",
-    delay: 250,
-    duration: 600,
+    delay: 150,
+    duration: 500,
     threshold: 0.15,
     once: true,
   });
 
   animate("maintenance-content", {
     from: "fade-up",
-    delay: 300,
-    duration: 700,
+    delay: 180,
+    duration: 600,
     threshold: 0.15,
     once: true,
   });
@@ -867,8 +867,8 @@ ready(() => {
   // Left column animations
   animate("maintenance-left-column", {
     from: "fade-left",
-    delay: 350,
-    duration: 700,
+    delay: 210,
+    duration: 600,
     distance: 60,
     threshold: 0.15,
     once: true,
@@ -876,40 +876,40 @@ ready(() => {
 
   animate("maintenance-info-card", {
     from: "zoom-in",
-    delay: 400,
-    duration: 600,
+    delay: 240,
+    duration: 500,
     threshold: 0.15,
     once: true,
   });
 
   animate("maintenance-info-title", {
     from: "fade-up",
-    delay: 450,
-    duration: 600,
+    delay: 270,
+    duration: 500,
     threshold: 0.15,
     once: true,
   });
 
   animate("maintenance-image-container", {
     from: "zoom-in",
-    delay: 500,
-    duration: 700,
+    delay: 200,
+    duration: 600,
     threshold: 0.15,
     once: true,
   });
 
   animate("maintenance-image", {
     from: "zoom-out",
-    delay: 550,
-    duration: 800,
+    delay: 230,
+    duration: 700,
     threshold: 0.15,
     once: true,
   });
 
   animate("maintenance-overlay-content", {
     from: "fade-left",
-    delay: 600,
-    duration: 600,
+    delay: 260,
+    duration: 500,
     distance: 40,
     threshold: 0.15,
     once: true,
@@ -917,24 +917,24 @@ ready(() => {
 
   animate("maintenance-overlay-title", {
     from: "fade-up",
-    delay: 650,
-    duration: 500,
+    delay: 290,
+    duration: 400,
     threshold: 0.15,
     once: true,
   });
 
   animate("maintenance-overlay-description", {
     from: "fade-in",
-    delay: 700,
-    duration: 500,
+    delay: 220,
+    duration: 400,
     threshold: 0.15,
     once: true,
   });
 
   animate("maintenance-highlights", {
     from: "fade-up",
-    delay: 750,
-    duration: 600,
+    delay: 250,
+    duration: 500,
     threshold: 0.15,
     once: true,
   });
@@ -942,8 +942,8 @@ ready(() => {
   // Individual highlights with staggered delays
   animate("maintenance-highlight-1", {
     from: "fade-left",
-    delay: 800,
-    duration: 400,
+    delay: 280,
+    duration: 350,
     distance: 20,
     threshold: 0.1,
     once: true,
@@ -951,8 +951,8 @@ ready(() => {
 
   animate("maintenance-highlight-2", {
     from: "fade-left",
-    delay: 830,
-    duration: 400,
+    delay: 300,
+    duration: 350,
     distance: 20,
     threshold: 0.1,
     once: true,
@@ -960,8 +960,8 @@ ready(() => {
 
   animate("maintenance-highlight-3", {
     from: "fade-left",
-    delay: 860,
-    duration: 400,
+    delay: 220,
+    duration: 350,
     distance: 20,
     threshold: 0.1,
     once: true,
@@ -969,8 +969,8 @@ ready(() => {
 
   animate("maintenance-highlight-4", {
     from: "fade-left",
-    delay: 890,
-    duration: 400,
+    delay: 240,
+    duration: 350,
     distance: 20,
     threshold: 0.1,
     once: true,
@@ -978,24 +978,24 @@ ready(() => {
 
   animate("maintenance-benefits", {
     from: "fade-up",
-    delay: 920,
-    duration: 600,
+    delay: 270,
+    duration: 500,
     threshold: 0.15,
     once: true,
   });
 
   animate("maintenance-benefits-title", {
     from: "fade-in",
-    delay: 970,
-    duration: 500,
+    delay: 300,
+    duration: 400,
     threshold: 0.15,
     once: true,
   });
 
   animate("maintenance-benefits-grid", {
     from: "fade-up",
-    delay: 1000,
-    duration: 500,
+    delay: 330,
+    duration: 400,
     threshold: 0.15,
     once: true,
   });
@@ -1003,8 +1003,8 @@ ready(() => {
   // Right column animations
   animate("maintenance-right-column", {
     from: "fade-right",
-    delay: 350,
-    duration: 700,
+    delay: 210,
+    duration: 600,
     distance: 60,
     threshold: 0.15,
     once: true,
@@ -1012,48 +1012,48 @@ ready(() => {
 
   animate("maintenance-pricing-card", {
     from: "zoom-in",
-    delay: 400,
-    duration: 600,
+    delay: 240,
+    duration: 500,
     threshold: 0.15,
     once: true,
   });
 
   animate("maintenance-pricing-header", {
     from: "fade-up",
-    delay: 450,
-    duration: 500,
+    delay: 270,
+    duration: 400,
     threshold: 0.15,
     once: true,
   });
 
   animate("maintenance-pricing-title", {
     from: "fade-in",
-    delay: 500,
-    duration: 400,
+    delay: 300,
+    duration: 350,
     threshold: 0.15,
     once: true,
   });
 
   animate("maintenance-price", {
     from: "zoom-in",
-    delay: 550,
-    duration: 500,
+    delay: 330,
+    duration: 400,
     threshold: 0.15,
     once: true,
   });
 
   animate("maintenance-price-description", {
     from: "fade-in",
-    delay: 600,
-    duration: 400,
+    delay: 360,
+    duration: 350,
     threshold: 0.15,
     once: true,
   });
 
   animate("maintenance-pricing-features", {
     from: "fade-up",
-    delay: 650,
-    duration: 500,
+    delay: 390,
+    duration: 400,
     threshold: 0.15,
     once: true,
   });
@@ -1061,8 +1061,8 @@ ready(() => {
   // Individual pricing features
   animate("maintenance-pricing-feature-1", {
     from: "fade-left",
-    delay: 700,
-    duration: 400,
+    delay: 420,
+    duration: 350,
     distance: 20,
     threshold: 0.1,
     once: true,
@@ -1070,8 +1070,8 @@ ready(() => {
 
   animate("maintenance-pricing-feature-2", {
     from: "fade-left",
-    delay: 730,
-    duration: 400,
+    delay: 440,
+    duration: 350,
     distance: 20,
     threshold: 0.1,
     once: true,
@@ -1079,8 +1079,8 @@ ready(() => {
 
   animate("maintenance-pricing-feature-3", {
     from: "fade-left",
-    delay: 760,
-    duration: 400,
+    delay: 460,
+    duration: 350,
     distance: 20,
     threshold: 0.1,
     once: true,
@@ -1088,32 +1088,32 @@ ready(() => {
 
   animate("maintenance-cta-button", {
     from: "zoom-in",
-    delay: 800,
-    duration: 500,
+    delay: 480,
+    duration: 400,
     threshold: 0.15,
     once: true,
   });
 
   animate("maintenance-why-card", {
     from: "zoom-in",
-    delay: 500,
-    duration: 600,
+    delay: 300,
+    duration: 500,
     threshold: 0.15,
     once: true,
   });
 
   animate("maintenance-why-title", {
     from: "fade-up",
-    delay: 550,
-    duration: 500,
+    delay: 330,
+    duration: 400,
     threshold: 0.15,
     once: true,
   });
 
   animate("maintenance-why-list", {
     from: "fade-up",
-    delay: 600,
-    duration: 500,
+    delay: 360,
+    duration: 400,
     threshold: 0.15,
     once: true,
   });
@@ -1121,8 +1121,8 @@ ready(() => {
   // Individual why items
   animate("maintenance-why-item-1", {
     from: "fade-left",
-    delay: 650,
-    duration: 400,
+    delay: 390,
+    duration: 350,
     distance: 20,
     threshold: 0.1,
     once: true,
@@ -1130,8 +1130,8 @@ ready(() => {
 
   animate("maintenance-why-item-2", {
     from: "fade-left",
-    delay: 680,
-    duration: 400,
+    delay: 410,
+    duration: 350,
     distance: 20,
     threshold: 0.1,
     once: true,
@@ -1139,8 +1139,8 @@ ready(() => {
 
   animate("maintenance-why-item-3", {
     from: "fade-left",
-    delay: 710,
-    duration: 400,
+    delay: 430,
+    duration: 350,
     distance: 20,
     threshold: 0.1,
     once: true,
@@ -1148,8 +1148,8 @@ ready(() => {
 
   animate("maintenance-why-item-4", {
     from: "fade-left",
-    delay: 740,
-    duration: 400,
+    delay: 450,
+    duration: 350,
     distance: 20,
     threshold: 0.1,
     once: true,
@@ -1226,7 +1226,7 @@ ready(() => {
   // Left card animations
   animate("financing-left-card", {
     from: "fade-left",
-    delay: 400,
+    delay: 200,
     duration: 600,
     distance: 60,
     threshold: 0.15,
@@ -1235,7 +1235,7 @@ ready(() => {
 
   animate("financing-left-title", {
     from: "fade-up",
-    delay: 450,
+    delay: 250,
     duration: 500,
     threshold: 0.15,
     once: true,
@@ -1243,7 +1243,7 @@ ready(() => {
 
   animate("financing-left-features", {
     from: "fade-up",
-    delay: 500,
+    delay: 300,
     duration: 500,
     threshold: 0.15,
     once: true,
@@ -1252,7 +1252,7 @@ ready(() => {
   // Left features with staggered delays
   animate("financing-left-feature-1", {
     from: "fade-left",
-    delay: 550,
+    delay: 250,
     duration: 400,
     distance: 30,
     threshold: 0.1,
@@ -1261,7 +1261,7 @@ ready(() => {
 
   animate("financing-left-feature-2", {
     from: "fade-left",
-    delay: 580,
+    delay: 280,
     duration: 400,
     distance: 30,
     threshold: 0.1,
@@ -1270,7 +1270,7 @@ ready(() => {
 
   animate("financing-left-feature-3", {
     from: "fade-left",
-    delay: 610,
+    delay: 310,
     duration: 400,
     distance: 30,
     threshold: 0.1,
@@ -1280,7 +1280,7 @@ ready(() => {
   // Right card animations
   animate("financing-right-card", {
     from: "fade-right",
-    delay: 400,
+    delay: 300,
     duration: 600,
     distance: 60,
     threshold: 0.15,
@@ -1289,7 +1289,7 @@ ready(() => {
 
   animate("financing-right-title", {
     from: "fade-up",
-    delay: 450,
+    delay: 350,
     duration: 500,
     threshold: 0.15,
     once: true,
@@ -1297,7 +1297,7 @@ ready(() => {
 
   animate("financing-right-features", {
     from: "fade-up",
-    delay: 500,
+    delay: 300,
     duration: 500,
     threshold: 0.15,
     once: true,
@@ -1306,7 +1306,7 @@ ready(() => {
   // Right features with staggered delays
   animate("financing-right-feature-1", {
     from: "fade-right",
-    delay: 550,
+    delay: 350,
     duration: 400,
     distance: 30,
     threshold: 0.1,
@@ -1315,7 +1315,7 @@ ready(() => {
 
   animate("financing-right-feature-2", {
     from: "fade-right",
-    delay: 580,
+    delay: 380,
     duration: 400,
     distance: 30,
     threshold: 0.1,
@@ -1324,7 +1324,7 @@ ready(() => {
 
   animate("financing-right-feature-3", {
     from: "fade-right",
-    delay: 610,
+    delay: 310,
     duration: 400,
     distance: 30,
     threshold: 0.1,
@@ -1333,7 +1333,7 @@ ready(() => {
 
   animate("financing-right-feature-4", {
     from: "fade-right",
-    delay: 640,
+    delay: 340,
     duration: 400,
     distance: 30,
     threshold: 0.1,
@@ -1343,7 +1343,7 @@ ready(() => {
   // How to Apply section
   animate("financing-apply-section", {
     from: "fade-up",
-    delay: 670,
+    delay: 370,
     duration: 700,
     threshold: 0.15,
     once: true,
@@ -1351,7 +1351,7 @@ ready(() => {
 
   animate("financing-apply-header", {
     from: "fade-up",
-    delay: 700,
+    delay: 300,
     duration: 600,
     threshold: 0.15,
     once: true,
@@ -1359,7 +1359,7 @@ ready(() => {
 
   animate("financing-apply-title", {
     from: "fade-in",
-    delay: 730,
+    delay: 330,
     duration: 500,
     threshold: 0.15,
     once: true,
@@ -1367,7 +1367,7 @@ ready(() => {
 
   animate("financing-apply-description", {
     from: "fade-in",
-    delay: 760,
+    delay: 360,
     duration: 500,
     threshold: 0.15,
     once: true,
@@ -1375,7 +1375,7 @@ ready(() => {
 
   animate("financing-process", {
     from: "fade-up",
-    delay: 790,
+    delay: 390,
     duration: 600,
     threshold: 0.15,
     once: true,
@@ -1383,7 +1383,7 @@ ready(() => {
 
   animate("financing-connection-line", {
     from: "fade-in",
-    delay: 820,
+    delay: 420,
     duration: 800,
     threshold: 0.15,
     once: true,
@@ -1391,7 +1391,7 @@ ready(() => {
 
   animate("financing-steps", {
     from: "fade-up",
-    delay: 550,
+    delay: 250,
     duration: 600,
     threshold: 0.15,
     once: true,
@@ -1400,7 +1400,7 @@ ready(() => {
   // Step 1 animations
   animate("financing-step-1", {
     from: "fade-up",
-    delay: 580,
+    delay: 280,
     duration: 500,
     threshold: 0.15,
     once: true,
@@ -1408,7 +1408,7 @@ ready(() => {
 
   animate("financing-step-1-icon", {
     from: "zoom-in",
-    delay: 510,
+    delay: 210,
     duration: 500,
     threshold: 0.15,
     once: true,
@@ -1416,7 +1416,7 @@ ready(() => {
 
   animate("financing-step-1-card", {
     from: "fade-up",
-    delay: 540,
+    delay: 240,
     duration: 500,
     threshold: 0.15,
     once: true,
@@ -1424,7 +1424,7 @@ ready(() => {
 
   animate("financing-step-1-title", {
     from: "fade-in",
-    delay: 570,
+    delay: 270,
     duration: 400,
     threshold: 0.15,
     once: true,
@@ -1432,7 +1432,7 @@ ready(() => {
 
   animate("financing-step-1-description", {
     from: "fade-in",
-    delay: 500,
+    delay: 200,
     duration: 400,
     threshold: 0.15,
     once: true,
@@ -1441,7 +1441,7 @@ ready(() => {
   // Step 2 animations
   animate("financing-step-2", {
     from: "fade-up",
-    delay: 510,
+    delay: 210,
     duration: 500,
     threshold: 0.15,
     once: true,
@@ -1449,7 +1449,7 @@ ready(() => {
 
   animate("financing-step-2-icon", {
     from: "zoom-in",
-    delay: 540,
+    delay: 240,
     duration: 500,
     threshold: 0.15,
     once: true,
@@ -1457,7 +1457,7 @@ ready(() => {
 
   animate("financing-step-2-card", {
     from: "fade-up",
-    delay: 570,
+    delay: 270,
     duration: 500,
     threshold: 0.15,
     once: true,
@@ -1465,7 +1465,7 @@ ready(() => {
 
   animate("financing-step-2-title", {
     from: "fade-in",
-    delay: 500,
+    delay: 200,
     duration: 400,
     threshold: 0.15,
     once: true,
@@ -1473,7 +1473,7 @@ ready(() => {
 
   animate("financing-step-2-description", {
     from: "fade-in",
-    delay: 530,
+    delay: 230,
     duration: 400,
     threshold: 0.15,
     once: true,
@@ -1482,7 +1482,7 @@ ready(() => {
   // Step 3 animations
   animate("financing-step-3", {
     from: "fade-up",
-    delay: 540,
+    delay: 240,
     duration: 500,
     threshold: 0.15,
     once: true,
@@ -1490,7 +1490,7 @@ ready(() => {
 
   animate("financing-step-3-icon", {
     from: "zoom-in",
-    delay: 570,
+    delay: 270,
     duration: 500,
     threshold: 0.15,
     once: true,
@@ -1498,7 +1498,7 @@ ready(() => {
 
   animate("financing-step-3-card", {
     from: "fade-up",
-    delay: 500,
+    delay: 200,
     duration: 500,
     threshold: 0.15,
     once: true,
@@ -1506,7 +1506,7 @@ ready(() => {
 
   animate("financing-step-3-title", {
     from: "fade-in",
-    delay: 530,
+    delay: 230,
     duration: 400,
     threshold: 0.15,
     once: true,
@@ -1514,9 +1514,1669 @@ ready(() => {
 
   animate("financing-step-3-description", {
     from: "fade-in",
-    delay: 560,
+    delay: 260,
     duration: 400,
     threshold: 0.15,
+    once: true,
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  //  FEATURED WORKS SECTION ANIMATIONS
+  // ═══════════════════════════════════════════════════════════════
+  
+  animate("featured-works-section", {
+    from: "fade-up",
+    delay: 0,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("featured-works-gradient", {
+    from: "fade-in",
+    delay: 50,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("featured-works-header", {
+    from: "fade-up",
+    delay: 100,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("featured-works-label", {
+    from: "fade-in",
+    delay: 150,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("featured-works-title", {
+    from: "fade-up",
+    delay: 200,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("featured-works-description", {
+    from: "fade-in",
+    delay: 250,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("featured-works-grid", {
+    from: "fade-up",
+    delay: 300,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Individual featured works with staggered delays
+  animate("featured-work-1", {
+    from: "zoom-in",
+    delay: 350,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("featured-work-2", {
+    from: "zoom-in",
+    delay: 400,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("featured-work-3", {
+    from: "zoom-in",
+    delay: 450,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("featured-work-4", {
+    from: "zoom-in",
+    delay: 500,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("featured-work-5", {
+    from: "zoom-in",
+    delay: 550,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("featured-work-6", {
+    from: "zoom-in",
+    delay: 600,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("featured-works-cta", {
+    from: "zoom-in",
+    delay: 650,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  //  TESTIMONIALS SECTION ANIMATIONS
+  // ═══════════════════════════════════════════════════════════════
+  
+  animate("testimonials-section", {
+    from: "fade-up",
+    delay: 0,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("testimonials-header", {
+    from: "fade-up",
+    delay: 100,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("testimonials-label", {
+    from: "fade-in",
+    delay: 150,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("testimonials-title", {
+    from: "fade-up",
+    delay: 200,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("testimonials-description", {
+    from: "fade-in",
+    delay: 250,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("testimonials-carousel", {
+    from: "fade-up",
+    delay: 300,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("testimonials-blur-left", {
+    from: "fade-in",
+    delay: 350,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("testimonials-blur-right", {
+    from: "fade-in",
+    delay: 350,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("testimonials-row-1", {
+    from: "fade-left",
+    delay: 400,
+    duration: 700,
+    distance: 100,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("testimonials-track-1", {
+    from: "fade-in",
+    delay: 450,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("testimonials-row-2", {
+    from: "fade-right",
+    delay: 500,
+    duration: 700,
+    distance: 100,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("testimonials-track-2", {
+    from: "fade-in",
+    delay: 550,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  //  CALL TO ACTION SECTION ANIMATIONS
+  // ═══════════════════════════════════════════════════════════════
+  
+  animate("cta-section", {
+    from: "fade-up",
+    delay: 0,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("cta-gradient-overlay", {
+    from: "fade-in",
+    delay: 50,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("cta-top-gradient", {
+    from: "fade-in",
+    delay: 50,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("cta-top-gradient-alt", {
+    from: "fade-in",
+    delay: 50,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("cta-card", {
+    from: "zoom-in",
+    delay: 100,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("cta-content", {
+    from: "fade-up",
+    delay: 150,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Left content animations
+  animate("cta-left-content", {
+    from: "fade-left",
+    delay: 200,
+    duration: 600,
+    distance: 50,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("cta-label", {
+    from: "fade-in",
+    delay: 250,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("cta-title", {
+    from: "fade-up",
+    delay: 300,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("cta-button", {
+    from: "zoom-in",
+    delay: 350,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Phone section animations
+  animate("cta-phone-section", {
+    from: "zoom-in",
+    delay: 200,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("cta-phone-label", {
+    from: "fade-in",
+    delay: 250,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("cta-phone-number", {
+    from: "zoom-in",
+    delay: 300,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("cta-emergency-text", {
+    from: "fade-in",
+    delay: 350,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Features animations
+  animate("cta-features", {
+    from: "fade-right",
+    delay: 200,
+    duration: 600,
+    distance: 50,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("cta-feature-1", {
+    from: "fade-right",
+    delay: 250,
+    duration: 500,
+    distance: 30,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("cta-feature-2", {
+    from: "fade-right",
+    delay: 300,
+    duration: 500,
+    distance: 30,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("cta-feature-3", {
+    from: "fade-right",
+    delay: 350,
+    duration: 500,
+    distance: 30,
+    threshold: 0.1,
+    once: true,
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  //  SERVICE AREAS SECTION ANIMATIONS
+  // ═══════════════════════════════════════════════════════════════
+  
+  animate("service-areas-header", {
+    from: "fade-up",
+    delay: 0,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("service-areas-label", {
+    from: "fade-in",
+    delay: 100,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("service-areas-title", {
+    from: "fade-up",
+    delay: 150,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("service-areas-description", {
+    from: "fade-in",
+    delay: 200,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("service-areas-tags", {
+    from: "fade-up",
+    delay: 250,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // First row of service area tags
+  animate("service-areas-row-1", {
+    from: "fade-up",
+    delay: 300,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Individual tags in first row with staggered delays
+  animate("service-area-tag-1", {
+    from: "zoom-in",
+    delay: 350,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-area-tag-2", {
+    from: "zoom-in",
+    delay: 375,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-area-tag-3", {
+    from: "zoom-in",
+    delay: 400,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-area-tag-4", {
+    from: "zoom-in",
+    delay: 425,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-area-tag-5", {
+    from: "zoom-in",
+    delay: 450,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-area-tag-6", {
+    from: "zoom-in",
+    delay: 475,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-area-tag-7", {
+    from: "zoom-in",
+    delay: 500,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  // Second row of service area tags
+  animate("service-areas-row-2", {
+    from: "fade-up",
+    delay: 400,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Individual tags in second row
+  animate("service-area-tag-8", {
+    from: "zoom-in",
+    delay: 450,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-area-tag-9", {
+    from: "zoom-in",
+    delay: 475,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-area-tag-10", {
+    from: "zoom-in",
+    delay: 500,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-area-tag-11", {
+    from: "zoom-in",
+    delay: 525,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-area-tag-12", {
+    from: "zoom-in",
+    delay: 550,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-area-tag-13", {
+    from: "zoom-in",
+    delay: 575,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-area-tag-14", {
+    from: "zoom-in",
+    delay: 600,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  // Third row of service area tags
+  animate("service-areas-row-3", {
+    from: "fade-up",
+    delay: 500,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Individual tags in third row
+  animate("service-area-tag-15", {
+    from: "zoom-in",
+    delay: 550,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-area-tag-16", {
+    from: "zoom-in",
+    delay: 575,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-area-tag-17", {
+    from: "zoom-in",
+    delay: 600,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-area-tag-18", {
+    from: "zoom-in",
+    delay: 625,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-area-tag-19", {
+    from: "zoom-in",
+    delay: 650,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-area-tag-20", {
+    from: "zoom-in",
+    delay: 675,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  // Interactive map
+  animate("service-areas-map", {
+    from: "zoom-in",
+    delay: 700,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  //  HERO2 SECTION ANIMATIONS
+  // ═══════════════════════════════════════════════════════════════
+  
+  animate("hero2-section", {
+    from: "fade-in",
+    delay: 0,
+    duration: 800,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("hero2-background", {
+    from: "zoom-out",
+    delay: 0,
+    duration: 1000,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("hero2-overlay", {
+    from: "fade-in",
+    delay: 200,
+    duration: 600,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("hero2-gradient", {
+    from: "fade-in",
+    delay: 300,
+    duration: 600,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("hero2-headline", {
+    from: "fade-in",
+    delay: 200,
+    duration: 800,
+    threshold: 0.1,
+    once: true,
+  });
+
+  // Hero2 headline lines with staggered delays
+  animate("hero2-line1", {
+    from: "fade-left",
+    delay: 300,
+    duration: 800,
+    distance: 60,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("hero2-line2", {
+    from: "fade-left",
+    delay: 400,
+    duration: 800,
+    distance: 60,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("hero2-line3", {
+    from: "fade-left",
+    delay: 300,
+    duration: 800,
+    distance: 60,
+    threshold: 0.1,
+    once: true,
+  });
+
+  // Hero2 content animations
+  animate("hero2-content", {
+    from: "fade-right",
+    delay: 400,
+    duration: 800,
+    distance: 80,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("hero2-description", {
+    from: "fade-in",
+    delay: 400,
+    duration: 700,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("hero2-actions", {
+    from: "zoom-in",
+    delay: 400,
+    duration: 600,
+    threshold: 0.1,
+    once: true,
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  //  COMMERCIAL SERVICES SECTION ANIMATIONS
+  // ═══════════════════════════════════════════════════════════════
+  
+  animate("commercial-services-section", {
+    from: "fade-up",
+    delay: 0,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("commercial-services-gradient", {
+    from: "fade-in",
+    delay: 50,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("commercial-services-grid", {
+    from: "fade-up",
+    delay: 100,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Left side - Image animations
+  animate("commercial-services-image-container", {
+    from: "fade-left",
+    delay: 150,
+    duration: 700,
+    distance: 60,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("commercial-services-image", {
+    from: "zoom-out",
+    delay: 200,
+    duration: 800,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("commercial-services-badge", {
+    from: "zoom-in",
+    delay: 300,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Right side - Content animations
+  animate("commercial-services-content", {
+    from: "fade-right",
+    delay: 150,
+    duration: 700,
+    distance: 60,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("commercial-services-header", {
+    from: "fade-up",
+    delay: 200,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("commercial-services-tag", {
+    from: "fade-in",
+    delay: 250,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("commercial-services-title", {
+    from: "fade-up",
+    delay: 300,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("commercial-services-description", {
+    from: "fade-in",
+    delay: 350,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("commercial-services-features", {
+    from: "fade-up",
+    delay: 300,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Individual features with staggered delays
+  animate("commercial-feature-1", {
+    from: "fade-right",
+    delay: 350,
+    duration: 500,
+    distance: 40,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("commercial-feature-2", {
+    from: "fade-right",
+    delay: 300,
+    duration: 500,
+    distance: 40,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("commercial-feature-3", {
+    from: "fade-right",
+    delay: 350,
+    duration: 500,
+    distance: 40,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("commercial-feature-4", {
+    from: "fade-right",
+    delay: 300,
+    duration: 500,
+    distance: 40,
+    threshold: 0.1,
+    once: true,
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  //  PROCESS TIMELINE SECTION ANIMATIONS
+  // ═══════════════════════════════════════════════════════════════
+  
+  animate("process-timeline-section", {
+    from: "fade-up",
+    delay: 0,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("process-timeline-bg-image", {
+    from: "zoom-out",
+    delay: 0,
+    duration: 1000,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("process-timeline-header", {
+    from: "fade-up",
+    delay: 100,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("process-timeline-tag", {
+    from: "fade-in",
+    delay: 150,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("process-timeline-title", {
+    from: "fade-up",
+    delay: 200,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("process-timeline-description", {
+    from: "fade-in",
+    delay: 250,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("process-timeline-steps", {
+    from: "fade-up",
+    delay: 300,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Step 1 animations
+  animate("process-step-1", {
+    from: "fade-up",
+    delay: 350,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("process-number-1", {
+    from: "zoom-in",
+    delay: 300,
+    duration: 500,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("process-icon-1", {
+    from: "zoom-in",
+    delay: 350,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("process-step-title-1", {
+    from: "fade-up",
+    delay: 300,
+    duration: 500,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("process-step-description-1", {
+    from: "fade-in",
+    delay: 350,
+    duration: 500,
+    threshold: 0.1,
+    once: true,
+  });
+
+  // Step 2 animations
+  animate("process-step-2", {
+    from: "fade-up",
+    delay: 300,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("process-number-2", {
+    from: "zoom-in",
+    delay: 350,
+    duration: 500,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("process-icon-2", {
+    from: "zoom-in",
+    delay: 300,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("process-step-title-2", {
+    from: "fade-up",
+    delay: 350,
+    duration: 500,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("process-step-description-2", {
+    from: "fade-in",
+    delay: 300,
+    duration: 500,
+    threshold: 0.1,
+    once: true,
+  });
+
+  // Step 3 animations
+  animate("process-step-3", {
+    from: "fade-up",
+    delay: 350,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("process-number-3", {
+    from: "zoom-in",
+    delay: 300,
+    duration: 500,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("process-icon-3", {
+    from: "zoom-in",
+    delay: 350,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("process-step-title-3", {
+    from: "fade-up",
+    delay: 300,
+    duration: 500,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("process-step-description-3", {
+    from: "fade-in",
+    delay: 350,
+    duration: 500,
+    threshold: 0.1,
+    once: true,
+  });
+
+  // Step 4 animations
+  animate("process-step-4", {
+    from: "fade-up",
+    delay: 300,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("process-number-4", {
+    from: "zoom-in",
+    delay: 350,
+    duration: 500,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("process-icon-4", {
+    from: "zoom-in",
+    delay: 300,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("process-step-title-4", {
+    from: "fade-up",
+    delay: 350,
+    duration: 500,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("process-step-description-4", {
+    from: "fade-in",
+    delay: 300,
+    duration: 500,
+    threshold: 0.1,
+    once: true,
+  });
+
+  // Connecting lines
+  animate("process-line-1", {
+    from: "fade-in",
+    delay: 300,
+    duration: 800,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("process-line-2", {
+    from: "fade-in",
+    delay: 350,
+    duration: 800,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("process-line-3", {
+    from: "fade-in",
+    delay: 300,
+    duration: 800,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  //  COMMERCIAL OFFERS SECTION ANIMATIONS
+  // ═══════════════════════════════════════════════════════════════
+  
+  animate("commercial-offers-section", {
+    from: "fade-up",
+    delay: 0,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("commercial-offers-gradient", {
+    from: "fade-in",
+    delay: 50,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("commercial-offers-header", {
+    from: "fade-up",
+    delay: 100,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("commercial-offers-tag", {
+    from: "fade-in",
+    delay: 150,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("commercial-offers-title", {
+    from: "fade-up",
+    delay: 200,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("commercial-offers-description", {
+    from: "fade-in",
+    delay: 250,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("commercial-offers-grid", {
+    from: "fade-up",
+    delay: 300,
+    duration: 700,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Individual offer cards with staggered delays
+  animate("commercial-offer-1", {
+    from: "zoom-in",
+    delay: 350,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("commercial-offer-2", {
+    from: "zoom-in",
+    delay: 450,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("commercial-offer-3", {
+    from: "zoom-in",
+    delay: 550,
+    duration: 600,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  //  FAQ SECTION ANIMATIONS (FAST TIMING)
+  // ═══════════════════════════════════════════════════════════════
+  
+  animate("faq-section", {
+    from: "fade-up",
+    delay: 0,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("faq-top-gradient", {
+    from: "fade-in",
+    delay: 30,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("faq-bottom-gradient", {
+    from: "fade-in",
+    delay: 30,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("faq-header", {
+    from: "fade-up",
+    delay: 60,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("faq-label", {
+    from: "fade-in",
+    delay: 90,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("faq-title", {
+    from: "fade-up",
+    delay: 120,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("faq-description", {
+    from: "fade-in",
+    delay: 150,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("faq-items", {
+    from: "fade-up",
+    delay: 180,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Individual FAQ items with fast staggered delays
+  animate("faq-item-1", {
+    from: "fade-up",
+    delay: 210,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("faq-item-2", {
+    from: "fade-up",
+    delay: 240,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("faq-item-3", {
+    from: "fade-up",
+    delay: 270,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("faq-item-4", {
+    from: "fade-up",
+    delay: 300,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("faq-item-5", {
+    from: "fade-up",
+    delay: 330,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("faq-item-6", {
+    from: "fade-up",
+    delay: 360,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  //  SERVICE COVERAGE SECTION ANIMATIONS (FAST TIMING)
+  // ═══════════════════════════════════════════════════════════════
+  
+  animate("service-coverage-section", {
+    from: "fade-up",
+    delay: 0,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("service-coverage-bg-image", {
+    from: "zoom-out",
+    delay: 0,
+    duration: 800,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("service-coverage-overlay", {
+    from: "fade-in",
+    delay: 30,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("service-coverage-grid", {
+    from: "fade-up",
+    delay: 60,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Left side - Map animations
+  animate("service-coverage-map-container", {
+    from: "fade-left",
+    delay: 90,
+    duration: 500,
+    distance: 50,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("service-coverage-map-wrapper", {
+    from: "zoom-in",
+    delay: 120,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("service-coverage-map", {
+    from: "fade-in",
+    delay: 150,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("service-coverage-areas", {
+    from: "fade-up",
+    delay: 180,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("service-coverage-areas-title", {
+    from: "fade-in",
+    delay: 210,
+    duration: 300,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("service-coverage-areas-grid", {
+    from: "fade-up",
+    delay: 240,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Individual service area items with fast staggered delays
+  animate("service-area-item-1", {
+    from: "fade-left",
+    delay: 270,
+    duration: 300,
+    distance: 20,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-area-item-2", {
+    from: "fade-left",
+    delay: 285,
+    duration: 300,
+    distance: 20,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-area-item-3", {
+    from: "fade-left",
+    delay: 300,
+    duration: 300,
+    distance: 20,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-area-item-4", {
+    from: "fade-left",
+    delay: 315,
+    duration: 300,
+    distance: 20,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-area-item-5", {
+    from: "fade-left",
+    delay: 330,
+    duration: 300,
+    distance: 20,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-area-item-6", {
+    from: "fade-left",
+    delay: 345,
+    duration: 300,
+    distance: 20,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-coverage-radius", {
+    from: "zoom-in",
+    delay: 360,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Right side - Content animations
+  animate("service-coverage-content", {
+    from: "fade-right",
+    delay: 90,
+    duration: 500,
+    distance: 50,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("service-coverage-header", {
+    from: "fade-up",
+    delay: 120,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("service-coverage-label", {
+    from: "fade-in",
+    delay: 150,
+    duration: 300,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("service-coverage-title", {
+    from: "fade-up",
+    delay: 180,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("service-coverage-description", {
+    from: "fade-in",
+    delay: 210,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("service-coverage-highlights", {
+    from: "fade-up",
+    delay: 240,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Individual highlights with fast staggered delays
+  animate("service-coverage-highlight-1", {
+    from: "fade-right",
+    delay: 270,
+    duration: 400,
+    distance: 30,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-coverage-highlight-2", {
+    from: "fade-right",
+    delay: 300,
+    duration: 400,
+    distance: 30,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("service-coverage-highlight-3", {
+    from: "fade-right",
+    delay: 330,
+    duration: 400,
+    distance: 30,
+    threshold: 0.1,
+    once: true,
+  });
+
+  // ═══════════════════════════════════════════════════════════════
+  //  SERVICES LIST SECTION ANIMATIONS (FAST TIMING)
+  // ═══════════════════════════════════════════════════════════════
+  
+  animate("services-list-section", {
+    from: "fade-up",
+    delay: 0,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("services-list-header", {
+    from: "fade-up",
+    delay: 60,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("services-list-label", {
+    from: "fade-in",
+    delay: 90,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("services-list-title", {
+    from: "fade-up",
+    delay: 120,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("services-list-description", {
+    from: "fade-in",
+    delay: 150,
+    duration: 400,
+    threshold: 0.15,
+    once: true,
+  });
+
+  animate("services-list-grid", {
+    from: "fade-up",
+    delay: 180,
+    duration: 500,
+    threshold: 0.15,
+    once: true,
+  });
+
+  // Individual service cards with fast staggered delays
+  animate("services-list-card-1", {
+    from: "zoom-in",
+    delay: 210,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("services-list-card-2", {
+    from: "zoom-in",
+    delay: 240,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("services-list-card-3", {
+    from: "zoom-in",
+    delay: 270,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("services-list-card-4", {
+    from: "zoom-in",
+    delay: 200,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("services-list-card-5", {
+    from: "zoom-in",
+    delay: 230,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("services-list-card-6", {
+    from: "zoom-in",
+    delay: 260,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("services-list-card-7", {
+    from: "zoom-in",
+    delay: 290,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("services-list-card-8", {
+    from: "zoom-in",
+    delay: 220,
+    duration: 400,
+    threshold: 0.1,
+    once: true,
+  });
+
+  animate("services-list-card-9", {
+    from: "zoom-in",
+    delay: 250,
+    duration: 400,
+    threshold: 0.1,
     once: true,
   });
 });

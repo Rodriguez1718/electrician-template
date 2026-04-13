@@ -32,24 +32,25 @@ const {
 
     <div class="flex flex-col min-[1180px]:block h-full relative z-30">
         <h1
-            id="hero-headline"
+            id="hero2-headline"
             class="relative min-[1180px]:absolute left-3 font-playfair font-black text-white pointer-events-none select-none flex flex-col leading-[0.88] tracking-tight hero-headline"
             aria-label="Hero Headline"
             style="top: clamp(60px, 8vh, 100px);"
         >
-            <span class="relative">{line1}</span>
-            <span class="relative hero-line2">{line2}</span>
-            <span class="relative text-brand-primary hero-line3">{line3}</span>
+            <span id="hero2-line1" class="relative">{line1}</span>
+            <span id="hero2-line2" class="relative hero-line2">{line2}</span>
+            <span id="hero2-line3" class="relative text-brand-primary hero-line3">{line3}</span>
         </h1>
 
         <div
+            id="hero2-content"
             class="content-container absolute right-8 max-w-[590px] flex flex-col gap-4 z-10 "
         >
-            <p class="text-lg text-white/90 leading-[1.6] font-helvetica">
+            <p id="hero2-description" class="text-lg text-white/90 leading-[1.6] font-helvetica">
                 {description}
             </p>
 
-            <div class="flex flex-row items-center gap-8 mt-2">
+            <div id="hero2-actions" class="flex flex-row items-center gap-8 mt-2">
                 <Button variant="primary" size="lg" href={buttonHref}>
                     {buttonText}
                 </Button>
@@ -126,7 +127,7 @@ const {
             return;
         }
 
-        const headline = document.getElementById('hero-headline');
+        const headline = document.getElementById('hero2-headline');
         const section = headline?.closest('section');
         if (!headline || !section) return;
 

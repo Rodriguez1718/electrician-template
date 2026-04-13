@@ -81,7 +81,7 @@ const getColorClasses = (color: 'primary' | 'secondary' | 'accent' | 'red') => {
   <div class="max-w-7xl mx-auto px-6 relative">
     
     <!-- Decorative Image Behind Content -->
-    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0">
+    <div id="process-timeline-bg-image" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0">
       <img 
         src="/images/bitepower.png" 
         alt="Decorative electrical element" 
@@ -90,11 +90,11 @@ const getColorClasses = (color: 'primary' | 'secondary' | 'accent' | 'red') => {
     </div>
     
     <!-- Section Header -->
-    <div class="text-center mb-16 relative z-10">
-      <p class="text-brand-accent font-helvetica text-sm uppercase tracking-wider mb-4">
+    <div id="process-timeline-header" class="text-center mb-16 relative z-10">
+      <p id="process-timeline-tag" class="text-brand-accent font-helvetica text-sm uppercase tracking-wider mb-4">
         {sectionTag}
       </p>
-      <h2 class="text-4xl lg:text-5xl font-asap-condensed uppercase tracking-wide font-bold text-white mb-6">
+      <h2 id="process-timeline-title" class="text-4xl lg:text-5xl font-asap-condensed uppercase tracking-wide font-bold text-white mb-6">
         {highlightedText ? (
           <Fragment>
             {title.split(highlightedText)[0]}
@@ -103,41 +103,41 @@ const getColorClasses = (color: 'primary' | 'secondary' | 'accent' | 'red') => {
           </Fragment>
         ) : title}
       </h2>
-      <p class="text-lg text-white/80 font-helvetica leading-relaxed max-w-3xl mx-auto">
+      <p id="process-timeline-description" class="text-lg text-white/80 font-helvetica leading-relaxed max-w-3xl mx-auto">
         {description}
       </p>
     </div>
 
     <!-- Process Steps -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+    <div id="process-timeline-steps" class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
       {steps.map((step, index) => {
         const colorClasses = getColorClasses(step.color);
         return (
-          <div class="relative group">
+          <div id={`process-step-${index + 1}`} class="relative group">
             <!-- Connecting Line (hidden on last item) -->
             {index < steps.length - 1 && (
-              <div class="hidden lg:block absolute top-16 left-full w-full h-0.5 bg-white/20 z-0" style="transform: translateX(-50%);"></div>
+              <div id={`process-line-${index + 1}`} class="hidden lg:block absolute top-16 left-full w-full h-0.5 bg-white/20 z-0" style="transform: translateX(-50%);"></div>
             )}
             
             <!-- Step Card -->
             <div class="relative z-10 text-center">
               <!-- Step Number -->
-              <div class={`inline-flex items-center justify-center w-16 h-16 rounded-full ${colorClasses.bg} ${colorClasses.border} border-2 mb-6 group-hover:scale-110 transition-transform duration-300`}>
+              <div id={`process-number-${index + 1}`} class={`inline-flex items-center justify-center w-16 h-16 rounded-full ${colorClasses.bg} ${colorClasses.border} border-2 mb-6 group-hover:scale-110 transition-transform duration-300`}>
                 <span class={`text-xl font-bold font-asap-condensed ${colorClasses.text}`}>
                   {step.number}
                 </span>
               </div>
               
               <!-- Icon -->
-              <div class={`inline-flex items-center justify-center w-12 h-12 rounded-full ${colorClasses.bg} mb-4 ${colorClasses.text}`}>
+              <div id={`process-icon-${index + 1}`} class={`inline-flex items-center justify-center w-12 h-12 rounded-full ${colorClasses.bg} mb-4 ${colorClasses.text}`}>
                 <div set:html={step.icon}></div>
               </div>
               
               <!-- Content -->
-              <h3 class="text-xl font-asap-condensed uppercase tracking-wide font-bold text-white mb-3">
+              <h3 id={`process-step-title-${index + 1}`} class="text-xl font-asap-condensed uppercase tracking-wide font-bold text-white mb-3">
                 {step.title}
               </h3>
-              <p class="text-white/70 font-helvetica text-sm leading-relaxed">
+              <p id={`process-step-description-${index + 1}`} class="text-white/70 font-helvetica text-sm leading-relaxed">
                 {step.description}
               </p>
             </div>

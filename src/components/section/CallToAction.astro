@@ -76,34 +76,36 @@ const theme = themes[variant];
   )}
 
   <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <div class={`${theme.cardBg} border rounded-2xl p-8 shadow-xl`}>
-      <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+    <div id="cta-card" class={`${theme.cardBg} border rounded-2xl p-8 shadow-xl`}>
+      <div id="cta-content" class="flex flex-col lg:flex-row items-center justify-between gap-8">
         
         <!-- Left Side - CTA Content -->
-        <div class="flex-shrink-0 text-center lg:text-left">
-          <p class={`${theme.labelColor} font-helvetica text-sm uppercase tracking-wider mb-2`}>
+        <div id="cta-left-content" class="flex-shrink-0 text-center lg:text-left">
+          <p id="cta-label" class={`${theme.labelColor} font-helvetica text-sm uppercase tracking-wider mb-2`}>
             {sectionLabel}
           </p>
-          <h2 class={`text-2xl lg:text-3xl font-asap-condensed uppercase font-bold ${theme.titleColor} mb-4 tracking-wide`}>
+          <h2 id="cta-title" class={`text-2xl lg:text-3xl font-asap-condensed uppercase font-bold ${theme.titleColor} mb-4 tracking-wide`}>
             {title} <span class="text-brand-primary">{titleHighlight}</span> Today
           </h2>
-          <Button variant="primary" size="lg" href={buttonHref} class="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-            {buttonText}
-          </Button>
+          <div id="cta-button">
+            <Button variant="primary" size="lg" href={buttonHref} class="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+              {buttonText}
+            </Button>
+          </div>
         </div>
 
         <!-- Center - Phone Number -->
-        <div class="text-center">
-          <p class={`${theme.phoneDescColor} font-helvetica text-sm mb-2`}>{phoneLabel}</p>
-          <a href={`tel:${phoneNumber}`} class={`block text-4xl lg:text-5xl font-asap-condensed font-bold ${theme.phoneColor} transition-colors duration-300 mb-2`}>
+        <div id="cta-phone-section" class="text-center">
+          <p id="cta-phone-label" class={`${theme.phoneDescColor} font-helvetica text-sm mb-2`}>{phoneLabel}</p>
+          <a id="cta-phone-number" href={`tel:${phoneNumber}`} class={`block text-4xl lg:text-5xl font-asap-condensed font-bold ${theme.phoneColor} transition-colors duration-300 mb-2`}>
             {phoneNumber}
           </a>
-          <p class={`${theme.emergencyColor} font-helvetica text-xs`}>{emergencyText}</p>
+          <p id="cta-emergency-text" class={`${theme.emergencyColor} font-helvetica text-xs`}>{emergencyText}</p>
         </div>
 
         <!-- Right Side - Service Features -->
-        <div class="flex flex-col gap-4 text-sm">
-          <div class="flex items-center gap-3 group">
+        <div id="cta-features" class="flex flex-col gap-4 text-sm">
+          <div id="cta-feature-1" class="flex items-center gap-3 group">
             <div class="w-8 h-8 bg-brand-primary/20 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-brand-primary/30 transition-colors duration-300">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-brand-primary">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -111,7 +113,7 @@ const theme = themes[variant];
             </div>
             <span class={`font-helvetica ${theme.featureTextColor} transition-colors duration-300`}>24/7 Emergency Service</span>
           </div>
-          <div class="flex items-center gap-3 group">
+          <div id="cta-feature-2" class="flex items-center gap-3 group">
             <div class="w-8 h-8 bg-brand-primary/20 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-brand-primary/30 transition-colors duration-300">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-brand-primary">
                 <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -120,7 +122,7 @@ const theme = themes[variant];
             </div>
             <span class={`font-helvetica ${theme.featureTextColor} transition-colors duration-300`}>Licensed & Certified</span>
           </div>
-          <div class="flex items-center gap-3 group">
+          <div id="cta-feature-3" class="flex items-center gap-3 group">
             <div class="w-8 h-8 bg-brand-primary/20 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-brand-primary/30 transition-colors duration-300">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-brand-primary">
                 <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
