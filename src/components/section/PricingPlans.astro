@@ -1,0 +1,257 @@
+---
+import Button from "../ui/Button.astro";
+
+export interface Props {
+  backgroundColor?: 'white' | 'gray' | 'black';
+  roundedBottom?: boolean;
+}
+
+const { backgroundColor = 'white', roundedBottom = false } = Astro.props;
+
+const bgClasses = {
+  white: 'bg-white',
+  gray: 'bg-gray-50',
+  black: 'bg-black'
+};
+
+const textClasses = {
+  white: { primary: 'text-gray-900', secondary: 'text-gray-600', accent: 'text-brand-accent' },
+  gray: { primary: 'text-gray-900', secondary: 'text-gray-600', accent: 'text-brand-accent' },
+  black: { primary: 'text-white', secondary: 'text-white/80', accent: 'text-brand-accent' }
+};
+
+const plans = [
+  {
+    name: "Basic",
+    price: "$99",
+    period: "/year",
+    description: "Essential maintenance for residential properties",
+    color: "primary",
+    features: [
+      "Annual electrical inspection",
+      "Basic safety check",
+      "Priority scheduling",
+      "10% discount on repairs",
+      "Email support"
+    ],
+    buttonText: "Get Started",
+    popular: false
+  },
+  {
+    name: "Professional",
+    price: "$199",
+    period: "/year",
+    description: "Comprehensive maintenance for homes and small businesses",
+    color: "secondary",
+    features: [
+      "Bi-annual inspections",
+      "Detailed system analysis",
+      "Priority emergency service",
+      "15% discount on repairs",
+      "Phone & email support",
+      "Maintenance reports"
+    ],
+    buttonText: "Most Popular",
+    popular: false
+  },
+  {
+    name: "Enterprise",
+    price: "$399",
+    period: "/year",
+    description: "Complete maintenance solution for commercial properties",
+    color: "accent",
+    features: [
+      "Quarterly inspections",
+      "Comprehensive system monitoring",
+      "24/7 emergency response",
+      "20% discount on repairs",
+      "Dedicated account manager",
+      "Custom maintenance schedule",
+      "Compliance reporting"
+    ],
+    buttonText: "Contact Sales",
+    popular: false
+  }
+];
+---
+
+<section class={`py-20 ${bgClasses[backgroundColor]} ${roundedBottom ? 'rounded-bottom' : ''}`}>
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <p class={`${textClasses[backgroundColor].accent} font-helvetica text-sm uppercase tracking-wider mb-4`}>
+        MAINTENANCE PLANS
+      </p>
+      <h2 class={`text-4xl lg:text-5xl font-asap-condensed uppercase font-bold ${textClasses[backgroundColor].primary} mb-6 leading-tight tracking-wide`}>
+        Choose Your <span class="text-brand-primary">Maintenance</span><br>
+        <span class="text-brand-secondary">Plan</span>
+      </h2>
+      <p class={`text-lg ${textClasses[backgroundColor].secondary} font-helvetica leading-relaxed max-w-3xl mx-auto`}>
+        Protect your electrical systems with our comprehensive maintenance plans. 
+        Prevent costly repairs and ensure safety with regular inspections and priority service.
+      </p>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {plans.map((plan, index) => (
+        <div class="pricing-card group">
+          <div class={`p-8 h-full flex flex-col relative overflow-hidden ${
+            plan.popular 
+              ? 'bg-brand-secondary text-white' 
+              : plan.color === 'primary' 
+                ? 'bg-white text-black' 
+                : plan.color === 'accent'
+                  ? 'bg-white text-black'
+                  : 'bg-brand-secondary text-white'
+          }`}>
+            <!-- Decorative corner cuts -->
+            <div class={`absolute top-0 left-0 w-4 h-4 rounded-br-full ${bgClasses[backgroundColor]}`}></div>
+            <div class={`absolute top-0 right-0 w-4 h-4 rounded-bl-full ${bgClasses[backgroundColor]}`}></div>
+            <div class={`absolute bottom-0 left-0 w-4 h-4 rounded-tr-full ${bgClasses[backgroundColor]}`}></div>
+            <div class={`absolute bottom-0 right-0 w-4 h-4 rounded-tl-full ${bgClasses[backgroundColor]}`}></div>
+            
+            {plan.popular && (
+              <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+                <span class="bg-brand-secondary text-white px-4 py-2 rounded-full text-sm font-helvetica font-semibold">
+                  Most Popular
+                </span>
+              </div>
+            )}
+
+            <!-- Plan Header -->
+            <div class="text-center mb-6">
+              <p class="text-sm font-helvetica font-medium opacity-80 mb-2">
+                {plan.name} Plan
+              </p>
+              <h3 class="text-2xl font-asap-condensed font-bold text-brand-primary mb-2">
+                Maintenance
+              </h3>
+              <p class="text-xs font-helvetica opacity-70">
+                Professional Service
+              </p>
+            </div>
+
+            <!-- Price badge -->
+            <div class="flex justify-center mb-6">
+              <div class={`px-6 py-3 font-bold text-xl font-helvetica transform -rotate-2 shadow-lg ${
+                plan.popular || plan.color === 'primary' || plan.color === 'accent' 
+                  ? 'bg-brand-primary text-black' 
+                  : 'bg-brand-primary text-white'
+              }`}>
+                {plan.price}{plan.period}
+              </div>
+            </div>
+
+            <!-- Plan details -->
+            <div class="flex-1 text-center mb-6">
+              <h4 class="font-helvetica font-semibold text-lg mb-3">
+                {plan.description}
+              </h4>
+              
+              <!-- Features List -->
+              <div class="mb-4">
+                <ul class="space-y-2 text-left">
+                  {plan.features.map((feature) => (
+                    <li class="flex items-start gap-2">
+                      <div class={`w-4 h-4 rounded-full flex items-center justify-center mt-0.5 ${
+                        plan.popular || plan.color === 'primary' || plan.color === 'accent' 
+                          ? 'bg-black/20 text-black' 
+                          : 'bg-white/20 text-white'
+                      }`}>
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
+                          <polyline points="20,6 9,17 4,12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </div>
+                      <span class="font-helvetica text-sm opacity-90">
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="text-center mt-auto pt-4">
+              <Button 
+                variant={plan.popular || plan.color === 'primary' || plan.color === 'accent' ? "ghost" : "primary"}
+                size="lg" 
+                class={`w-full ${plan.popular || plan.color === 'primary' || plan.color === 'accent' ? 'bg-black/10 hover:bg-black/20 text-black border-black/30' : ''}`}
+                href="/contact"
+              >
+                {plan.buttonText}
+              </Button>
+            </div>
+
+            <!-- Perforated edge effect -->
+            <div class={`absolute left-0 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full -ml-3 ${bgClasses[backgroundColor]}`}></div>
+            <div class={`absolute right-0 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full -mr-3 ${bgClasses[backgroundColor]}`}></div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="text-center mt-16">
+      <p class={`text-lg ${textClasses[backgroundColor].secondary} font-helvetica mb-6`}>
+        Need a custom maintenance plan? We'll create a solution tailored to your specific needs.
+      </p>
+      <Button variant="primary" size="lg" href="/contact">
+        Contact Us for Custom Plan
+      </Button>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .pricing-card {
+    /* Dashed border effect */
+    background: 
+      linear-gradient(90deg, currentColor 50%, transparent 50%),
+      linear-gradient(90deg, currentColor 50%, transparent 50%),
+      linear-gradient(0deg, currentColor 50%, transparent 50%),
+      linear-gradient(0deg, currentColor 50%, transparent 50%);
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+    background-size: 15px 2px, 15px 2px, 2px 15px, 2px 15px;
+    background-position: 0 0, 0 100%, 0 0, 100% 0;
+    color: rgba(255, 255, 255, 0.3);
+    padding: 3px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Rounded bottom section */
+  .rounded-bottom {
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
+
+  /* Responsive border radius */
+  @media (min-width: 640px) {
+    .rounded-bottom {
+      border-bottom-left-radius: 100px;
+      border-bottom-right-radius: 100px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .rounded-bottom {
+      border-bottom-left-radius: 150px;
+      border-bottom-right-radius: 150px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .rounded-bottom {
+      border-bottom-left-radius: 200px;
+      border-bottom-right-radius: 200px;
+    }
+  }
+</style>

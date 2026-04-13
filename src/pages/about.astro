@@ -1,19 +1,19 @@
 ---
-import Hero2 from "../../components/section/Hero2.astro";
-import CommercialServices from "../../components/section/CommercialServices.astro";
-import ProcessTimeline from "../../components/section/ProcessTimeline.astro";
-import CommercialOffers from "../../components/section/CommercialOffers.astro";
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import FAQ from "../../components/section/FAQ.astro";
-import CallToAction from "../../components/section/CallToAction.astro";
-import ServiceCoverage from "../../components/section/ServiceCoverage.astro";
+import CallToAction from "../components/section/CallToAction.astro";
+import Coupons from "../components/section/Coupons.astro";
+import Hero2 from "../components/section/Hero2.astro";
+import ServiceAreas from "../components/section/ServiceAreas.astro";
+import Services from "../components/section/Services.astro";
+import Testimonials from "../components/section/Testimonials.astro";
+import WhyChooseUs from "../components/section/WhyChooseUs.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 ---
 
 <BaseLayout 
-	title="Ground-Up Electrical Construction | VoltBully Commercial Electricians"
-	description="VoltBully specializes in ground-up electrical construction for commercial and industrial projects. Complete electrical systems design, installation, and commissioning by licensed electrical contractors."
-	keywords="ground-up electrical construction, commercial electrical construction, electrical systems design, new construction electrical, industrial electrical, electrical contractors, electrical installation"
+	title="About Us | VoltBully Licensed Electrical Contractors"
+	description="Learn about VoltBully's team of licensed electricians serving Denver, Colorado. Our experienced professionals provide reliable electrical services with a commitment to quality and customer satisfaction."
+	keywords="about VoltBully, Denver electrician team, licensed electrical contractors, electrical company Denver, professional electricians Colorado"
 >
     <div class="relative">
         <!-- Background image for Hero2 -->
@@ -22,63 +22,22 @@ import ServiceCoverage from "../../components/section/ServiceCoverage.astro";
         <div class="absolute inset-0 bg-black/40"></div>
         
         <Hero2 
-            line1="GROUND-UP"
-            line2="ELECTRICAL"
-            line3="CONSTRUCTION"
-            description="Professional commercial electrical services for businesses of all sizes."
-            buttonText="GET STARTED"
+            line1=""
+            line2="ABOUT"
+            line3="VOLTBULLY"
+            description="Meet our team of licensed electricians dedicated to providing exceptional electrical services throughout Denver and surrounding areas."
+            buttonText="GET QUOTE"
             buttonHref="/contact"
             phoneText="CALL FOR EMERGENCY"
-            backgroundImage="/images/work2.png"
+            backgroundImage="/images/about.webp"
         />
     </div>
-    <CommercialServices 
-        sectionTag="GROUND-UP ELECTRICAL CONSTRUCTION"
-        title="Complete Ground-Up Electrical Solutions"
-        highlightedText="Ground-Up Electrical"
-        description="we specialize in comprehensive electrical construction for new buildings and major renovations. From initial design to final inspection, our experienced team delivers complete electrical systems that meet all codes and exceed expectations."
-        companyName="VoltBully Electrical"
-        image={{
-            src: "/images/ground-elec.png",
-            alt: "Ground-up electrical construction work"
-        }}
-        badge={{
-            number: "100+",
-            text: ["Projects", "Completed"]
-        }}
-        features={[
-            {
-                title: "Complete System Design",
-                description: "Full electrical system planning from blueprints to implementation for new construction projects.",
-                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 3h18v18H3zM9 9h6v6H9z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-                color: 'primary'
-            },
-            {
-                title: "Code Compliance Guaranteed",
-                description: "All installations meet or exceed local electrical codes with proper permits and inspections.",
-                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-                color: 'secondary'
-            },
-            {
-                title: "Project Management",
-                description: "Coordinated scheduling with other trades to keep your construction project on timeline.",
-                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-                color: 'accent'
-            },
-            {
-                title: "Quality Materials",
-                description: "We use only premium electrical components and materials for long-lasting, reliable installations.",
-                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-                color: 'red'
-            }
-        ]}
-    />
-    
-    <ProcessTimeline />
-    <CommercialOffers />
-    <FAQ />
-    <CallToAction variant="light"/>
-    <ServiceCoverage />
+    <WhyChooseUs roundedBottom={false}/>
+    <Coupons roundedBottom/>
+    <Services showGradientOverlay={false} />
+    <Testimonials />
+    <CallToAction />
+    <ServiceAreas />
 
     <!-- Back to Top Button -->
     <button 

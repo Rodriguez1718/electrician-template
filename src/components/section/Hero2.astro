@@ -23,7 +23,7 @@ const {
 } = Astro.props;
 ---
 
-<section class="relative w-full h-[50vh] min-h-[400px] overflow-hidden">
+<section class="relative w-full h-[50vh] min-h-[400px] overflow-hidden mobile-hero">
     <!-- Background image -->
     <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style={`background-image: url('${backgroundImage}');`}></div>
     <!-- Dark overlay for better text readability -->
@@ -113,7 +113,28 @@ const {
         .hero-headline {
             font-size: clamp(40px, 12vw, 20px);
         }
-        
+    }
+
+    /* Mobile hero height adjustments */
+    @media (max-width: 768px) {
+        .mobile-hero {
+            height: 70vh;
+            min-height: 500px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .mobile-hero {
+            height: 80vh;
+            min-height: 550px;
+        }
+    }
+
+    @media (max-width: 375px) {
+        .mobile-hero {
+            height: 85vh;
+            min-height: 600px;
+        }
     }
 </style>
 

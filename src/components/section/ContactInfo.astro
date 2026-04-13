@@ -1,0 +1,224 @@
+---
+import Button from "../ui/Button.astro";
+
+export interface Props {
+  backgroundColor?: 'white' | 'gray' | 'black';
+}
+
+const { backgroundColor = 'black' } = Astro.props;
+
+type ColorType = 'primary' | 'secondary' | 'accent';
+
+const contactMethods: Array<{
+  icon: string;
+  label: string;
+  value: string;
+  href: string;
+  color: ColorType;
+}> = [
+  {
+    icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    label: 'PHONE',
+    value: '(303) 555-VOLT',
+    href: 'tel:3035558658',
+    color: 'primary'
+  },
+  {
+    icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    label: 'EMAIL ADDRESS',
+    value: 'info@voltbully.com',
+    href: 'mailto:info@voltbully.com',
+    color: 'secondary'
+  },
+  {
+    icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg>',
+    label: 'SERVICE AREA',
+    value: 'Denver, CO & Surrounding Areas',
+    href: '/serviceAreas/denver',
+    color: 'accent'
+  }
+];
+
+const bgClasses = {
+  white: 'bg-white',
+  gray: 'bg-gray-50',
+  black: 'bg-black'
+};
+
+const textClasses = {
+  white: { primary: 'text-gray-900', secondary: 'text-gray-600', accent: 'text-brand-accent' },
+  gray: { primary: 'text-gray-900', secondary: 'text-gray-600', accent: 'text-brand-accent' },
+  black: { primary: 'text-white', secondary: 'text-white/80', accent: 'text-brand-accent' }
+};
+---
+
+<section class={`py-20 ${bgClasses[backgroundColor]} rounded-bottom relative`}>
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <!-- Contact Methods Grid with custom CSS -->
+    <div class="contact-grid gap-6 md:grid flex flex-col md:flex-none">
+      
+      <!-- Header Content - div1 (spans 2 rows) -->
+      <div class="header-content flex flex-col justify-center p-8 order-1 md:order-none">
+        <p class={`${textClasses[backgroundColor].accent} font-helvetica text-sm uppercase tracking-wider mb-4`}>
+          CONTACT US
+        </p>
+        <h2 class={`text-4xl lg:text-5xl font-asap-condensed uppercase font-bold ${textClasses[backgroundColor].primary} mb-6 leading-tight tracking-wide`}>
+          Get in Touch with <span class="text-brand-primary">VoltBully</span><br>
+          <span class="text-brand-secondary">Electrical Services</span>
+        </h2>
+        <p class={`text-lg ${textClasses[backgroundColor].secondary} font-helvetica leading-relaxed`}>
+          Ready to power up your project? Contact our licensed electricians today. Whether you need emergency repairs, 
+          installations, or consultations, we're here to help with fast, reliable service.
+        </p>
+      </div>
+
+      <!-- Email Card - div3 (column 2, row 1) -->
+      <a 
+        href={contactMethods[1].href}
+        class="cursor-none email-card flex flex-col items-center text-center gap-4 p-6 rounded-2xl border-2 border-brand-secondary/20 hover:border-brand-secondary/40 bg-white/5 hover:bg-brand-secondary/10 transition-all duration-300 group relative overflow-hidden order-2 md:order-none"
+      >
+        <!-- Icon -->
+        <div class="w-12 h-12 bg-brand-secondary/10 rounded-full flex items-center justify-center text-brand-secondary group-hover:scale-110 transition-transform duration-300">
+          <div set:html={contactMethods[1].icon}></div>
+        </div>
+        
+        <!-- Content -->
+        <div>
+          <p class={`text-sm font-helvetica uppercase tracking-wider ${textClasses[backgroundColor].secondary} mb-1`}>
+            {contactMethods[1].label}
+          </p>
+          <p class={`text-lg font-helvetica font-semibold ${textClasses[backgroundColor].primary} group-hover:text-brand-secondary transition-colors duration-300`}>
+            {contactMethods[1].value}
+          </p>
+        </div>
+        
+        <!-- Corner decoration -->
+        <div class="absolute bottom-4 right-4 w-4 h-4 border-r-2 border-b-2 border-gray-400 rounded-br-lg"></div>
+      </a>
+
+      <!-- Phone Card - div4 (column 2, row 2) -->
+      <a 
+        href={contactMethods[0].href}
+        class="cursor-none phone-card flex flex-col items-center text-center gap-4 p-6 rounded-2xl border-2 border-brand-primary/20 hover:border-brand-primary/40 bg-white/5 hover:bg-brand-primary/10 transition-all duration-300 group relative overflow-hidden order-3 md:order-none"
+      >
+        <!-- Icon -->
+        <div class="w-12 h-12 bg-brand-primary/10 rounded-full flex items-center justify-center text-brand-primary group-hover:scale-110 transition-transform duration-300">
+          <div set:html={contactMethods[0].icon}></div>
+        </div>
+        
+        <!-- Content -->
+        <div>
+          <p class={`text-sm font-helvetica uppercase tracking-wider ${textClasses[backgroundColor].secondary} mb-1`}>
+            {contactMethods[0].label}
+          </p>
+          <p class={`text-lg font-helvetica font-semibold ${textClasses[backgroundColor].primary} group-hover:text-brand-primary transition-colors duration-300`}>
+            {contactMethods[0].value}
+          </p>
+        </div>
+        
+        <!-- Corner decoration -->
+        <div class="absolute bottom-4 right-4 w-4 h-4 border-r-2 border-b-2 border-gray-400 rounded-br-lg"></div>
+      </a>
+
+      <!-- Service Area Card - div2 (spans 2 columns, row 3) -->
+      <a 
+        href={contactMethods[2].href}
+        class="cursor-none service-area-card flex flex-col items-center text-center gap-4 p-6 rounded-2xl border-2 border-brand-accent/20 hover:border-brand-accent/40 bg-white/5 hover:bg-brand-accent/10 transition-all duration-300 group relative overflow-hidden order-4 md:order-none"
+      >
+        <!-- Icon -->
+        <div class="w-12 h-12 bg-brand-accent/10 rounded-full flex items-center justify-center text-brand-accent group-hover:scale-110 transition-transform duration-300">
+          <div set:html={contactMethods[2].icon}></div>
+        </div>
+        
+        <!-- Content -->
+        <div>
+          <p class={`text-sm font-helvetica uppercase tracking-wider ${textClasses[backgroundColor].secondary} mb-1`}>
+            {contactMethods[2].label}
+          </p>
+          <p class={`text-lg font-helvetica font-semibold ${textClasses[backgroundColor].primary} group-hover:text-brand-accent transition-colors duration-300`}>
+            {contactMethods[2].value}
+          </p>
+        </div>
+        
+        <!-- Corner decoration -->
+        <div class="absolute bottom-4 right-4 w-4 h-4 border-r-2 border-b-2 border-gray-400 rounded-br-lg"></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .header-content {
+    grid-row: span 2;
+    grid-column: 1;
+  }
+
+  .email-card {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .phone-card {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .service-area-card {
+    grid-column: span 2;
+    grid-row: 3;
+  }
+
+  /* Mobile responsive - disable grid positioning */
+  @media (max-width: 767px) {
+    .contact-grid {
+      display: flex !important;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .header-content,
+    .email-card,
+    .phone-card,
+    .service-area-card {
+      grid-column: unset;
+      grid-row: unset;
+    }
+  }
+
+  /* Rounded bottom section */
+  .rounded-bottom {
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
+
+  /* Responsive border radius */
+  @media (min-width: 640px) {
+    .rounded-bottom {
+      border-bottom-left-radius: 100px;
+      border-bottom-right-radius: 100px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .rounded-bottom {
+      border-bottom-left-radius: 150px;
+      border-bottom-right-radius: 150px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .rounded-bottom {
+      border-bottom-left-radius: 200px;
+      border-bottom-right-radius: 200px;
+    }
+  }
+
+</style>

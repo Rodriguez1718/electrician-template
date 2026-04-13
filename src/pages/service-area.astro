@@ -1,19 +1,20 @@
 ---
-import Hero2 from "../../components/section/Hero2.astro";
-import CommercialServices from "../../components/section/CommercialServices.astro";
-import ProcessTimeline from "../../components/section/ProcessTimeline.astro";
-import CommercialOffers from "../../components/section/CommercialOffers.astro";
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import FAQ from "../../components/section/FAQ.astro";
-import CallToAction from "../../components/section/CallToAction.astro";
-import ServiceCoverage from "../../components/section/ServiceCoverage.astro";
+import CallToAction from "../components/section/CallToAction.astro";
+import CommercialServices from "../components/section/CommercialServices.astro";
+import Coupons from "../components/section/Coupons.astro";
+import FeaturedWorks from "../components/section/FeaturedWorks.astro";
+import Hero2 from "../components/section/Hero2.astro";
+import ServiceAreas from "../components/section/ServiceAreas.astro";
+import Services from "../components/section/Services.astro";
+import Testimonials from "../components/section/Testimonials.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 ---
 
 <BaseLayout 
-	title="Ground-Up Electrical Construction | VoltBully Commercial Electricians"
-	description="VoltBully specializes in ground-up electrical construction for commercial and industrial projects. Complete electrical systems design, installation, and commissioning by licensed electrical contractors."
-	keywords="ground-up electrical construction, commercial electrical construction, electrical systems design, new construction electrical, industrial electrical, electrical contractors, electrical installation"
+	title="Service Areas | VoltBully Electrical Services Coverage Map"
+	description="Discover VoltBully's electrical service coverage areas across Colorado. We provide licensed electrical services to residential and commercial customers with local expertise and 24/7 emergency support."
+	keywords="electrical service areas, Colorado electrician coverage, electrical contractor service map, local electrician, electrical services near me, VoltBully service areas, Colorado electrical coverage"
 >
     <div class="relative">
         <!-- Background image for Hero2 -->
@@ -22,63 +23,62 @@ import ServiceCoverage from "../../components/section/ServiceCoverage.astro";
         <div class="absolute inset-0 bg-black/40"></div>
         
         <Hero2 
-            line1="GROUND-UP"
-            line2="ELECTRICAL"
-            line3="CONSTRUCTION"
-            description="Professional commercial electrical services for businesses of all sizes."
+            line1=""
+            line2="SERVICE"
+            line3="AREAS"
+            description="Comprehensive electrical services across Colorado communities. Licensed electricians serving residential and commercial customers with local expertise."
             buttonText="GET STARTED"
             buttonHref="/contact"
             phoneText="CALL FOR EMERGENCY"
-            backgroundImage="/images/work2.png"
+            backgroundImage="/images/denver.jpg"
         />
     </div>
     <CommercialServices 
-        sectionTag="GROUND-UP ELECTRICAL CONSTRUCTION"
-        title="Complete Ground-Up Electrical Solutions"
-        highlightedText="Ground-Up Electrical"
-        description="we specialize in comprehensive electrical construction for new buildings and major renovations. From initial design to final inspection, our experienced team delivers complete electrical systems that meet all codes and exceed expectations."
+        sectionTag="SERVICE COVERAGE AREAS"
+        title="Professional Electrical Services Where You Need Them"
+        highlightedText="Where You Need Them"
+        description="we proudly serve multiple communities with comprehensive electrical solutions for homes and businesses. Our extensive service area coverage ensures we understand local electrical codes, regional challenges, and community needs wherever we operate."
         companyName="VoltBully Electrical"
         image={{
             src: "/images/ground-elec.png",
-            alt: "Ground-up electrical construction work"
+            alt: "Electrical service coverage areas"
         }}
         badge={{
-            number: "100+",
-            text: ["Projects", "Completed"]
+            number: "10+",
+            text: ["Service Areas", "Covered"]
         }}
         features={[
             {
-                title: "Complete System Design",
-                description: "Full electrical system planning from blueprints to implementation for new construction projects.",
-                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 3h18v18H3zM9 9h6v6H9z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+                title: "Local Code Expertise",
+                description: "Deep knowledge of electrical codes and permit requirements across all our service areas for fast, compliant installations.",
+                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
                 color: 'primary'
             },
             {
-                title: "Code Compliance Guaranteed",
-                description: "All installations meet or exceed local electrical codes with proper permits and inspections.",
-                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+                title: "Wide Area Coverage",
+                description: "Electrical systems designed to meet diverse regional requirements and local conditions across our service territories.",
+                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg>',
                 color: 'secondary'
             },
             {
-                title: "Project Management",
-                description: "Coordinated scheduling with other trades to keep your construction project on timeline.",
+                title: "Fast Response Times",
+                description: "Quick service throughout all our coverage areas with same-day emergency response available in most locations.",
                 icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
                 color: 'accent'
             },
             {
-                title: "Quality Materials",
-                description: "We use only premium electrical components and materials for long-lasting, reliable installations.",
-                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+                title: "Community Focused",
+                description: "Committed to serving residents and businesses in every community with personalized service and competitive pricing.",
+                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2"/></svg>',
                 color: 'red'
             }
         ]}
     />
-    
-    <ProcessTimeline />
-    <CommercialOffers />
-    <FAQ />
-    <CallToAction variant="light"/>
-    <ServiceCoverage />
+    <Coupons roundedBottom/>
+    <FeaturedWorks showTopGradient={false}/>
+    <Testimonials />
+    <CallToAction />
+    <ServiceAreas />
 
     <!-- Back to Top Button -->
     <button 
