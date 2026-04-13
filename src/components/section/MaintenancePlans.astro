@@ -8,32 +8,33 @@ import Button from "../ui/Button.astro";
   <div class="max-w-7xl mx-auto px-6 relative z-20">
     
     <!-- Section Header -->
-    <div class="text-center mb-16">
-      <p class="text-brand-accent font-helvetica text-sm uppercase tracking-wider mb-4">
+    <div id="maintenance-header" class="text-center mb-16">
+      <p id="maintenance-label" class="text-brand-accent font-helvetica text-sm uppercase tracking-wider mb-4">
         MAINTENANCE PLANS
       </p>
-      <h2 class="text-4xl lg:text-5xl font-asap-condensed uppercase tracking-wide font-bold text-gray-900 mb-6">
+      <h2 id="maintenance-title" class="text-4xl lg:text-5xl font-asap-condensed uppercase tracking-wide font-bold text-gray-900 mb-6">
         Protect Your <span class="text-brand-primary">Electrical System</span> for the Long Term
       </h2>
-      <p class="text-lg text-gray-600 font-helvetica leading-relaxed max-w-4xl mx-auto">
+      <p id="maintenance-description" class="text-lg text-gray-600 font-helvetica leading-relaxed max-w-4xl mx-auto">
         Regular maintenance is key to preventing costly repairs and ensuring the safety and efficiency of your electrical system. 
         At VoltBully Electrical, our Electrical Maintenance Plans are designed to keep your home or business running safely year-round.
       </p>
     </div>
 
     <!-- Main Content Layout -->
-    <div class="grid lg:grid-cols-3 gap-8 lg:gap-12">
+    <div id="maintenance-content" class="grid lg:grid-cols-3 gap-8 lg:gap-12">
       
       <!-- Left Column - What's Included (Larger) -->
-      <div class="lg:col-span-2">
-        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-          <h3 class="text-2xl font-asap-condensed uppercase tracking-wide font-bold text-gray-900 mb-8">
+      <div id="maintenance-left-column" class="lg:col-span-2">
+        <div id="maintenance-info-card" class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+          <h3 id="maintenance-info-title" class="text-2xl font-asap-condensed uppercase tracking-wide font-bold text-gray-900 mb-8">
             What's Included in Our Maintenance Plans?
           </h3>
           
           <!-- Hero Image with Overlay Content -->
-          <div class="relative rounded-xl overflow-hidden">
+          <div id="maintenance-image-container" class="relative rounded-xl overflow-hidden">
             <img 
+              id="maintenance-image"
               src="/images/electrical.webp" 
               alt="Electrical maintenance and inspection" 
               class="w-full h-96 object-cover"
@@ -42,30 +43,30 @@ import Button from "../ui/Button.astro";
             <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
             
             <!-- Content overlay -->
-            <div class="absolute inset-0 p-8 flex flex-col justify-center">
+            <div id="maintenance-overlay-content" class="absolute inset-0 p-8 flex flex-col justify-center">
               <div class="max-w-lg">
-                <h4 class="text-white font-asap-condensed uppercase tracking-wide font-bold text-xl mb-3">
+                <h4 id="maintenance-overlay-title" class="text-white font-asap-condensed uppercase tracking-wide font-bold text-xl mb-3">
                   Professional Electrical Care
                 </h4>
-                <p class="text-white/90 text-sm font-helvetica leading-relaxed mb-4">
+                <p id="maintenance-overlay-description" class="text-white/90 text-sm font-helvetica leading-relaxed mb-4">
                   Our certified electricians provide comprehensive maintenance services to keep your electrical systems running safely and efficiently year-round.
                 </p>
                 
                 <!-- Key highlights -->
-                <div class="space-y-1.5">
-                  <div class="flex items-center gap-2">
+                <div id="maintenance-highlights" class="space-y-1.5">
+                  <div id="maintenance-highlight-1" class="flex items-center gap-2">
                     <div class="w-1.5 h-1.5 bg-brand-accent rounded-full flex-shrink-0"></div>
                     <span class="text-white text-sm font-helvetica">Annual comprehensive inspections</span>
                   </div>
-                  <div class="flex items-center gap-2">
+                  <div id="maintenance-highlight-2" class="flex items-center gap-2">
                     <div class="w-1.5 h-1.5 bg-brand-accent rounded-full flex-shrink-0"></div>
                     <span class="text-white text-sm font-helvetica">Panel cleaning & maintenance</span>
                   </div>
-                  <div class="flex items-center gap-2">
+                  <div id="maintenance-highlight-3" class="flex items-center gap-2">
                     <div class="w-1.5 h-1.5 bg-brand-accent rounded-full flex-shrink-0"></div>
                     <span class="text-white text-sm font-helvetica">Outlet & switch testing</span>
                   </div>
-                  <div class="flex items-center gap-2">
+                  <div id="maintenance-highlight-4" class="flex items-center gap-2">
                     <div class="w-1.5 h-1.5 bg-brand-accent rounded-full flex-shrink-0"></div>
                     <span class="text-white text-sm font-helvetica">Priority emergency scheduling</span>
                   </div>
@@ -75,9 +76,9 @@ import Button from "../ui/Button.astro";
           </div>
 
           <!-- Additional Benefits -->
-          <div class="mt-8 p-6 bg-gradient-to-r from-brand-primary/10 to-brand-accent/10 rounded-xl">
-            <h4 class="font-helvetica font-semibold text-gray-900 mb-4">Plus Additional Benefits:</h4>
-            <div class="grid sm:grid-cols-2 gap-3">
+          <div id="maintenance-benefits" class="mt-8 p-6 bg-gradient-to-r from-brand-primary/10 to-brand-accent/10 rounded-xl">
+            <h4 id="maintenance-benefits-title" class="font-helvetica font-semibold text-gray-900 mb-4">Plus Additional Benefits:</h4>
+            <div id="maintenance-benefits-grid" class="grid sm:grid-cols-2 gap-3">
               <div class="flex items-center gap-2">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-primary">
                   <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -108,31 +109,31 @@ import Button from "../ui/Button.astro";
       </div>
 
       <!-- Right Column - Pricing & Benefits -->
-      <div class="space-y-6">
+      <div id="maintenance-right-column" class="space-y-6">
         <!-- Pricing Card -->
-        <div class="bg-black text-white rounded-2xl p-8 shadow-xl">
-          <div class="text-center mb-6">
-            <h3 class="text-xl font-asap-condensed uppercase tracking-wide font-bold mb-4">
+        <div id="maintenance-pricing-card" class="bg-black text-white rounded-2xl p-8 shadow-xl">
+          <div id="maintenance-pricing-header" class="text-center mb-6">
+            <h3 id="maintenance-pricing-title" class="text-xl font-asap-condensed uppercase tracking-wide font-bold mb-4">
               Maintenance Plan
             </h3>
-            <div class="text-4xl font-asap-condensed font-bold mb-2">$99<span class="text-xl opacity-80">/year</span></div>
-            <p class="text-sm opacity-90">Comprehensive electrical maintenance</p>
+            <div id="maintenance-price" class="text-4xl font-asap-condensed font-bold mb-2">$99<span class="text-xl opacity-80">/year</span></div>
+            <p id="maintenance-price-description" class="text-sm opacity-90">Comprehensive electrical maintenance</p>
           </div>
           
-          <div class="space-y-3 mb-8">
-            <div class="flex items-center gap-3">
+          <div id="maintenance-pricing-features" class="space-y-3 mb-8">
+            <div id="maintenance-pricing-feature-1" class="flex items-center gap-3">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-accent">
                 <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
               <span class="text-sm">Annual comprehensive inspection</span>
             </div>
-            <div class="flex items-center gap-3">
+            <div id="maintenance-pricing-feature-2" class="flex items-center gap-3">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-accent">
                 <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
               <span class="text-sm">Priority emergency service</span>
             </div>
-            <div class="flex items-center gap-3">
+            <div id="maintenance-pricing-feature-3" class="flex items-center gap-3">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-brand-accent">
                 <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -140,31 +141,31 @@ import Button from "../ui/Button.astro";
             </div>
           </div>
 
-          <Button variant="primary" size="lg" href="/contact" class="w-full">
+          <Button id="maintenance-cta-button" variant="primary" size="lg" href="/contact" class="w-full">
             Get Started Today
           </Button>
         </div>
 
         <!-- Why Choose Card -->
-        <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-          <h4 class="font-asap-condensed uppercase tracking-wide font-bold text-gray-900 mb-4">
+        <div id="maintenance-why-card" class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+          <h4 id="maintenance-why-title" class="font-asap-condensed uppercase tracking-wide font-bold text-gray-900 mb-4">
             Why Maintenance Matters
           </h4>
           
-          <div class="space-y-4">
-            <div class="flex items-start gap-3">
+          <div id="maintenance-why-list" class="space-y-4">
+            <div id="maintenance-why-item-1" class="flex items-start gap-3">
               <div class="w-2 h-2 bg-brand-accent rounded-full mt-2"></div>
               <p class="text-sm text-gray-600 font-helvetica">Prevent unexpected electrical failures and safety hazards</p>
             </div>
-            <div class="flex items-start gap-3">
+            <div id="maintenance-why-item-2" class="flex items-start gap-3">
               <div class="w-2 h-2 bg-brand-accent rounded-full mt-2"></div>
               <p class="text-sm text-gray-600 font-helvetica">Improve efficiency and lower utility bills</p>
             </div>
-            <div class="flex items-start gap-3">
+            <div id="maintenance-why-item-3" class="flex items-start gap-3">
               <div class="w-2 h-2 bg-brand-accent rounded-full mt-2"></div>
               <p class="text-sm text-gray-600 font-helvetica">Extend the lifespan of your electrical system</p>
             </div>
-            <div class="flex items-start gap-3">
+            <div id="maintenance-why-item-4" class="flex items-start gap-3">
               <div class="w-2 h-2 bg-brand-accent rounded-full mt-2"></div>
               <p class="text-sm text-gray-600 font-helvetica">Peace of mind with expert care</p>
             </div>
