@@ -69,8 +69,8 @@ const currentPath = Astro.url.pathname;
       </div>
 
       <!-- CTA Button -->
-      <Button href="/contact" variant="primary" id="navbar-cta" class="transition-all duration-500 ease-out relative z-20">
-        Book Now
+      <Button href="/contact" variant="tertiary" id="navbar-cta" class="transition-all duration-500 ease-out relative z-20">
+        BOOK NOW
       </Button>
     </div>
 
@@ -138,8 +138,8 @@ const currentPath = Astro.url.pathname;
         })}
       </div>
 
-      <Button href="/contact" variant="primary" size="sm">
-        Book Now
+      <Button href="/contact" variant="tertiary" size="sm">
+        BOOK NOW
       </Button>
     </div>
 
@@ -158,16 +158,8 @@ const currentPath = Astro.url.pathname;
   <div class="hidden md:block lg:hidden px-4 pb-4 transition-all duration-300 z-10" id="tablet-services-layer">
     <div class="max-w-5xl mx-auto flex justify-center gap-2">
       <div class="relative inline-block">
-        <a 
-          href="/maintenance"
-          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-xl rounded-full px-4 py-2 border border-white/30" 
-        >
-          Maintenance
-        </a>
-      </div>
-      <div class="relative inline-block">
         <button 
-          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-xl rounded-full px-4 py-2 border border-white/30" 
+          class="flex items-center gap-2 text-sm text-white hover:text-white transition-colors rounded-full px-4 py-2 border border-white/30 service-btn-custom" 
           aria-expanded="false" 
           aria-haspopup="true"
           id="tablet-service-btn"
@@ -247,14 +239,6 @@ const currentPath = Astro.url.pathname;
           </div>
         </div>
       </div>
-      <div class="relative inline-block">
-        <a 
-          href="/financing"
-          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-xl rounded-full px-4 py-2 border border-white/30" 
-        >
-          Financing
-        </a>
-      </div>
     </div>
   </div>
 
@@ -286,16 +270,8 @@ const currentPath = Astro.url.pathname;
   <div class="hidden lg:block px-6 pb-4 transition-all duration-300 z-10" id="services-layer">
     <div class="max-w-7xl mx-auto flex justify-center gap-2">
       <div class="relative inline-block">
-        <a 
-          href="/maintenance"
-          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-xl rounded-full px-4 py-2 border border-white/30" 
-        >
-          Maintenance
-        </a>
-      </div>
-      <div class="relative inline-block">
         <button 
-          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-xl rounded-full px-4 py-2 border border-white/30" 
+          class="flex items-center gap-2 text-sm text-white hover:text-white transition-all rounded-full px-4 py-2 border-2 service-btn-custom" 
           aria-expanded="false" 
           aria-haspopup="true"
           id="service-btn"
@@ -383,11 +359,30 @@ const currentPath = Astro.url.pathname;
           </div>
         </div>
       </div>
-      <div class="relative inline-block">
+    </div>
+  </div>
+
+  <!-- Dangling Buttons (Top Right) - Desktop & Tablet -->
+  <div class="hidden md:block fixed top-0 right-0 z-50" id="dangling-buttons">
+    <div class="relative">
+      <!-- Hanging wires background image -->
+      <img src="/images/hangingwires.png" alt="" class="w-48 h-auto" />
+      
+      <!-- Buttons positioned over the wires -->
+      <div class="absolute top-16 left-1/2 -translate-x-1/2 flex flex-col gap-4">
+        <a 
+          href="/maintenance"
+          class="dangling-button bg-[#1a1a1a] text-white hover:bg-brand-primary hover:text-white" 
+        >
+          <svg width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect width="24" height="24" fill="none"></rect> <path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm5.75,14.59L16.5,17.84a.54.54,0,0,1-.76,0l-5-4.95A3.54,3.54,0,0,1,6.34,8.06l2.39,2.33,1.63-1.63L8,6.43a3.6,3.6,0,0,1,4,.7,3.49,3.49,0,0,1,.82,3.75l4.94,4.95A.49.49,0,0,1,17.75,16.59Z"></path> </g></svg>
+          Maintenance
+        </a>
+        
         <a 
           href="/financing"
-          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-xl rounded-full px-4 py-2 border border-white/30" 
+          class="dangling-button bg-[#1a1a1a] text-white hover:bg-brand-accent hover:text-white" 
         >
+          <svg fill="currentColor" width="20px" height="20px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M12.32 8a3 3 0 0 0-2-.7H5.63A1.59 1.59 0 0 1 4 5.69a2 2 0 0 1 0-.25 1.59 1.59 0 0 1 1.63-1.33h4.62a1.59 1.59 0 0 1 1.57 1.33h1.5a3.08 3.08 0 0 0-3.07-2.83H8.67V.31H7.42v2.3H5.63a3.08 3.08 0 0 0-3.07 2.83 2.09 2.09 0 0 0 0 .25 3.07 3.07 0 0 0 3.07 3.07h4.74A1.59 1.59 0 0 1 12 10.35a1.86 1.86 0 0 1 0 .34 1.59 1.59 0 0 1-1.55 1.24h-4.7a1.59 1.59 0 0 1-1.55-1.24H2.69a3.08 3.08 0 0 0 3.06 2.73h1.67v2.27h1.25v-2.27h1.7a3.08 3.08 0 0 0 3.06-2.73v-.34A3.06 3.06 0 0 0 12.32 8z"></path></g></svg>
           Financing
         </a>
       </div>
@@ -524,8 +519,8 @@ const currentPath = Astro.url.pathname;
         </div>
       </div>
       
-      <Button href="/contact" variant="primary" id="navbar-cta" class="transition-all duration-500 ease-out relative z-20">
-        Book Now
+      <Button href="/contact" variant="tertiary" id="navbar-cta" class="transition-all duration-500 ease-out relative z-20">
+        BOOK NOW
       </Button>
     </div>
   </div>
@@ -841,5 +836,49 @@ const currentPath = Astro.url.pathname;
   nav a,
   nav button {
     cursor: none;
+  }
+
+  .service-btn-custom {
+    background-color: #1a1a1a;
+    border-color: #1a1a1a;
+    transition: all 0.3s ease;
+  }
+
+  .service-btn-custom:hover {
+    background-color: #00BC7D;
+    border-color: #00BC7D;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 188, 125, 0.3);
+  }
+
+  /* Dangling Buttons Styles */
+  #dangling-buttons {
+    pointer-events: none;
+  }
+
+  #dangling-buttons img {
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .dangling-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    cursor: none;
+    font-family: 'Helvetica', sans-serif;
+    pointer-events: auto;
+  }
+
+  .dangling-button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   }
 </style>

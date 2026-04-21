@@ -104,7 +104,7 @@ const plans = [
                 ? 'bg-white text-black' 
                 : plan.color === 'accent'
                   ? 'bg-white text-black'
-                  : 'bg-brand-secondary text-white'
+                  : 'bg-brand-accent text-white'
           }`}>
             <!-- Decorative corner cuts -->
             <div class={`absolute top-0 left-0 w-4 h-4 rounded-br-full ${bgClasses[backgroundColor]}`}></div>
@@ -114,7 +114,7 @@ const plans = [
             
             {plan.popular && (
               <div class="absolute -top-4 left-1/2 -translate-x-1/2">
-                <span class="bg-brand-secondary text-white px-4 py-2 rounded-full text-sm font-helvetica font-semibold">
+                <span class="bg-brand-primary text-white px-4 py-2 rounded-full text-sm font-helvetica font-semibold">
                   Most Popular
                 </span>
               </div>
@@ -122,20 +122,20 @@ const plans = [
 
             <!-- Plan Header -->
             <div class="text-center mb-6">
-              <p class="text-sm font-helvetica font-medium opacity-80 mb-2">
+              <p class="text-base font-helvetica font-medium opacity-80 mb-2">
                 {plan.name} Plan
               </p>
-              <h3 class="text-2xl font-asap-condensed font-bold text-brand-primary mb-2">
+              <h3 class="text-3xl font-asap-condensed font-bold text-brand-primary mb-2">
                 Maintenance
               </h3>
-              <p class="text-xs font-helvetica opacity-70">
+              <p class="text-sm font-helvetica opacity-70">
                 Professional Service
               </p>
             </div>
 
             <!-- Price badge -->
             <div class="flex justify-center mb-6">
-              <div class={`px-6 py-3 font-bold text-xl font-helvetica transform -rotate-2 shadow-lg ${
+              <div class={`px-6 py-3 font-bold text-2xl font-helvetica transform -rotate-2 shadow-lg ${
                 plan.popular || plan.color === 'primary' || plan.color === 'accent' 
                   ? 'bg-brand-primary text-black' 
                   : 'bg-brand-primary text-white'
@@ -146,7 +146,7 @@ const plans = [
 
             <!-- Plan details -->
             <div class="flex-1 text-center mb-6">
-              <h4 class="font-helvetica font-semibold text-lg mb-3">
+              <h4 class="font-helvetica font-semibold text-xl mb-3">
                 {plan.description}
               </h4>
               
@@ -164,7 +164,7 @@ const plans = [
                           <polyline points="20,6 9,17 4,12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                       </div>
-                      <span class="font-helvetica text-sm opacity-90">
+                      <span class="font-helvetica text-base opacity-90">
                         {feature}
                       </span>
                     </li>
@@ -176,7 +176,7 @@ const plans = [
             <!-- CTA Button -->
             <div class="text-center mt-auto pt-4">
               <Button 
-                variant={plan.popular || plan.color === 'primary' || plan.color === 'accent' ? "ghost" : "primary"}
+                variant={plan.popular || plan.color === 'secondary' || plan.color === 'secondary' ? "primary" : "primary"}
                 size="lg" 
                 class={`w-full ${plan.popular || plan.color === 'primary' || plan.color === 'accent' ? 'bg-black/10 hover:bg-black/20 text-black border-black/30' : ''}`}
                 href="/contact"
@@ -192,17 +192,6 @@ const plans = [
         </div>
       ))}
     </div>
-
-    <!-- Bottom CTA -->
-    <div class="text-center mt-16">
-      <p class={`text-lg ${textClasses[backgroundColor].secondary} font-helvetica mb-6`}>
-        Need a custom maintenance plan? We'll create a solution tailored to your specific needs.
-      </p>
-      <Button variant="primary" size="lg" href="/contact">
-        Contact Us for Custom Plan
-      </Button>
-    </div>
-
   </div>
 </section>
 

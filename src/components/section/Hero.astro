@@ -25,15 +25,38 @@ import Button from "../ui/Button.astro"
             data-animate="slide-right"
             data-delay="4"
         >
-            <p id="hero-description" class="text-[22px] text-white/80 leading-[1.75] font-helvetica" data-animate="fade-only" data-delay="5">
-                We don't just wire buildings — we build the backbone of your
-                operation. From ground up construction to full panel fit-outs, every
-                job is permitted, on-time, and built to last decades.
-            </p>
+            <!-- Special Offer Coupon -->
+            <div id="hero-coupon" class="max-w-2xl mx-auto" data-animate="fade-only" data-delay="5">
+              <div class="coupon-pulse rounded-2xl">
+                <div class="bg-brand-accent text-white p-6 rounded-2xl border-4 border-dashed border-white/30 relative overflow-hidden">
+                  <!-- Decorative corner cuts -->
+                  <div class="absolute top-0 left-0 w-6 h-6 bg-black rounded-br-full"></div>
+                  <div class="absolute top-0 right-0 w-6 h-6 bg-black rounded-bl-full"></div>
+                  <div class="absolute bottom-0 left-0 w-6 h-6 bg-black rounded-tr-full"></div>
+                  <div class="absolute bottom-0 right-0 w-6 h-6 bg-black rounded-tl-full"></div>
+                  
+                  <!-- Perforated edge effect -->
+                  <div class="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-8 bg-black rounded-full -ml-4"></div>
+                  <div class="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-8 bg-black rounded-full -mr-4"></div>
+                  
+                  <div class="text-center relative z-10">
+                    <p class="text-sm font-helvetica font-semibold mb-2 uppercase tracking-wide">Limited Time Offer</p>
+                    <div class="flex items-center justify-center gap-4 mb-3">
+                      <div class="bg-white text-brand-accent px-6 py-2 rounded-lg font-bold text-3xl font-asap-condensed transform -rotate-2 shadow-lg">
+                        $100 OFF
+                      </div>
+                    </div>
+                    <p class="text-lg font-helvetica font-semibold mb-2">Your First Electrical Service</p>
+                    <p class="text-sm opacity-90 font-helvetica">New customers only • Minimum $500 service • Mention code: VOLTBULLY100</p>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-            <div id="hero-actions" class="flex flex-row items-center gap-16 mt-0 2xl:mt-20" data-animate="scale" data-delay="6">
-                <Button variant="sketchy" size="md" href="/"/>
-                <span class="text-white font-helvetica text-xl">CALL NOW</span>
+            <div id="hero-actions" class="flex flex-row justify-center items-center gap-16 mt-0 2xl" data-animate="scale" data-delay="6">
+                <Button variant="primary" size="lg" href="/">
+                    CALL NOW
+                </Button>
             </div>
         </div>
     </div>
@@ -53,6 +76,22 @@ import Button from "../ui/Button.astro"
 
     .content-container {
         top: clamp(120px, 18vh, 200px);
+    }
+
+    /* Pulsating coupon animation */
+    @keyframes pulse-glow {
+        0%, 100% {
+            transform: scale(1);
+            filter: drop-shadow(0 0 20px rgba(97, 196, 197, 0.4)) drop-shadow(0 0 40px rgba(97, 196, 197, 0.2));
+        }
+        50% {
+            transform: scale(1.02);
+            filter: drop-shadow(0 0 30px rgba(97, 196, 197, 0.6)) drop-shadow(0 0 60px rgba(97, 196, 197, 0.3));
+        }
+    }
+
+    .coupon-pulse {
+        animation: pulse-glow 2s ease-in-out infinite;
     }
 
     @media (min-width: 1180px) {
