@@ -160,14 +160,14 @@ const currentPath = Astro.url.pathname;
       <div class="relative inline-block">
         <a 
           href="/maintenance"
-          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30" 
+          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-xl rounded-full px-4 py-2 border border-white/30" 
         >
           Maintenance
         </a>
       </div>
       <div class="relative inline-block">
         <button 
-          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30" 
+          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-xl rounded-full px-4 py-2 border border-white/30" 
           aria-expanded="false" 
           aria-haspopup="true"
           id="tablet-service-btn"
@@ -250,7 +250,7 @@ const currentPath = Astro.url.pathname;
       <div class="relative inline-block">
         <a 
           href="/financing"
-          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30" 
+          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-xl rounded-full px-4 py-2 border border-white/30" 
         >
           Financing
         </a>
@@ -288,14 +288,14 @@ const currentPath = Astro.url.pathname;
       <div class="relative inline-block">
         <a 
           href="/maintenance"
-          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30" 
+          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-xl rounded-full px-4 py-2 border border-white/30" 
         >
           Maintenance
         </a>
       </div>
       <div class="relative inline-block">
         <button 
-          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30" 
+          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-xl rounded-full px-4 py-2 border border-white/30" 
           aria-expanded="false" 
           aria-haspopup="true"
           id="service-btn"
@@ -386,7 +386,7 @@ const currentPath = Astro.url.pathname;
       <div class="relative inline-block">
         <a 
           href="/financing"
-          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30" 
+          class="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors bg-white/20 backdrop-blur-xl rounded-full px-4 py-2 border border-white/30" 
         >
           Financing
         </a>
@@ -772,7 +772,6 @@ const currentPath = Astro.url.pathname;
       var navContainer = document.getElementById("nav-container");
 
       if (scrollY > 50) {
-        servicesLayer.classList.add("opacity-0", "invisible", "h-0", "pb-0");
         navContainer.style.paddingLeft = "10rem";
         navContainer.style.paddingRight = "10rem";
         navbarLogo.style.transform = window.innerWidth >= 1440 ? "translateX(340px)" : "translateX(220px)";
@@ -780,7 +779,6 @@ const currentPath = Astro.url.pathname;
         navbarLogo.style.color = "#1f2937";
         navbarLogo.style.fontSize = "1rem";
       } else {
-        servicesLayer.classList.remove("opacity-0", "invisible", "h-0", "pb-0");
         navContainer.style.paddingLeft = "1.5rem";
         navContainer.style.paddingRight = "1.5rem";
         navbarLogo.style.transform = "translateX(0)";

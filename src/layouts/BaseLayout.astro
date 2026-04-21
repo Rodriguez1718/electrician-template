@@ -82,7 +82,11 @@ const {
 			.font-asap-condensed { 
 				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
 			}
-			#jelly-cursor { opacity: 0; }
+			/* Cursor hidden until mouse actually moves — avoids top-left flash */
+			#jelly-cursor { 
+				opacity: 0; 
+				visibility: hidden;
+			}
 			.min-h-screen { min-height: 100vh; }
 			.flex { display: flex; }
 			.flex-col { flex-direction: column; }
@@ -135,15 +139,13 @@ const {
 				background-color: #98d9a1;
 				border-radius: 50%;
 				transform-origin: 50% 50%;
-				transform: translate(-50%, -50%);
+				/* Use translate3d instead of translate so initial position is off-screen */
+				transform: translate3d(-100px, -100px, 0);
 				will-change: width, height, transform, border;
 				z-index: 99999;
 				pointer-events: none;
-				opacity: 1;
 				backface-visibility: hidden;
 				-webkit-backface-visibility: hidden;
-				-webkit-transform: translateZ(0);
-				transform: translateZ(0);
 				-webkit-font-smoothing: antialiased;
 				-moz-osx-font-smoothing: grayscale;
 				image-rendering: -webkit-optimize-contrast;
@@ -173,9 +175,12 @@ const {
 
 		<script is:inline>
 			window.addEventListener('DOMContentLoaded', async () => {
-				// Check if it's a touch device
-				const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-				
+				// More reliable touch detection — also catches hybrid/Surface devices
+				// that have touch AND a mouse. We check pointer: fine to confirm
+				// an actual precision pointer (mouse) is available.
+				const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+				const isTouchOnly = !hasFinePointer;
+
 				// Load GSAP for both desktop and mobile (needed for page transitions)
 				await new Promise((resolve, reject) => {
 					const script = document.createElement('script');
@@ -187,35 +192,34 @@ const {
 
 				const gsap = window.gsap;
 
-				// Only initialize cursor on desktop
-				if (!isTouchDevice) {
-					console.log('VoltBully cursor loading...');
-
-					// --- Cursor ---
-
-					function getScale(diffX, diffY) {
-						const distance = Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2));
-						return Math.min(distance / 100, 0.25);
-					}
-
-					function getAngle(diffX, diffY) {
-						return (Math.atan2(diffY, diffX) * 180) / Math.PI;
-					}
-
+				if (!isTouchOnly) {
 					const elasticCursor = document.getElementById("jelly-cursor");
-					if (!elasticCursor) {
-						console.error('Cursor element not found');
-					} else {
-						const pos = { x: 0, y: 0 };
+
+					if (elasticCursor) {
+						// Use a sentinel so we only show the cursor after the
+						// first real mousemove — this prevents the top-left stuck bug.
+						let hasReceivedMouseMove = false;
+
+						const pos = { x: -100, y: -100 };   // start off-screen
 						const vel = { x: 0, y: 0 };
-						let targetPos = { x: 0, y: 0 };
+						let targetPos = { x: -100, y: -100 }; // start off-screen
 						let isHoveringClickable = false;
+						let rafId = null;
 
 						const setX = gsap.quickSetter(elasticCursor, "x", "px");
 						const setY = gsap.quickSetter(elasticCursor, "y", "px");
 						const setRotation = gsap.quickSetter(elasticCursor, "rotate", "deg");
 						const setScaleX = gsap.quickSetter(elasticCursor, "scaleX");
 						const setScaleY = gsap.quickSetter(elasticCursor, "scaleY");
+
+						function getScale(diffX, diffY) {
+							const distance = Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2));
+							return Math.min(distance / 100, 0.25);
+						}
+
+						function getAngle(diffX, diffY) {
+							return (Math.atan2(diffY, diffX) * 180) / Math.PI;
+						}
 
 						function update() {
 							const rotation = getAngle(vel.x, vel.y);
@@ -236,12 +240,23 @@ const {
 							vel.x = targetPos.x - pos.x;
 							vel.y = targetPos.y - pos.y;
 							update();
-							requestAnimationFrame(animate);
+							rafId = requestAnimationFrame(animate);
 						}
 
 						window.addEventListener("mousemove", (e) => {
 							targetPos.x = e.clientX;
 							targetPos.y = e.clientY;
+
+							// First time we get a real mouse position:
+							// snap cursor directly to mouse, then reveal it.
+							if (!hasReceivedMouseMove) {
+								hasReceivedMouseMove = true;
+								pos.x = e.clientX;
+								pos.y = e.clientY;
+								// Make visible now that we have a real position
+								elasticCursor.style.visibility = 'visible';
+								gsap.to(elasticCursor, { opacity: 1, duration: 0.3, ease: 'power2.out' });
+							}
 						});
 
 						function handleCursorHover(isHovering) {
@@ -281,6 +296,10 @@ const {
 
 						function addCursorListeners() {
 							document.querySelectorAll('a, button, [role="button"], input[type="button"], input[type="submit"]').forEach((element) => {
+								// Guard against double-binding
+								if (element._cursorBound) return;
+								element._cursorBound = true;
+
 								element.addEventListener('mouseenter', () => {
 									setTimeout(() => handleCursorHover(true), 10);
 								});
@@ -299,41 +318,37 @@ const {
 						}
 
 						function hideCursor() {
+							if (!hasReceivedMouseMove) return; // don't flash-hide before first move
 							gsap.to(elasticCursor, { opacity: 0, duration: 0.3, ease: 'power2.out' });
 						}
 
 						function showCursor() {
+							if (!hasReceivedMouseMove) return; // don't show before first move
 							gsap.to(elasticCursor, { opacity: 1, duration: 0.3, ease: 'power2.out' });
 						}
 
-						document.addEventListener('mouseleave', hideCursor);
-						document.addEventListener('mouseenter', showCursor);
-
 						function handleIframes() {
 							document.querySelectorAll('iframe').forEach((iframe) => {
+								if (iframe._cursorBound) return;
+								iframe._cursorBound = true;
 								iframe.addEventListener('mouseenter', hideCursor);
 								iframe.addEventListener('mouseleave', showCursor);
 							});
 						}
 
-						function initCursor() {
-							addCursorListeners();
-							handleIframes();
-							animate();
-							console.log('VoltBully jelly cursor initialized successfully!');
-						}
+						document.addEventListener('mouseleave', hideCursor);
+						document.addEventListener('mouseenter', showCursor);
 
-						initCursor();
+						addCursorListeners();
+						handleIframes();
+						animate();
 
 						const observer = new MutationObserver(() => {
 							addCursorListeners();
 							handleIframes();
 						});
-
 						observer.observe(document.body, { childList: true, subtree: true });
 					}
-				} else {
-					console.log('Touch device detected - cursor disabled');
 				}
 
 				// --- Page Transitions (for both desktop and mobile) ---
