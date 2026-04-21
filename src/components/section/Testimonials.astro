@@ -288,7 +288,7 @@
   </div>
 </section>
 
-<style>
+<style is:global>
   /* Rounded top section */
   .rounded-top {
     border-top-left-radius: 50px;
@@ -325,17 +325,15 @@
   .carousel-track {
     display: inline-flex;
     gap: 1.5rem;
-    animation-duration: 40s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
+    will-change: transform;
   }
 
-  .carousel-row[data-direction="right"] .carousel-track {
-    animation-name: scrollRight;
+  #testimonials-row-1 .carousel-track {
+    animation: scrollRight 40s linear infinite;
   }
 
-  .carousel-row[data-direction="left"] .carousel-track {
-    animation-name: scrollLeft;
+  #testimonials-row-2 .carousel-track {
+    animation: scrollLeft 40s linear infinite;
   }
 
   .testimonial-card {

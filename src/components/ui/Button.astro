@@ -1,6 +1,6 @@
 ---
 export interface Props {
-  variant?: "primary" | "secondary" | "ghost" | "danger" | "sketchy";
+  variant?: "primary" | "secondary" | "tertiary" | "ghost" | "danger" | "sketchy";
   size?: "sm" | "md" | "lg";
   href?: string;
   type?: "button" | "submit" | "reset";
@@ -125,8 +125,49 @@ const tag = href ? "a" : "button";
   .btn--primary.btn--shrinking {
     color: #000000;
   }
+
+  .btn--tertiary {
+    background: #00BC7D;
+    color: #ffffff;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
   
-  .btn--primary:active { background: #1e40af; }
+  .btn--tertiary::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    background: #008d5e;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: -1;
+    pointer-events: none;
+    left: var(--mouse-x, 50%);
+    top: var(--mouse-y, 50%);
+  }
+  
+  .btn--tertiary:hover::before {
+    width: 300%;
+    height: 300%;
+  }
+  
+  .btn--tertiary:hover { 
+    background: #00BC7D; 
+    color: white; 
+  }
+  
+  .btn--tertiary.btn--shrinking::before {
+    width: 0;
+    height: 0;
+  }
+  
+  .btn--tertiary.btn--shrinking {
+    color: #ffffff;
+  }
 
   .btn--secondary {
     background: transparent;
@@ -304,7 +345,7 @@ const tag = href ? "a" : "button";
 <script>
   // Mouse tracking for button hover effects
   document.addEventListener('DOMContentLoaded', () => {
-    const trackableButtons = document.querySelectorAll('.btn--secondary, .btn--primary, .btn--sketchy');
+    const trackableButtons = document.querySelectorAll('.btn--secondary, .btn--primary, .btn--tertiary, .btn--sketchy');
     
     trackableButtons.forEach(button => {
       button.addEventListener('mouseenter', (e) => {
