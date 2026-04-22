@@ -69,10 +69,11 @@ const offers = [
     </div>
 
     <!-- Offers grid -->
-    <div id="commercial-offers-grid" class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <div id="commercial-offers-grid" class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto items-stretch">
       {offers.map((offer, index) => (
-        <div id={`commercial-offer-${index + 1}`} class="offer-card group">
-          <div class={`${offer.bgColor} ${offer.textColor} p-8 h-full flex flex-col relative overflow-hidden`}>
+        <div id={`commercial-offer-${index + 1}`} class={`offer-card-wrapper ${index === 1 ? 'featured-offer-wrapper' : ''}`}>
+          <div class={`offer-card ${index === 1 ? 'featured-offer' : ''}`}>
+            <div class={`${offer.bgColor} ${offer.textColor} p-8 h-full flex flex-col relative overflow-hidden`}>
             <!-- Decorative corner cuts -->
             <div class="absolute top-0 left-0 w-4 h-4 bg-white rounded-br-full"></div>
             <div class="absolute top-0 right-0 w-4 h-4 bg-white rounded-bl-full"></div>
@@ -134,6 +135,7 @@ const offers = [
             <!-- Perforated edge effect -->
             <div class="absolute left-0 top-1/2 -translate-y-1/2 w-6 h-6 bg-white rounded-full -ml-3"></div>
             <div class="absolute right-0 top-1/2 -translate-y-1/2 w-6 h-6 bg-white rounded-full -mr-3"></div>
+            </div>
           </div>
         </div>
       ))}
@@ -142,6 +144,14 @@ const offers = [
 </section>
 
 <style>
+  /* Wrapper for animation - this receives any external transforms */
+  .offer-card-wrapper {
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Inner card with border effect - this receives the hover transform */
   .offer-card {
     /* Dashed border effect */
     background: 
@@ -154,12 +164,27 @@ const offers = [
     background-position: 0 0, 0 100%, 0 0, 100% 0;
     color: rgba(0, 0, 0, 0.2);
     padding: 3px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .offer-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  .offer-card-wrapper:hover .offer-card {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.16);
+  }
+
+  /* Middle card is larger by default on tablet and up */
+  @media (min-width: 768px) {
+    .offer-card.featured-offer {
+      transform: scale(1.1);
+      z-index: 10;
+    }
+
+    .offer-card-wrapper:hover .offer-card.featured-offer {
+      transform: scale(1.1) translateY(-10px);
+    }
   }
 
   /* Perforated dots along the sides */

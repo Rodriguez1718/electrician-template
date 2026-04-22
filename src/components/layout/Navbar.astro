@@ -69,9 +69,11 @@ const currentPath = Astro.url.pathname;
       </div>
 
       <!-- CTA Button -->
-      <Button href="/contact" variant="tertiary" id="navbar-cta" class="transition-all duration-500 ease-out relative z-20">
-        BOOK NOW
-      </Button>
+      <div class="z-60">
+        <Button href="/contact" variant="tertiary" id="navbar-cta" class="transition-all duration-500 ease-out relative z-20">
+          BOOK NOW
+        </Button>
+      </div>
     </div>
 
     <!-- Service areas dropdown -->
@@ -138,9 +140,12 @@ const currentPath = Astro.url.pathname;
         })}
       </div>
 
-      <Button href="/contact" variant="tertiary" size="sm">
-        BOOK NOW
-      </Button>
+      
+      <div class="z-60">
+        <Button href="/contact" variant="tertiary" size="sm">
+          BOOK NOW
+        </Button>
+      </div>
     </div>
 
     <div 
@@ -189,6 +194,7 @@ const currentPath = Astro.url.pathname;
                 <a href="/services/ground-up-construction" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Ground-up Construction</a>
                 <a href="/services/emergency-standby-power" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Emergency & Standby Power</a>
                 <a href="/services/commercial-hvac-electrical" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Commercial HVAC</a>
+                <a href="/services/commercial-electrical-panels" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Electrical Panels</a>
               </div>
               
               <a href="/services/residential" class="flex items-center gap-2 mb-3 no-underline group">
@@ -204,6 +210,7 @@ const currentPath = Astro.url.pathname;
                 <a href="/services/car-charging-stations" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">EV Charging Stations</a>
                 <a href="/services/ceiling-fan" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Ceiling Fan Installation</a>
                 <a href="/services/gfci-outlets" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">GFCI Outlets</a>
+                <a href="/services/backup-generators" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Backup Generators</a>
               </div>
             </div>
 
@@ -220,6 +227,7 @@ const currentPath = Astro.url.pathname;
                 <a href="/services/holiday-lighting" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Holiday Lighting</a>
                 <a href="/services/landscape-lighting" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Landscape Lighting</a>
                 <a href="/services/pool-spa-electrical" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Pool & Spa Electrical</a>
+                <a href="/services/property-management" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Property Management</a>
               </div>
               
               <a href="/services/emergency" class="flex items-center gap-2 mb-3 no-underline group">
@@ -233,6 +241,7 @@ const currentPath = Astro.url.pathname;
               <div class="space-y-1">
                 <a href="/services/24-hour-emergency" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">24-hour Emergency</a>
                 <a href="/services/hvac-emergency" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">HVAC Emergency</a>
+                <a href="/services/heating-emergency" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Heating Emergency</a>
                 <a href="/services/water-heater-emergency" class="block px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline rounded-lg transition-colors font-helvetica" role="menuitem">Water Heater Emergency</a>
               </div>
             </div>
@@ -519,9 +528,11 @@ const currentPath = Astro.url.pathname;
         </div>
       </div>
       
-      <Button href="/contact" variant="tertiary" id="navbar-cta" class="transition-all duration-500 ease-out relative z-20">
-        BOOK NOW
-      </Button>
+      <div class="z-60">
+        <Button href="/contact" variant="tertiary" id="navbar-cta" class="transition-all duration-500 ease-out relative z-20">
+          BOOK NOW
+        </Button>
+      </div>
     </div>
   </div>
 </nav>
@@ -564,42 +575,39 @@ const currentPath = Astro.url.pathname;
     });
   }
 
-  // Tablet Services dropdown - hover
+  // Tablet Services dropdown - click
   var tabletServiceBtn = document.getElementById("tablet-service-btn");
   var tabletDropdownMenu = document.getElementById("tablet-dropdown-menu");
-  var tabletServicesContainer = tabletServiceBtn && tabletServiceBtn.parentElement;
   var tabletSvg = tabletServiceBtn && tabletServiceBtn.querySelector("svg");
-  var tabletHoverTimeout;
 
-  if (tabletServicesContainer) {
-    tabletServicesContainer.addEventListener("mouseenter", function() {
-      clearTimeout(tabletHoverTimeout);
-      tabletDropdownMenu.classList.remove("opacity-0", "invisible");
-      tabletDropdownMenu.classList.add("opacity-100", "visible");
-      tabletSvg.classList.add("rotate-180");
-      tabletServiceBtn.setAttribute("aria-expanded", "true");
-    });
-    tabletServicesContainer.addEventListener("mouseleave", function() {
-      tabletHoverTimeout = setTimeout(function() {
+  if (tabletServiceBtn) {
+    tabletServiceBtn.addEventListener("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var isOpen = tabletDropdownMenu.classList.contains("opacity-100");
+      if (isOpen) {
         tabletDropdownMenu.classList.remove("opacity-100", "visible");
         tabletDropdownMenu.classList.add("opacity-0", "invisible");
         tabletSvg.classList.remove("rotate-180");
         tabletServiceBtn.setAttribute("aria-expanded", "false");
-      }, 150);
+      } else {
+        tabletDropdownMenu.classList.remove("opacity-0", "invisible");
+        tabletDropdownMenu.classList.add("opacity-100", "visible");
+        tabletSvg.classList.add("rotate-180");
+        tabletServiceBtn.setAttribute("aria-expanded", "true");
+      }
     });
   }
 
-  if (tabletDropdownMenu) {
-    tabletDropdownMenu.addEventListener("mouseenter", function() { clearTimeout(tabletHoverTimeout); });
-    tabletDropdownMenu.addEventListener("mouseleave", function() {
-      tabletHoverTimeout = setTimeout(function() {
-        tabletDropdownMenu.classList.remove("opacity-100", "visible");
-        tabletDropdownMenu.classList.add("opacity-0", "invisible");
-        tabletSvg.classList.remove("rotate-180");
-        tabletServiceBtn.setAttribute("aria-expanded", "false");
-      }, 150);
-    });
-  }
+  // Close tablet dropdown when clicking outside
+  document.addEventListener("click", function(e) {
+    if (tabletServiceBtn && tabletDropdownMenu && !tabletServiceBtn.contains(e.target) && !tabletDropdownMenu.contains(e.target)) {
+      tabletDropdownMenu.classList.remove("opacity-100", "visible");
+      tabletDropdownMenu.classList.add("opacity-0", "invisible");
+      if (tabletSvg) tabletSvg.classList.remove("rotate-180");
+      tabletServiceBtn.setAttribute("aria-expanded", "false");
+    }
+  });
 
   // Mobile menu
   var mobileMenuBtn = document.getElementById("mobile-menu-btn");

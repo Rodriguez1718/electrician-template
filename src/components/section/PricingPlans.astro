@@ -94,9 +94,9 @@ const plans = [
     </div>
 
     <!-- Pricing Cards -->
-    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
       {plans.map((plan, index) => (
-        <div class="pricing-card group">
+        <div class={`pricing-card group ${index === 1 ? 'featured-plan' : ''}`}>
           <div class={`p-8 h-full flex flex-col relative overflow-hidden ${
             plan.popular 
               ? 'bg-brand-secondary text-white' 
@@ -212,8 +212,20 @@ const plans = [
   }
 
   .pricing-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Middle card is larger by default on tablet and up */
+  @media (min-width: 768px) {
+    .pricing-card.featured-plan {
+      transform: scale(1.1);
+      z-index: 10;
+    }
+
+    .pricing-card.featured-plan:hover {
+      transform: scale(1.1) translateY(-10px);
+    }
   }
 
   /* Rounded bottom section */

@@ -2,6 +2,8 @@
 import CallToAction from "../../components/section/CallToAction.astro";
 import CommercialServices from "../../components/section/CommercialServices.astro";
 import Coupons from "../../components/section/Coupons.astro";
+import FAQ from "../../components/section/FAQ.astro";
+import FeaturedWorks from "../../components/section/FeaturedWorks.astro";
 import Hero2 from "../../components/section/Hero2.astro";
 import ServiceAreas from "../../components/section/ServiceAreas.astro";
 import Services from "../../components/section/Services.astro";
@@ -74,10 +76,44 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         ]}
     />
     <Coupons roundedBottom/>
-    <Services showGradientOverlay={false} />
+    <Services />
+    <FAQ />
+    <FeaturedWorks />
     <Testimonials />
     <CallToAction />
-    <ServiceAreas />
+    <ServiceAreas 
+        title="Expert Electrical Services in"
+        titleHighlight="Denver and Surrounding Areas"
+        description="Proudly serving the Denver metro area with professional electrical solutions for residential and commercial properties. Our licensed electricians understand Denver's unique codes and weather challenges, delivering quality workmanship with fast response times. Available 24/7 for emergencies across all neighborhoods."
+        primaryAreas={[
+            "Downtown Denver",
+            "Capitol Hill",
+            "LoDo",
+            "Cherry Creek",
+            "Washington Park",
+            "Highlands",
+            "Five Points"
+        ]}
+        secondaryAreas={[
+            "Aurora",
+            "Lakewood",
+            "Arvada",
+            "Westminster",
+            "Thornton",
+            "Centennial",
+            "Littleton"
+        ]}
+        tertiaryAreas={[
+            "Englewood",
+            "Wheat Ridge",
+            "Commerce City",
+            "Greenwood Village",
+            "Parker",
+            "Broomfield"
+        ]}
+        mapEmbedUrl="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d196281.21303064034!2d-105.1082261!3d39.7643389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876b80aa231f17cf%3A0x118ef4f8278a36d6!2sDenver%2C%20CO!5e0!3m2!1sen!2sus!4v1703123456789!5m2!1sen!2sus"
+        mapTitle="VoltBully Electrical Denver Service Areas Map"
+    />
 
     <!-- Back to Top Button -->
     <button 

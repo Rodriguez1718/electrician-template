@@ -1,6 +1,7 @@
 ---
 import Footer from "../components/layout/Footer.astro";
 import Navbar from "../components/layout/Navbar.astro";
+import CouponPopup from "../components/layout/CouponPopup.astro";
 import "../styles/global.css"
 
 export interface Props {
@@ -115,6 +116,7 @@ const {
 			<slot />
 		</main>
 		<Footer />
+		<CouponPopup />
 
 		<style>
 			html, body, a, [role=button], button, [type=button]:not(:disabled) {
