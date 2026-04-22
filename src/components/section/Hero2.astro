@@ -30,7 +30,7 @@ const {
     <div class="absolute inset-0 bg-black/40"></div>
     <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black via-black/60 to-transparent z-20"></div>
 
-    <div class="flex flex-col min-[1180px]:block h-full relative z-30">
+    <div class="flex flex-col min-[1180px]:block h-full relative z-30 mt-20 md:mt-0">
         <h1
             id="hero2-headline"
             class="relative min-[1180px]:absolute left-3 font-playfair font-black text-white pointer-events-none select-none flex flex-col leading-[0.88] tracking-tight hero-headline"
@@ -44,7 +44,7 @@ const {
 
         <div
             id="hero2-content"
-            class="content-container absolute right-8 max-w-[590px] flex flex-col gap-4 z-10 "
+            class="content-container absolute right-8 max-w-[590px] flex flex-col gap-4 z-10 mt-0"
         >
             <p id="hero2-description" class="text-lg text-white/90 leading-[1.6] font-helvetica">
                 {description}
@@ -79,6 +79,12 @@ const {
     .content-container {
         top: clamp(80px, 12vh, 120px);
         right: clamp(2rem, 5vw, 4rem);
+    }
+
+    @media (min-width: 1460px) {
+        .content-container {
+            margin-top: 5rem; /* mt-20 equivalent */
+        }
     }
 
     @media (max-width: 1475px) {

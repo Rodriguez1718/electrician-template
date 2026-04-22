@@ -60,10 +60,11 @@ const coupons = [
     </div>
 
     <!-- Coupons grid -->
-    <div id="coupons-grid" class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <div id="coupons-grid" class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto items-stretch">
       {coupons.map((coupon, index) => (
-        <div id={`coupon-${index + 1}`} class="coupon-card group" data-animate="scale" data-delay={index + 3}>
-          <div class={`${coupon.bgColor} ${coupon.textColor} p-8 h-full flex flex-col relative overflow-hidden`}>
+        <div id={`coupon-${index + 1}`} class={`coupon-card-wrapper ${index === 1 ? 'featured-coupon-wrapper' : ''}`} data-animate="scale" data-delay={index + 3}>
+          <div class={`coupon-card ${index === 1 ? 'featured-coupon' : ''}`}>
+            <div class={`${coupon.bgColor} ${coupon.textColor} p-8 h-full flex flex-col relative overflow-hidden`}>
             <!-- Decorative corner cuts -->
             <div class="absolute top-0 left-0 w-4 h-4 bg-gray-900 rounded-br-full"></div>
             <div class="absolute top-0 right-0 w-4 h-4 bg-gray-900 rounded-bl-full"></div>
@@ -125,6 +126,7 @@ const coupons = [
             <!-- Perforated edge effect -->
             <div class="absolute left-0 top-1/2 -translate-y-1/2 w-6 h-6 bg-gray-900 rounded-full -ml-3"></div>
             <div class="absolute right-0 top-1/2 -translate-y-1/2 w-6 h-6 bg-gray-900 rounded-full -mr-3"></div>
+            </div>
           </div>
         </div>
       ))}
@@ -133,6 +135,14 @@ const coupons = [
 </section>
 
 <style>
+  /* Wrapper for animation - this receives the animation transform */
+  .coupon-card-wrapper {
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Inner card with border effect - this receives the hover transform */
   .coupon-card {
     /* Dashed border effect */
     background: 
@@ -145,12 +155,27 @@ const coupons = [
     background-position: 0 0, 0 100%, 0 0, 100% 0;
     color: rgba(255, 255, 255, 0.3);
     padding: 3px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .coupon-card:hover {
-    transform: translateY(-5px);
+  .coupon-card-wrapper:hover .coupon-card {
+    transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Middle card is larger by default on tablet and up */
+  @media (min-width: 768px) {
+    .coupon-card.featured-coupon {
+      transform: scale(1.1);
+      z-index: 10;
+    }
+
+    .coupon-card-wrapper:hover .coupon-card.featured-coupon {
+      transform: scale(1.1) translateY(-10px);
+    }
   }
 
   /* Rounded bottom section */
