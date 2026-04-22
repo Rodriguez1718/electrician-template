@@ -164,17 +164,19 @@ const serviceCategories = await loadServicesFromMarkdownFiles();
             class={`service-content ${categoryIndex === 0 ? 'active' : ''}`}
             data-category={category.id}
           >
-            <div id={`service-grid-${categoryIndex + 1}`} class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div id={`service-grid-${categoryIndex + 1}`} class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
               {category.services.map((service: Service) => (
-                <Card
-                  title={service.name}
-                  description={service.description}
-                  icon={service.icon}
-                  href={`/services/${service.slug}`}
-                  variant="service"
-                  size="md"
-                  category={category.title.split(' ')[0]}
-                />
+                <div class="h-full">
+                  <Card
+                    title={service.name}
+                    description={service.description}
+                    icon={service.icon}
+                    href={`/services/${service.slug}`}
+                    variant="service"
+                    size="md"
+                    category={category.title.split(' ')[0]}
+                  />
+                </div>
               ))}
             </div>
           </div>
@@ -224,43 +226,73 @@ const serviceCategories = await loadServicesFromMarkdownFiles();
 
   /* Content styling */
   .service-content {
+    display: none;
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.4s ease-in-out;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    pointer-events: none;
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
   }
   
   .service-content.active {
-    opacity: 1;
-    transform: translateY(0);
-    position: relative;
-    pointer-events: auto;
+    display: block;
+    animation: fadeSlideIn 0.5s ease-out forwards;
+  }
+  
+  .service-content.fade-out {
+    animation: fadeSlideOut 0.3s ease-in forwards;
   }
   
   .service-content-container {
     position: relative;
     min-height: 400px;
   }
+  
+  @keyframes fadeSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeSlideOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
 </style>
 
-<script define:vars={{ serviceCategories }}>
+<script define:vars={{ serviceCategories }} is:inline>
   // Tab functionality
   document.addEventListener('DOMContentLoaded', function() {
     const tabs = document.querySelectorAll('.service-tab');
     const contents = document.querySelectorAll('.service-content');
     
-    // Initialize - ensure only first content is active
+    // Force render all content first, then hide inactive ones
     contents.forEach((content, index) => {
-      if (index === 0) {
-        content.classList.add('active');
-      } else {
-        content.classList.remove('active');
-      }
+      content.style.display = 'block';
     });
+    
+    // Small delay to ensure rendering, then hide inactive tabs
+    setTimeout(() => {
+      contents.forEach((content, index) => {
+        if (index === 0) {
+          content.classList.add('active');
+          content.style.opacity = '1';
+          content.style.transform = 'translateY(0)';
+        } else {
+          content.classList.remove('active');
+          content.style.display = 'none';
+        }
+      });
+    }, 50);
     
     tabs.forEach(tab => {
       tab.addEventListener('click', (event) => {
@@ -278,18 +310,32 @@ const serviceCategories = await loadServicesFromMarkdownFiles();
         // Add active class to clicked tab
         target.classList.add('active');
         
-        // Handle content switching with smooth transition
-        const currentActive = document.querySelector('.service-content.active');
+        // Handle content switching with animation
         const targetContent = document.querySelector(`[data-category="${categoryId}"].service-content`);
+        const currentActive = document.querySelector('.service-content.active');
         
-        if (currentActive && targetContent && currentActive !== targetContent) {
-          // Remove active from current
-          currentActive.classList.remove('active');
-          
-          // Add active to target after a small delay for smooth transition
-          setTimeout(() => {
+        if (targetContent && currentActive !== targetContent) {
+          // Fade out current content
+          if (currentActive) {
+            currentActive.classList.add('fade-out');
+            
+            // Wait for fade out animation to complete
+            setTimeout(() => {
+              currentActive.classList.remove('active', 'fade-out');
+              currentActive.style.display = 'none';
+              
+              // Fade in new content
+              targetContent.style.display = 'block';
+              // Force reflow
+              targetContent.offsetHeight;
+              targetContent.classList.add('active');
+            }, 300); // Match fadeSlideOut duration
+          } else {
+            // No current active, just show new content
+            targetContent.style.display = 'block';
+            targetContent.offsetHeight;
             targetContent.classList.add('active');
-          }, 100);
+          }
         }
         
         // Find the category data to get tabBackground
