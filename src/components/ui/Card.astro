@@ -21,6 +21,9 @@ const {
   backgroundImage
 } = Astro.props;
 
+// Generate unique ID for this card's clip path
+const uniqueId = `cardClip-${Math.random().toString(36).substr(2, 9)}`;
+
 const sizeClasses = {
   sm: 'p-4',
   md: 'p-6', 
@@ -28,11 +31,11 @@ const sizeClasses = {
 };
 
 const variantClasses = {
-  default: ' text-gray-900 clipped-element',
-  hover: ' text-gray-900 clipped-element',
-  bordered: ' text-gray-900 clipped-element',
-  service: ' relative overflow-hidden text-gray-900 clipped-element',
-  image: ' relative overflow-hidden text-white clipped-element'
+  default: ' text-gray-900',
+  hover: ' text-gray-900',
+  bordered: ' text-gray-900',
+  service: ' relative overflow-hidden text-gray-900',
+  image: ' relative overflow-hidden text-white'
 };
 
 const CardTag = href ? 'a' : 'div';
@@ -60,10 +63,10 @@ const CardTag = href ? 'a' : 'div';
   )}
   
   <div 
-    class={`${variantClasses[variant]} ${sizeClasses[size]} block relative z-0 h-full flex flex-col`}
+    class={`${variantClasses[variant]} ${sizeClasses[size]} block relative z-0 h-full flex flex-col clipped-card`}
     style={variant === 'image' ? 
-      `background-image: url('${backgroundImage}'); background-size: cover; background-position: center; background-repeat: no-repeat;` : 
-      "background-color: #f8f9fa; border-color: rgba(45, 124, 111, 0.4);"
+      `background-image: url('${backgroundImage}'); background-size: cover; background-position: center; background-repeat: no-repeat; clip-path: url(#${uniqueId});` : 
+      `background-color: #f8f9fa; border-color: rgba(45, 124, 111, 0.4); clip-path: url(#${uniqueId});`
     }
   >
     
@@ -127,21 +130,19 @@ const CardTag = href ? 'a' : 'div';
       </div>
     )}
   </div>
+  
+  <!-- SVG Clip Path Definition with unique ID -->
+  <svg width="0" height="0" style="position: absolute;">
+    <defs>
+      <clipPath id={uniqueId} clipPathUnits="objectBoundingBox">
+        <path d="M 0.000, 0.050 L 0.000, 0.050 Q 0.000, 0.000 0.050, 0.000 L 0.780, 0.000 Q 0.800, 0.000 0.806, 0.019 L 0.850, 0.150 L 0.972, 0.191 Q 1.000, 0.200 1.000, 0.230 L 1.000, 0.955 Q 1.000, 1.000 0.955, 1.000 L 0.045, 1.000 Q 0.000, 1.000 0.000, 0.955 Z" />
+      </clipPath>
+    </defs>
+  </svg>
 </div>
 
-<!-- SVG Clip Path Definition -->
-<svg width="0" height="0" style="position: absolute;">
-  <defs>
-    <clipPath id="cardClip" clipPathUnits="objectBoundingBox">
-      <path d="M 0.000, 0.050 L 0.000, 0.050 Q 0.000, 0.000 0.050, 0.000 L 0.780, 0.000 Q 0.800, 0.000 0.806, 0.019 L 0.850, 0.150 L 0.972, 0.191 Q 1.000, 0.200 1.000, 0.230 L 1.000, 0.955 Q 1.000, 1.000 0.955, 1.000 L 0.045, 1.000 Q 0.000, 1.000 0.000, 0.955 Z" />
-    </clipPath>
-  </defs>
-</svg>
-
 <style>
-  .clipped-element {
-    clip-path: url(#cardClip);
+  .clipped-card {
     position: relative;
   }
-  
 </style>

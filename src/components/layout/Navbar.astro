@@ -399,7 +399,7 @@ const currentPath = Astro.url.pathname;
       <div class="absolute top-16 left-1/2 -translate-x-1/2 flex flex-col gap-4">
         <a 
           href="/maintenance"
-          class="dangling-button bg-[#1a1a1a] text-white hover:bg-brand-primary hover:text-white" 
+          class="dangling-button bg-[#1a1a1a] text-white hover:bg-brand-primary hover:text-white gap-4" 
         >
           <svg width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect width="24" height="24" fill="none"></rect> <path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm5.75,14.59L16.5,17.84a.54.54,0,0,1-.76,0l-5-4.95A3.54,3.54,0,0,1,6.34,8.06l2.39,2.33,1.63-1.63L8,6.43a3.6,3.6,0,0,1,4,.7,3.49,3.49,0,0,1,.82,3.75l4.94,4.95A.49.49,0,0,1,17.75,16.59Z"></path> </g></svg>
           Maintenance
@@ -407,7 +407,7 @@ const currentPath = Astro.url.pathname;
         
         <a 
           href="/financing"
-          class="dangling-button bg-[#1a1a1a] text-white hover:bg-brand-accent hover:text-white" 
+          class="dangling-button bg-[#1a1a1a] text-white hover:bg-brand-accent hover:text-white gap-4" 
         >
           <svg fill="currentColor" width="20px" height="20px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M12.32 8a3 3 0 0 0-2-.7H5.63A1.59 1.59 0 0 1 4 5.69a2 2 0 0 1 0-.25 1.59 1.59 0 0 1 1.63-1.33h4.62a1.59 1.59 0 0 1 1.57 1.33h1.5a3.08 3.08 0 0 0-3.07-2.83H8.67V.31H7.42v2.3H5.63a3.08 3.08 0 0 0-3.07 2.83 2.09 2.09 0 0 0 0 .25 3.07 3.07 0 0 0 3.07 3.07h4.74A1.59 1.59 0 0 1 12 10.35a1.86 1.86 0 0 1 0 .34 1.59 1.59 0 0 1-1.55 1.24h-4.7a1.59 1.59 0 0 1-1.55-1.24H2.69a3.08 3.08 0 0 0 3.06 2.73h1.67v2.27h1.25v-2.27h1.7a3.08 3.08 0 0 0 3.06-2.73v-.34A3.06 3.06 0 0 0 12.32 8z"></path></g></svg>
           Financing
@@ -425,7 +425,7 @@ const currentPath = Astro.url.pathname;
           class:list={[
             "block px-4 py-3 text-base font-medium no-underline transition-colors rounded-lg",
             { 
-              "text-blue-600 bg-blue-50": currentPath === link.href,
+              "text-brand-secondary bg-brand-primary/20": currentPath === link.href,
               "text-gray-700 hover:text-gray-900 hover:bg-gray-50": currentPath !== link.href
             }
           ]}
@@ -441,7 +441,7 @@ const currentPath = Astro.url.pathname;
             class:list={[
               "flex-1 px-4 py-3 text-base font-medium no-underline transition-colors",
               { 
-                "text-blue-600 bg-blue-50": currentPath === "/service-area",
+                "text-brand-secondary bg-brand-primary/20": currentPath === "/service-area",
                 "text-gray-700 hover:text-gray-900 hover:bg-gray-50": currentPath !== "/service-area"
               }
             ]}
@@ -711,7 +711,6 @@ const currentPath = Astro.url.pathname;
       var buttonRect = desktopServiceAreasBtn.getBoundingClientRect();
       desktopServiceAreasMenu.style.left = (buttonRect.left + buttonRect.width / 2) + "px";
       desktopServiceAreasMenu.style.top = (buttonRect.bottom + 8) + "px";
-      desktopServiceAreasMenu.style.transform = "translateX(-50%)";
     }
   }
 
