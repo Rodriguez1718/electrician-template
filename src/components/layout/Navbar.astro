@@ -1,5 +1,6 @@
 ---
 import Button from "../ui/Button.astro";
+import { getCollection } from 'astro:content';
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -9,6 +10,18 @@ const navLinks = [
 ];
 
 const currentPath = Astro.url.pathname;
+
+// Fetch service areas for dropdown with error handling
+let primaryServiceAreas: Awaited<ReturnType<typeof getCollection<'service-areas'>>> = [];
+try {
+  const serviceAreas = await getCollection('service-areas');
+  primaryServiceAreas = serviceAreas
+    .filter(area => area.data.tier === 'primary')
+    .slice(0, 4); // Show top 4 in navbar
+} catch (error) {
+  console.error('Error loading service areas:', error);
+  // Fallback to empty array if collection doesn't exist yet
+}
 ---
 
 <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" id="navbar">
@@ -82,18 +95,15 @@ const currentPath = Astro.url.pathname;
       role="menu"
       id="desktop-service-areas-menu"
     >
-      <a href="/serviceAreas/denver" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline transition-colors" role="menuitem">
-        Denver
-      </a>
-      <a href="/serviceAreas/santa-monica" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline transition-colors" role="menuitem">
-        Santa Monica
-      </a>
-      <a href="/serviceAreas/pasadena" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline transition-colors" role="menuitem">
-        Pasadena
-      </a>
-      <a href="/serviceAreas/glendale" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline transition-colors" role="menuitem">
-        Glendale
-      </a>
+      {primaryServiceAreas.map((area) => (
+        <a 
+          href={`/service-areas/${area.id}`}
+          class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline transition-colors" 
+          role="menuitem"
+        >
+          {area.data.city}
+        </a>
+      ))}
     </div>
   </div>
 
@@ -162,18 +172,15 @@ const currentPath = Astro.url.pathname;
       role="menu"
       id="tablet-service-areas-menu"
     >
-      <a href="/serviceAreas/denver" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline transition-colors" role="menuitem">
-        Denver
-      </a>
-      <a href="/serviceAreas/santa-monica" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline transition-colors" role="menuitem">
-        Santa Monica
-      </a>
-      <a href="/serviceAreas/pasadena" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline transition-colors" role="menuitem">
-        Pasadena
-      </a>
-      <a href="/serviceAreas/glendale" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline transition-colors" role="menuitem">
-        Glendale
-      </a>
+      {primaryServiceAreas.map((area) => (
+        <a 
+          href={`/service-areas/${area.id}`}
+          class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 no-underline transition-colors" 
+          role="menuitem"
+        >
+          {area.data.city}
+        </a>
+      ))}
     </div>
   </div>
 
@@ -459,10 +466,14 @@ const currentPath = Astro.url.pathname;
           </button>
         </div>
         <div class="pl-4 opacity-0 invisible max-h-0 overflow-hidden transition-all duration-200" id="mobile-service-areas-dropdown">
-          <a href="/serviceAreas/denver" class="block px-4 py-2 text-sm text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors">Denver</a>
-          <a href="/serviceAreas/santa-monica" class="block px-4 py-2 text-sm text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors">Santa Monica</a>
-          <a href="/serviceAreas/pasadena" class="block px-4 py-2 text-sm text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors">Pasadena</a>
-          <a href="/serviceAreas/glendale" class="block px-4 py-2 text-sm text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors">Glendale</a>
+          {primaryServiceAreas.map((area) => (
+            <a 
+              href={`/service-areas/${area.id}`}
+              class="block px-4 py-2 text-sm text-gray-600 hover:text-gray-900 no-underline rounded-lg hover:bg-gray-50 transition-colors"
+            >
+              {area.data.city}
+            </a>
+          ))}
         </div>
       </div>
       

@@ -1,4 +1,6 @@
 ---
+import { getCollection } from 'astro:content';
+
 export interface Props {
   title?: string;
   titleHighlight?: string;
@@ -6,7 +8,6 @@ export interface Props {
   primaryAreas?: string[];
   secondaryAreas?: string[];
   tertiaryAreas?: string[];
-  mapEmbedUrl?: string;
   mapTitle?: string;
 }
 
@@ -14,12 +15,72 @@ const {
   title = "Expert Electrical Services in",
   titleHighlight = "Your Area and Surrounding Areas",
   description = "Expert electrical services across the region. From panel upgrades to emergency repairs, we provide reliable residential and commercial solutions with 24/7 availability.",
-  primaryAreas = ["Downtown", "Midtown", "Uptown", "Westside", "Eastside", "Northside", "Southside"],
+  primaryAreas = ["Denver", "Santa Monica", "Pasadena", "Glendale", "Eastside", "Northside", "Southside"],
   secondaryAreas = ["Oak Valley", "Pine Hills", "River Park", "Cedar Grove", "Maple Heights", "Willow Creek", "Sunset Ridge"],
   tertiaryAreas = ["Elmwood", "Brookside", "Silver Lake", "Golden Hills", "Fairview", "Highland Park"],
-  mapEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423286.27405770525!2d-118.69192113701158!3d34.02016130653294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos%20Angeles%2C%20CA!5e0!3m2!1sen!2sus!4v1703123456789!5m2!1sen!2sus",
   mapTitle = "VoltBully Electrical Service Areas Map"
 } = Astro.props;
+
+// Fetch service areas from content collection with error handling
+let serviceAreasCollection: any[] = [];
+try {
+  serviceAreasCollection = await getCollection('service-areas');
+} catch (error) {
+  console.error('Error loading service areas collection:', error);
+}
+
+// Create a map of area names to slugs and coordinates
+const areaData: Record<string, { slug: string; lat: number; lng: number; zoom: number }> = {};
+serviceAreasCollection.forEach(area => {
+  areaData[area.data.city] = {
+    slug: area.id.replace('.md', ''),
+    lat: area.data.latitude,
+    lng: area.data.longitude,
+    zoom: area.data.zoom
+  };
+});
+
+// Fallback coordinates for areas not in collection
+const fallbackCoordinates: Record<string, { lat: number; lng: number; zoom: number }> = {
+  "Santa Monica": { lat: 34.0195, lng: -118.4912, zoom: 13 },
+  "Pasadena": { lat: 34.1478, lng: -118.1445, zoom: 13 },
+  "Glendale": { lat: 34.1425, lng: -118.2551, zoom: 13 },
+  "Eastside": { lat: 34.0522, lng: -118.1437, zoom: 12 },
+  "Northside": { lat: 34.2522, lng: -118.2437, zoom: 12 },
+  "Southside": { lat: 33.9522, lng: -118.2437, zoom: 12 },
+  "Oak Valley": { lat: 34.0722, lng: -118.3437, zoom: 13 },
+  "Pine Hills": { lat: 34.1122, lng: -118.2937, zoom: 13 },
+  "River Park": { lat: 34.0322, lng: -118.3937, zoom: 13 },
+  "Cedar Grove": { lat: 34.0922, lng: -118.4437, zoom: 13 },
+  "Maple Heights": { lat: 34.1322, lng: -118.3437, zoom: 13 },
+  "Willow Creek": { lat: 34.0122, lng: -118.4937, zoom: 13 },
+  "Sunset Ridge": { lat: 34.0822, lng: -118.3937, zoom: 13 },
+  "Elmwood": { lat: 34.0622, lng: -118.2937, zoom: 13 },
+  "Brookside": { lat: 34.1022, lng: -118.3437, zoom: 13 },
+  "Silver Lake": { lat: 34.0868, lng: -118.2705, zoom: 14 },
+  "Golden Hills": { lat: 34.1222, lng: -118.2437, zoom: 13 },
+  "Fairview": { lat: 34.0422, lng: -118.3437, zoom: 13 },
+  "Highland Park": { lat: 34.1139, lng: -118.1887, zoom: 14 }
+};
+
+// Merge collection data with fallback coordinates
+const areaCoordinates: Record<string, { lat: number; lng: number; zoom: number }> = {};
+[...primaryAreas, ...secondaryAreas, ...tertiaryAreas].forEach(area => {
+  if (areaData[area]) {
+    areaCoordinates[area] = {
+      lat: areaData[area].lat,
+      lng: areaData[area].lng,
+      zoom: areaData[area].zoom
+    };
+  } else if (fallbackCoordinates[area]) {
+    areaCoordinates[area] = fallbackCoordinates[area];
+  }
+});
+
+// Helper function to convert area name to slug
+function toSlug(name: string): string {
+  return name.toLowerCase().replace(/\s+/g, '-');
+}
 ---
 
 <section class="py-20 bg-black text-white relative overflow-hidden">
@@ -52,47 +113,183 @@ const {
     <div id="service-areas-tags" class="mb-12">
       <!-- First Row - Primary Areas -->
       <div id="service-areas-row-1" class="flex flex-wrap justify-center gap-4 mb-8">
-        {primaryAreas.map((area, index) => (
-          <div id={`service-area-tag-${index + 1}`} class="flex items-center gap-2 px-4 py-2 bg-brand-primary/20 text-brand-primary rounded-full border border-brand-primary/30 hover:bg-brand-primary/30 transition-colors duration-300">
-            <div class="w-2 h-2 bg-brand-primary rounded-full"></div>
-            <span class="font-helvetica text-sm font-medium">{area}</span>
-          </div>
-        ))}
+        {primaryAreas.map((area, index) => {
+          const hasPage = areaData[area];
+          const slug = hasPage ? areaData[area].slug : toSlug(area);
+          
+          return hasPage ? (
+            <a 
+              id={`service-area-tag-${index + 1}`}
+              data-area={area}
+              class="area-tag flex items-center gap-2 px-4 py-2 bg-brand-primary/20 text-brand-primary rounded-full border border-brand-primary/30 hover:bg-brand-primary/30 transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95"
+              aria-label={`View ${area} service area page`}
+            >
+              <div class="w-2 h-2 bg-brand-primary rounded-full"></div>
+              <span class="font-helvetica text-sm font-medium">{area}</span>
+            </a>
+          ) : (
+            <button 
+              id={`service-area-tag-${index + 1}`}
+              data-area={area}
+              class="area-tag flex items-center gap-2 px-4 py-2 bg-brand-primary/20 text-brand-primary rounded-full border border-brand-primary/30 hover:bg-brand-primary/30 transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95"
+              aria-label={`View ${area} on map`}
+            >
+              <div class="w-2 h-2 bg-brand-primary rounded-full"></div>
+              <span class="font-helvetica text-sm font-medium">{area}</span>
+            </button>
+          );
+        })}
       </div>
       
       <!-- Second Row - Secondary Areas -->
       <div id="service-areas-row-2" class="flex flex-wrap justify-center gap-4">
-        {secondaryAreas.map((area, index) => (
-          <div id={`service-area-tag-${primaryAreas.length + index + 1}`} class="flex items-center gap-2 px-4 py-2 bg-brand-accent/20 text-brand-accent rounded-full border border-brand-accent/30 hover:bg-brand-accent/30 transition-colors duration-300">
-            <div class="w-2 h-2 bg-brand-accent rounded-full"></div>
-            <span class="font-helvetica text-sm font-medium">{area}</span>
-          </div>
-        ))}
+        {secondaryAreas.map((area, index) => {
+          const hasPage = areaData[area];
+          const slug = hasPage ? areaData[area].slug : toSlug(area);
+          
+          return hasPage ? (
+            <a 
+              href={`/service-areas/${slug}`}
+              id={`service-area-tag-${primaryAreas.length + index + 1}`}
+              data-area={area}
+              class="area-tag flex items-center gap-2 px-4 py-2 bg-brand-accent/20 text-brand-accent rounded-full border border-brand-accent/30 hover:bg-brand-accent/30 transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95"
+              aria-label={`View ${area} service area page`}
+            >
+              <div class="w-2 h-2 bg-brand-accent rounded-full"></div>
+              <span class="font-helvetica text-sm font-medium">{area}</span>
+            </a>
+          ) : (
+            <button 
+              id={`service-area-tag-${primaryAreas.length + index + 1}`}
+              data-area={area}
+              class="area-tag flex items-center gap-2 px-4 py-2 bg-brand-accent/20 text-brand-accent rounded-full border border-brand-accent/30 hover:bg-brand-accent/30 transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95"
+              aria-label={`View ${area} on map`}
+            >
+              <div class="w-2 h-2 bg-brand-accent rounded-full"></div>
+              <span class="font-helvetica text-sm font-medium">{area}</span>
+            </button>
+          );
+        })}
       </div>
       
       <!-- Third Row - Tertiary Areas -->
       <div id="service-areas-row-3" class="flex flex-wrap justify-center gap-4 mt-4">
-        {tertiaryAreas.map((area, index) => (
-          <div id={`service-area-tag-${primaryAreas.length + secondaryAreas.length + index + 1}`} class="flex items-center gap-2 px-4 py-2 bg-white/10 text-white/80 rounded-full border border-white/20 hover:bg-white/20 transition-colors duration-300">
-            <div class="w-2 h-2 bg-white/60 rounded-full"></div>
-            <span class="font-helvetica text-sm font-medium">{area}</span>
-          </div>
-        ))}
+        {tertiaryAreas.map((area, index) => {
+          const hasPage = areaData[area];
+          const slug = hasPage ? areaData[area].slug : toSlug(area);
+          
+          return hasPage ? (
+            <a 
+              href={`/service-areas/${slug}`}
+              id={`service-area-tag-${primaryAreas.length + secondaryAreas.length + index + 1}`}
+              data-area={area}
+              class="area-tag flex items-center gap-2 px-4 py-2 bg-white/10 text-white/80 rounded-full border border-white/20 hover:bg-white/20 transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95"
+              aria-label={`View ${area} service area page`}
+            >
+              <div class="w-2 h-2 bg-white/60 rounded-full"></div>
+              <span class="font-helvetica text-sm font-medium">{area}</span>
+            </a>
+          ) : (
+            <button 
+              id={`service-area-tag-${primaryAreas.length + secondaryAreas.length + index + 1}`}
+              data-area={area}
+              class="area-tag flex items-center gap-2 px-4 py-2 bg-white/10 text-white/80 rounded-full border border-white/20 hover:bg-white/20 transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95"
+              aria-label={`View ${area} on map`}
+            >
+              <div class="w-2 h-2 bg-white/60 rounded-full"></div>
+              <span class="font-helvetica text-sm font-medium">{area}</span>
+            </button>
+          );
+        })}
       </div>
     </div>
 
     <!-- Interactive Map -->
     <div id="service-areas-map" class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl overflow-hidden h-96 shadow-2xl">
-      <iframe 
-        src={mapEmbedUrl}
-        width="100%" 
-        height="100%" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade"
-        title={mapTitle}>
-      </iframe>
+      <div id="map" class="w-full h-full"></div>
     </div>
   </div>
 </section>
+
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+<!-- Leaflet JS -->
+<script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script define:vars={{ areaCoordinates }}>
+  // Wait for Leaflet to load
+  function initMap() {
+    if (typeof L === 'undefined') {
+      setTimeout(initMap, 100);
+      return;
+    }
+
+    // Initialize map with default view (Los Angeles area)
+    const map = L.map('map', {
+      zoomControl: true,
+      scrollWheelZoom: true,
+      dragging: true,
+      doubleClickZoom: true
+    }).setView([34.0522, -118.2437], 10);
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19
+    }).addTo(map);
+
+    // Store markers for each area
+    const markers = {};
+
+    // Add markers for all areas
+    Object.keys(areaCoordinates).forEach(areaName => {
+      const coords = areaCoordinates[areaName];
+      const marker = L.marker([coords.lat, coords.lng])
+        .bindPopup(`<strong>${areaName}</strong><br>VoltBully Service Area`)
+        .addTo(map);
+      markers[areaName] = marker;
+    });
+
+    // Get all area tag buttons
+    const areaTags = document.querySelectorAll('.area-tag');
+
+    // Add click event listeners to all area tags
+    areaTags.forEach(tag => {
+      tag.addEventListener('click', function() {
+        const areaName = this.getAttribute('data-area');
+        const coordinates = areaCoordinates[areaName];
+
+        if (coordinates) {
+          // Remove active state from all tags
+          areaTags.forEach(t => {
+            t.classList.remove('ring-2', 'ring-white', 'ring-offset-2', 'ring-offset-black');
+          });
+
+          // Add active state to clicked tag
+          this.classList.add('ring-2', 'ring-white', 'ring-offset-2', 'ring-offset-black');
+
+          // Smooth fly to the location with zoom animation
+          map.flyTo([coordinates.lat, coordinates.lng], coordinates.zoom, {
+            duration: 2, // 2 seconds animation
+            easeLinearity: 0.25
+          });
+
+          // Open the marker popup after animation
+          setTimeout(() => {
+            if (markers[areaName]) {
+              markers[areaName].openPopup();
+            }
+          }, 2000);
+        }
+      });
+    });
+  }
+
+  // Initialize map when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMap);
+  } else {
+    initMap();
+  }
+</script>
