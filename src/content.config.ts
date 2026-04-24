@@ -65,6 +65,49 @@ const emergencyCollection = defineCollection({
   }),
 });
 
+const servicesCollection = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/services' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    metaDescription: z.string(),
+    keywords: z.string(),
+    heroLine1: z.string(),
+    heroLine2: z.string(),
+    heroLine3: z.string(),
+    heroDescription: z.string(),
+    backgroundImage: z.string(),
+    image: z.string().optional(),
+    sectionTag: z.string(),
+    serviceTitle: z.string(),
+    highlightedText: z.string(),
+    serviceDescription: z.string(),
+    companyName: z.string(),
+    badgeNumber: z.string(),
+    badgeText: z.array(z.string()),
+    showProcessTimeline: z.boolean().default(false),
+    processTimeline: z.object({
+      sectionTag: z.string().optional(),
+      title: z.string().optional(),
+      highlightedText: z.string().optional(),
+      description: z.string().optional(),
+      steps: z.array(z.object({
+        number: z.string(),
+        title: z.string(),
+        description: z.string(),
+        icon: z.string(),
+        color: z.enum(['primary', 'secondary', 'accent', 'red'])
+      })).optional()
+    }).optional(),
+    features: z.array(z.object({
+      title: z.string(),
+      description: z.string(),
+      icon: z.string(),
+      color: z.string()
+    })),
+  }),
+});
+
 const serviceAreasCollection = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/service-areas' }),
   schema: z.object({
@@ -79,6 +122,7 @@ const serviceAreasCollection = defineCollection({
     heroLine3: z.string(),
     heroDescription: z.string(),
     backgroundImage: z.string(),
+    image: z.string().optional(),
     latitude: z.number(),
     longitude: z.number(),
     zoom: z.number().default(13),
@@ -99,5 +143,6 @@ export const collections = {
   residential: residentialCollection,
   specialty: specialtyCollection,
   emergency: emergencyCollection,
+  services: servicesCollection,
   'service-areas': serviceAreasCollection,
 };

@@ -10,6 +10,7 @@ heroLine2: "DENVER,"
 heroLine3: "CO"
 heroDescription: "Professional electrical services for homes and businesses in the Mile High City."
 backgroundImage: "/images/denver.jpg"
+image: "/images/denver1.png"
 latitude: 39.7392
 longitude: -104.9903
 zoom: 12

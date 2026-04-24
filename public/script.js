@@ -382,6 +382,25 @@ ready(() => {
     once: true,
   });
 
+  // New Hero right content container
+  animate("hero-right-content", {
+    from: "fade-right",
+    delay: 800,
+    duration: 800,
+    distance: 80,
+    threshold: 0.1,
+    once: true,
+  });
+
+  // Hero subheading
+  animate("hero-subheading", {
+    from: "fade-in",
+    delay: 1000,
+    duration: 700,
+    threshold: 0.1,
+    once: true,
+  });
+
   // Hero description - fade in
   animate("hero-description", {
     from: "fade-in",
@@ -396,6 +415,24 @@ ready(() => {
     from: "zoom-in",
     delay: 1200,
     duration: 600,
+    threshold: 0.1,
+    once: true,
+  });
+
+  // Hero trust signals
+  animate("hero-trust", {
+    from: "fade-up",
+    delay: 1400,
+    duration: 600,
+    threshold: 0.1,
+    once: true,
+  });
+
+  // Hero coupon - subtle entrance
+  animate("hero-coupon", {
+    from: "fade-in",
+    delay: 1600,
+    duration: 700,
     threshold: 0.1,
     once: true,
   });
