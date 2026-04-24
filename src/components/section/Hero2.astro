@@ -9,7 +9,6 @@ export interface Props {
   buttonText?: string;
   buttonHref?: string;
   phoneText?: string;
-  backgroundImage?: string;
 }
 
 const { 
@@ -19,13 +18,11 @@ const {
   description = "We don't just wire buildings — we build the backbone of your operation.",
   buttonText = "Get Quote",
   buttonHref = "/contact",
-  backgroundImage = "/images/wiring.png"
 } = Astro.props;
 ---
 
 <section class="relative w-full h-[50vh] min-h-[400px] overflow-hidden mobile-hero">
     <!-- Background image -->
-    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style={`background-image: url('${backgroundImage}');`}></div>
     <!-- Dark overlay for better text readability -->
     <div class="absolute inset-0 bg-black/40"></div>
     <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black via-black/60 to-transparent z-20"></div>

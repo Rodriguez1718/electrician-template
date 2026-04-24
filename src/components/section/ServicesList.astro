@@ -37,9 +37,17 @@ async function loadServices(categoryName: string): Promise<Service[]> {
       path.includes(`/src/content/${categoryName}/`) && !path.endsWith('/index.md')
     );
     
-    // Custom slug mappings for specific services
+    // Custom slug mappings to match services collection
     const slugMappings: Record<string, string> = {
-      'ground-up-electrical-construction': 'ground-up-construction'
+      'ground-up-electrical-construction': 'ground-up-construction',
+      'car-charging-stations-ev': 'car-charging-stations',
+      'ceiling-fan-installation': 'ceiling-fan',
+      'holiday-lighting-installation': 'holiday-lighting',
+      'hvac-emergency-repairs': 'hvac-emergency',
+      'electrical-fire-prevention': '24-hour-emergency',
+      'power-outage-solutions': 'heating-emergency',
+      'storm-damage-repair': 'water-heater-emergency',
+      'emergency-standby-power-systems': 'emergency-standby-power'
     };
     
     for (const [path, module] of serviceFiles) {
@@ -84,9 +92,9 @@ const services = await loadServices(category);
     </div>
 
     <!-- Services grid -->
-    <div id="services-list-grid" class="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
+    <div id="services-list-grid" class="flex flex-wrap justify-center gap-6">
       {services.map((service: Service, index) => (
-        <div id={`services-list-card-${index + 1}`} class={index === services.length - 1 ? 'hidden' : ''}>
+        <div id={`services-list-card-${index + 1}`} class={`${index === services.length - 1 ? 'hidden' : ''} w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm`}>
           <Card
             title={service.name}
             description={service.description}
