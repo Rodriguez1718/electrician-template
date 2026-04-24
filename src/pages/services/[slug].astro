@@ -3,31 +3,30 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero2 from '../../components/section/Hero2.astro';
 import CommercialServices from '../../components/section/CommercialServices.astro';
-import Coupons from '../../components/section/Coupons.astro';
-import Services from '../../components/section/Services.astro';
+import ProcessTimeline from '../../components/section/ProcessTimeline.astro';
+import CommercialOffers from '../../components/section/CommercialOffers.astro';
 import FAQ from '../../components/section/FAQ.astro';
-import FeaturedWorks from '../../components/section/FeaturedWorks.astro';
-import Testimonials from '../../components/section/Testimonials.astro';
 import CallToAction from '../../components/section/CallToAction.astro';
-import ServiceAreas from '../../components/section/ServiceAreas.astro';
+import ServiceCoverage from '../../components/section/ServiceCoverage.astro';
+import Services from '../../components/section/Services.astro';
 
 export async function getStaticPaths() {
-  const serviceAreas = await getCollection('service-areas');
-  return serviceAreas.map((area) => ({
-    params: { slug: area.id },
-    props: { area },
+  const services = await getCollection('services');
+  return services.map((service) => ({
+    params: { slug: service.id },
+    props: { service },
   }));
 }
 
 type Props = {
-  area: Awaited<ReturnType<typeof getCollection<'service-areas'>>>[number];
+  service: Awaited<ReturnType<typeof getCollection<'services'>>>[number];
 };
 
-const { area } = Astro.props;
-const { data } = area;
+const { service } = Astro.props;
+const { data } = service;
 
 // Render markdown content
-const { Content } = await render(area);
+const { Content } = await render(service);
 ---
 
 <BaseLayout 
@@ -42,7 +41,7 @@ const { Content } = await render(area);
     <div class="absolute inset-0 bg-black/40"></div>
     
     <Hero2 
-      line1={data.heroLine1 || ""}
+      line1={data.heroLine1}
       line2={data.heroLine2}
       line3={data.heroLine3}
       description={data.heroDescription}
@@ -54,40 +53,41 @@ const { Content } = await render(area);
   </div>
 
   <CommercialServices 
-    sectionTag={`${data.city.toUpperCase()} ELECTRICAL SERVICES`}
-    title={`Professional Electrical Services in ${data.city}`}
-    highlightedText={data.city}
-    description={data.description}
-    companyName="VoltBully Electrical"
+    sectionTag={data.sectionTag}
+    title={data.serviceTitle}
+    highlightedText={data.highlightedText}
+    description={data.serviceDescription}
+    companyName={data.companyName}
     image={{
       src: data.image || data.backgroundImage,
-      alt: `${data.city} electrical services`
+      alt: `${data.serviceTitle} services`
     }}
-    badge={data.yearsServing ? {
-      number: `${data.yearsServing}+`,
-      text: ["Years Serving", data.city]
-    } : undefined}
+    badge={{
+      number: data.badgeNumber,
+      text: data.badgeText
+    }}
     features={data.features as Array<{
       title: string;
       description: string;
       icon: string;
       color: "primary" | "secondary" | "accent" | "red";
-    }> || []}
+    }>}
   />
-
-  <Coupons roundedBottom/>
+  
+  {data.showProcessTimeline && data.processTimeline && (
+    <ProcessTimeline 
+      sectionTag={data.processTimeline.sectionTag}
+      title={data.processTimeline.title}
+      highlightedText={data.processTimeline.highlightedText}
+      description={data.processTimeline.description}
+      steps={data.processTimeline.steps}
+    />
+  )}
+  <CommercialOffers showGradient={false}/>
   <Services />
   <FAQ />
-  <FeaturedWorks />
-  <Testimonials />
-  <CallToAction />
-  
-  <ServiceAreas 
-    title="Expert Electrical Services in"
-    titleHighlight={`${data.city} and Surrounding Areas`}
-    description={`Proudly serving the ${data.city} area with professional electrical solutions for residential and commercial properties. Our licensed electricians deliver quality workmanship with fast response times. Available 24/7 for emergencies across all neighborhoods.`}
-    mapTitle={`VoltBully Electrical ${data.city} Service Areas Map`}
-  />
+  <CallToAction variant="light"/>
+  <ServiceCoverage />
 
   <!-- Back to Top Button -->
   <button 
@@ -141,6 +141,53 @@ const { Content } = await render(area);
     position: relative;
     z-index: 2;
     pointer-events: none;
+  }
+
+  /* Prose styling for markdown content */
+  .prose {
+    color: #374151;
+  }
+  
+  .prose h1 {
+    color: #1f2937;
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+  
+  .prose h2 {
+    color: #1f2937;
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .prose h3 {
+    color: #1f2937;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .prose p {
+    margin-bottom: 1rem;
+    line-height: 1.75;
+  }
+  
+  .prose ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+  
+  .prose li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .prose strong {
+    font-weight: 600;
+    color: #1f2937;
   }
 </style>
 

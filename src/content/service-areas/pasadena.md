@@ -9,7 +9,8 @@ heroLine1: ""
 heroLine2: "PASADENA,"
 heroLine3: "CA"
 heroDescription: "Professional electrical services for historic homes and modern businesses."
-backgroundImage: "/images/electrical.webp"
+backgroundImage: "/images/pasadena1.webp"
+image: "/images/pasadena2.webp"
 latitude: 34.1478
 longitude: -118.1445
 zoom: 13

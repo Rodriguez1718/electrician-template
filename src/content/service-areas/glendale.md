@@ -9,11 +9,12 @@ heroLine1: ""
 heroLine2: "GLENDALE,"
 heroLine3: "CA"
 heroDescription: "Professional electrical services for Glendale homes and businesses."
-backgroundImage: "/images/electrical.webp"
+backgroundImage: "/images/glendale1.webp"
 latitude: 34.1425
 longitude: -118.2551
 zoom: 13
 tier: "primary"
+image: "/images/glendale2.webp"
 yearsServing: 7
 features:
   - title: "Residential Specialists"

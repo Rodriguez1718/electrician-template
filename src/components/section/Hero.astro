@@ -1,10 +1,8 @@
 ---
 import Button from "../ui/Button.astro"
-
 ---
 
 <section class="relative w-full min-h-screen overflow-hidden">
-    <!-- Removed background div since it's now global -->
 
     <div class="flex flex-col min-[1180px]:block h-full">
         <h1
@@ -14,126 +12,241 @@ import Button from "../ui/Button.astro"
             style="top: clamp(120px, 15vh, 200px);"
             data-animate="fade-only"
         >
-            <span id="hero-word-1" class="relative offset-left-0" data-animate="slide-left" data-delay="1">WIRING</span>
-            <span id="hero-word-2" class="relative" style="left: clamp(0rem, 15vw, 18rem);" data-animate="slide-left" data-delay="2">YOUR</span>
-            <span id="hero-word-3" class="relative text-emerald-500" style="left: clamp(0rem, 16vw, 19rem);" data-animate="slide-left" data-delay="3">SUCCESS</span>
+            <span id="hero-word-1" class="relative offset-left-0" data-animate="slide-left" data-delay="1">LICENSED.</span>
+            <span id="hero-word-2" class="relative" style="left: clamp(0rem, 15vw, 18rem);" data-animate="slide-left" data-delay="2">LOCAL.</span>
+            <span id="hero-word-3" class="relative text-emerald-500" style="left: clamp(0rem, 8vw, 12rem);" data-animate="slide-left" data-delay="3">RELIABLE.</span>
         </h1>
 
+        <!-- Right side content container -->
         <div
-            id="hero-content"
-            class="content-container relative min-[1180px]:absolute max-w-[590px] flex flex-col gap-7 z-10 px-8 mt-8 min-[1180px]:mt-0 mx-auto min-[1180px]:mx-0"
-            data-animate="slide-right"
+            id="hero-right-content"
+            class="right-content-container relative min-[1180px]:absolute z-10 px-8 min-[1180px]:mt-0 mx-auto min-[1180px]:mx-0"
+            data-animate="fade-only"
             data-delay="4"
         >
-            <!-- Special Offer Coupon -->
-            <div id="hero-coupon" class="max-w-2xl mx-auto" data-animate="fade-only" data-delay="5">
-              <div class="hero-coupon-wrapper">
+            <!-- Subheading: what you do + where -->
+            <p
+                id="hero-subheading"
+                class="text-white/80 font-helvetica text-sm sm:text-base text-center mb-5 leading-relaxed"
+                data-animate="fade-only"
+                data-delay="5"
+            >
+                Residential &amp; commercial electrical services.<br />
+                Available 24/7 for emergencies.
+            </p>
+
+            <!-- CTA Button -->
+            <div id="hero-actions" class="flex justify-center mb-4" data-animate="scale" data-delay="6">
+                <Button variant="primary" size="lg" href="/">
+                    SCHEDULE A SERVICE
+                </Button>
+            </div>
+
+            <!-- Trust signals — directly under the button -->
+            <div
+                id="hero-trust"
+                class="flex flex-wrap justify-center items-center gap-x-3 gap-y-1 mb-6"
+                data-animate="fade-only"
+                data-delay="7"
+            >
+                <span class="trust-badge">
+                    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    Licensed &amp; Insured
+                </span>
+                <span class="trust-divider">·</span>
+                <span class="trust-badge">
+                    <svg class="trust-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    5★ Rated
+                </span>
+                <span class="trust-divider">·</span>
+                <span class="trust-badge">
+                    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                    Same-Day Available
+                </span>
+            </div>
+
+            <!-- Special Offer Coupon — subtle supporting element -->
+            <div id="hero-coupon" data-animate="fade-only" data-delay="8">
+              <div class="hero-coupon-wrapper max-w-[350px] mx-auto">
                 <div class="hero-coupon-card">
-                  <div class="bg-brand-accent text-white p-6 relative overflow-hidden">
-                    <!-- Decorative corner cuts -->
-                    <div class="absolute top-0 left-0 w-4 h-4 bg-black rounded-br-full"></div>
-                    <div class="absolute top-0 right-0 w-4 h-4 bg-black rounded-bl-full"></div>
-                    <div class="absolute bottom-0 left-0 w-4 h-4 bg-black rounded-tr-full"></div>
-                    <div class="absolute bottom-0 right-0 w-4 h-4 bg-black rounded-tl-full"></div>
-                    
-                    <!-- Perforated edge effect -->
-                    <div class="absolute left-0 top-1/2 -translate-y-1/2 w-6 h-6 bg-black rounded-full -ml-3"></div>
-                    <div class="absolute right-0 top-1/2 -translate-y-1/2 w-6 h-6 bg-black rounded-full -mr-3"></div>
-                    
+                  <div class="bg-gray-700/80 text-white p-3 sm:p-4 relative overflow-hidden border border-white/20">
+                    <!-- Simplified decorative elements -->
+                    <div class="absolute top-0 left-0 w-3 h-3 bg-black/50 rounded-br-full"></div>
+                    <div class="absolute top-0 right-0 w-3 h-3 bg-black/50 rounded-bl-full"></div>
+                    <div class="absolute bottom-0 left-0 w-3 h-3 bg-black/50 rounded-tr-full"></div>
+                    <div class="absolute bottom-0 right-0 w-3 h-3 bg-black/50 rounded-tl-full"></div>
+
                     <div class="text-center relative z-10">
-                      <p class="text-sm font-helvetica font-semibold mb-2 uppercase tracking-wide">Limited Time Offer</p>
-                      <div class="flex items-center justify-center gap-4 mb-3">
-                        <div class="bg-white text-brand-accent px-6 py-2 font-bold text-3xl font-asap-condensed transform -rotate-2 shadow-lg">
+                      <p class="text-xs font-helvetica font-medium mb-2 uppercase tracking-wide opacity-80">Limited Time</p>
+                      <div class="flex items-center justify-center gap-3 mb-2">
+                        <div class="bg-white/90 text-gray-800 px-3 sm:px-4 py-1.5 font-bold text-lg sm:text-xl font-asap-condensed shadow-sm">
                           $100 OFF
                         </div>
                       </div>
-                      <p class="text-lg font-helvetica font-semibold mb-2">Your First Electrical Service</p>
-                      <p class="text-sm opacity-90 font-helvetica">New customers only • Minimum $500 service • Mention code: VOLTBULLY100</p>
+                      <p class="text-sm sm:text-base font-helvetica font-medium mb-1">Your First Service</p>
+                      <p class="text-xs opacity-70 font-helvetica">New customers • Min $500 • Code: VOLTBULLY100</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div id="hero-actions" class="flex flex-row justify-center items-center gap-16 mt-0 2xl" data-animate="scale" data-delay="6">
-                <Button variant="primary" size="lg" href="/">
-                    SCHEDULE A SERVICE
-                </Button>
-            </div>
         </div>
     </div>
-
 
 </section>
 
 <style>
-
     .font-playfair {
         font-family: "Playfair Display", Georgia, serif;
     }
 
     .hero-headline {
-        font-size: clamp(172px, 13vw, 272px);
+        font-size: clamp(120px, 10vw, 200px);
     }
 
-    .content-container {
-        top: clamp(120px, 18vh, 200px);
-    }
-
-    /* Hero coupon wrapper with pulsating glow animation */
-    .hero-coupon-wrapper {
-        animation: pulse-glow 2s ease-in-out infinite;
-    }
-
-    /* Hero coupon card with dashed border effect (matching Coupons section) */
-    .hero-coupon-card {
-        /* Dashed border effect */
-        background: 
-            linear-gradient(90deg, currentColor 50%, transparent 50%),
-            linear-gradient(90deg, currentColor 50%, transparent 50%),
-            linear-gradient(0deg, currentColor 50%, transparent 50%),
-            linear-gradient(0deg, currentColor 50%, transparent 50%);
-        background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
-        background-size: 15px 2px, 15px 2px, 2px 15px, 2px 15px;
-        background-position: 0 0, 0 100%, 0 0, 100% 0;
-        color: rgba(255, 255, 255, 0.3);
-        padding: 3px;
-    }
-
-    /* Pulsating glow animation */
-    @keyframes pulse-glow {
-        0%, 100% {
-            transform: scale(1);
-            filter: drop-shadow(0 0 20px rgba(97, 196, 197, 0.4)) drop-shadow(0 0 40px rgba(97, 196, 197, 0.2));
+    /* Adaptive font sizing based on available space for right content */
+    @media (min-width: 1400px) {
+        /* Large screens - can use bigger font */
+        .hero-headline {
+            font-size: clamp(140px, 12vw, 220px);
         }
-        50% {
-            transform: scale(1.02);
-            filter: drop-shadow(0 0 30px rgba(97, 196, 197, 0.6)) drop-shadow(0 0 60px rgba(97, 196, 197, 0.3));
+    }
+
+    @media (max-width: 1399px) and (min-width: 1200px) {
+        /* Medium-large screens - moderate size */
+        .hero-headline {
+            font-size: clamp(110px, 9vw, 180px);
         }
+    }
+
+    @media (max-width: 1199px) and (min-width: 1180px) {
+        /* Just above tablet - more compact to make room */
+      
+        #hero-word-3 {
+            left: clamp(0rem, 6vw, 10rem) !important;
+        }
+    }
+
+    /* Right content container positioning */
+    .right-content-container {
+        top: clamp(180px, 25vh, 280px);
+        max-width: 480px;
     }
 
     @media (min-width: 1180px) {
-        .content-container {
-            top: clamp(120px, 18vh, 200px);
-            left: calc(12px + clamp(400px, 55vw, 1000px));
+        .right-content-container {
+            right: clamp(20px, 5vw, 80px);
+            left: auto;
+        }
+    }
+
+    /* Trust badges */
+    .trust-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.85);
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+    }
+
+    .trust-icon {
+        width: 15px;
+        height: 15px;
+        color: #98d9a1;
+        flex-shrink: 0;
+    }
+
+    .trust-divider {
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 0.875rem;
+    }
+
+    /* Coupon — toned down to support CTA, not compete */
+    .hero-coupon-wrapper {
+        animation: none; /* Remove pulsing animation */
+        opacity: 0.75; /* More subtle */
+        transition: opacity 0.3s ease;
+    }
+    
+    .hero-coupon-wrapper:hover {
+        opacity: 0.9; /* Slight increase on hover */
+    }
+
+    .hero-coupon-card {
+        background: none; /* Remove complex dashed border */
+        padding: 0;
+    }
+
+    @keyframes pulse-glow {
+        0%, 100% {
+            transform: scale(1);
+            filter: drop-shadow(0 0 14px rgba(97, 196, 197, 0.35)) drop-shadow(0 0 28px rgba(97, 196, 197, 0.15));
+        }
+        50% {
+            transform: scale(1.015);
+            filter: drop-shadow(0 0 22px rgba(97, 196, 197, 0.5)) drop-shadow(0 0 44px rgba(97, 196, 197, 0.25));
         }
     }
 
     @media (max-width: 1179px) {
         .hero-headline {
-            font-size: clamp(80px, 10vw, 140px);
+            font-size: clamp(120px, 13vw, 200px);
+        }
+        
+        /* Reduce spacing between words on smaller screens */
+        #hero-word-2 {
+            left: clamp(0rem, 8vw, 10rem) !important;
+        }
+        
+        #hero-word-3 {
+            left: clamp(0rem, 4vw, 6rem) !important;
+        }
+        
+        /* Adjust right content positioning */
+        .right-content-container {
+            top: clamp(140px, 20vh, 220px);
         }
     }
 
     @media (max-width: 768px) {
         .hero-headline {
-            font-size: clamp(60px, 12vw, 100px);
+            font-size: clamp(45px, 15vw, 270px);
+        }
+        
+        /* Even more compact on mobile */
+        #hero-word-2 {
+            left: clamp(0rem, 8vw, 6rem) !important;
+        }
+        
+        #hero-word-3 {
+            left: clamp(0rem, 3vw, 4rem) !important;
         }
     }
 
     @media (max-width: 480px) {
         .hero-headline {
-            font-size: clamp(40px, 15vw, 80px);
+            font-size: clamp(52px, 15vw, 135px);
+        }
+        
+        /* Most compact on small mobile */
+        #hero-word-2 {
+            left: clamp(0rem, 5vw, 3rem) !important;
+        }
+        
+        #hero-word-3 {
+            left: clamp(0rem, 2vw, 2rem) !important;
         }
     }
 </style>

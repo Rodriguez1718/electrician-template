@@ -9,7 +9,8 @@ heroLine1: ""
 heroLine2: "SANTA MONICA,"
 heroLine3: "CA"
 heroDescription: "Professional electrical services for beachside homes and businesses."
-backgroundImage: "/images/electrical.webp"
+backgroundImage: "/images/santamonica1.webp"
+image: "/images/santamonica2.webp"
 latitude: 34.0195
 longitude: -118.4912
 zoom: 13
