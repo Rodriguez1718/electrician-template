@@ -60,6 +60,19 @@ features:
     description: "Complete service from design and installation to maintenance and post-season removal."
     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="9,12 10,13 15,8" stroke="currentColor" stroke-width="2"/></svg>'
     color: "red"
+faqs:
+  - question: "When should I schedule holiday lighting installation?"
+    answer: "Schedule 4-6 weeks before holidays for best availability. We install Thanksgiving through early December. Early booking ensures your preferred installation date and allows time for custom design work."
+  - question: "Do you provide lights or do I need to buy them?"
+    answer: "We provide commercial-grade LED lights as part of our service. Our lights are brighter, more durable, and energy-efficient than retail lights. We handle everything from design to installation to removal."
+  - question: "Can you install lights on any type of building?"
+    answer: "Yes, we install on homes, businesses, churches, and commercial properties of all sizes. We handle rooflines, trees, columns, windows, and custom features. Our team is trained for safe installation at any height."
+  - question: "What happens if lights stop working during the season?"
+    answer: "We provide maintenance throughout the season. If lights fail, we repair or replace them at no additional cost. Our commercial-grade lights rarely fail, but we guarantee your display stays lit all season."
+  - question: "When do you remove holiday lights?"
+    answer: "We remove lights in January after the holiday season. Removal is included in our service. We carefully pack and store your lights in our climate-controlled facility for use next year."
+  - question: "Can I keep the same design each year?"
+    answer: "Yes, we store your custom design and lights. Each year we reinstall the same display or make updates as desired. This saves time and ensures consistency while allowing flexibility for changes."
 ---
 
 # Holiday Lighting Installation & Design

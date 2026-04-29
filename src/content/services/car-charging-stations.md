@@ -60,4 +60,17 @@ features:
     description: "Installation of all major EV charger brands including Tesla, ChargePoint, JuiceBox, and more."
     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="2"/></svg>'
     color: "red"
+faqs:
+  - question: "How much does EV charger installation cost?"
+    answer: "EV charger installation typically costs $800-$2,500 including equipment and labor. Costs vary based on charger type, electrical panel distance, required upgrades, and permit fees. We provide free quotes with detailed cost breakdowns."
+  - question: "Do I need a 240V circuit for EV charging?"
+    answer: "Level 2 EV chargers require a dedicated 240V circuit (similar to electric dryers). Level 1 chargers use standard 120V outlets but charge much slower. We assess your electrical panel capacity and install the appropriate circuit for your needs."
+  - question: "Can my electrical panel handle an EV charger?"
+    answer: "Most modern panels can support EV chargers, but older panels may need upgrades. We evaluate your panel's available capacity and recommend upgrades if needed. Smart chargers with load management can work with limited panel capacity."
+  - question: "How long does EV charger installation take?"
+    answer: "Most residential installations take 4-8 hours. Complex installations requiring panel upgrades or long wire runs may take 1-2 days. Commercial installations vary based on the number of chargers and site requirements."
+  - question: "What EV charger brands do you install?"
+    answer: "We install all major brands including Tesla Wall Connector, ChargePoint Home, JuiceBox, Grizzl-E, Emporia, and more. We help you choose the best charger for your vehicle, budget, and smart home integration needs."
+  - question: "Do I need permits for EV charger installation?"
+    answer: "Yes, most jurisdictions require electrical permits for EV charger installation. We handle all permit applications, inspections, and ensure code-compliant installation. Permits typically add $100-$300 to project costs."
 ---

@@ -60,6 +60,19 @@ features:
     description: "Professional repairs using quality parts and proven techniques for lasting solutions."
     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"/><polyline points="9,12 10,13 15,8" stroke="currentColor" stroke-width="2"/></svg>'
     color: "red"
+faqs:
+  - question: "What HVAC electrical issues require emergency service?"
+    answer: "Call immediately for: no heating/cooling, burning smells, sparking, tripped breakers that won't reset, unusual noises from electrical components, or complete system failure. These indicate serious electrical problems requiring immediate attention."
+  - question: "Can you diagnose HVAC problems remotely?"
+    answer: "We can provide basic troubleshooting over phone but most HVAC electrical issues require on-site diagnosis. Our technicians use specialized testing equipment to identify electrical problems accurately and safely."
+  - question: "Do you work with HVAC contractors?"
+    answer: "Yes, we coordinate with HVAC contractors when repairs involve both electrical and mechanical components. We focus on electrical repairs while HVAC contractors handle refrigerant, ductwork, and mechanical issues."
+  - question: "What if my AC unit keeps tripping the breaker?"
+    answer: "Breaker tripping indicates electrical overload, short circuit, or ground fault. Don't keep resetting breaker - this risks fire. We diagnose the cause including compressor issues, wiring problems, or faulty components."
+  - question: "Can you repair HVAC electrical issues same day?"
+    answer: "Most HVAC electrical repairs completed same visit. We stock common parts like contactors, capacitors, and thermostats. Complex repairs requiring special parts may need follow-up visit, but we provide temporary solutions."
+  - question: "Do you service both residential and commercial HVAC?"
+    answer: "Yes, we service all HVAC systems from residential units to large commercial systems. Our electricians are trained on single-phase and three-phase systems, rooftop units, chillers, and all HVAC electrical components."
 ---
 
 # HVAC Emergency Electrical Services

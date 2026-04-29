@@ -1,6 +1,6 @@
 ---
 export interface Props {
-  variant?: "primary" | "secondary" | "tertiary" | "ghost" | "danger" | "sketchy";
+  variant?: "primary" | "secondary" | "tertiary" | "ghost" | "danger" | "sketchy" | "instagram" | "instagram-pill";
   size?: "sm" | "md" | "lg";
   href?: string;
   type?: "button" | "submit" | "reset";
@@ -34,10 +34,16 @@ const tag = href ? "a" : "button";
     role="button"
     id={id}
     style={textColor ? `color: ${textColor};` : undefined}
+    target={variant === "instagram" || variant === "instagram-pill" ? "_blank" : undefined}
+    rel={variant === "instagram" || variant === "instagram-pill" ? "noopener noreferrer" : undefined}
   >
     {variant === "sketchy" ? (
       <svg class="arrow-icon" viewBox="0 0 24 24" fill="none">
         <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor"/>
+      </svg>
+    ) : variant === "instagram" ? (
+      <svg class="instagram-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
       </svg>
     ) : (
       <slot />
@@ -54,6 +60,10 @@ const tag = href ? "a" : "button";
     {variant === "sketchy" ? (
       <svg class="arrow-icon" viewBox="0 0 24 24" fill="none">
         <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor"/>
+      </svg>
+    ) : variant === "instagram" ? (
+      <svg class="instagram-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
       </svg>
     ) : (
       <slot />
@@ -172,7 +182,7 @@ const tag = href ? "a" : "button";
   .btn--secondary {
     background: transparent;
     color: #98d9a1;
-    border-color: #98d9a1;
+    border: 3px solid #98d9a1;
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -299,6 +309,101 @@ const tag = href ? "a" : "button";
   
   .btn--sketchy:active { background: #1e40af; }
 
+  .btn--instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    z-index: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Instagram button sizes */
+  .btn--instagram.btn--sm {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .btn--instagram.btn--md {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .btn--instagram.btn--lg {
+    width: 160px;
+    height: 160px;
+  }
+  
+  .btn--instagram:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(188, 24, 136, 0.4);
+  }
+  
+  .btn--instagram:active {
+    transform: scale(0.98);
+  }
+
+  /* Instagram icon sizing */
+  .btn--instagram.btn--sm .instagram-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .btn--instagram.btn--md .instagram-icon {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .btn--instagram.btn--lg .instagram-icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .btn--instagram-pill {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: #ffffff;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .btn--instagram-pill::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: -1;
+    pointer-events: none;
+    left: var(--mouse-x, 50%);
+    top: var(--mouse-y, 50%);
+  }
+  
+  .btn--instagram-pill:hover::before {
+    width: 300%;
+    height: 300%;
+  }
+  
+  .btn--instagram-pill:hover { 
+    color: white; 
+  }
+  
+  .btn--instagram-pill.btn--shrinking::before {
+    width: 0;
+    height: 0;
+  }
+  
+  .btn--instagram-pill.btn--shrinking {
+    color: #ffffff;
+  }
+
   /* Arrow icon for sketchy button - size based on button size */
   .btn--sketchy.btn--sm .arrow-icon {
     width: 20px;
@@ -345,7 +450,7 @@ const tag = href ? "a" : "button";
 <script>
   // Mouse tracking for button hover effects
   document.addEventListener('DOMContentLoaded', () => {
-    const trackableButtons = document.querySelectorAll('.btn--secondary, .btn--primary, .btn--tertiary, .btn--sketchy');
+    const trackableButtons = document.querySelectorAll('.btn--secondary, .btn--primary, .btn--tertiary, .btn--sketchy, .btn--instagram-pill');
     
     trackableButtons.forEach(button => {
       button.addEventListener('mouseenter', (e) => {

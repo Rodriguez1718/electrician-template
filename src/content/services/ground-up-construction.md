@@ -60,4 +60,17 @@ features:
     description: "We use only premium electrical components and materials for long-lasting, reliable installations."
     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
     color: "red"
+faqs:
+  - question: "What's included in ground-up electrical construction?"
+    answer: "Complete electrical systems from foundation to finish: service entrance, panels, distribution, lighting, power outlets, data/communications, fire alarm, security, and specialty systems. We handle design, permitting, installation, and inspections."
+  - question: "How early should electricians be involved in construction?"
+    answer: "Involve electricians during design phase for optimal system planning, cost estimates, and coordination with other trades. Early involvement prevents costly changes and ensures efficient electrical design."
+  - question: "Do you coordinate with other construction trades?"
+    answer: "Yes, we coordinate closely with general contractors, HVAC, plumbing, and other trades. We attend job meetings, follow construction schedules, and ensure smooth integration of all building systems."
+  - question: "What electrical codes apply to commercial construction?"
+    answer: "Projects must meet NEC (National Electrical Code), local amendments, building codes, and industry standards. We stay current with all codes and ensure full compliance through design, installation, and inspection."
+  - question: "Can you handle design-build electrical projects?"
+    answer: "Yes, we provide design-build services combining engineering and construction. This streamlines the process, reduces costs, and ensures constructability. We work with architects and engineers or provide complete electrical design."
+  - question: "What's the typical timeline for commercial electrical construction?"
+    answer: "Timeline varies by project size and complexity. Small commercial buildings take 2-4 months. Large facilities take 6-18 months. We provide detailed schedules and work efficiently to meet construction deadlines."
 ---

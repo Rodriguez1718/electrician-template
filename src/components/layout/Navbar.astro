@@ -189,10 +189,11 @@ try {
     <div class="max-w-5xl mx-auto flex justify-center gap-2">
       <div class="relative inline-block">
         <button 
-          class="flex items-center gap-2 text-sm text-white hover:text-white transition-colors rounded-full px-4 py-2 border border-white/30 service-btn-custom" 
+          class="flex items-center gap-2 text-sm transition-colors rounded-full px-5 py-4 service-btn-custom" 
           aria-expanded="false" 
           aria-haspopup="true"
           id="tablet-service-btn"
+          style="box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 0 0 5px #1a1a1a, inset 0 0 0 9px #ffffff;"
         >
           Services
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="transition-transform duration-200">
@@ -305,10 +306,11 @@ try {
     <div class="max-w-7xl mx-auto flex justify-center gap-2">
       <div class="relative inline-block">
         <button 
-          class="flex items-center gap-2 text-sm text-white hover:text-white transition-all rounded-full px-4 py-2 border-2 service-btn-custom" 
+          class="flex items-center gap-2 text-sm transition-all rounded-full px-5 py-4 service-btn-custom" 
           aria-expanded="false" 
           aria-haspopup="true"
           id="service-btn"
+          style="box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 0 0 5px #1a1a1a, inset 0 0 0 9px #ffffff;"
         >
           Services
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="transition-transform duration-200">
@@ -399,14 +401,15 @@ try {
   <!-- Dangling Buttons (Top Right) - Desktop & Tablet -->
   <div class="hidden md:block fixed top-0 right-0 z-50" id="dangling-buttons">
     <div class="relative">
-      <!-- Hanging wires background image -->
-      <img src="/images/hangingwires.png" alt="" class="w-48 h-auto" />
+      <!-- Hanging wires background image with invert filter -->
+      <img src="/images/hangingwires.png" alt="" class="w-48 h-auto" style="filter: invert(1);" />
       
       <!-- Buttons positioned over the wires -->
       <div class="absolute top-16 left-1/2 -translate-x-1/2 flex flex-col gap-4">
         <a 
           href="/maintenance"
-          class="dangling-button bg-[#1a1a1a] text-white hover:bg-brand-primary hover:text-white gap-4" 
+          class="dangling-button dangling-adaptive gap-4" 
+          id="maintenance-btn"
         >
           <svg width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect width="24" height="24" fill="none"></rect> <path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm5.75,14.59L16.5,17.84a.54.54,0,0,1-.76,0l-5-4.95A3.54,3.54,0,0,1,6.34,8.06l2.39,2.33,1.63-1.63L8,6.43a3.6,3.6,0,0,1,4,.7,3.49,3.49,0,0,1,.82,3.75l4.94,4.95A.49.49,0,0,1,17.75,16.59Z"></path> </g></svg>
           Maintenance
@@ -414,7 +417,8 @@ try {
         
         <a 
           href="/financing"
-          class="dangling-button bg-[#1a1a1a] text-white hover:bg-brand-accent hover:text-white gap-4" 
+          class="dangling-button dangling-adaptive gap-4" 
+          id="financing-btn"
         >
           <svg fill="currentColor" width="20px" height="20px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M12.32 8a3 3 0 0 0-2-.7H5.63A1.59 1.59 0 0 1 4 5.69a2 2 0 0 1 0-.25 1.59 1.59 0 0 1 1.63-1.33h4.62a1.59 1.59 0 0 1 1.57 1.33h1.5a3.08 3.08 0 0 0-3.07-2.83H8.67V.31H7.42v2.3H5.63a3.08 3.08 0 0 0-3.07 2.83 2.09 2.09 0 0 0 0 .25 3.07 3.07 0 0 0 3.07 3.07h4.74A1.59 1.59 0 0 1 12 10.35a1.86 1.86 0 0 1 0 .34 1.59 1.59 0 0 1-1.55 1.24h-4.7a1.59 1.59 0 0 1-1.55-1.24H2.69a3.08 3.08 0 0 0 3.06 2.73h1.67v2.27h1.25v-2.27h1.7a3.08 3.08 0 0 0 3.06-2.73v-.34A3.06 3.06 0 0 0 12.32 8z"></path></g></svg>
           Financing
@@ -568,6 +572,105 @@ try {
     </div>
   </div>
 </nav>
+
+<script is:inline>
+  // Adaptive button colors based on background
+  function updateDanglingButtons() {
+    var maintenanceBtn = document.getElementById('maintenance-btn');
+    var financingBtn = document.getElementById('financing-btn');
+    var serviceBtn = document.getElementById('service-btn');
+    var tabletServiceBtn = document.getElementById('tablet-service-btn');
+    
+    if (!maintenanceBtn || !financingBtn) return;
+    
+    // Get bg color behind buttons
+    var rect = maintenanceBtn.getBoundingClientRect();
+    var x = rect.left + rect.width / 2;
+    var y = rect.top + rect.height / 2;
+    
+    // Sample pixel color at button position
+    var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext('2d');
+    canvas.width = 1;
+    canvas.height = 1;
+    
+    // Get computed bg from body/sections
+    var elementsAtPoint = document.elementsFromPoint(x, y);
+    var bgColor = null;
+    
+    for (var i = 0; i < elementsAtPoint.length; i++) {
+      var el = elementsAtPoint[i];
+      if (el.id === 'maintenance-btn' || el.id === 'financing-btn') continue;
+      
+      var style = window.getComputedStyle(el);
+      var bg = style.backgroundColor;
+      
+      if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+        bgColor = bg;
+        break;
+      }
+    }
+    
+    if (!bgColor) bgColor = 'rgb(255, 255, 255)';
+    
+    // Parse RGB
+    var rgb = bgColor.match(/\d+/g);
+    if (!rgb || rgb.length < 3) return;
+    
+    var r = parseInt(rgb[0]);
+    var g = parseInt(rgb[1]);
+    var b = parseInt(rgb[2]);
+    
+    // Calculate luminance
+    var luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+    
+    // Switch colors based on luminance
+    if (luminance > 0.5) {
+      // Light bg → dark buttons with white inner border + gap
+      maintenanceBtn.style.backgroundColor = '#1a1a1a';
+      maintenanceBtn.style.color = '#ffffff';
+      maintenanceBtn.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15), inset 0 0 0 5px #1a1a1a, inset 0 0 0 9px #ffffff';
+      financingBtn.style.backgroundColor = '#1a1a1a';
+      financingBtn.style.color = '#ffffff';
+      financingBtn.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15), inset 0 0 0 5px #1a1a1a, inset 0 0 0 9px #ffffff';
+      
+      if (serviceBtn) {
+        serviceBtn.style.backgroundColor = '#1a1a1a';
+        serviceBtn.style.color = '#ffffff';
+        serviceBtn.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15), inset 0 0 0 5px #1a1a1a, inset 0 0 0 9px #ffffff';
+      }
+      if (tabletServiceBtn) {
+        tabletServiceBtn.style.backgroundColor = '#1a1a1a';
+        tabletServiceBtn.style.color = '#ffffff';
+        tabletServiceBtn.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15), inset 0 0 0 5px #1a1a1a, inset 0 0 0 9px #ffffff';
+      }
+    } else {
+      // Dark bg → light buttons with black inner border + gap
+      maintenanceBtn.style.backgroundColor = '#ffffff';
+      maintenanceBtn.style.color = '#1a1a1a';
+      maintenanceBtn.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15), inset 0 0 0 5px #ffffff, inset 0 0 0 9px #1a1a1a';
+      financingBtn.style.backgroundColor = '#ffffff';
+      financingBtn.style.color = '#1a1a1a';
+      financingBtn.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15), inset 0 0 0 5px #ffffff, inset 0 0 0 9px #1a1a1a';
+      
+      if (serviceBtn) {
+        serviceBtn.style.backgroundColor = '#ffffff';
+        serviceBtn.style.color = '#1a1a1a';
+        serviceBtn.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15), inset 0 0 0 5px #ffffff, inset 0 0 0 9px #1a1a1a';
+      }
+      if (tabletServiceBtn) {
+        tabletServiceBtn.style.backgroundColor = '#ffffff';
+        tabletServiceBtn.style.color = '#1a1a1a';
+        tabletServiceBtn.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15), inset 0 0 0 5px #ffffff, inset 0 0 0 9px #1a1a1a';
+      }
+    }
+  }
+  
+  // Run on load and scroll
+  updateDanglingButtons();
+  window.addEventListener('scroll', updateDanglingButtons, { passive: true });
+  window.addEventListener('resize', updateDanglingButtons, { passive: true });
+</script>
 
 <script is:inline>
   // Desktop Services dropdown - hover
@@ -904,13 +1007,13 @@ try {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border-radius: 25px;
     font-size: 0.875rem;
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 0 0 18px, inset 0 0 0 20px;
     cursor: none;
     font-family: 'Helvetica', sans-serif;
     pointer-events: auto;
@@ -918,6 +1021,21 @@ try {
 
   .dangling-button:hover {
     transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25), inset 0 0 0 18px, inset 0 0 0 20px;
+  }
+  
+  .dangling-adaptive {
+    background-color: #ffffff;
+    color: #1a1a1a;
+  }
+  
+  #maintenance-btn:hover {
+    background-color: var(--color-primary) !important;
+    color: #ffffff !important;
+  }
+  
+  #financing-btn:hover {
+    background-color: var(--color-accent) !important;
+    color: #ffffff !important;
   }
 </style>

@@ -60,4 +60,17 @@ features:
     description: "24/7 emergency electrical repair services to keep your HVAC systems operational."
     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" stroke="currentColor" stroke-width="2"/></svg>'
     color: "red"
+faqs:
+  - question: "What electrical work is needed for commercial HVAC installation?"
+    answer: "Commercial HVAC requires dedicated circuits, proper voltage supply (208V/480V), disconnect switches, control wiring, and motor connections. We handle complete electrical installation including permits, panel upgrades if needed, and code-compliant wiring."
+  - question: "Can you upgrade electrical for larger HVAC systems?"
+    answer: "Yes, we upgrade electrical panels, install new circuits, and provide adequate power for larger HVAC equipment. We assess current electrical capacity and recommend necessary upgrades for safe, efficient HVAC operation."
+  - question: "Do you service all types of commercial HVAC systems?"
+    answer: "We service rooftop units, split systems, chillers, boilers, heat pumps, and VRF systems. Our electricians are trained on all major HVAC brands and handle electrical work for heating, cooling, and ventilation equipment."
+  - question: "How often should HVAC electrical systems be inspected?"
+    answer: "Annual inspections recommended. Check connections, test controls, inspect wiring for damage, verify proper voltage, and test safety devices. Regular maintenance prevents breakdowns and extends equipment life."
+  - question: "What causes HVAC electrical failures?"
+    answer: "Common causes: loose connections, worn contactors, failed capacitors, control board issues, and power surges. We diagnose electrical problems quickly and provide permanent solutions to prevent recurring failures."
+  - question: "Do you provide emergency HVAC electrical repairs?"
+    answer: "Yes, 24/7 emergency service available. We respond quickly to HVAC electrical failures affecting business operations or comfort. Emergency vehicles stocked with common HVAC electrical parts for immediate repairs."
 ---

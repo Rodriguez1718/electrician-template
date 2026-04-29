@@ -33,4 +33,17 @@ features:
     description: "Solar panel integration and EV charging stations for eco-conscious Santa Monica residents."
     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
     color: "red"
+whyTrustUs:
+  title: "Why Santa Monica"
+  titleHighlight: "Residents Trust Us"
+  reasons:
+    - title: "Coastal Expertise"
+      description: "Specialized knowledge of Santa Monica's coastal electrical challenges including salt air corrosion and marine environments."
+      icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg>'
+    - title: "Beachside Fast Response"
+      description: "Rapid service throughout Santa Monica from the Pier to Montana Avenue with same-day availability."
+      icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2"/></svg>'
+    - title: "Green Energy Leaders"
+      description: "Experts in solar integration and energy-efficient solutions for Santa Monica's eco-conscious community."
+      icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" stroke="currentColor" stroke-width="2"/></svg>'
 ---

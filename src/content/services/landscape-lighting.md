@@ -60,4 +60,17 @@ features:
     description: "Professional-grade fixtures designed to withstand outdoor conditions and provide years of reliable service."
     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
     color: "red"
+faqs:
+  - question: "How much does landscape lighting installation cost?"
+    answer: "Costs range from ,000-,000+ depending on property size, number of fixtures, and design complexity. We provide free consultations with detailed quotes. LED systems save money long-term through energy efficiency and longevity."
+  - question: "What's the difference between low voltage and line voltage lighting?"
+    answer: "Low voltage (12V) is safer, more energy-efficient, and easier to install. Line voltage (120V) is brighter but uses more energy and requires more safety precautions. We recommend low voltage LED for most landscape applications."
+  - question: "How long do LED landscape lights last?"
+    answer: "Quality LED fixtures last 15-20 years with minimal maintenance. LEDs use 75% less energy than halogen and don't require bulb replacements. We use commercial-grade LEDs designed for outdoor conditions."
+  - question: "Can you add smart controls to landscape lighting?"
+    answer: "Yes, we install smart controllers with smartphone apps, timers, and automation. Control lights remotely, set schedules, adjust brightness, and integrate with home automation systems for complete lighting control."
+  - question: "Do you maintain existing landscape lighting systems?"
+    answer: "Yes, we service all landscape lighting brands. Services include fixture cleaning, bulb replacement, wiring repairs, timer programming, and system upgrades. Regular maintenance keeps your lighting looking great year-round."
+  - question: "Will landscape lighting increase my electric bill?"
+    answer: "LED landscape lighting uses minimal electricity - typically -15/month for average residential system. LEDs are 75% more efficient than halogen. Smart controls and timers further reduce energy costs."
 ---

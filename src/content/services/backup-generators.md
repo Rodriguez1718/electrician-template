@@ -60,6 +60,19 @@ features:
     description: "Round-the-clock support for generator repairs and emergency power needs."
     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2"/></svg>'
     color: "red"
+faqs:
+  - question: "What size generator do I need for my home?"
+    answer: "Generator size depends on your power needs. A typical home requires 7-20kW for essential circuits, while whole-house coverage needs 20-48kW. We provide free assessments to calculate your exact requirements based on your electrical panel, appliances, and critical systems."
+  - question: "How long does generator installation take?"
+    answer: "Most residential generator installations take 1-3 days, including electrical work, gas line connections, and permit inspections. Commercial installations vary based on system size and complexity. We provide detailed timelines during consultation."
+  - question: "What maintenance does a backup generator need?"
+    answer: "Generators require annual maintenance including oil changes, filter replacements, battery checks, and system testing. We recommend bi-annual service for critical applications. Our maintenance plans ensure your generator is always ready when needed."
+  - question: "Can I install a generator myself?"
+    answer: "Generator installation requires licensed electricians and often gas line work by certified technicians. DIY installation risks code violations, safety hazards, and voided warranties. Professional installation ensures proper operation and compliance."
+  - question: "How much does backup generator installation cost?"
+    answer: "Costs range from $3,000-$15,000+ depending on generator size, installation complexity, and fuel type. This includes equipment, labor, permits, and electrical connections. We provide free quotes with detailed breakdowns."
+  - question: "Do generators work with natural gas or propane?"
+    answer: "Yes, standby generators can run on natural gas or propane. Natural gas provides unlimited fuel from utility lines, while propane offers independence from utilities. We help you choose the best fuel source for your situation."
 ---
 
 # Backup Generator Installation & Maintenance

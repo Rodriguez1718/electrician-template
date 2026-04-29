@@ -105,6 +105,10 @@ const servicesCollection = defineCollection({
       icon: z.string(),
       color: z.string()
     })),
+    faqs: z.array(z.object({
+      question: z.string(),
+      answer: z.string()
+    })).optional(),
   }),
 });
 
@@ -135,6 +139,15 @@ const serviceAreasCollection = defineCollection({
       icon: z.string(),
       color: z.string()
     })).optional(),
+    whyTrustUs: z.object({
+      title: z.string().optional(),
+      titleHighlight: z.string().optional(),
+      reasons: z.array(z.object({
+        title: z.string(),
+        description: z.string(),
+        icon: z.string()
+      })).optional()
+    }).optional(),
   }),
 });
 

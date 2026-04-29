@@ -4,6 +4,7 @@ export interface Props {
   title?: string;
   titleHighlight?: string;
   description?: string;
+  hideBottomOverlay?: boolean;
   faqs?: Array<{
     question: string;
     answer: string;
@@ -15,6 +16,7 @@ const {
   title = "Common",
   titleHighlight = "Electrical Questions",
   description = "Get answers to the most frequently asked questions about our electrical services. Can't find what you're looking for? Contact us directly for personalized assistance.",
+  hideBottomOverlay = false,
   faqs = [
     {
       question: "How quickly can you respond to electrical emergencies?",
@@ -49,7 +51,9 @@ const {
   <!-- Gradient overlay at top for seamless transition from Services -->
   <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-gray-50 to-transparent z-10"></div>
   <!-- Gradient overlay at bottom for blur effect -->
-  <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-50 to-transparent z-10"></div>
+  {!hideBottomOverlay && (
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-50 to-transparent z-10"></div>
+  )}
 
   <div class="max-w-4xl mx-auto px-6 relative z-10">
     <!-- Section header -->
@@ -67,7 +71,7 @@ const {
 
     <!-- FAQ Items -->
     <div id="faq-items" class="space-y-4">
-      {faqs.map((faq, index) => (
+      {faqs && faqs.length > 0 && faqs.map((faq, index) => (
         <div id={`faq-item-${index + 1}`} class="faq-item bg-white rounded-2xl shadow-lg overflow-hidden">
           <button 
             class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
