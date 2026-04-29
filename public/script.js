@@ -372,16 +372,6 @@ ready(() => {
     once: true,
   });
 
-  // Hero content - slide from right
-  animate("hero-content", {
-    from: "fade-right",
-    delay: 800,
-    duration: 800,
-    distance: 80,
-    threshold: 0.1,
-    once: true,
-  });
-
   // New Hero right content container
   animate("hero-right-content", {
     from: "fade-right",
@@ -3136,84 +3126,4 @@ ready(() => {
     once: true,
   });
 
-  animate("services-list-grid", {
-    from: "fade-up",
-    delay: 180,
-    duration: 500,
-    threshold: 0.15,
-    once: true,
-  });
-
-  // Individual service cards with fast staggered delays
-  animate("services-list-card-1", {
-    from: "zoom-in",
-    delay: 210,
-    duration: 400,
-    threshold: 0.1,
-    once: true,
-  });
-
-  animate("services-list-card-2", {
-    from: "zoom-in",
-    delay: 240,
-    duration: 400,
-    threshold: 0.1,
-    once: true,
-  });
-
-  animate("services-list-card-3", {
-    from: "zoom-in",
-    delay: 270,
-    duration: 400,
-    threshold: 0.1,
-    once: true,
-  });
-
-  animate("services-list-card-4", {
-    from: "zoom-in",
-    delay: 200,
-    duration: 400,
-    threshold: 0.1,
-    once: true,
-  });
-
-  animate("services-list-card-5", {
-    from: "zoom-in",
-    delay: 230,
-    duration: 400,
-    threshold: 0.1,
-    once: true,
-  });
-
-  animate("services-list-card-6", {
-    from: "zoom-in",
-    delay: 260,
-    duration: 400,
-    threshold: 0.1,
-    once: true,
-  });
-
-  animate("services-list-card-7", {
-    from: "zoom-in",
-    delay: 290,
-    duration: 400,
-    threshold: 0.1,
-    once: true,
-  });
-
-  animate("services-list-card-8", {
-    from: "zoom-in",
-    delay: 220,
-    duration: 400,
-    threshold: 0.1,
-    once: true,
-  });
-
-  animate("services-list-card-9", {
-    from: "zoom-in",
-    delay: 250,
-    duration: 400,
-    threshold: 0.1,
-    once: true,
-  });
 });

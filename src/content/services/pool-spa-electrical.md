@@ -60,6 +60,19 @@ features:
     description: "24/7 emergency service for pool electrical issues and safety concerns."
     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2"/></svg>'
     color: "red"
+faqs:
+  - question: "What electrical work is required for pool installation?"
+    answer: "Pools require dedicated circuits, GFCI protection, bonding of all metal components, proper grounding, and code-compliant wiring. We handle complete electrical installation including pumps, heaters, lights, and automation systems."
+  - question: "Why does my pool equipment keep tripping GFCI?"
+    answer: "GFCI tripping indicates ground faults from damaged equipment, moisture in connections, or wiring issues. Don't bypass GFCI - it prevents electrocution. We diagnose and repair the underlying cause safely."
+  - question: "Can you install LED pool lights in existing pools?"
+    answer: "Yes, we retrofit existing pools with energy-efficient LED lights. LEDs last longer, use less energy, and offer color-changing options. We handle underwater fixture replacement and electrical connections safely."
+  - question: "Do you install pool automation systems?"
+    answer: "Yes, we install complete pool automation including pumps, heaters, lights, cleaners, and chemical systems. Control everything from smartphone apps. We handle all electrical connections and system programming."
+  - question: "What's required for hot tub electrical installation?"
+    answer: "Hot tubs require dedicated 240V circuit, GFCI protection, proper disconnect, and code-compliant wiring. We assess your electrical panel capacity, install necessary circuits, and ensure safe, code-compliant installation."
+  - question: "How often should pool electrical systems be inspected?"
+    answer: "Annual inspections recommended. Check GFCI function, inspect bonding connections, test equipment, verify proper grounding, and look for corrosion or damage. Regular inspections prevent safety hazards and equipment failures."
 ---
 
 # Pool & Spa Electrical Installation & Repair

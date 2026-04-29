@@ -60,6 +60,19 @@ features:
     description: "Immediate safety assessment and hazard elimination before beginning any repair work."
     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"/><polyline points="9,12 10,13 15,8" stroke="currentColor" stroke-width="2"/></svg>'
     color: "red"
+faqs:
+  - question: "How quickly can you restore hot water?"
+    answer: "Most electric water heater repairs completed within 2-4 hours of arrival. We stock common parts like heating elements, thermostats, and breakers. Complex issues may require follow-up but we provide temporary solutions."
+  - question: "What causes electric water heaters to stop working?"
+    answer: "Common causes: tripped breaker, failed heating elements, faulty thermostats, blown fuses, or wiring issues. We diagnose electrical problems quickly using specialized testing equipment and provide permanent solutions."
+  - question: "Should I turn off my water heater if it's not working?"
+    answer: "Turn off breaker if you smell burning, see sparking, or water is leaking near electrical components. Otherwise, leave it on until we arrive. We'll assess safety and make necessary repairs."
+  - question: "Can you install new water heaters?"
+    answer: "Yes, we handle complete electric water heater installation including electrical connections, circuit upgrades if needed, and code-compliant wiring. We coordinate with plumbers when both electrical and plumbing work is required."
+  - question: "Do you service tankless water heaters?"
+    answer: "Yes, we service all electric water heater types including tankless, tank, and hybrid models. Tankless heaters require larger electrical circuits - we handle circuit upgrades and proper electrical installation."
+  - question: "Is emergency water heater repair more expensive?"
+    answer: "Emergency rates apply for after-hours, weekend, and holiday service. Rates disclosed upfront before work begins. We prioritize restoring hot water quickly and provide transparent pricing for all emergency repairs."
 ---
 
 # Emergency Water Heater Electrical Repair

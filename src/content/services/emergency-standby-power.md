@@ -60,4 +60,17 @@ features:
     description: "Regular testing and maintenance to ensure your backup systems are ready when needed."
     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" stroke="currentColor" stroke-width="2"/></svg>'
     color: "red"
+faqs:
+  - question: "What's the difference between emergency and standby power systems?"
+    answer: "Emergency power systems provide life-safety lighting and critical loads per code requirements. Standby power systems provide backup for non-critical loads like comfort systems. We design systems meeting your specific code and operational needs."
+  - question: "How long does commercial generator installation take?"
+    answer: "Installation takes 3-10 days depending on system size and complexity. Includes site prep, electrical connections, fuel systems, transfer switches, and testing. We coordinate with utilities and inspectors to minimize disruption."
+  - question: "What size generator does my business need?"
+    answer: "Size depends on critical loads, startup requirements, and future expansion. We perform load calculations and recommend appropriate generator capacity. Typical commercial systems range from 20kW to 2000kW."
+  - question: "Do you maintain existing backup power systems?"
+    answer: "Yes, we provide comprehensive maintenance including oil changes, load bank testing, transfer switch testing, and system diagnostics. Regular maintenance ensures your backup power is ready when needed."
+  - question: "Can you install UPS systems for data centers?"
+    answer: "Yes, we install and maintain UPS systems for data centers, server rooms, and critical equipment. We handle electrical connections, battery systems, and integration with backup generators for complete power protection."
+  - question: "What fuel options are available for backup generators?"
+    answer: "Options include natural gas, propane, and diesel. Natural gas provides unlimited fuel from utility lines. Propane and diesel offer independence from utilities. We help select the best fuel source for your application."
 ---

@@ -60,4 +60,17 @@ features:
     description: "All emergency technicians are fully licensed, insured, and trained for crisis situations."
     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke="currentColor" stroke-width="2"/></svg>'
     color: "accent"
+faqs:
+  - question: "How fast can you respond to electrical emergencies?"
+    answer: "We dispatch emergency electricians within minutes and typically arrive on-site within 30-60 minutes, 24/7 including weekends and holidays. Response time varies by location and current demand."
+  - question: "What qualifies as an electrical emergency?"
+    answer: "Electrical emergencies include power outages, sparking outlets, burning smells, exposed wires, electrical fires, panel issues, storm damage, and any situation posing immediate safety risks. Call immediately for these issues."
+  - question: "Do you charge extra for emergency service?"
+    answer: "Emergency service rates apply for after-hours, weekend, and holiday calls. Rates are disclosed upfront before work begins. We prioritize safety over cost and provide transparent pricing for all emergency work."
+  - question: "Can you fix electrical problems at night?"
+    answer: "Yes, our emergency vehicles carry extensive parts inventory for immediate repairs. Most emergency issues are resolved on first visit. Complex repairs may require follow-up during business hours."
+  - question: "What should I do while waiting for emergency electrician?"
+    answer: "Turn off power at main breaker if safe. Evacuate if you smell burning or see flames. Don't touch exposed wires or standing water near electrical sources. Keep family and pets away from affected areas."
+  - question: "Are your emergency electricians licensed and insured?"
+    answer: "All emergency technicians are fully licensed, bonded, and insured. They carry proper credentials and emergency equipment. We maintain comprehensive liability and workers compensation coverage for your protection."
 ---

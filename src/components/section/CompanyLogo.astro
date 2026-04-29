@@ -1,12 +1,13 @@
 ---
 // Company logos data - electrical industry partners and suppliers
+// Using Simple Icons CDN for brand logos
 const companies = [
-  { name: "Tesla", logo: "/logos/tesla.svg", alt: "Tesla Logo" },
-  { name: "General Electric", logo: "/logos/ge.svg", alt: "General Electric Logo" },
-  { name: "Schneider Electric", logo: "/logos/schneider.svg", alt: "Schneider Electric Logo" },
-  { name: "Siemens", logo: "/logos/siemens.svg", alt: "Siemens Logo" },
-  { name: "Eaton", logo: "/logos/eaton.svg", alt: "Eaton Logo" },
-  { name: "ABB", logo: "/logos/abb.svg", alt: "ABB Logo" },
+  { name: "Tesla", logo: "https://cdn.simpleicons.org/tesla/white", alt: "Tesla Logo" },
+  { name: "General Electric", logo: "https://cdn.simpleicons.org/generalelectric/white", alt: "General Electric Logo" },
+  { name: "Schneider Electric", logo: "https://cdn.simpleicons.org/schneiderelectric/white", alt: "Schneider Electric Logo" },
+  { name: "Siemens", logo: "https://cdn.simpleicons.org/siemens/white", alt: "Siemens Logo" },
+  { name: "Mitsubishi", logo: "https://cdn.simpleicons.org/mitsubishi/white", alt: "Mitsubishi Logo" },
+  { name: "ABB", logo: "https://cdn.simpleicons.org/abb/white", alt: "ABB Logo" },
 ];
 ---
 
@@ -18,34 +19,34 @@ const companies = [
       <div class="logos-carousel-row">
         <div class="logos-carousel-track">
           {/* First set of logos */}
-          {companies.map((company, index) => (
+          {companies.map((company) => (
             <div class="logo-item group">
               <img
                 src={company.logo}
                 alt={company.alt}
-                class="h-16 md:h-20 lg:h-24 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                class="h-16 md:h-20 lg:h-24 w-auto object-contain opacity-100 group-hover:scale-105 transition-all duration-300"
                 loading="lazy"
               />
             </div>
           ))}
           {/* Duplicate set for seamless loop */}
-          {companies.map((company, index) => (
+          {companies.map((company) => (
             <div class="logo-item group">
               <img
                 src={company.logo}
                 alt={company.alt}
-                class="h-16 md:h-20 lg:h-24 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                class="h-16 md:h-20 lg:h-24 w-auto object-contain opacity-100 group-hover:scale-105 transition-all duration-300"
                 loading="lazy"
               />
             </div>
           ))}
           {/* Third set for extra smoothness */}
-          {companies.map((company, index) => (
+          {companies.map((company) => (
             <div class="logo-item group">
               <img
                 src={company.logo}
                 alt={company.alt}
-                class="h-16 md:h-20 lg:h-24 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                class="h-16 md:h-20 lg:h-24 w-auto object-contain opacity-100 group-hover:scale-105 transition-all duration-300"
                 loading="lazy"
               />
             </div>
@@ -114,6 +115,8 @@ const companies = [
   .logo-item img {
     display: block;
     max-width: 180px;
+    /* Ensure bright white logos with high contrast */
+    filter: brightness(2) contrast(1.3);
   }
 
   /* Infinite scroll animation */
@@ -126,13 +129,5 @@ const companies = [
     }
   }
 
-  /* Force SVG logos to be white */
-  .logo-item img[src*="/logos/"] {
-    filter: brightness(0) invert(1);
-  }
-
-  /* Maintain white color on hover */
-  .logo-item:hover img[src*="/logos/"] {
-    filter: brightness(0) invert(1);
-  }
+  /* Logos are already white from CDN, no filter needed */
 </style>

@@ -9,6 +9,7 @@ import FAQ from '../../components/section/FAQ.astro';
 import CallToAction from '../../components/section/CallToAction.astro';
 import ServiceCoverage from '../../components/section/ServiceCoverage.astro';
 import Services from '../../components/section/Services.astro';
+import SpecialOffers from '../../components/section/SpecialOffers.astro';
 
 export async function getStaticPaths() {
   const services = await getCollection('services');
@@ -82,9 +83,9 @@ const { Content } = await render(service);
       steps={data.processTimeline.steps}
     />
   )}
-  <CommercialOffers showGradient={false}/>
+  <SpecialOffers />
   <Services />
-  <FAQ />
+  <FAQ hideBottomOverlay faqs={data.faqs}/>
   <CallToAction variant="light"/>
   <ServiceCoverage />
 

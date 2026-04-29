@@ -60,6 +60,19 @@ features:
     description: "Complete warranty on installation work with ongoing support for maintenance and repair needs."
     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" stroke="currentColor" stroke-width="2"/></svg>'
     color: "red"
+faqs:
+  - question: "Can I install a ceiling fan myself?"
+    answer: "While possible, ceiling fan installation requires electrical knowledge and proper mounting techniques. Improper installation can cause wobbling, noise, electrical hazards, and fan failure. Professional installation ensures safety, proper operation, and maintains warranties."
+  - question: "Do I need a special electrical box for ceiling fans?"
+    answer: "Yes, ceiling fans require fan-rated electrical boxes designed to support the weight and vibration. Standard light fixture boxes are not safe for ceiling fans. We install proper fan-rated boxes with secure ceiling mounting."
+  - question: "How much does ceiling fan installation cost?"
+    answer: "Installation costs range from $150-$400 depending on complexity. New wiring, switch installation, or electrical box replacement add to costs. We provide free quotes including all necessary electrical work."
+  - question: "Why is my ceiling fan wobbling?"
+    answer: "Wobbling is caused by unbalanced blades, loose mounting, improper installation, or damaged components. We diagnose and fix wobbling issues through blade balancing, secure mounting, and component replacement as needed."
+  - question: "Can you install ceiling fans in rooms with low ceilings?"
+    answer: "Yes, we install hugger (flush-mount) ceiling fans designed for rooms with 8-foot or lower ceilings. These fans mount directly to the ceiling without a downrod, providing proper clearance and air circulation."
+  - question: "How do I control ceiling fan speed and direction?"
+    answer: "Ceiling fans are controlled via wall switches, pull chains, remote controls, or smart home apps. We install your preferred control method and show you how to reverse fan direction for seasonal comfort optimization."
 ---
 
 # Professional Ceiling Fan Installation

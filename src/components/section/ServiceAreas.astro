@@ -121,7 +121,7 @@ function toSlug(name: string): string {
             <a 
               id={`service-area-tag-${index + 1}`}
               data-area={area}
-              class="area-tag flex items-center gap-2 px-4 py-2 bg-brand-primary/20 text-brand-primary rounded-full border border-brand-primary/30 hover:bg-brand-primary/30 transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95"
+              class="area-tag flex items-center gap-2 px-4 py-2 bg-brand-primary/20 text-brand-primary rounded-full border border-brand-primary/30 hover:bg-brand-primary/30 transition-all duration-300 hover:scale-105 active:scale-95"
               aria-label={`View ${area} service area page`}
             >
               <div class="w-2 h-2 bg-brand-primary rounded-full"></div>
@@ -131,7 +131,7 @@ function toSlug(name: string): string {
             <button 
               id={`service-area-tag-${index + 1}`}
               data-area={area}
-              class="area-tag flex items-center gap-2 px-4 py-2 bg-brand-primary/20 text-brand-primary rounded-full border border-brand-primary/30 hover:bg-brand-primary/30 transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95"
+              class="area-tag flex items-center gap-2 px-4 py-2 bg-brand-primary/20 text-brand-primary rounded-full border border-brand-primary/30 hover:bg-brand-primary/30 transition-all duration-300 hover:scale-105 active:scale-95"
               aria-label={`View ${area} on map`}
             >
               <div class="w-2 h-2 bg-brand-primary rounded-full"></div>
@@ -152,7 +152,7 @@ function toSlug(name: string): string {
               href={`/service-areas/${slug}`}
               id={`service-area-tag-${primaryAreas.length + index + 1}`}
               data-area={area}
-              class="area-tag flex items-center gap-2 px-4 py-2 bg-brand-accent/20 text-brand-accent rounded-full border border-brand-accent/30 hover:bg-brand-accent/30 transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95"
+              class="area-tag flex items-center gap-2 px-4 py-2 bg-brand-accent/20 text-brand-accent rounded-full border border-brand-accent/30 hover:bg-brand-accent/30 transition-all duration-300 hover:scale-105 active:scale-95"
               aria-label={`View ${area} service area page`}
             >
               <div class="w-2 h-2 bg-brand-accent rounded-full"></div>
@@ -162,7 +162,7 @@ function toSlug(name: string): string {
             <button 
               id={`service-area-tag-${primaryAreas.length + index + 1}`}
               data-area={area}
-              class="area-tag flex items-center gap-2 px-4 py-2 bg-brand-accent/20 text-brand-accent rounded-full border border-brand-accent/30 hover:bg-brand-accent/30 transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95"
+              class="area-tag flex items-center gap-2 px-4 py-2 bg-brand-accent/20 text-brand-accent rounded-full border border-brand-accent/30 hover:bg-brand-accent/30 transition-all duration-300 hover:scale-105 active:scale-95"
               aria-label={`View ${area} on map`}
             >
               <div class="w-2 h-2 bg-brand-accent rounded-full"></div>
@@ -183,7 +183,7 @@ function toSlug(name: string): string {
               href={`/service-areas/${slug}`}
               id={`service-area-tag-${primaryAreas.length + secondaryAreas.length + index + 1}`}
               data-area={area}
-              class="area-tag flex items-center gap-2 px-4 py-2 bg-white/10 text-white/80 rounded-full border border-white/20 hover:bg-white/20 transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95"
+              class="area-tag flex items-center gap-2 px-4 py-2 bg-white/10 text-white/80 rounded-full border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 active:scale-95"
               aria-label={`View ${area} service area page`}
             >
               <div class="w-2 h-2 bg-white/60 rounded-full"></div>
@@ -193,7 +193,7 @@ function toSlug(name: string): string {
             <button 
               id={`service-area-tag-${primaryAreas.length + secondaryAreas.length + index + 1}`}
               data-area={area}
-              class="area-tag flex items-center gap-2 px-4 py-2 bg-white/10 text-white/80 rounded-full border border-white/20 hover:bg-white/20 transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95"
+              class="area-tag flex items-center gap-2 px-4 py-2 bg-white/10 text-white/80 rounded-full border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 active:scale-95"
               aria-label={`View ${area} on map`}
             >
               <div class="w-2 h-2 bg-white/60 rounded-full"></div>
@@ -245,8 +245,31 @@ function toSlug(name: string): string {
     // Add markers for all areas
     Object.keys(areaCoordinates).forEach(areaName => {
       const coords = areaCoordinates[areaName];
+      
+      // Check if this area has a dedicated page (Denver, Santa Monica, Pasadena, Glendale)
+      const areasWithPages = ['Denver', 'Santa Monica', 'Pasadena', 'Glendale'];
+      const hasPage = areasWithPages.includes(areaName);
+      const slug = areaName.toLowerCase().replace(/\s+/g, '-');
+      
+      // Create popup content with optional button
+      let popupContent = `<div style="text-align: center; padding: 8px;">
+        <strong style="font-size: 16px; color: #1f2937;">${areaName}</strong>
+        <p style="margin: 4px 0; color: #6b7280; font-size: 14px;">VoltBully Service Area</p>`;
+      
+      if (hasPage) {
+        popupContent += `
+        <a href="/service-areas/${slug}" 
+           style="display: inline-block; margin-top: 8px; padding: 8px 16px; background-color: #FF6B35; color: white; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: 600; transition: background-color 0.2s;"
+           onmouseover="this.style.backgroundColor='#e55a2b'" 
+           onmouseout="this.style.backgroundColor='#FF6B35'">
+          View Details
+        </a>`;
+      }
+      
+      popupContent += `</div>`;
+      
       const marker = L.marker([coords.lat, coords.lng])
-        .bindPopup(`<strong>${areaName}</strong><br>VoltBully Service Area`)
+        .bindPopup(popupContent)
         .addTo(map);
       markers[areaName] = marker;
     });

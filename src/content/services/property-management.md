@@ -60,6 +60,19 @@ features:
     description: "Budget-conscious electrical solutions that maximize property value while controlling maintenance costs."
     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2"/></svg>'
     color: "red"
+faqs:
+  - question: "Do you offer discounts for multiple properties?"
+    answer: "Yes, we provide volume discounts for property management companies and multi-property owners. We offer maintenance contracts with preferred pricing, priority scheduling, and streamlined billing for your entire portfolio."
+  - question: "Can you handle emergency calls for multiple properties?"
+    answer: "Yes, we provide 24/7 emergency service for all your properties. Single point of contact, rapid response, and consistent service across your portfolio. We track service history for each property in our system."
+  - question: "Do you provide detailed reports for property owners?"
+    answer: "Yes, we provide comprehensive reports including work performed, photos, recommendations, and cost breakdowns. Reports help you make informed decisions and provide documentation for property owners and insurance."
+  - question: "Can you coordinate with tenants for service appointments?"
+    answer: "Yes, we schedule directly with tenants when needed. We're professional, respectful of tenant privacy, and minimize disruption. We provide advance notice and work around tenant schedules when possible."
+  - question: "Do you handle electrical inspections for property sales?"
+    answer: "Yes, we perform pre-sale electrical inspections identifying issues that could affect sales. We provide detailed reports and can complete repairs quickly to keep transactions on schedule."
+  - question: "What's included in electrical maintenance contracts?"
+    answer: "Contracts include scheduled inspections, priority emergency service, discounted rates, preventive maintenance, and detailed reporting. We customize contracts based on your property types and specific needs."
 ---
 
 # Property Management Electrical Services

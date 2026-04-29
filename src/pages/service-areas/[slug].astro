@@ -3,13 +3,15 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero2 from '../../components/section/Hero2.astro';
 import CommercialServices from '../../components/section/CommercialServices.astro';
-import Coupons from '../../components/section/Coupons.astro';
 import Services from '../../components/section/Services.astro';
 import FAQ from '../../components/section/FAQ.astro';
 import FeaturedWorks from '../../components/section/FeaturedWorks.astro';
 import Testimonials from '../../components/section/Testimonials.astro';
 import CallToAction from '../../components/section/CallToAction.astro';
 import ServiceAreas from '../../components/section/ServiceAreas.astro';
+import CompanyLogo from '../../components/section/CompanyLogo.astro';
+import WhyTheyTrustUs from '../../components/section/WhyTheyTrustUs.astro';
+import SpecialOffers from '../../components/section/SpecialOffers.astro';
 
 export async function getStaticPaths() {
   const serviceAreas = await getCollection('service-areas');
@@ -35,22 +37,24 @@ const { Content } = await render(area);
   description={data.metaDescription}
   keywords={data.keywords}
 >
-  <div class="relative">
-    <!-- Background image for Hero2 -->
-    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style={`background-image: url('${data.backgroundImage}');`}></div>
-    <!-- Dark overlay for better text readability -->
-    <div class="absolute inset-0 bg-black/40"></div>
-    
-    <Hero2 
-      line1={data.heroLine1 || ""}
-      line2={data.heroLine2}
-      line3={data.heroLine3}
-      description={data.heroDescription}
-      buttonText="GET STARTED"
-      buttonHref="/contact"
-      phoneText="CALL FOR EMERGENCY"
-      backgroundImage={data.backgroundImage}
-    />
+  <div class="hero-company-wrapper">
+    <div class="hero-section relative">
+      <!-- Background image for Hero2 -->
+      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style={`background-image: url('${data.backgroundImage}');`}></div>
+      <!-- Dark overlay for better text readability -->
+      <div class="absolute inset-0 bg-black/40"></div>
+      
+      <Hero2 
+        line1={data.heroLine1 || ""}
+        line2={data.heroLine2}
+        line3={data.heroLine3}
+        description={data.heroDescription}
+        buttonText="GET STARTED"
+        buttonHref="/contact"
+        phoneText="CALL FOR EMERGENCY"
+      />
+    </div>
+    <CompanyLogo />
   </div>
 
   <CommercialServices 
@@ -74,11 +78,12 @@ const { Content } = await render(area);
       color: "primary" | "secondary" | "accent" | "red";
     }> || []}
   />
-
-  <Coupons roundedBottom/>
-  <Services />
-  <FAQ />
-  <FeaturedWorks />
+  
+  {data.whyTrustUs && <WhyTheyTrustUs roundedBottom whyTrustUs={data.whyTrustUs} />}
+  
+  <SpecialOffers />
+  <Services showGradientOverlay={false}/>
+  <FeaturedWorks showTopGradient={false}/>
   <Testimonials />
   <CallToAction />
   
@@ -104,6 +109,23 @@ const { Content } = await render(area);
 </BaseLayout>
 
 <style>
+  .hero-company-wrapper {
+    position: relative;
+    background:
+
+      /* Aggressive gradient to pure black earlier */
+      linear-gradient(
+        to bottom,
+        #000000 100%,
+        #0f172a 30%,
+        rgba(15, 23, 42, 0.9) 45%,
+        rgba(0, 0, 0, 0.95) 60%,
+        rgba(0, 0, 0, 0.99) 70%,
+        #000000 75%,
+        #000000 100%
+      );
+  }
+
   #backToTop::before {
     content: '';
     position: absolute;

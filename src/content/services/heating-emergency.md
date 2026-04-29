@@ -60,6 +60,19 @@ features:
     description: "Immediate safety assessment and hazard elimination before beginning repair work."
     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"/><polyline points="9,12 10,13 15,8" stroke="currentColor" stroke-width="2"/></svg>'
     color: "red"
+faqs:
+  - question: "How fast can you respond to heating emergencies?"
+    answer: "We dispatch emergency electricians within minutes and typically arrive within 30-60 minutes. Heating failures in winter are priority emergencies. We respond 24/7 including holidays to restore your heat quickly."
+  - question: "What causes heating system electrical failures?"
+    answer: "Common causes: thermostat issues, blown fuses, tripped breakers, failed heating elements, control board problems, and wiring damage. We diagnose electrical issues quickly and carry parts for immediate repairs."
+  - question: "Can you repair all types of heating systems?"
+    answer: "Yes, we service electric furnaces, heat pumps, boilers, baseboard heaters, and radiant heating systems. Our electricians are trained on all major heating brands and handle electrical repairs for any heating equipment."
+  - question: "What if my furnace won't turn on?"
+    answer: "Check thermostat settings and breaker first. If still not working, call us immediately. We diagnose electrical issues including power supply, control circuits, safety switches, and heating elements to restore heat."
+  - question: "Do you provide temporary heating solutions?"
+    answer: "Yes, we can arrange temporary heating while completing permanent repairs. For extended repairs, we coordinate with HVAC contractors to provide space heaters or temporary heating equipment."
+  - question: "Is emergency heating repair more expensive?"
+    answer: "Emergency rates apply for after-hours, weekend, and holiday service. Rates disclosed upfront before work begins. We prioritize restoring heat quickly and provide transparent pricing for all emergency repairs."
 ---
 
 # Emergency Heating System Electrical Repair

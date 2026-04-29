@@ -60,4 +60,17 @@ features:
     description: "All panel installations meet or exceed local electrical codes and safety standards."
     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
     color: "red"
+faqs:
+  - question: "When should I upgrade my commercial electrical panel?"
+    answer: "Upgrade when adding equipment, experiencing frequent breaker trips, panel is over 25 years old, or expanding operations. Signs include flickering lights, burning smells, rust, or insufficient circuit capacity for current needs."
+  - question: "How long does commercial panel installation take?"
+    answer: "Small panel upgrades take 1-2 days. Large commercial installations take 3-7 days depending on size and complexity. We work around your business hours to minimize disruption and coordinate power shutdowns."
+  - question: "What size electrical panel does my business need?"
+    answer: "Panel size depends on total electrical load, future expansion plans, and equipment requirements. We perform load calculations per NEC standards. Typical commercial panels range from 200A to 4000A service."
+  - question: "Can you upgrade panels without shutting down my business?"
+    answer: "We minimize downtime through careful planning, temporary power solutions, and phased installations. Most work happens after hours or weekends. Critical operations can often continue during upgrades with proper coordination."
+  - question: "What's the difference between main and sub panels?"
+    answer: "Main panels receive utility power and distribute to building. Sub panels distribute power to specific areas from main panel. Large facilities use multiple sub panels for efficient power distribution and circuit organization."
+  - question: "Do commercial panel upgrades require permits?"
+    answer: "Yes, all commercial electrical panel work requires permits and inspections. We handle permit applications, coordinate inspections, and ensure all work meets local codes and insurance requirements."
 ---

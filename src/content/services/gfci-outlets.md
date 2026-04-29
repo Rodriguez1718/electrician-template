@@ -60,6 +60,19 @@ features:
     description: "Professional installation, testing, and maintenance by licensed electricians with GFCI expertise and safety training."
     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke="currentColor" stroke-width="2"/></svg>'
     color: "red"
+faqs:
+  - question: "Where are GFCI outlets required?"
+    answer: "GFCI outlets are required in bathrooms, kitchens (within 6 feet of sinks), laundry rooms, garages, basements, crawl spaces, and all outdoor locations. They're also required near pools, hot tubs, and wet bars per electrical code."
+  - question: "Why does my GFCI outlet keep tripping?"
+    answer: "Frequent tripping indicates ground faults from damaged appliances, moisture in outlets, worn wiring, or faulty GFCI devices. We diagnose the cause through circuit testing and repair or replace components as needed."
+  - question: "How do I test my GFCI outlet?"
+    answer: "Press the TEST button monthly - the outlet should click and cut power. Press RESET to restore power. If it doesn't trip or won't reset, the GFCI is faulty and needs replacement. We provide professional testing and replacement services."
+  - question: "Can I replace a regular outlet with a GFCI?"
+    answer: "Yes, but it requires proper wiring knowledge. GFCI outlets have LINE and LOAD terminals that must be wired correctly for proper protection. Incorrect wiring can leave you unprotected. We ensure proper installation and testing."
+  - question: "What's the difference between GFCI outlets and breakers?"
+    answer: "GFCI outlets protect individual outlets or downstream outlets on the same circuit. GFCI breakers protect entire circuits from the panel. We recommend the best solution based on your home's layout and protection needs."
+  - question: "How long do GFCI outlets last?"
+    answer: "GFCI outlets typically last 10-15 years with proper maintenance. Test monthly and replace if they fail testing, won't reset, or are over 10 years old. We provide testing and replacement services to ensure continued protection."
 ---
 
 # GFCI Outlet Installation & Electrical Safety

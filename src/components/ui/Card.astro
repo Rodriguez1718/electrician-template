@@ -63,44 +63,62 @@ const CardTag = href ? 'a' : 'div';
   )}
   
   <div 
-    class={`${variantClasses[variant]} ${sizeClasses[size]} block relative z-0 h-full flex flex-col clipped-card`}
+    class={`${variantClasses[variant]} ${sizeClasses[size]} block relative z-0 h-full flex flex-col ${variant === 'image' ? 'rounded-2xl overflow-hidden' : 'clipped-card'}`}
     style={variant === 'image' ? 
-      `background-image: url('${backgroundImage}'); background-size: cover; background-position: center; background-repeat: no-repeat; clip-path: url(#${uniqueId});` : 
+      `background-image: url('${backgroundImage}'); background-size: cover; background-position: center; background-repeat: no-repeat;` : 
       `background-color: #f8f9fa; border-color: rgba(45, 124, 111, 0.4); clip-path: url(#${uniqueId});`
     }
   >
     
-    {/* Background image blur overlay for image variant */}
+    {/* Blur layer for image on hover */}
     {variant === 'image' && (
-      <div class="absolute inset-0 bg-black/40 backdrop-blur-0 group-hover:backdrop-blur-sm transition-all duration-500 z-0"></div>
+      <div class="absolute inset-0 backdrop-blur-0 group-hover:backdrop-blur-md transition-all duration-300 z-[1]"></div>
+    )}
+    
+    {/* Instagram-style gradient overlay for image variant */}
+    {variant === 'image' && (
+      <div class="absolute inset-0 bg-gradient-to-br from-purple-600/60 via-pink-500/50 to-orange-400/60 opacity-80 group-hover:opacity-90 transition-all duration-300 z-[2]"></div>
     )}
     
     {/* Content container for image variant */}
     {variant === 'image' ? (
-      <div class="relative z-10 flex flex-col h-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 justify-center items-center text-center">
-        <!-- Service icon -->
-        <div class="mb-4">
-          <span set:html={icon} class="text-white text-4xl"></span>
-        </div>
-        
-        <!-- Service name -->
-        <h3 class="text-xl font-asap-condensed uppercase tracking-wide font-bold mb-3 text-white">
-          {title}
-        </h3>
-        
-        <!-- Category badge -->
-        {category && (
-          <div class="flex mb-3">
-            <div class="px-3 py-1 bg-brand-accent text-brand-background text-xs font-asap-condensed font-medium rounded-full w-fit">
-              {category}
-            </div>
+      <div class="relative z-[3] flex flex-col h-full justify-center items-center text-center p-6">
+        {title || description || icon ? (
+          <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <!-- Service icon -->
+            {icon && (
+              <div class="mb-4 bg-white/20 backdrop-blur-sm rounded-full p-4 shadow-lg">
+                <span set:html={icon} class="text-white text-4xl drop-shadow-lg"></span>
+              </div>
+            )}
+            
+            <!-- Service name -->
+            {title && (
+              <h3 class="text-2xl font-asap-condensed uppercase tracking-wide font-bold mb-3 text-white drop-shadow-lg">
+                {title}
+              </h3>
+            )}
+            
+            <!-- Category badge -->
+            {category && (
+              <div class="flex mb-3">
+                <div class="px-4 py-1.5 bg-white/90 text-purple-600 text-xs font-asap-condensed font-bold rounded-full w-fit shadow-md">
+                  {category}
+                </div>
+              </div>
+            )}
+            
+            <!-- Service description -->
+            {description && (
+              <p class="font-helvetica text-base leading-relaxed text-white drop-shadow-md max-w-xs font-medium">
+                {description}
+              </p>
+            )}
           </div>
-        )}
+        ) : null}
         
-        <!-- Service description -->
-        <p class="font-helvetica text-sm leading-relaxed text-white/90 max-w-xs">
-          {description}
-        </p>
+        <!-- Slot for custom content (like Instagram button) -->
+        <slot />
       </div>
     ) : (
       <div class="relative z-10 flex flex-col h-full">
