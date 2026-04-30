@@ -90,10 +90,16 @@ const companies = [
 
   .logos-carousel-track {
     display: inline-flex;
-    gap: 4rem;
+    gap: 2rem;
     align-items: center;
     will-change: transform;
     animation: logoScrollRight 30s linear infinite;
+  }
+
+  @media (min-width: 768px) {
+    .logos-carousel-track {
+      gap: 4rem;
+    }
   }
 
   /* Pause animation on hover */
