@@ -1,0 +1,143 @@
+---
+import Card from "../ui/Card.astro";
+
+export interface Props {
+  sectionLabel?: string;
+  title?: string;
+  titleHighlight?: string;
+  description?: string;
+  category?: string;
+  currentSlug?: string;
+  showGradient?: boolean;
+}
+
+const { showGradient = true } = Astro.props;
+
+const {
+  sectionLabel = "Related Services",
+  title = "Explore Our",
+  titleHighlight = "Related Services",
+  description = "Discover more electrical solutions tailored to your needs. From installations to repairs, we've got you covered.",
+  category = "commercial",
+  currentSlug = ""
+} = Astro.props;
+
+interface Service {
+  name: string;
+  icon: string;
+  iconWhite: string;
+  iconColor: string;
+  description: string;
+  slug: string;
+  isViewAll?: boolean;
+}
+
+// Load services from markdown files based on category
+async function loadServices(categoryName: string, excludeSlug: string): Promise<Service[]> {
+  const services: Service[] = [];
+  
+  try {
+    // Import all markdown files from the specified category
+    const categoryFiles = import.meta.glob('/src/content/**/*.md', { eager: true });
+    
+    // Filter files for this category (exclude only index.md)
+    const serviceFiles = Object.entries(categoryFiles).filter(([path]) => 
+      path.includes(`/src/content/${categoryName}/`) && 
+      !path.endsWith('/index.md')
+    );
+    
+    // Custom slug mappings to match services collection
+    const slugMappings: Record<string, string> = {
+      'ground-up-electrical-construction': 'ground-up-construction',
+      'car-charging-stations-ev': 'car-charging-stations',
+      'ceiling-fan-installation': 'ceiling-fan',
+      'holiday-lighting-installation': 'holiday-lighting',
+      'hvac-emergency-repairs': 'hvac-emergency',
+      'electrical-fire-prevention': '24-hour-emergency',
+      'power-outage-solutions': 'heating-emergency',
+      'storm-damage-repair': 'water-heater-emergency',
+      'emergency-standby-power-systems': 'emergency-standby-power'
+    };
+    
+    for (const [path, module] of serviceFiles) {
+      const frontmatter = (module as any).frontmatter || {};
+      const fileName = path.split('/').pop()?.replace('.md', '') || '';
+      
+      // Use custom slug mapping if available, otherwise use filename
+      const slug = slugMappings[fileName] || fileName;
+      
+      // Skip current service
+      if (slug === excludeSlug) continue;
+      
+      // Check if this is a view-all card
+      const isViewAll = fileName.startsWith('view-all-');
+      
+      services.push({
+        name: frontmatter.title || fileName,
+        icon: frontmatter.icon || '⚡',
+        iconWhite: frontmatter.iconWhite || frontmatter.icon || '⚡',
+        iconColor: frontmatter.iconColor || 'white',
+        description: frontmatter.description || '',
+        slug: slug,
+        isViewAll: isViewAll
+      });
+    }
+    
+  } catch (error: any) {
+    console.error(`Error loading ${categoryName} services:`, error?.message || 'Unknown error');
+  }
+  
+  return services;
+}
+
+const services = await loadServices(category, currentSlug);
+---
+
+<section class="py-20 bg-gray-50 relative overflow-hidden" style="background: linear-gradient(135deg, rgba(249, 250, 251, 0.95) 0%, rgba(249, 250, 251, 0.85) 100%), url('/images/abstract-organic-lines-background.png'); background-size: cover; background-position: center; background-attachment: fixed;">
+
+  <!-- Subtle top border with fade effect -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-transparent via-gray-300 via-transparent to-transparent z-10" style="background: linear-gradient(to right, transparent 0%, transparent 35%, #d1d5db 50%, transparent 65%, transparent 100%);"></div>
+
+  <!-- Gradient overlay at bottom for seamless transition -->
+  {showGradient && (
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-gray-50 z-10"></div>
+  )}
+
+  <div class="max-w-7xl mx-auto px-6 relative z-20">
+    <!-- Section header -->
+    <div id="related-services-header" class="text-center mb-16">
+      <p id="related-services-label" class="text-brand-accent font-helvetica text-sm uppercase tracking-wider mb-4">
+        {sectionLabel}
+      </p>
+      <h2 id="related-services-title" class="text-4xl lg:text-5xl font-asap-condensed font-bold text-gray-900 mb-6 leading-tight tracking-wide uppercase">
+        {title} <span class="text-brand-primary">{titleHighlight}</span>
+      </h2>
+      <p id="related-services-description" class="text-lg text-gray-600 font-helvetica leading-relaxed max-w-3xl mx-auto">
+        {description}
+      </p>
+    </div>
+
+    <!-- Services grid - show all cards -->
+    <div id="related-services-grid" class="flex flex-wrap justify-center gap-6">
+      {services.map((service: Service, index) => {
+        const href = service.isViewAll ? `/${category}` : `/services/${service.slug}`;
+        
+        return (
+          <div id={`related-services-card-${index + 1}`} class="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm">
+            <Card
+              title={service.name}
+              description={service.description}
+              icon={service.icon}
+              iconWhite={service.iconWhite}
+              iconColor={service.iconColor}
+              href={href}
+              variant="dark"
+              size="md"
+              category={category.charAt(0).toUpperCase() + category.slice(1)}
+            />
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

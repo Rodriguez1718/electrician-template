@@ -3,6 +3,10 @@ title: "24-Hour Emergency Electrical Services | VoltBully Electricians"
 description: "VoltBully provides 24/7 emergency electrical services. Fast response for power outages, electrical fires, and urgent electrical repairs. Available around the clock."
 metaDescription: "VoltBully provides 24/7 emergency electrical services. Fast response for power outages, electrical fires, and urgent electrical repairs. Available around the clock."
 keywords: "24 hour emergency electrician, emergency electrical repair, power outage repair, electrical emergency service, after hours electrician, urgent electrical repair"
+category: "emergency"
+icon: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>'
+iconWhite: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>'
+iconColor: "white"
 heroLine1: "24-HOUR"
 heroLine2: "EMERGENCY"
 heroLine3: "SERVICE"

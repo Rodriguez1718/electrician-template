@@ -3,6 +3,10 @@ title: "Backup Generator Installation & Maintenance"
 description: "Professional backup generator installation and maintenance services to keep your home or business powered during outages. Expert installation, regular maintenance, and 24/7 emergency support."
 metaDescription: "Professional backup generator installation and maintenance services. Keep your home or business powered during outages with expert installation and 24/7 support."
 keywords: "backup generator installation, generator maintenance, standby generator, power outage protection, emergency power, generator repair"
+category: "residential"
+icon: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="12" rx="1"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/><path d="M7 16h.01M17 16h.01"/><path d="M12 12v4"/></svg>'
+iconWhite: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="8" width="18" height="12" rx="1"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/><path d="M7 16h.01M17 16h.01"/><path d="M12 12v4"/></svg>'
+iconColor: "white"
 heroLine1: "BACKUP"
 heroLine2: "GENERATOR"
 heroLine3: "INSTALLATION"
@@ -74,75 +78,3 @@ faqs:
   - question: "Do generators work with natural gas or propane?"
     answer: "Yes, standby generators can run on natural gas or propane. Natural gas provides unlimited fuel from utility lines, while propane offers independence from utilities. We help you choose the best fuel source for your situation."
 ---
-
-# Backup Generator Installation & Maintenance
-
-Protect your home or business from power outages with our professional backup generator installation and maintenance services. Our certified electricians provide complete solutions from consultation to ongoing support.
-
-## Why Choose Backup Generators?
-
-Power outages can disrupt your daily life, damage equipment, and compromise safety. A backup generator provides:
-
-- **Automatic Power Protection**: Seamless transition during outages
-- **Peace of Mind**: Know your family and business are protected
-- **Equipment Protection**: Prevent damage from power surges and outages
-- **Comfort & Safety**: Maintain heating, cooling, and security systems
-
-## Our Generator Services
-
-### Installation Services
-- Site assessment and generator sizing
-- Permit acquisition and code compliance
-- Professional installation and setup
-- Transfer switch installation
-- Fuel system connections (natural gas/propane)
-
-### Maintenance Programs
-- Regular inspection and testing
-- Oil changes and filter replacements
-- Battery maintenance and replacement
-- System diagnostics and tune-ups
-- Emergency repair services
-
-### Generator Types We Install
-- **Standby Generators**: Permanent installation with automatic operation
-- **Portable Generators**: Flexible power solutions for smaller needs
-- **Commercial Generators**: High-capacity systems for business continuity
-- **Whole House Generators**: Complete home power protection
-
-## Brands We Work With
-
-We install and service generators from leading manufacturers:
-- Generac
-- Kohler
-- Briggs & Stratton
-- Cummins
-- Champion
-
-## Maintenance Plans Available
-
-Keep your generator ready with our comprehensive maintenance plans:
-
-### Basic Plan
-- Annual inspection and testing
-- Oil and filter change
-- Battery check and maintenance
-- Basic system diagnostics
-
-### Premium Plan
-- Bi-annual service visits
-- All basic plan services
-- Priority emergency service
-- Extended warranty coverage
-- Remote monitoring (where available)
-
-## Emergency Generator Repair
-
-Generator not working when you need it? Our emergency repair services include:
-- 24/7 emergency response
-- Rapid diagnosis and repair
-- Replacement parts inventory
-- Temporary power solutions
-- System restoration
-
-Contact us today for a free consultation and quote on backup generator installation or maintenance services.

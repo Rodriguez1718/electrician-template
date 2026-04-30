@@ -3,9 +3,13 @@ import Card from "../ui/Card.astro";
 
 export interface Props {
   showGradientOverlay?: boolean;
+  showTopGradient?: boolean;
+  excludeCategory?: string;
 }
 
+const { showTopGradient = true } = Astro.props;
 const { showGradientOverlay = true } = Astro.props;
+const { excludeCategory } = Astro.props;
 
 interface Service {
   name: string;
@@ -112,10 +116,20 @@ async function loadServicesFromMarkdownFiles(): Promise<ServiceCategory[]> {
   return serviceCategories;
 }
 
-const serviceCategories = await loadServicesFromMarkdownFiles();
+const allServiceCategories = await loadServicesFromMarkdownFiles();
+
+// Filter out excluded category if specified
+const serviceCategories = excludeCategory 
+  ? allServiceCategories.filter(cat => cat.id !== excludeCategory)
+  : allServiceCategories;
 ---
 
 <section class="py-20 bg-white relative overflow-hidden">
+
+  <!-- Gradient overlay at top for seamless transition from Financing -->
+  {showTopGradient && (
+    <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-gray-50 to-transparent z-10"></div>
+  )}
 
   <!-- Gradient overlay at bottom for seamless transition -->
   {showGradientOverlay && (

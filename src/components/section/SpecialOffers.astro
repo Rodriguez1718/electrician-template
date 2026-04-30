@@ -3,8 +3,9 @@ import Button from "../ui/Button.astro";
 
 export interface Props {
   roundedBottom?: boolean;
+  showGradient?: boolean;
 }
-
+const { showGradient = true } = Astro.props;
 const { roundedBottom = false } = Astro.props;
 
 const offers = [
@@ -84,6 +85,11 @@ const offers = [
 ---
 
 <section class={`py-16 bg-white relative overflow-hidden ${roundedBottom ? 'rounded-bottom' : ''}`}>
+
+  <!-- Gradient overlay at bottom for seamless transition -->
+  {showGradient && (
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-gray-50 z-10"></div>
+  )}
   
   <div class="max-w-7xl mx-auto px-6 pt-6 relative z-20">
     <!-- Offers grid -->

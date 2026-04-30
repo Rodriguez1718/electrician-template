@@ -3,6 +3,10 @@ title: "EV Charging Station Installation | VoltBully Electricians"
 description: "VoltBully installs residential and commercial EV charging stations. Professional electric vehicle charging station installation with permits and inspections."
 metaDescription: "VoltBully installs residential and commercial EV charging stations. Professional electric vehicle charging station installation with permits and inspections."
 keywords: "EV charging station installation, electric vehicle charger, Tesla charger installation, Level 2 charger, home EV charger, commercial EV charging"
+category: "residential"
+icon: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.5 6l-1 4h3l-7 10v-7h-3l1-7z"/><path d="M7 4v16M17 4v16"/></svg>'
+iconWhite: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18.5 6l-1 4h3l-7 10v-7h-3l1-7z"/><path d="M7 4v16M17 4v16"/></svg>'
+iconColor: "white"
 heroLine1: "EV CHARGING"
 heroLine2: "STATION"
 heroLine3: "INSTALLATION"

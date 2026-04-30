@@ -3,6 +3,10 @@ title: "Ceiling Fan Installation | VoltBully Professional Electricians"
 description: "VoltBully provides professional ceiling fan installation services. Expert installation of ceiling fans with proper electrical wiring, mounting, and controls for homes and businesses."
 metaDescription: "VoltBully provides professional ceiling fan installation services. Expert installation of ceiling fans with proper electrical wiring, mounting, and controls for homes and businesses."
 keywords: "ceiling fan installation, ceiling fan wiring, fan installation service, ceiling fan electrician, fan mounting, ceiling fan repair"
+category: "residential"
+icon: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M12 10V2M12 22v-8M17 7l5-5M2 22l5-5M7 7L2 2M22 22l-5-5"/></svg>'
+iconWhite: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M12 10V2M12 22v-8M17 7l5-5M2 22l5-5M7 7L2 2M22 22l-5-5"/></svg>'
+iconColor: "white"
 heroLine1: "CEILING FAN"
 heroLine2: "INSTALLATION"
 heroLine3: "SERVICE"
@@ -27,38 +31,46 @@ processTimeline:
       title: "Electrical Assessment"
       description: "Evaluation of existing electrical box and wiring to ensure proper support and electrical capacity for ceiling fan installation."
       icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/></svg>'
+      iconWhite1: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M12 10V2M12 22v-8M17 7l5-5M2 22l5-5M7 7L2 2M22 22l-5-5"/></svg>'
       color: "primary"
     - number: "02"
       title: "Mounting & Wiring"
       description: "Professional installation of fan-rated electrical box, secure mounting, and proper electrical connections for safe operation."
       icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      iconWhite2: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M12 10V2M12 22v-8M17 7l5-5M2 22l5-5M7 7L2 2M22 22l-5-5"/></svg>'
       color: "secondary"
     - number: "03"
       title: "Fan Assembly"
       description: "Careful assembly and installation of ceiling fan components including blades, motor, and light fixtures if applicable."
       icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/><path d="M12 1v6M12 17v6M5.64 5.64l4.24 4.24M14.12 14.12l4.24 4.24M1 12h6M17 12h6M5.64 18.36l4.24-4.24M14.12 9.88l4.24-4.24" stroke="currentColor" stroke-width="2"/></svg>'
+      iconWhite3: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M12 10V2M12 22v-8M17 7l5-5M2 22l5-5M7 7L2 2M22 22l-5-5"/></svg>'
       color: "accent"
     - number: "04"
       title: "Testing & Balancing"
       description: "Complete testing of all functions and blade balancing to ensure smooth, quiet operation and proper control functionality."
       icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="9,12 10,13 15,8" stroke="currentColor" stroke-width="2"/></svg>'
+      iconWhite4: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M12 10V2M12 22v-8M17 7l5-5M2 22l5-5M7 7L2 2M22 22l-5-5"/></svg>'
       color: "red"
 features:
   - title: "Proper Mounting"
     description: "Fan-rated electrical boxes and secure mounting systems to support ceiling fan weight and operation safely."
     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    iconWhite5: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M12 10V2M12 22v-8M17 7l5-5M2 22l5-5M7 7L2 2M22 22l-5-5"/></svg>'
     color: "primary"
   - title: "Electrical Wiring"
     description: "Professional electrical connections with proper switches and controls for fan speed and lighting functions."
     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    iconWhite6: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M12 10V2M12 22v-8M17 7l5-5M2 22l5-5M7 7L2 2M22 22l-5-5"/></svg>'
     color: "secondary"
   - title: "All Fan Types"
     description: "Installation of all ceiling fan types including standard, hugger, outdoor, and smart ceiling fans with remote controls."
     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/><path d="M12 1v6M12 17v6M5.64 5.64l4.24 4.24M14.12 14.12l4.24 4.24M1 12h6M17 12h6M5.64 18.36l4.24-4.24M14.12 9.88l4.24-4.24" stroke="currentColor" stroke-width="2"/></svg>'
+    iconWhite7: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M12 10V2M12 22v-8M17 7l5-5M2 22l5-5M7 7L2 2M22 22l-5-5"/></svg>'
     color: "accent"
   - title: "Warranty Service"
     description: "Complete warranty on installation work with ongoing support for maintenance and repair needs."
     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" stroke="currentColor" stroke-width="2"/></svg>'
+    iconWhite8: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M12 10V2M12 22v-8M17 7l5-5M2 22l5-5M7 7L2 2M22 22l-5-5"/></svg>'
     color: "red"
 faqs:
   - question: "Can I install a ceiling fan myself?"

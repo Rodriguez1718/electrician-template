@@ -3,23 +3,30 @@ export interface Props {
   title: string;
   description: string;
   icon: string;
+  iconWhite?: string;
   href?: string;
-  variant?: 'default' | 'hover' | 'bordered' | 'service' | 'image';
+  variant?: 'default' | 'hover' | 'bordered' | 'service' | 'image' | 'dark';
   size?: 'sm' | 'md' | 'lg';
   category?: string;
   backgroundImage?: string;
+  iconColor?: string;
 }
 
 const { 
   title, 
   description, 
   icon, 
+  iconWhite,
   href, 
   variant = 'default',
   size = 'md',
   category,
-  backgroundImage
+  backgroundImage,
+  iconColor = 'white'
 } = Astro.props;
+
+// Use iconWhite for dark variant if available, otherwise fall back to icon
+const displayIcon = (variant === 'dark' && iconWhite) ? iconWhite : icon;
 
 // Generate unique ID for this card's clip path
 const uniqueId = `cardClip-${Math.random().toString(36).substr(2, 9)}`;
@@ -35,6 +42,7 @@ const variantClasses = {
   hover: ' text-gray-900',
   bordered: ' text-gray-900',
   service: ' relative overflow-hidden text-gray-900',
+  dark: ' relative overflow-hidden text-white',
   image: ' relative overflow-hidden text-white'
 };
 
@@ -66,6 +74,8 @@ const CardTag = href ? 'a' : 'div';
     class={`${variantClasses[variant]} ${sizeClasses[size]} block relative z-0 h-full flex flex-col ${variant === 'image' ? 'rounded-2xl overflow-hidden' : 'clipped-card'}`}
     style={variant === 'image' ? 
       `background-image: url('${backgroundImage}'); background-size: cover; background-position: center; background-repeat: no-repeat;` : 
+      variant === 'dark' ?
+      `background-color: #111111; border-color: rgba(45, 124, 111, 0.4); clip-path: url(#${uniqueId});` :
       `background-color: #f8f9fa; border-color: rgba(45, 124, 111, 0.4); clip-path: url(#${uniqueId});`
     }
   >
@@ -123,26 +133,26 @@ const CardTag = href ? 'a' : 'div';
     ) : (
       <div class="relative z-10 flex flex-col h-full">
         <!-- Service icon -->
-        <div class="relative z-10">
-          <span set:html={icon}></span>
+        <div class={`relative z-10 ${variant === 'dark' ? 'text-white' : ''}`}>
+          <span class={variant === 'dark' ? 'text-white' : ''} set:html={displayIcon}></span>
         </div>
         
         <!-- Service name -->
-        <h3 class="text-lg font-asap-condensed uppercase tracking-wide font-bold mb-2 relative z-10 transition-colors duration-300 text-black group-hover:text-brand-accent">
+        <h3 class={`text-lg font-asap-condensed uppercase tracking-wide font-bold mb-2 relative z-10 transition-colors duration-300 group-hover:text-brand-accent ${variant === 'dark' ? 'text-white' : 'text-black'}`}>
           {title}
         </h3>
         
-        <!-- Category badge (for service variant) -->
-        {variant === 'service' && category && (
+        <!-- Category badge (for service and dark variant) -->
+        {(variant === 'service' || variant === 'dark') && category && (
           <div class="flex">
-            <div class="px-2 py-1 bg-brand-accent text-brand-background text-xs font-asap-condensed font-medium rounded-full mb-2 relative z-10 w-fit">
+            <div class={`px-2 py-1 text-xs font-asap-condensed font-medium rounded-full mb-2 relative z-10 w-fit ${variant === 'dark' ? 'bg-white/20 text-white' : 'bg-brand-accent text-brand-background'}`}>
               {category}
             </div>
           </div>
         )}
         
         <!-- Service description -->
-        <p class="font-helvetica text-sm leading-relaxed relative z-10 text-gray-600 flex-grow">
+        <p class={`font-helvetica text-sm leading-relaxed relative z-10 flex-grow ${variant === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
           {description}
         </p>
       </div>
@@ -162,5 +172,10 @@ const CardTag = href ? 'a' : 'div';
 <style>
   .clipped-card {
     position: relative;
+  }
+  
+  /* Ensure SVG icons inherit text color */
+  .text-white svg {
+    stroke: white !important;
   }
 </style>
