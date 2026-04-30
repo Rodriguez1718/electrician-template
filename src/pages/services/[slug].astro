@@ -4,11 +4,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero2 from '../../components/section/Hero2.astro';
 import CommercialServices from '../../components/section/CommercialServices.astro';
 import ProcessTimeline from '../../components/section/ProcessTimeline.astro';
-import CommercialOffers from '../../components/section/CommercialOffers.astro';
 import FAQ from '../../components/section/FAQ.astro';
 import CallToAction from '../../components/section/CallToAction.astro';
 import ServiceCoverage from '../../components/section/ServiceCoverage.astro';
-import Services from '../../components/section/Services.astro';
+import RelatedServices from '../../components/section/RelatedServices.astro';
 import SpecialOffers from '../../components/section/SpecialOffers.astro';
 
 export async function getStaticPaths() {
@@ -84,8 +83,8 @@ const { Content } = await render(service);
     />
   )}
   <SpecialOffers />
-  <Services />
   <FAQ hideBottomOverlay faqs={data.faqs}/>
+  <RelatedServices category={data.category} currentSlug={service.id}/>
   <CallToAction variant="light"/>
   <ServiceCoverage />
 
